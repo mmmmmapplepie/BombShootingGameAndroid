@@ -8,8 +8,6 @@ public class W1L1 : MonoBehaviour
   // [SerializeField]
   // spawning animation prefab spawnEffect;
   bool waveRunning = false;
-  bool check1 = false;
-  bool check2 = false;
   List<GameObject> WaveTriggerEnemiesAll = new List<GameObject>();
 
   void Awake()
@@ -37,15 +35,12 @@ public class W1L1 : MonoBehaviour
   }
   void resetWaveSettings()
   {
-    check1 = false;
-    check2 = false;
     WaveTriggerEnemiesAll.Clear();
   }
   IEnumerator WaveTriggerEnemiesCleared()
   {
     while (WaveTriggerEnemiesAll.Count > 0)
     {
-      print(WaveTriggerEnemiesAll.Count);
       yield return null;
     }
     waveCleared();

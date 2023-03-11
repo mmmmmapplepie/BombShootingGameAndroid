@@ -121,7 +121,7 @@ public class WaveController : MonoBehaviour
     LifeManager.ReviveUsed = false;
 
     LevelCleared = false;
-    CurrentWave = 0;//wave should start by incrementing this.
+    CurrentWave = 0;
     WavesCleared = 0;
     startWave = false;
   }

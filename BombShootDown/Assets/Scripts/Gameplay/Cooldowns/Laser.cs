@@ -13,138 +13,171 @@ public class Laser : MonoBehaviour
   [SerializeField]
   GameObject LaserAimer;
   // [SerializeField]
-//LaserPrefab;
+  //LaserPrefab;
   bool shot = false;
-  float LaserHalfWidth = 1.5f;
+  float LaserHalfWidth = 1.6875f;
   float LaserDamage = 20f;
   float BaseLaserCooldown = 100f;
   float remainingTime = 0f;
   float cooldownTimerChangeReceptor;
   //Initial setup including upgrades
-  void Start() {
+  void Start()
+  {
     SetBaseSettings();
     cooldownTimerChangeReceptor = BowManager.CoolDownRate;
   }
-  public void checkUpgradesForLaserEquipped() {
-    if (UpgradesEquipped.EquippedUpgrades.Contains("Laser")) {
+  public void checkUpgradesForLaserEquipped()
+  {
+    if (UpgradesEquipped.EquippedUpgrades.Contains("Laser"))
+    {
       LaserButton.SetActive(true);
     }
   }
-  void SetBaseSettings() {
+  void SetBaseSettings()
+  {
     int lvl = UpgradesManager.returnDictionaryValue("Laser")[1];
-    BaseLaserCooldown = 100f - 4f*(float)lvl;
-    LaserDamage = 20f + 6f*(float)lvl;
-
+    BaseLaserCooldown = 100f - 4f * (float)lvl;
+    LaserDamage = 20f + 6f * (float)lvl;
+    LaserHalfWidth = 1.6875f + 0.04f * ((float)lvl - 1);
   }
   void Update()
   {
     //check if cooldownrate changed and fix cooldown if it did.
-    if (BowManager.CoolDownRate != cooldownTimerChangeReceptor) {
-      float oldBaseTime = BaseLaserCooldown/cooldownTimerChangeReceptor;
-      float newBaseTime = BaseLaserCooldown/BowManager.CoolDownRate;
-      float ratioRemaining = remainingTime/oldBaseTime;
+    if (BowManager.CoolDownRate != cooldownTimerChangeReceptor)
+    {
+      float oldBaseTime = BaseLaserCooldown / cooldownTimerChangeReceptor;
+      float newBaseTime = BaseLaserCooldown / BowManager.CoolDownRate;
+      float ratioRemaining = remainingTime / oldBaseTime;
       float newRemaining = ratioRemaining * newBaseTime;
       remainingTime = newRemaining;
     }
-    if (remainingTime > 0f) {
+    if (remainingTime > 0f)
+    {
       countDownTimer();
     }
-    if (remainingTime <= 0f) {
+    if (remainingTime <= 0f)
+    {
       LaserButton.GetComponent<Button>().interactable = true;
       cooldownCover.fillAmount = 0;
       remainingTime = 0f;
     }
   }
-  void countDownTimer() {
+  void countDownTimer()
+  {
     remainingTime -= Time.deltaTime;
     RenderCooldownImage();
   }
-  void RenderCooldownImage() {
-    float oldBaseTime = BaseLaserCooldown/cooldownTimerChangeReceptor;
-    float ratioRemaining = remainingTime/oldBaseTime;
+  void RenderCooldownImage()
+  {
+    float oldBaseTime = BaseLaserCooldown / cooldownTimerChangeReceptor;
+    float ratioRemaining = remainingTime / oldBaseTime;
     cooldownCover.fillAmount = ratioRemaining;
   }
-  public void UseLaser() {
-    if (BowManager.UsingCooldown || remainingTime != 0f) {
+  public void UseLaser()
+  {
+    if (BowManager.UsingCooldown || remainingTime != 0f)
+    {
       return;
     }
     LaserButton.GetComponent<Button>().interactable = false;
-    remainingTime = BaseLaserCooldown/cooldownTimerChangeReceptor;
+    remainingTime = BaseLaserCooldown / cooldownTimerChangeReceptor;
 
     clickPanel.SetActive(true);
     LaserAimer.SetActive(true);
     BowManager.UsingCooldown = true;
+    BowManager.GunsReady = false;
     StartCoroutine("RemoveButtonTouch");
     StartCoroutine("clickTimer");
   }
-  IEnumerator RemoveButtonTouch() {
-    while (Input.touchCount != 0 && clickPanel.activeSelf && shot == false) {
+  IEnumerator RemoveButtonTouch()
+  {
+    while (Input.touchCount != 0 && clickPanel.activeSelf && shot == false)
+    {
       yield return null;
     }
-    if (clickPanel.activeSelf && shot == false) {
+    if (clickPanel.activeSelf && shot == false)
+    {
       StartCoroutine("LaserPlacement");
     }
   }
-  IEnumerator clickTimer() {
+  IEnumerator clickTimer()
+  {
     float timer = 0f;//3sec
     float timescale = 0.2f;//0.2 is the base
     float opacity = 0.4f;//0.4 is base
-    while (timer < 2f && shot == false) {
+    while (timer < 2f && shot == false)
+    {
       timer += Time.deltaTime;
       Time.timeScale = timescale;
-      timescale = 0.2f + 0.8f*timer/2f;
-      opacity = 0.4f - 0.4f*timer/2f;
+      timescale = 0.2f + 0.8f * timer / 2f;
+      opacity = 0.4f - 0.4f * timer / 2f;
       clickPanel.GetComponent<Image>().color = new Color(0f, 0f, 0f, opacity);
       yield return null;
     }
     clickPanel.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
+    if (shot == false)
+    {
+      fireLaser(LaserAimer.transform.position.x);
+    }
     ResetValues();
   }
-  void ResetValues() {
-    clickPanel.SetActive(false);
-    LaserAimer.GetComponent<Transform>().position = new Vector3 (0f, 0f, 0f);
+  void ResetValues()
+  {
     LaserAimer.SetActive(false);
+    clickPanel.SetActive(false);
+    LaserAimer.GetComponent<Transform>().position = new Vector3(0f, 0f, 0f);
     shot = false;
     BowManager.UsingCooldown = false;
+    Invoke("readyguns", 0.5f);
     Time.timeScale = 1f;
   }
-  IEnumerator LaserPlacement() {
-    while(clickPanel.activeSelf && shot == false) {
-      if (Input.touchCount > 0 && remainingTime > 0f) {
+  void readyguns()
+  {
+    BowManager.GunsReady = true;
+  }
+  IEnumerator LaserPlacement()
+  {
+    while (clickPanel.activeSelf && shot == false)
+    {
+      if (Input.touchCount > 0 && remainingTime > 0f)
+      {
         Touch touch = Input.GetTouch(0);
         Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
         touchPos.z = 0f;
         touchPos.y = 0f;
-        if (touch.phase == TouchPhase.Moved) {
+        if (touch.phase == TouchPhase.Moved)
+        {
           LaserAimer.GetComponent<Transform>().position = touchPos;
           yield return null;
         }
-        if (touch.phase == TouchPhase.Ended) {
+        if (touch.phase == TouchPhase.Ended)
+        {
+          print("ended");
           shot = true;
           Vector3 firePos = LaserAimer.GetComponent<Transform>().position;
           fireLaser(firePos.x);
-          yield break;
+          break;
         }
       }
       yield return null;
     }
-    if (shot == false) {
-      shot = true;
-      fireLaser(LaserAimer.transform.position.x);
-      yield return null;
-    }
   }
-  void fireLaser(float x) {
+  void fireLaser(float x)
+  {
     //instantiate and sound effects
     GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
     GameObject[] TauntEnemies = GameObject.FindGameObjectsWithTag("TauntEnemy");
-    foreach (GameObject enemies in Enemies) {
-      if (enemies.transform.position.x > (x-LaserHalfWidth) && enemies.transform.position.x < (x+LaserHalfWidth)) {
+    foreach (GameObject enemies in Enemies)
+    {
+      if (enemies.transform.position.x > (x - LaserHalfWidth) && enemies.transform.position.x < (x + LaserHalfWidth))
+      {
         enemies.transform.parent.gameObject.GetComponent<EnemyLife>().takeTrueDamage(LaserDamage);
       }
     }
-    foreach (GameObject enemies in TauntEnemies) {
-      if (enemies.transform.position.x > (x-LaserHalfWidth) && enemies.transform.position.x < (x+LaserHalfWidth)) {
+    foreach (GameObject enemies in TauntEnemies)
+    {
+      if (enemies.transform.position.x > (x - LaserHalfWidth) && enemies.transform.position.x < (x + LaserHalfWidth))
+      {
         enemies.transform.parent.gameObject.GetComponent<EnemyLife>().takeTrueDamage(LaserDamage);
       }
     }
