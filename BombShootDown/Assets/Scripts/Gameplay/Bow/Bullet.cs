@@ -114,6 +114,7 @@ public class Bullet : MonoBehaviour
       pierce--;
       if (pierce <= 0)
       {
+        gameObject.GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject);
       }
     }

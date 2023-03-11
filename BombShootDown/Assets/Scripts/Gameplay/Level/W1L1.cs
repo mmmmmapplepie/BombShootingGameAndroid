@@ -10,7 +10,7 @@ public class W1L1 : MonoBehaviour
   bool waveRunning = false;
   bool check1 = false;
   bool check2 = false;
-  List<GameObject> WaveTriggerEnemies = new List<GameObject>();
+  List<GameObject> WaveTriggerEnemiesAll = new List<GameObject>();
 
   void Awake()
   {
@@ -18,6 +18,7 @@ public class W1L1 : MonoBehaviour
   }
   void Update()
   {
+    cleanWaveLists();
     if (WaveController.CurrentWave > WaveController.WavesCleared && WaveController.startWave == true && waveRunning == false)
     {
       findCorrectWaveToStart();
@@ -30,50 +31,24 @@ public class W1L1 : MonoBehaviour
     float ranNum = Random.Range(min, max);
     return ranNum;
   }
+  void cleanWaveLists()
+  {
+    WaveTriggerEnemiesAll.RemoveAll(x => x == null);
+  }
   void resetWaveSettings()
   {
     check1 = false;
     check2 = false;
-    WaveTriggerEnemies.Clear();
+    WaveTriggerEnemiesAll.Clear();
   }
   IEnumerator WaveTriggerEnemiesCleared()
   {
-    while (check1 != true && check2 != true)
+    while (WaveTriggerEnemiesAll.Count > 0)
     {
-      if (ListEnemiesClearedCheck())
-      {
-        check1 = true;
-        yield return null;
-      }
-      if (ListEnemiesClearedCheck() && check1 == true)
-      {
-        check2 = true;
-      }
-      else
-      {
-        check1 = false;
-        check2 = false;
-      }
+      print(WaveTriggerEnemiesAll.Count);
       yield return null;
     }
     waveCleared();
-  }
-  bool ListEnemiesClearedCheck()
-  {
-    bool cleared = false;
-    foreach (GameObject g in WaveTriggerEnemies)
-    {
-      cleared = true;
-      if (g == null)
-      {
-        continue;
-      }
-      else
-      {
-        cleared = false;
-      }
-    }
-    return cleared;
   }
   GameObject spawnEnemy(string name, float xpos, float ypos)
   {
@@ -113,7 +88,7 @@ public class W1L1 : MonoBehaviour
     {
       totalEnemies--;
       float x = randomWithRange(-5f, 5f);
-      WaveTriggerEnemies.Add(spawnEnemy("NanoBasic", x, 10f));
+      WaveTriggerEnemiesAll.Add(spawnEnemy("NanoBasic", x, 10f));
       yield return new WaitForSeconds(0.1f);
     }
     StartCoroutine("WaveTriggerEnemiesCleared");
@@ -125,7 +100,7 @@ public class W1L1 : MonoBehaviour
     {
       totalEnemies--;
       float x = randomWithRange(-5f, 5f);
-      WaveTriggerEnemies.Add(spawnEnemy("NanoBasic", x, 10f));
+      WaveTriggerEnemiesAll.Add(spawnEnemy("NanoBasic", x, 10f));
       yield return new WaitForSeconds(0.1f);
     }
     StartCoroutine("WaveTriggerEnemiesCleared");
