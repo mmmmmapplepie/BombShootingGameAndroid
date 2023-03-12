@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +13,7 @@ public class Bomb : MonoBehaviour
   // [SerializeField]
   //BombExplosionPrefab;
   bool shot = false;
-  float bombRadius = 2f;
+  float bombRadius = 5f;
   float BombDamage = 5f;
   float BaseBombCooldown = 20f; //base is actually 19f due to lvl being 1 at the beginning;
   float remainingTime = 0f;
@@ -36,7 +35,6 @@ public class Bomb : MonoBehaviour
   {
     int lvl = UpgradesManager.returnDictionaryValue("BombDamage")[1];
     BaseBombCooldown = 20f - (float)lvl;
-    bombRadius = 2f + ((float)lvl - 1) / 10f;
     BombDamage = 5f + (float)lvl;
   }
   //Cooldown display
