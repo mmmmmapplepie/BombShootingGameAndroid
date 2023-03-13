@@ -14,7 +14,7 @@ public class EnemyDamage : MonoBehaviour
   }
   void Update()
   {
-    if (transform.position.y < -7.25f)
+    if (transform.position.y < -7.25f && GetComponent<EnemyLife>().currentLife > 0f)
     {
       LifeManager.CurrentLife -= Damage;
       if (Damage >= 50)

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class Laser : MonoBehaviour
 {
   [SerializeField]
+  GameObject LaserEffect;
+  [SerializeField]
   GameObject LaserButton;
   [SerializeField]
   Image cooldownCover;
@@ -116,9 +118,16 @@ public class Laser : MonoBehaviour
     clickPanel.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
     if (shot == false)
     {
-      fireLaser(LaserAimer.transform.position.x);
+      Vector3 firePos = LaserAimer.GetComponent<Transform>().position;
+      StartCoroutine("FireLaser", firePos);
     }
     ResetValues();
+  }
+  IEnumerator FireLaser(Vector3 position)
+  {
+    Instantiate(LaserEffect, new Vector3(position.x, -11, 0f), Quaternion.identity);
+    yield return new WaitForSeconds(0.5f);
+    damageWithLaser(position.x);
   }
   void ResetValues()
   {
@@ -154,14 +163,14 @@ public class Laser : MonoBehaviour
           print("ended");
           shot = true;
           Vector3 firePos = LaserAimer.GetComponent<Transform>().position;
-          fireLaser(firePos.x);
+          StartCoroutine("FireLaser", firePos);
           break;
         }
       }
       yield return null;
     }
   }
-  void fireLaser(float x)
+  void damageWithLaser(float x)
   {
     //instantiate and sound effects
     GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");

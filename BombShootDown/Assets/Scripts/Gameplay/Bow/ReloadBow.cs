@@ -19,9 +19,6 @@ public class ReloadBow : MonoBehaviour
     BowManager.CurrentAmmo--;
     yield return new WaitForSeconds(BowManager.ReloadRate);
     GameObject bullet = Instantiate(BulletPrefab, new Vector3(0f, -10f, 0f), Quaternion.identity, transform);
-    print(bullet.transform.localScale);
-    print(2);
-    bullet.transform.SetParent(transform);
     bullet.transform.localPosition = new Vector3(0f, 3.234f, 0f);
     wait = false;
   }

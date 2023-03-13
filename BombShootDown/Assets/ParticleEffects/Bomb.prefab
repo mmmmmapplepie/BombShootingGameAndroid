@@ -105,7 +105,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -4994,7 +4994,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -9780,8 +9780,9 @@ GameObject:
   - component: {fileID: 7321667037035010870}
   - component: {fileID: 7321667037035010865}
   - component: {fileID: 7321667037035010864}
+  - component: {fileID: 1969856850}
   m_Layer: 0
-  m_Name: BombExplosion
+  m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14576,6 +14577,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1969856850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7321667037035010867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cc5ad55786fd14fb7d1fb35344cff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 4.5
 --- !u!1001 &7321667036886767211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14653,7 +14667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5251060875880613757, guid: 6a11789f8d1ad194c9c42ac69aede5d4, type: 3}
       propertyPath: moveWithTransform
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5251060875880613757, guid: 6a11789f8d1ad194c9c42ac69aede5d4, type: 3}
       propertyPath: startDelay.scalar

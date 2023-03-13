@@ -163,9 +163,7 @@ public class Helper : MonoBehaviour
   IEnumerator Reload(float time)
   {
     yield return new WaitForSeconds(time);
-    GameObject bullet = Instantiate(HelperBulletPrefab, new Vector3(0f, -10f, 0f), Quaternion.identity);
-    print(bullet.transform.localScale);
-    bullet.transform.SetParent(transform);
+    GameObject bullet = Instantiate(HelperBulletPrefab, new Vector3(0f, -10f, 0f), Quaternion.identity, transform);
     bullet.transform.localPosition = new Vector3(0f, 3.234f, 0f);
     aiming = false;
     waiting = false;

@@ -11,7 +11,7 @@ public class BowManager
   public static float BulletDmg = 1f;//base 1
   public static float HelperDmg = 0.5f;//helpers get the hits/hit and pierce/ and armor pierce.
   public static int ArmorPierce = 0;//0 at base +1 with pierce upgrade base
-  public static float BulletSpeed = 5f;//base 5
+  public static float BulletSpeed = 5f;//base 5 max at 35f;
   public static bool AOE = false;//false base
   public static float AOEDmg = 0.5f;//starts at half the base dmg to base dmg at max
   public static bool ChainExplosion = false;//false base

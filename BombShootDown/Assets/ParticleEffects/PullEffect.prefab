@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3956966440781740590}
   - component: {fileID: 5235390187187901872}
   - component: {fileID: 8554127549975095261}
+  - component: {fileID: 1971757137}
   m_Layer: 0
   m_Name: PullEffect
   m_TagString: Untagged
@@ -221,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.40985322, g: 1, b: 0.4409136, a: 1}
-      maxColor: {r: 0.7966457, g: 1, b: 0.84449375, a: 1}
+      minColor: {r: 0.40985322, g: 1, b: 0.4409136, a: 0.39215687}
+      maxColor: {r: 0.7966457, g: 1, b: 0.84449375, a: 0.39215687}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4862,3 +4863,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1971757137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4916766571468688858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cc5ad55786fd14fb7d1fb35344cff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 1

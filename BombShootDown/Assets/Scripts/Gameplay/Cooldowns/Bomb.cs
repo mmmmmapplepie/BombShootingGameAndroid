@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class Bomb : MonoBehaviour
 {
   [SerializeField]
+  GameObject BombEffect;
+  [SerializeField]
   GameObject BombButton;
   [SerializeField]
   Image cooldownCover;
@@ -13,7 +15,7 @@ public class Bomb : MonoBehaviour
   // [SerializeField]
   //BombExplosionPrefab;
   bool shot = false;
-  float bombRadius = 5f;
+  float bombRadius = 2.5f;
   float BombDamage = 5f;
   float BaseBombCooldown = 20f; //base is actually 19f due to lvl being 1 at the beginning;
   float remainingTime = 0f;
@@ -114,7 +116,7 @@ public class Bomb : MonoBehaviour
     }
     if (shot == false)
     {
-      RandomPlacement();
+      StartCoroutine("RandomPlacement");
     }
     clickPanel.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
     ResetValues();
@@ -142,18 +144,21 @@ public class Bomb : MonoBehaviour
         {
           shot = true;
           Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+          Instantiate(BombEffect, new Vector3(touchPos.x, touchPos.y, 0f), Quaternion.identity);
+          yield return new WaitForSeconds(0.3f);
           fireBomb(touchPos.x, touchPos.y);
           yield break;
-          //Instantiate(BombExplosionPrefab, touchPos, Quaternion.Identity);
         }
       }
       yield return null;
     }
   }
-  void RandomPlacement()
+  IEnumerator RandomPlacement()
   {
     float x = Random.Range(-5.625f, 5.625f);
     float y = Random.Range(-7f, 10f);
+    Instantiate(BombEffect, new Vector3(x, y, 0f), Quaternion.identity);
+    yield return new WaitForSeconds(0.3f);
     fireBomb(x, y);
   }
   void fireBomb(float x, float y)
@@ -163,7 +168,6 @@ public class Bomb : MonoBehaviour
     {
       if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy"))
       {
-        //effects instantiate
         coll.transform.parent.gameObject.GetComponent<EnemyLife>().takeTrueDamage(BombDamage);
       }
     }

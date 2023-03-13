@@ -78,6 +78,18 @@ public class W1L1 : MonoBehaviour
   #region LevelDesign
   IEnumerator wave1()
   {
+    int totalEnemies = 20;
+    while (totalEnemies > 0)
+    {
+      totalEnemies--;
+      float x = randomWithRange(-5f, 5f);
+      WaveTriggerEnemiesAll.Add(spawnEnemy("NanoBasic", x, 10f));
+      yield return new WaitForSeconds(0.1f);
+    }
+    StartCoroutine("WaveTriggerEnemiesCleared");
+  }
+  IEnumerator wave2()
+  {
     int totalEnemies = 1000;
     while (totalEnemies > 0)
     {
@@ -85,18 +97,6 @@ public class W1L1 : MonoBehaviour
       float x = randomWithRange(-5f, 5f);
       WaveTriggerEnemiesAll.Add(spawnEnemy("NanoBasic", x, 10f));
       yield return new WaitForSeconds(0.15f);
-    }
-    StartCoroutine("WaveTriggerEnemiesCleared");
-  }
-  IEnumerator wave2()
-  {
-    int totalEnemies = 200;
-    while (totalEnemies > 0)
-    {
-      totalEnemies--;
-      float x = randomWithRange(-5f, 5f);
-      WaveTriggerEnemiesAll.Add(spawnEnemy("NanoBasic", x, 10f));
-      yield return new WaitForSeconds(0.1f);
     }
     StartCoroutine("WaveTriggerEnemiesCleared");
   }

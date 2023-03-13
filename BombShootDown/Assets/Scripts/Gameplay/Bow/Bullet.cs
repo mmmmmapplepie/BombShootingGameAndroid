@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
     if (pull > 0f && pullStarted == false && gameObject.GetComponent<CircleCollider2D>().enabled == true)
     {
       pullStarted = true;
-      pulltime = 0.4f - 0.02f * pull;
+      pulltime = (0.4f - 0.01f * pull) / speed;
       InvokeRepeating("PullEnemies", 0f, pulltime);
     }
   }
@@ -46,10 +46,24 @@ public class Bullet : MonoBehaviour
         {
           continue;
         }
+        float force = 0f;
         //pull animation
-        float force = (coll.transform.parent.position.x - transform.position.x);
+        if ((coll.transform.parent.position.x - transform.position.x) != 0f)
+        {
+          float diff = coll.transform.parent.position.x - transform.position.x;
+          float forcemag = 1 / Mathf.Pow((Mathf.Abs(diff) - 3.5f), 2f);
+          if (diff > 0f)
+          {
+            force = -forcemag;
+          }
+          else
+          {
+            force = forcemag;
+          }
+        }
+
         Rigidbody2D rb = coll.transform.parent.GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(-force * pull, 0f), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(force * pull, 0f), ForceMode2D.Impulse);
       }
     }
   }

@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 3112957866081141619}
   - component: {fileID: 3112957866081141618}
   - component: {fileID: 3112957866081141617}
+  - component: {fileID: 7511504544025807726}
   - component: {fileID: 5007360293035530302}
   m_Layer: 0
   m_Name: NanoBasic
@@ -447,6 +448,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chained: 0
+--- !u!114 &7511504544025807726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112957866081141623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e395ae4b1b096ba40a3b2023b4033a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &5007360293035530302
 Rigidbody2D:
   serializedVersion: 4
