@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Bullet : MonoBehaviour
 {
-  // [SerializeField]
-  //pull prefab
+  [SerializeField]
+  List<GameObject> Effects;
+  [SerializeField]
+  GameObject PullEffect;
   int hits;
   float damage;
   bool aoe;
@@ -34,6 +37,7 @@ public class Bullet : MonoBehaviour
   void PullEnemies()
   {
     Collider2D[] Enemies = Physics2D.OverlapCircleAll(transform.position, 2.5f);
+    CreateEffect(PullEffect, null, transform.position);
     foreach (Collider2D coll in Enemies)
     {
       if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy")
@@ -95,21 +99,37 @@ public class Bullet : MonoBehaviour
     speed = BowManager.BulletSpeed;
     gameObject.GetComponent<CircleCollider2D>().enabled = true;
   }
-
+  void CreateEffect(GameObject prefab, Transform parent, Vector3 pos)
+  {
+    GameObject effect = Instantiate(prefab, pos, Quaternion.identity, parent);
+  }
   void OnTriggerEnter2D(Collider2D coll)
   {
     if (coll.gameObject.tag == "TauntEnemy" || coll.gameObject.tag == "Enemy")
     {
+
       if (chain)
       {
+        Transform Lifebar = coll.transform.Find("State").Find("Life").Find("Background");
         coll.transform.parent.GetComponent<ChainExplosion>().Chained = true;
+        CreateEffect(Effects.Find(x => x.name == "ChainedEffect"), Lifebar, Lifebar.position);
       }
       EnemyLife life = coll.transform.parent.gameObject.GetComponent<EnemyLife>();
+      Transform enemyCenter = coll.transform.parent;
       life.takeDamage(damage);
-      life.HitsPerHit(hits, damage);
+      CreateEffect(Effects.Find(x => x.name == "NormalHitEffect"), enemyCenter, enemyCenter.position);
+      for (int i = 0; i < hits; i++)
+      {
+        life.takeDamage(damage);
+        if (life.currentLife > 0f)
+        {
+          CreateEffect(Effects.Find(x => x.name == "NormalHitEffect"), enemyCenter, enemyCenter.position);
+        }
+      }
       if (aoe)
       {
         life.AoeHit(damage);
+        CreateEffect(Effects.Find(x => x.name == "AoeHit"), enemyCenter, enemyCenter.position);
       }
       pierce--;
       if (pierce <= 0)

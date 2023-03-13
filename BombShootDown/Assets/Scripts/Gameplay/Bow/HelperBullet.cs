@@ -1,7 +1,10 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class HelperBullet : MonoBehaviour
 {
+  [SerializeField]
+  GameObject HitEffect;
   int hits;
   float damage;
   int pierce;
@@ -62,14 +65,27 @@ public class HelperBullet : MonoBehaviour
     gameObject.GetComponent<CircleCollider2D>().enabled = true;
   }
 
+  void CreateEffect(GameObject prefab, Transform parent, Vector3 pos)
+  {
+    GameObject effect = Instantiate(prefab, pos, Quaternion.identity, parent);
+  }
 
   void OnTriggerEnter2D(Collider2D coll)
   {
     if (coll.gameObject.tag == "TauntEnemy" || coll.gameObject.tag == "Enemy")
     {
       EnemyLife life = coll.transform.parent.gameObject.GetComponent<EnemyLife>();
+      Transform enemyCenter = coll.transform.parent;
       life.takeDamage(damage);
-      life.HitsPerHit(hits, damage);
+      CreateEffect(HitEffect, enemyCenter, enemyCenter.position);
+      for (int i = 0; i < hits; i++)
+      {
+        life.takeDamage(damage);
+        if (life.currentLife > 0f)
+        {
+          CreateEffect(HitEffect, enemyCenter, enemyCenter.position);
+        }
+      }
       pierce--;
       if (pierce <= 0)
       {

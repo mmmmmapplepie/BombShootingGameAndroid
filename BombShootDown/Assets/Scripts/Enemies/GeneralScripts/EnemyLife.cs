@@ -80,13 +80,6 @@ public class EnemyLife : MonoBehaviour
       ShotDeath();
     }
   }
-  public void HitsPerHit(int HitNum, float damage)
-  {
-    for (int i = 0; i < HitNum; i++)
-    {
-      takeDamage(damage);
-    }
-  }
   public void AoeHit(float damage)
   {
     Collider2D[] Objects = Physics2D.OverlapCircleAll(transform.position, 2f);
@@ -102,9 +95,27 @@ public class EnemyLife : MonoBehaviour
   {
     takeDamage(BowManager.ChainExplosionDmg * BowManager.BulletDmg);
   }
-
-
-
+  void disableMovement()
+  {
+    gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+    gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+    Destroy(transform.Find("Enemy").gameObject.GetComponent<Collider2D>());
+    Destroy(transform.Find("MovementControl").gameObject);
+  }
+  IEnumerator deathSequence()
+  {
+    disableMovement();
+    SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
+    for (int i = 0; i < 20; i++)
+    {
+      float angle = (Mathf.Sin(i)) / (i + 1);
+      float ratio = 1f / (1f + i);
+      transform.rotation = Quaternion.Euler(0, 0, angle);
+      sprite.color = new Color(sprite.color.r / ratio, sprite.color.g / ratio, sprite.color.b / ratio, ratio);
+      yield return new WaitForSeconds(0.01f);
+    }
+    Destroy(gameObject);
+  }
   void ShotDeath()
   {
     ChainExplosion script = gameObject.GetComponent<ChainExplosion>();
@@ -112,8 +123,7 @@ public class EnemyLife : MonoBehaviour
     {
       script.Explode();
     }
-    //death animation/sound should be on the separate individual enemy script on the OnDestroy()
+    StartCoroutine("deathSequence");
 
-    Destroy(gameObject);
   }
 }
