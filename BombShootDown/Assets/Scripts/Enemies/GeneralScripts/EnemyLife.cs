@@ -21,6 +21,7 @@ public class EnemyLife : MonoBehaviour
   public int Shield;
   [HideInInspector]
   bool Taunt;
+  public bool dead = false;
   void Awake()
   {
     maxLife = data.Life;
@@ -41,7 +42,7 @@ public class EnemyLife : MonoBehaviour
   public void takeTrueDamage(float damage)
   {
     currentLife -= damage;
-    if (currentLife <= 0f)
+    if (currentLife <= 0f && !dead)
     {
       ShotDeath();
     }
@@ -75,14 +76,14 @@ public class EnemyLife : MonoBehaviour
         currentLife -= damage;
       }
     }
-    if (currentLife <= 0f)
+    if (currentLife <= 0f && !dead)
     {
       ShotDeath();
     }
   }
   public void AoeHit(float damage)
   {
-    Collider2D[] Objects = Physics2D.OverlapCircleAll(transform.position, 2f);
+    Collider2D[] Objects = Physics2D.OverlapCircleAll(transform.position, 1f);
     foreach (Collider2D coll in Objects)
     {
       if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") && coll.gameObject != gameObject)
@@ -95,16 +96,17 @@ public class EnemyLife : MonoBehaviour
   {
     takeDamage(BowManager.ChainExplosionDmg * BowManager.BulletDmg);
   }
-  void disableMovement()
+  void RemoveAtDeathComponents()
   {
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     Destroy(transform.Find("Enemy").gameObject.GetComponent<Collider2D>());
     Destroy(transform.Find("MovementControl").gameObject);
+    Destroy(transform.Find("Armor Canvas").gameObject);
   }
   IEnumerator deathSequence()
   {
-    disableMovement();
+    RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++)
     {
@@ -112,12 +114,13 @@ public class EnemyLife : MonoBehaviour
       float ratio = 1f / (1f + i);
       transform.rotation = Quaternion.Euler(0, 0, angle);
       sprite.color = new Color(sprite.color.r / ratio, sprite.color.g / ratio, sprite.color.b / ratio, ratio);
-      yield return new WaitForSeconds(0.01f);
+      yield return new WaitForSeconds(0.05f);
     }
     Destroy(gameObject);
   }
   void ShotDeath()
   {
+    dead = true;
     ChainExplosion script = gameObject.GetComponent<ChainExplosion>();
     if (script.Chained == true)
     {
