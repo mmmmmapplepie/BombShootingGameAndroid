@@ -47,9 +47,9 @@ public class Bullet : MonoBehaviour
           continue;
         }
         //pull animation
-        float forcedirection = (coll.transform.parent.position.x - transform.position.x);
+        float force = (coll.transform.parent.position.x - transform.position.x);
         Rigidbody2D rb = coll.transform.parent.GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(-forcedirection * pull, 0f), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(-force * pull, 0f), ForceMode2D.Impulse);
       }
     }
   }
@@ -108,9 +108,9 @@ public class Bullet : MonoBehaviour
     if (coll.gameObject.tag == "TauntEnemy" || coll.gameObject.tag == "Enemy")
     {
 
-      if (chain)
+      if (chain && coll.transform.parent.GetComponent<ChainExplosion>().Chained == false)
       {
-        Transform Lifebar = coll.transform.Find("State").Find("Life").Find("Background");
+        Transform Lifebar = coll.transform.parent.Find("State").Find("Life").Find("Background");
         coll.transform.parent.GetComponent<ChainExplosion>().Chained = true;
         CreateEffect(Effects.Find(x => x.name == "ChainedEffect"), Lifebar, Lifebar.position);
       }

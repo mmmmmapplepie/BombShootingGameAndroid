@@ -8,6 +8,8 @@ public class EnemyLife : MonoBehaviour
   public Enemy data;
   [SerializeField]
   GameObject bombObject;
+  [SerializeField]
+  GameObject chainExplosionEffect;
   RectTransform rect;
   [HideInInspector]
   public float maxLife;
@@ -21,6 +23,7 @@ public class EnemyLife : MonoBehaviour
   public int Shield;
   [HideInInspector]
   bool Taunt;
+  [HideInInspector]
   public bool dead = false;
   void Awake()
   {
@@ -102,7 +105,7 @@ public class EnemyLife : MonoBehaviour
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     Destroy(transform.Find("Enemy").gameObject.GetComponent<Collider2D>());
     Destroy(transform.Find("MovementControl").gameObject);
-    Destroy(transform.Find("Armor Canvas").gameObject);
+    Destroy(transform.Find("State").gameObject);
   }
   IEnumerator deathSequence()
   {
@@ -118,13 +121,19 @@ public class EnemyLife : MonoBehaviour
     }
     Destroy(gameObject);
   }
+  IEnumerator ChainExplodePreheat(ChainExplosion script)
+  {
+    yield return new WaitForSeconds(0.2f);
+    script.Explode();
+  }
   void ShotDeath()
   {
     dead = true;
     ChainExplosion script = gameObject.GetComponent<ChainExplosion>();
     if (script.Chained == true)
     {
-      script.Explode();
+      Instantiate(chainExplosionEffect, transform.position, Quaternion.identity);
+      StartCoroutine("ChainExplodePreheat", script);
     }
     StartCoroutine("deathSequence");
 

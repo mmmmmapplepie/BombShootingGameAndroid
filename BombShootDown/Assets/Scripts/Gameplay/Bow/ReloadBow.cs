@@ -8,25 +8,32 @@ public class ReloadBow : MonoBehaviour
   bool wait = false;
   void Update()
   {
-    if (BowManager.CurrentAmmo > 0 && findChildBullet() == null && wait == false) {
+    if (BowManager.CurrentAmmo > 0 && findChildBullet() == null && wait == false)
+    {
       wait = true;
       StartCoroutine(WaitReload());
     }
   }
-  IEnumerator WaitReload() {
+  IEnumerator WaitReload()
+  {
     BowManager.CurrentAmmo--;
     yield return new WaitForSeconds(BowManager.ReloadRate);
-    GameObject bullet = Instantiate(BulletPrefab, new Vector3 (0f, -10f, 0f), Quaternion.identity);
+    GameObject bullet = Instantiate(BulletPrefab, new Vector3(0f, -10f, 0f), Quaternion.identity, transform);
+    print(bullet.transform.localScale);
+    print(2);
     bullet.transform.SetParent(transform);
-    bullet.transform.localPosition = new Vector3 (0f, 3.234f, 0f);
+    bullet.transform.localPosition = new Vector3(0f, 3.234f, 0f);
     wait = false;
   }
-  Transform findChildBullet() {
+  Transform findChildBullet()
+  {
     Transform childBullet = null;
-    foreach(Transform tra in transform) {
-      if (tra.CompareTag("Bullet")) {
-         childBullet = tra;
-         break;
+    foreach (Transform tra in transform)
+    {
+      if (tra.CompareTag("Bullet"))
+      {
+        childBullet = tra;
+        break;
       }
     }
     return childBullet;

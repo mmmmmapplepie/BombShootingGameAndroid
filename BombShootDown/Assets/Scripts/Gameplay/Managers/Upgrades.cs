@@ -105,7 +105,7 @@ public class Upgrades : MonoBehaviour
     if (UpgradesEquipped.EquippedUpgrades.Contains("BulletSpeed"))
     {
       int lvl = UpgradesManager.returnDictionaryValue("BulletSpeed")[1];
-      BowManager.BulletSpeed = 5f + 5f * (float)lvl;
+      BowManager.BulletSpeed = 5f + 50f * (float)lvl;
     }
   }
   void setReloadTime()

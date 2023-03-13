@@ -14,6 +14,7 @@ public class ChainExplosion : MonoBehaviour
     if (Chained && !animationAdd)
     {
       animationAdd = true;
+
       //Add "chained" animation
     }
   }
