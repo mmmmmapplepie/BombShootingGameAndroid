@@ -43,25 +43,24 @@ public class AudioManagerBGM : AudioManagerGeneral
   IEnumerator BGMFadeOutIn(string newBGM)
   {
     changingBGM = true;
+    float duration = 1f;
+    float currTime = 0f;
     float volumeLvl = SettingsManager.volumeTheme;
     float volumeLvlInitial = currentBGM.source.volume;
-    float changingVolume = volumeLvlInitial;
-    while (changingVolume > 0f)
+    while (currTime < duration)
     {
-      currentBGM.source.volume = changingVolume;
-      print(currentBGM.source.volume);
-      changingVolume -= (volumeLvl / 40f);
-      yield return new WaitForSecondsRealtime(5f / 40f);
+      currTime += Time.deltaTime;
+      currentBGM.source.volume = Mathf.Lerp(volumeLvlInitial, 0f, currTime / duration);
+      yield return null;
     }
-    changingVolume = 0f;
+    currTime = 0f;
     currentBGM.source.Stop();
     PlayAudio(newBGM);
-    currentBGM.source.volume = changingVolume;
-    while (changingVolume < volumeLvl)
+    while (currTime < duration)
     {
-      currentBGM.source.volume = changingVolume;
-      changingVolume += (volumeLvl / 40f);
-      yield return new WaitForSecondsRealtime(5f / 40f);
+      currTime += Time.deltaTime;
+      currentBGM.source.volume = Mathf.Lerp(0f, volumeLvl, currTime / duration);
+      yield return null;
     }
     currentBGM.source.volume = volumeLvl;
     changingBGM = false;
