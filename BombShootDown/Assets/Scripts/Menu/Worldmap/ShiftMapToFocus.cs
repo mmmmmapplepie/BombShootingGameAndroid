@@ -14,7 +14,7 @@ public class ShiftMapToFocus : MonoBehaviour
   float shifty;
   float mapwidth;
   float mapheight;
-  Camera camera;
+  new Camera camera;
   void Start()
   {
     camera = Camera.main;
