@@ -20,15 +20,14 @@ public class Nuke : MonoBehaviour
   Image cooldownCover;
   [SerializeField]
   GameObject clickPanel;
-  // [SerializeField]
-  //NukeExplosionPrefab;
+  AudioManagerCannon audioManager;
   float BaseNukeCooldown = 250f;
   float NukeDamage = 50f;
   float remainingTime = 0f;
   float cooldownTimerChangeReceptor;
-  //Initial setup including upgrades
-  void Start()
+  void Awake()
   {
+    audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     SetBaseCooldown();
     cooldownTimerChangeReceptor = BowManager.CoolDownRate;
   }
@@ -45,10 +44,8 @@ public class Nuke : MonoBehaviour
     BaseNukeCooldown = 250f - 10f * (float)lvl;
     NukeDamage = 50f + 10f * (float)lvl;
   }
-  //Cooldown display
   void Update()
   {
-    //check if cooldownrate changed and fix cooldown if it did.
     if (BowManager.CoolDownRate != cooldownTimerChangeReceptor)
     {
       float oldBaseTime = BaseNukeCooldown / cooldownTimerChangeReceptor;
@@ -82,6 +79,7 @@ public class Nuke : MonoBehaviour
   IEnumerator FireNuke()
   {
     Instantiate(NukeEffect, new Vector3(0f, 0f, 0f), Quaternion.identity);
+    audioManager.PlayAudio("Nuke");
     yield return new WaitForSeconds(0.5f);
     nukeDamage();
   }

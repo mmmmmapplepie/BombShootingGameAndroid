@@ -25,8 +25,10 @@ public class EnemyLife : MonoBehaviour
   bool Taunt;
   [HideInInspector]
   public bool dead = false;
+  AudioManagerEnemy audioManager;
   void Awake()
   {
+    audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
     maxLife = data.Life;
     currentLife = data.Life;
     Armor = data.Armor;
@@ -44,6 +46,7 @@ public class EnemyLife : MonoBehaviour
   }
   public void takeTrueDamage(float damage)
   {
+    audioManager.PlayAudio("NormalHit");
     currentLife -= damage;
     if (currentLife <= 0f && !dead)
     {
@@ -54,7 +57,7 @@ public class EnemyLife : MonoBehaviour
   {
     if (Shield > 0)
     {
-      //shield sound
+      audioManager.PlayAudio("ShieldHit");
       Shield--;
     }
     else
@@ -62,20 +65,20 @@ public class EnemyLife : MonoBehaviour
       int Armordiff = Armor - BowManager.ArmorPierce;
       if (Armordiff > 0)
       {
-        if (Armordiff > 9)
+        if (Armordiff > 4)
         {
-          //heavy armor diff sound
+          audioManager.PlayAudio("HeavyArmorHit");
           currentLife -= damage / 50f; //2% damage only
         }
         else
         {
-          //armored sound
-          currentLife -= damage - damage * ((float)Armordiff / 10f); //each lvl diff takes a 10% decrease in dmg
+          audioManager.PlayAudio("ArmorHit");
+          currentLife -= damage - damage * ((float)Armordiff / 5f); //each lvl diff takes a 20% decrease in dmg
         }
       }
       else
       {
-        //normal hit sound
+        audioManager.PlayAudio("NormalHit");
         currentLife -= damage;
       }
     }

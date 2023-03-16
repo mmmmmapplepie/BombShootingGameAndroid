@@ -15,6 +15,6 @@ public class AudioManagerCannon : AudioManagerGeneral
   {
     Sound sound = FindSound(soundname, SoundList);
     sound.source.Play();
-    sound.source.volume = SettingsManager.volumeCannon;
+    sound.source.volume = SettingsManager.volumeCannon * sound.volume;
   }
 }

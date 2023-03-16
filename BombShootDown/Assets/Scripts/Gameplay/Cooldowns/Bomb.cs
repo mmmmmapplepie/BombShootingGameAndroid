@@ -12,17 +12,16 @@ public class Bomb : MonoBehaviour
   Image cooldownCover;
   [SerializeField]
   GameObject clickPanel;
-  // [SerializeField]
-  //BombExplosionPrefab;
+  AudioManagerCannon audioManager;
   bool shot = false;
   float bombRadius = 2.5f;
   float BombDamage = 5f;
   float BaseBombCooldown = 20f; //base is actually 19f due to lvl being 1 at the beginning;
   float remainingTime = 0f;
   float cooldownTimerChangeReceptor;
-  //Initial setup including upgrades
-  void Start()
+  void Awake()
   {
+    audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     SetBaseSettings();
     cooldownTimerChangeReceptor = BowManager.CoolDownRate;
   }
@@ -39,10 +38,8 @@ public class Bomb : MonoBehaviour
     BaseBombCooldown = 20f - (float)lvl;
     BombDamage = 5f + (float)lvl;
   }
-  //Cooldown display
   void Update()
   {
-    //check if cooldownrate changed and fix cooldown if it did.
     if (BowManager.CoolDownRate != cooldownTimerChangeReceptor)
     {
       float oldBaseTime = BaseBombCooldown / cooldownTimerChangeReceptor;
@@ -163,6 +160,7 @@ public class Bomb : MonoBehaviour
   }
   void fireBomb(float x, float y)
   {
+    audioManager.PlayAudio("Bomb");
     Collider2D[] Objects = Physics2D.OverlapCircleAll(new Vector2(x, y), bombRadius);
     foreach (Collider2D coll in Objects)
     {

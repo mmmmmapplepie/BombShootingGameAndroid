@@ -39,7 +39,7 @@ public class AudioManagerBGM : AudioManagerGeneral
   {
     Sound sound = FindSound(soundname, SoundList);
     sound.source.Play();
-    sound.source.volume = SettingsManager.volumeTheme;
+    sound.source.volume = SettingsManager.volumeTheme * sound.volume;
     currentBGM = sound;
   }
   public void ChangeBGM(string newBGMname)

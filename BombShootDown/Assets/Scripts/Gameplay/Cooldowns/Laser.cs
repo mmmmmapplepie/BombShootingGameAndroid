@@ -14,8 +14,7 @@ public class Laser : MonoBehaviour
   GameObject clickPanel;
   [SerializeField]
   GameObject LaserAimer;
-  // [SerializeField]
-  //LaserPrefab;
+  AudioManagerCannon audioManager;
   bool shot = false;
   float LaserHalfWidth = 1.6875f;
   float LaserDamage = 20f;
@@ -23,8 +22,9 @@ public class Laser : MonoBehaviour
   float remainingTime = 0f;
   float cooldownTimerChangeReceptor;
   //Initial setup including upgrades
-  void Start()
+  void Awake()
   {
+    audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     SetBaseSettings();
     cooldownTimerChangeReceptor = BowManager.CoolDownRate;
   }
@@ -43,7 +43,6 @@ public class Laser : MonoBehaviour
   }
   void Update()
   {
-    //check if cooldownrate changed and fix cooldown if it did.
     if (BowManager.CoolDownRate != cooldownTimerChangeReceptor)
     {
       float oldBaseTime = BaseLaserCooldown / cooldownTimerChangeReceptor;
@@ -126,6 +125,7 @@ public class Laser : MonoBehaviour
   IEnumerator FireLaser(Vector3 position)
   {
     Instantiate(LaserEffect, new Vector3(position.x, -11, 0f), Quaternion.identity);
+    audioManager.PlayAudio("Laser");
     yield return new WaitForSeconds(0.5f);
     damageWithLaser(position.x);
   }
@@ -160,7 +160,6 @@ public class Laser : MonoBehaviour
         }
         if (touch.phase == TouchPhase.Ended)
         {
-          print("ended");
           shot = true;
           Vector3 firePos = LaserAimer.GetComponent<Transform>().position;
           StartCoroutine("FireLaser", firePos);

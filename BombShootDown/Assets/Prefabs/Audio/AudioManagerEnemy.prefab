@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8299097040183900042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4079594125462872330}
+  - component: {fileID: 164260048733659649}
+  m_Layer: 0
+  m_Name: AudioManagerEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4079594125462872330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299097040183900042}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164260048733659649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299097040183900042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 425777abb4623084a85c1a13b56370d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundList:
+  - name: NormalHit
+    clip: {fileID: 8300000, guid: e69786b8d385592499cafed906f1da52, type: 3}
+    volume: 0.2
+    pitch: 0.9
+    loop: 0
+    playOnAwake: 1
+    priority: 0
+    source: {fileID: 0}
+  - name: ArmorHit
+    clip: {fileID: 8300000, guid: 4c475e382f23aff4fa342cfa151f7711, type: 3}
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    playOnAwake: 1
+    priority: 0
+    source: {fileID: 0}
+  - name: HeavyArmorHit
+    clip: {fileID: 8300000, guid: 4c475e382f23aff4fa342cfa151f7711, type: 3}
+    volume: 0.2
+    pitch: 0.5
+    loop: 0
+    playOnAwake: 1
+    priority: 0
+    source: {fileID: 0}
+  - name: ShieldHit
+    clip: {fileID: 8300000, guid: 93b558edebc8aa34ab507c9ea8b31e82, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 1
+    priority: 0
+    source: {fileID: 0}
+  - name: AoeHit
+    clip: {fileID: 8300000, guid: 347870858ac6f7645a95e77e27f473ae, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 1
+    priority: 0
+    source: {fileID: 0}
+  - name: ChainExplosion
+    clip: {fileID: 8300000, guid: b3f5fb049efad464c8bcdef8cca6d547, type: 3}
+    volume: 0.1
+    pitch: 0.9
+    loop: 0
+    playOnAwake: 1
+    priority: 0
+    source: {fileID: 0}
+  - name: EnemyDamageSmall
+    clip: {fileID: 8300000, guid: c955f3a36496c6d47a1dbe044db2bf9d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 1
+    priority: 120
+    source: {fileID: 0}
+  - name: EnemyDamageMid
+    clip: {fileID: 8300000, guid: acf9ad82c88896f4cb4a76699f79dee1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 1
+    priority: 120
+    source: {fileID: 0}
+  - name: EnemyDamageBig
+    clip: {fileID: 8300000, guid: 725390e6d169d14428e19d5261030800, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 1
+    priority: 120
+    source: {fileID: 0}
+  - name: EnemyDamageTre
+    clip: {fileID: 8300000, guid: 5633a52b241116241b468388f466e1d0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 1
+    priority: 120
+    source: {fileID: 0}
+  - name: SpawnSmall
+    clip: {fileID: 8300000, guid: ee58db41fc9700f46b6358b2776fcd82, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 1
+    priority: 50
+    source: {fileID: 0}
+  - name: SpawnBig
+    clip: {fileID: 8300000, guid: 396e18d862df1884080614fc503d8215, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 1
+    priority: 50
+    source: {fileID: 0}

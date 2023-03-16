@@ -15,12 +15,17 @@ public class WaveController : MonoBehaviour
   GameObject WaveStartPanel;
   [SerializeField]
   GameObject UpgradesPanel;
+  [HideInInspector]
   public Level thisLevelData;
   public static bool LevelCleared = false;
   public static int CurrentWave = 0;//wave should start by incrementing this.
   public static int WavesCleared = 0;
   public static bool startWave = false;
   bool inCue = false;
+  void Awake()
+  {
+    thisLevelData = GameObject.Find("LevelController").GetComponent<IGetLevelDataInterface>().GetLevelData();
+  }
   void Update()
   {
     if (WavesCleared == CurrentWave && LevelCleared == false && inCue == false)

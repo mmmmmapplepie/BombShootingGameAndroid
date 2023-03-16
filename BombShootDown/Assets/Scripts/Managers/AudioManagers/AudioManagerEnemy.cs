@@ -15,6 +15,6 @@ public class AudioManagerEnemy : AudioManagerGeneral
   {
     Sound sound = FindSound(soundname, SoundList);
     sound.source.Play();
-    sound.source.volume = SettingsManager.volumeEnemy;
+    sound.source.volume = SettingsManager.volumeEnemy * sound.volume;
   }
 }

@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
   List<GameObject> Effects;
   [SerializeField]
   GameObject PullEffect;
+  AudioManagerCannon audioManager;
+
   int hits;
   float damage;
   bool aoe;
@@ -16,8 +18,10 @@ public class Bullet : MonoBehaviour
   bool pullStarted = false;
   int pierce;
   float speed;
+
   void Awake()
   {
+    audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     gameObject.GetComponent<CircleCollider2D>().enabled = false;
   }
   void Update()
@@ -38,6 +42,7 @@ public class Bullet : MonoBehaviour
   {
     Collider2D[] Enemies = Physics2D.OverlapCircleAll(transform.position, 2.5f);
     CreateEffect(PullEffect, null, transform.position);
+    audioManager.PlayAudio("PullSound");
     foreach (Collider2D coll in Enemies)
     {
       if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy")
@@ -100,6 +105,7 @@ public class Bullet : MonoBehaviour
     }
     Vector3 direction = new Vector3(x, y, 0f);
     SetBulletSettings();
+    shootSound(speed * direction.magnitude * ratio);
     GetComponent<Rigidbody2D>().velocity = speed * direction * ratio;
   }
   void SetBulletSettings()
@@ -153,7 +159,19 @@ public class Bullet : MonoBehaviour
       }
     }
   }
-
-
-
+  void shootSound(float speed)
+  {
+    if (speed < 10f)
+    {
+      audioManager.PlayAudio("SlowShot");
+    }
+    else if (speed < 30f)
+    {
+      audioManager.PlayAudio("MidShot");
+    }
+    else
+    {
+      audioManager.PlayAudio("FastShot");
+    }
+  }
 }

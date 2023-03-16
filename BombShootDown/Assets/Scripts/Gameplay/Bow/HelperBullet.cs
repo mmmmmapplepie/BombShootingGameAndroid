@@ -5,12 +5,14 @@ public class HelperBullet : MonoBehaviour
 {
   [SerializeField]
   GameObject HitEffect;
+  AudioManagerCannon audioManager;
   int hits;
   float damage;
   int pierce;
   float speed;
   void Awake()
   {
+    audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     gameObject.GetComponent<CircleCollider2D>().enabled = false;
   }
   void Update()
@@ -54,6 +56,7 @@ public class HelperBullet : MonoBehaviour
     }
     Vector3 direction = new Vector3(x, y, 0f);
     SetHelperBulletSettings();
+    shootSound(speed * direction.magnitude);
     GetComponent<Rigidbody2D>().velocity = speed * direction;
   }
   void SetHelperBulletSettings()
@@ -94,7 +97,19 @@ public class HelperBullet : MonoBehaviour
       }
     }
   }
-
-
-
+  void shootSound(float speed)
+  {
+    if (speed < 10f)
+    {
+      audioManager.PlayAudio("SlowShot");
+    }
+    else if (speed < 30f)
+    {
+      audioManager.PlayAudio("MidShot");
+    }
+    else
+    {
+      audioManager.PlayAudio("FastShot");
+    }
+  }
 }

@@ -1,26 +1,30 @@
 using UnityEngine;
+using UnityEngine.Audio;
 public class ChainExplosion : MonoBehaviour
 {
+  [SerializeField]
+  GameObject chainedAnimation;
   [HideInInspector]
   public bool Chained = false;
   bool animationAdd = false;
   RectTransform rect;
-  void Start()
+  AudioManagerEnemy audioManager;
+  void Awake()
   {
+    audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
     rect = GetComponent<RectTransform>();
   }
   void Update()
   {
-    if (Chained && !animationAdd)
+    if (Chained && !animationAdd && gameObject.GetComponent<EnemyLife>().currentLife > 0f)
     {
       animationAdd = true;
-
-      //Add "chained" animation
+      Instantiate(chainedAnimation, transform.Find("State").Find("Life").Find("Background"));
     }
   }
   public void Explode()
   {
-    //explosion sound and animation
+    audioManager.PlayAudio("ChainExplosion");
     Collider2D[] Objects = Physics2D.OverlapCircleAll(transform.position, 1.5f);
     foreach (Collider2D coll in Objects)
     {

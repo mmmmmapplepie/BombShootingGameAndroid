@@ -15,5 +15,6 @@ public class AudioManagerUI : AudioManagerGeneral
   {
     Sound sound = FindSound(soundname, SoundList);
     sound.source.Play();
+    sound.source.volume = sound.volume;
   }
 }

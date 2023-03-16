@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class W1L1 : MonoBehaviour
+public class W1L1 : MonoBehaviour, IGetLevelDataInterface
 {
+  [SerializeField]
+  public Level level;
   WaveController waveControllerScript;
   // [SerializeField]
   // spawning animation prefab spawnEffect;
@@ -13,6 +15,10 @@ public class W1L1 : MonoBehaviour
   void Awake()
   {
     waveControllerScript = FindObjectOfType<WaveController>();
+  }
+  public Level GetLevelData()
+  {
+    return level;
   }
   void Update()
   {
@@ -47,7 +53,7 @@ public class W1L1 : MonoBehaviour
   }
   GameObject spawnEnemy(string name, float xpos, float ypos)
   {
-    GameObject enemyPrefab = waveControllerScript.thisLevelData.Enemies.Find(x => x.enemyPrefab.name == name).enemyPrefab;
+    GameObject enemyPrefab = level.Enemies.Find(x => x.enemyPrefab.name == name).enemyPrefab;
     GameObject spawnedEnemy = Instantiate(enemyPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     return spawnedEnemy;
   }
@@ -55,7 +61,7 @@ public class W1L1 : MonoBehaviour
   {
     int currWave = 1;
     currWave = WaveController.WavesCleared + 1;
-    if (currWave <= waveControllerScript.thisLevelData.upgradesPerWave.Count)
+    if (currWave <= level.upgradesPerWave.Count)
     {
       //must name the individual wave coroutines as "wave##" format.
       string waveRoutineName = "wave" + currWave.ToString();
@@ -67,7 +73,7 @@ public class W1L1 : MonoBehaviour
   void waveCleared()
   {
     WaveController.WavesCleared++;
-    if (WaveController.WavesCleared == waveControllerScript.thisLevelData.upgradesPerWave.Count)
+    if (WaveController.WavesCleared == level.upgradesPerWave.Count)
     {
       WaveController.LevelCleared = true;
     }
