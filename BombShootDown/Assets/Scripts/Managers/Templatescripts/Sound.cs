@@ -14,6 +14,6 @@ public class Sound
   public bool playOnAwake = true;
   [Range(0, 256)]
   public int priority = 0;
-  [HideInInspector]
+  // [HideInInspector]
   public AudioSource source;
 }

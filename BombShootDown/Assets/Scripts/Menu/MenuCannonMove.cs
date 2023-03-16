@@ -8,10 +8,15 @@ public class MenuCannonMove : MonoBehaviour
   string currentClicked1;
   string newscene;
   AudioManagerUI UIaudio;
-  void Awake()
+  AudioManagerBGM BGM;
+  void Start()
   {
     UIaudio = GameObject.Find("AudioManagerUI").GetComponent<AudioManagerUI>();
-    print(UIaudio);
+    BGM = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
+    if (BGM.currentBGM.name != "MenuTheme")
+    {
+      BGM.ChangeBGM("MenuTheme");
+    }
   }
   public void checkClicked(Button button)
   {

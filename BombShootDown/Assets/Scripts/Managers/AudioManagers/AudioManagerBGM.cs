@@ -7,23 +7,13 @@ public class AudioManagerBGM : AudioManagerGeneral
 {
   [SerializeField]
   List<Sound> SoundList;
+  [HideInInspector]
   public Sound currentBGM;
   float volumeSettingStart;
+  bool changingBGM = false;
   void Awake()
   {
-    // if (instance == null)
-    // {
-    //   instance = gameObject;
-    // }
-    // else
-    // {
-    //   Destroy(gameObject);
-    // }
-    // DontDestroyOnLoad(gameObject);
     SetAudioSources(SoundList, gameObject);
-  }
-  void Start()
-  {
     volumeSettingStart = SettingsManager.volumeTheme;
     PlayAudio("MenuTheme");
   }
@@ -31,8 +21,7 @@ public class AudioManagerBGM : AudioManagerGeneral
   {
     if (volumeSettingStart != SettingsManager.volumeTheme)
     {
-      volumeSettingStart = SettingsManager.volumeTheme;
-      currentBGM.source.volume = volumeSettingStart;
+      currentBGM.source.volume = SettingsManager.volumeTheme;
     }
   }
   void PlayAudio(string soundname)
@@ -44,17 +33,25 @@ public class AudioManagerBGM : AudioManagerGeneral
   }
   public void ChangeBGM(string newBGMname)
   {
-    StartCoroutine("BGMfade", newBGMname);
+    if (changingBGM)
+    {
+      StopCoroutine("BGMFadeOutIn");
+      print("stopped");
+    }
+    StartCoroutine("BGMFadeOutIn", newBGMname);
   }
-  IEnumerator BGMfade(string newBGM)
+  IEnumerator BGMFadeOutIn(string newBGM)
   {
+    changingBGM = true;
     float volumeLvl = SettingsManager.volumeTheme;
-    float changingVolume = volumeLvl;
+    float volumeLvlInitial = currentBGM.source.volume;
+    float changingVolume = volumeLvlInitial;
     while (changingVolume > 0f)
     {
       currentBGM.source.volume = changingVolume;
-      changingVolume -= volumeLvl / 40f;
-      yield return new WaitForSecondsRealtime(1f / 40f);
+      print(currentBGM.source.volume);
+      changingVolume -= (volumeLvl / 40f);
+      yield return new WaitForSecondsRealtime(5f / 40f);
     }
     changingVolume = 0f;
     currentBGM.source.Stop();
@@ -63,10 +60,10 @@ public class AudioManagerBGM : AudioManagerGeneral
     while (changingVolume < volumeLvl)
     {
       currentBGM.source.volume = changingVolume;
-      changingVolume += volumeLvl / 40f;
-      yield return new WaitForSecondsRealtime(1f / 40f);
+      changingVolume += (volumeLvl / 40f);
+      yield return new WaitForSecondsRealtime(5f / 40f);
     }
     currentBGM.source.volume = volumeLvl;
+    changingBGM = false;
   }
-
 }

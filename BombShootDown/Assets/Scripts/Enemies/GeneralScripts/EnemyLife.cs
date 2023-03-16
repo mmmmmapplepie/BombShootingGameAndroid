@@ -112,6 +112,7 @@ public class EnemyLife : MonoBehaviour
   }
   IEnumerator deathSequence()
   {
+    dead = true;
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++)
@@ -131,7 +132,6 @@ public class EnemyLife : MonoBehaviour
   }
   void ShotDeath()
   {
-    dead = true;
     ChainExplosion script = gameObject.GetComponent<ChainExplosion>();
     if (script.Chained == true)
     {
