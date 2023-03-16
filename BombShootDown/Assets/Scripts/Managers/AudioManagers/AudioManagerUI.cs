@@ -10,6 +10,10 @@ public class AudioManagerUI : AudioManagerGeneral
   void Awake()
   {
     SetAudioSources(SoundList, gameObject);
+    foreach (Sound s in SoundList)
+    {
+      s.source.ignoreListenerPause = true;
+    }
   }
   public void PlayAudio(string soundname)
   {

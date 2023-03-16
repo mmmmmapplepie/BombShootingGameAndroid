@@ -41,8 +41,8 @@ public class Nuke : MonoBehaviour
   void SetBaseCooldown()
   {
     int lvl = UpgradesManager.returnDictionaryValue("Nuke")[1];
-    BaseNukeCooldown = 250f - 10f * (float)lvl;
-    NukeDamage = 50f + 10f * (float)lvl;
+    BaseNukeCooldown = 250f - 5f * (float)lvl;
+    NukeDamage = 50f + 35f * (float)lvl;
   }
   void Update()
   {

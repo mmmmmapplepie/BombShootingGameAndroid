@@ -16,7 +16,7 @@ public class ChainExplosion : MonoBehaviour
   }
   void Update()
   {
-    if (Chained && !animationAdd && gameObject.GetComponent<EnemyLife>().currentLife > 0f)
+    if (Chained && !animationAdd && gameObject.GetComponent<EnemyLife>().currentLife > 0f && Time.timeScale != 0f)
     {
       animationAdd = true;
       Instantiate(chainedAnimation, transform.Find("State").Find("Life").Find("Background"));

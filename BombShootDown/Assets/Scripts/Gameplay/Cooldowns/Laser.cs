@@ -38,8 +38,8 @@ public class Laser : MonoBehaviour
   void SetBaseSettings()
   {
     int lvl = UpgradesManager.returnDictionaryValue("Laser")[1];
-    BaseLaserCooldown = 100f - 4f * (float)lvl;
-    LaserDamage = 20f + 6f * (float)lvl;
+    BaseLaserCooldown = 100f - 3f * (float)lvl;
+    LaserDamage = 20f + 15f * (float)lvl;
   }
   void Update()
   {

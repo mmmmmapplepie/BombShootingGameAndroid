@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
+  m_Name: NanoArmored
+  m_EditorClassIdentifier: 
+  name: Nano Bomb
+  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  sprite: {fileID: 21300000, guid: d3e712ecd00a6974fa3c1851edfc68ea, type: 3}
+  Boss: 0
+  enemyPrefab: {fileID: 3112957866081141623, guid: b5ee37edc1ceb124daba5dd992884e77, type: 3}
+  Life: 0.4
+  Damage: 0.5
+  Speed: 1
+  MaxShield: 1
+  Shield: 0
+  Armor: 4
+  Taunt: 0

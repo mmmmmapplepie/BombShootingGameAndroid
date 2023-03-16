@@ -15,6 +15,10 @@ public class AudioManagerBGM : AudioManagerGeneral
   {
     SetAudioSources(SoundList, gameObject);
     volumeSettingStart = SettingsManager.volumeTheme;
+    foreach (Sound s in SoundList)
+    {
+      s.source.ignoreListenerPause = true;
+    }
     PlayAudio("MenuTheme");
   }
   void Update()

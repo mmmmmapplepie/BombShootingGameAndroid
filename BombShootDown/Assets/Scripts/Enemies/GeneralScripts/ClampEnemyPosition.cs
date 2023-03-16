@@ -6,6 +6,10 @@ public class ClampEnemyPosition : MonoBehaviour
 {
   void Update()
   {
+    if (Time.timeScale == 0f)
+    {
+      return;
+    }
     if (transform.position.x > 5.1f)
     {
       if (transform.position.x > 6.5f)

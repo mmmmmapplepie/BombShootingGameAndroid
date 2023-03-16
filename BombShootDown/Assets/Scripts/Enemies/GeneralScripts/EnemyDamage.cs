@@ -17,6 +17,10 @@ public class EnemyDamage : MonoBehaviour
   }
   void Update()
   {
+    if (Time.timeScale == 0f || gameObject.GetComponent<EnemyLife>().dead)
+    {
+      return;
+    }
     if (transform.position.y < -7.25f && GetComponent<EnemyLife>().currentLife > 0f)
     {
       LifeManager.CurrentLife -= Damage;
@@ -40,14 +44,12 @@ public class EnemyDamage : MonoBehaviour
         audioManager.PlayAudio("EnemyDamageSmall");
         CreateEffect(damageEffects.Find(x => x.name == "EnemyDealDamageSmall"), null, gameObject.transform.position);
       }
-      if (!gameObject.GetComponent<EnemyLife>().dead)
-      {
-        StartCoroutine("deathSequence");
-      }
+      StartCoroutine("deathSequence");
     }
   }
   IEnumerator deathSequence()
   {
+    gameObject.GetComponent<EnemyLife>().dead = true;
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++)

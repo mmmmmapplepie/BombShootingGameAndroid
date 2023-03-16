@@ -6,7 +6,6 @@ public class EnemyLife : MonoBehaviour
 {
   [SerializeField]
   public Enemy data;
-  [SerializeField]
   GameObject bombObject;
   [SerializeField]
   GameObject chainExplosionEffect;
@@ -28,6 +27,7 @@ public class EnemyLife : MonoBehaviour
   AudioManagerEnemy audioManager;
   void Awake()
   {
+    bombObject = transform.Find("Enemy").gameObject;
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
     maxLife = data.Life;
     currentLife = data.Life;

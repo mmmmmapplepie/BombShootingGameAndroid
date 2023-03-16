@@ -18,6 +18,7 @@ public class EnemyCondition : MonoBehaviour
   GameObject ArmorSprite;
   [SerializeField]
   Text ArmorNumber;
+  GameObject statusCanvas;
 
   float lifeBarScale;
   int bossType;
@@ -26,6 +27,7 @@ public class EnemyCondition : MonoBehaviour
 
   void Awake()
   {
+    statusCanvas = lifeBar.GetComponent<Transform>().parent.parent.gameObject;
     data = gameObject.GetComponent<EnemyLife>().data;
     maxlife = data.Life;
     maxShield = data.MaxShield;
@@ -33,13 +35,13 @@ public class EnemyCondition : MonoBehaviour
     lifeBarScale = lifeBar.transform.localScale.x;
     showBoss();
   }
-  void Update()
+  void LateUpdate()
   {
-    if (!gameObject.GetComponent<EnemyLife>().dead)
+    if (!gameObject.GetComponent<EnemyLife>().dead && Time.timeScale != 0f && statusCanvas != null)
     {
-      showShields();
-      showLife();
       showArmor();
+      showLife();
+      showShields();
     }
 
   }

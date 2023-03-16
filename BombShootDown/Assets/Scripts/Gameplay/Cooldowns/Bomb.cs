@@ -35,8 +35,8 @@ public class Bomb : MonoBehaviour
   void SetBaseSettings()
   {
     int lvl = UpgradesManager.returnDictionaryValue("BombDamage")[1];
-    BaseBombCooldown = 20f - (float)lvl;
-    BombDamage = 5f + (float)lvl;
+    BaseBombCooldown = 20f - 1.5f * (float)lvl;
+    BombDamage = 5f + 1.5f * (float)lvl;
   }
   void Update()
   {
