@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyCondition : MonoBehaviour
-{
+public class EnemyCondition : MonoBehaviour {
   Enemy data;
 
   [SerializeField]
@@ -25,8 +24,7 @@ public class EnemyCondition : MonoBehaviour
   float maxlife;
   float maxShield;
 
-  void Awake()
-  {
+  void Awake() {
     statusCanvas = lifeBar.GetComponent<Transform>().parent.parent.gameObject;
     data = gameObject.GetComponent<EnemyLife>().data;
     maxlife = data.Life;
@@ -35,50 +33,38 @@ public class EnemyCondition : MonoBehaviour
     lifeBarScale = lifeBar.transform.localScale.x;
     showBoss();
   }
-  void LateUpdate()
-  {
-    if (!gameObject.GetComponent<EnemyLife>().dead && Time.timeScale != 0f && statusCanvas != null)
-    {
+  void LateUpdate() {
+    if (!gameObject.GetComponent<EnemyLife>().dead && Time.timeScale != 0f && statusCanvas != null) {
       showArmor();
       showLife();
       showShields();
     }
-
   }
-  void showBoss()
-  {
-    if (bossType == 0)
-    {
+  void showBoss() {
+    if (bossType == 0) {
       bossSprite.gameObject.SetActive(false);
       return;
-    }
-    else
-    {
+    } else {
       bossSprite.gameObject.SetActive(true);
       bossSprite.GetComponent<SpriteRenderer>().sprite = bossSpritesList[bossType - 1];
     }
   }
-  void showArmor()
-  {
-    if (gameObject.GetComponent<EnemyLife>().Armor > 0)
-    {
+  void showArmor() {
+    if (gameObject.GetComponent<EnemyLife>().Armor > 0) {
       ArmorSprite.SetActive(true);
       ArmorNumber.gameObject.SetActive(true);
       ArmorNumber.text = gameObject.GetComponent<EnemyLife>().Armor.ToString();
     }
-    if (gameObject.GetComponent<EnemyLife>().Armor <= 0)
-    {
+    if (gameObject.GetComponent<EnemyLife>().Armor <= 0) {
       ArmorNumber.gameObject.SetActive(false);
       ArmorSprite.SetActive(false);
     }
   }
-  void showShields()
-  {
+  void showShields() {
     float ratio = (float)gameObject.GetComponent<EnemyLife>().Shield / (float)maxShield;
     shieldBar.GetComponent<Slider>().value = ratio;
   }
-  void showLife()
-  {
+  void showLife() {
     float ratio = gameObject.GetComponent<EnemyLife>().currentLife / maxlife * lifeBarScale;
     lifeBar.GetComponent<Slider>().value = ratio;
   }

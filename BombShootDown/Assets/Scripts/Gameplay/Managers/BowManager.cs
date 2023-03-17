@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class BowManager
-{
+public class BowManager {
 
   // bullet related
   public static int MaxAmmo = 10;//base 10
@@ -23,7 +22,7 @@ public class BowManager
 
   //Fortress Related
   public static float MaxLife = 10f;//max at 110f;
-  public static float LifeRecovery = 0f;//base at 1/10 of max lifemax
+  public static float LifeRecovery = 0f;//base at 0 of max lifemax
   public static float Revive = 0.1f;//max at 1f;
   public static bool ReviveUsable = false;//false base
 

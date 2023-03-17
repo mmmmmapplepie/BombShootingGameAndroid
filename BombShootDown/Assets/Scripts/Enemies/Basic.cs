@@ -32,4 +32,8 @@ public class Basic : MonoBehaviour
     Vector3 newPos = old + Time.deltaTime * speed * BowManager.EnemySpeed * normDir;
     transform.parent.position = newPos;
   }
+  void yes()
+  {
+
+  }
 }

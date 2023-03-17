@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaveController : MonoBehaviour
-{
+public class WaveController : MonoBehaviour {
   [SerializeField]
   Text WaveStartDisplay;
   [SerializeField]
@@ -22,46 +21,38 @@ public class WaveController : MonoBehaviour
   public static int WavesCleared = 0;
   public static bool startWave = false;
   bool inCue = false;
-  void Awake()
-  {
+  void Awake() {
     thisLevelData = GameObject.Find("LevelController").GetComponent<IGetLevelDataInterface>().GetLevelData();
   }
-  void Update()
-  {
-    if (WavesCleared == CurrentWave && LevelCleared == false && inCue == false)
-    {
+  void Update() {
+    if (WavesCleared == CurrentWave && LevelCleared == false && inCue == false) {
       inCue = true;
       UpgradesEquipped.LevelSlots = thisLevelData.upgradesPerWave[WavesCleared];
       startWave = false;
       Invoke("CueUpgrades", 1f);
     }
   }
-  void CueUpgrades()
-  {
+  void CueUpgrades() {
     UpgradesPanel.SetActive(true);
   }
-  public void CueNextWave()
-  {
+  public void CueNextWave() {
     WaveStartPanel.SetActive(true);
     string waveNumStr = (CurrentWave + 1).ToString();
     WaveStartDisplay.text = "Wave " + waveNumStr;
     waveDisplay.text = waveShadowDisplay.text = "Wave : " + waveNumStr;
     StartCoroutine("MoveWaveScreen");
   }
-  void makeGunsReady()
-  {
+  void makeGunsReady() {
     BowManager.GunsReady = true;
   }
 
-  IEnumerator MoveWaveScreen()
-  {
+  IEnumerator MoveWaveScreen() {
     Invoke("makeGunsReady", 0.05f);
     CurrentWave++;
     inCue = false;
     Vector2 pos = new Vector2(0f, 0f);
     float starttime = Time.unscaledTime;
-    while (Time.unscaledTime - starttime < 2f)
-    {
+    while (Time.unscaledTime - starttime < 2f) {
       float r = WaveStartPanel.GetComponent<Image>().color.r;
       float b = WaveStartPanel.GetComponent<Image>().color.b;
       float g = WaveStartPanel.GetComponent<Image>().color.g;
@@ -75,61 +66,4 @@ public class WaveController : MonoBehaviour
     WaveStartPanel.SetActive(false);
     startWave = true;
   }
-  void OnDestroy()
-  {
-    //ResetAll the manager variables;
-    ResetGameplayManagerVariables();
-  }
-  void ResetGameplayManagerVariables()
-  {
-    BowManager.MaxAmmo = 10;//base 10
-    BowManager.CurrentAmmo = BowManager.MaxAmmo;
-    BowManager.AmmoRate = 4f;//base 4
-    BowManager.ReloadRate = 2f;//base 2
-    BowManager.BulletDmg = 1f;//base 1
-    BowManager.HelperDmg = 0.5f; //base 0.5. max at equal to bulletdmg
-    BowManager.ArmorPierce = 0;//0 at base
-    BowManager.BulletSpeed = 5f;//base 5
-    BowManager.AOE = false;//false base
-    BowManager.AOEDmg = 0.5f;
-    BowManager.ChainExplosion = false;//false base
-    BowManager.ChainExplosionDmg = 0.2f;//base 0.2;
-    BowManager.PullForce = 0f;//base 0;
-    BowManager.Pierce = 1; // base 1
-    BowManager.HitsPerHit = 0; // base 0
-    BowManager.MaxLife = 10f;//max at 100f;
-    BowManager.LifeRecovery = 0f;//base 0f
-    BowManager.Revive = 0.1f;//max at 1f;
-    BowManager.ReviveUsable = false;
-
-    BowManager.bowTouchID = new int[2] { -1, -1 };
-    BowManager.center = new Vector3[2];
-    BowManager.touchpos = new Vector3[2];
-    BowManager.GunsReady = false;
-
-    BowManager.CoolDownRate = 1f;
-    BowManager.UsingCooldown = false;
-
-    BowManager.EnemySpeed = 1f;
-    BowManager.EnemyDamage = 1f;
-
-    //EquippedUpgradesManager
-    UpgradesEquipped.EquippedUpgrades.Clear();
-    UpgradesEquipped.tempUpgHolder.Clear();
-    UpgradesEquipped.UpgradedSlots = 5;
-    UpgradesEquipped.LevelSlots = 5;
-    UpgradesEquipped.AvailableSlots = 5;
-
-
-    LifeManager.CurrentLife = 10f;
-    LifeManager.Alive = true;
-    LifeManager.ReviveUsed = false;
-
-    LevelCleared = false;
-    CurrentWave = 0;
-    WavesCleared = 0;
-    startWave = false;
-  }
-
-
 }

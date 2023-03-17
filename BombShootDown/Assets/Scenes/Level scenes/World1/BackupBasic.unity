@@ -4069,10 +4069,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 506353824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6839513ad53bdb84bbe787f1c7150883, type: 3}
+  m_Script: {fileID: 11500000, guid: 25859663ae351b84c8d2147895eac82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: fc9b0d3f5c88c2a4c9d11b27822de009, type: 2}
+  waveRunning: 0
 --- !u!4 &506353826
 Transform:
   m_ObjectHideFlags: 0
