@@ -613,6 +613,17 @@ PrefabInstance:
       propertyPath: m_Text
       value: Multi-Hit
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 2
+
+        Increases the number of additional hits
+        a enemy receives per hit.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!224 &96509174 stripped
@@ -1034,6 +1045,17 @@ PrefabInstance:
     - target: {fileID: 406741131604086666, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
       value: Bullet Reload Time
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Reduces the time to reload a new bullet
+        on the bow.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
@@ -1689,6 +1711,17 @@ PrefabInstance:
       propertyPath: m_Text
       value: Armor Pierce
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the armor pierce capibility of
+        the bullets.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!224 &163241685 stripped
@@ -2187,6 +2220,16 @@ PrefabInstance:
     - target: {fileID: 406741131604086666, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
       value: Ammunition Recovery Rate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the rate of ammunition recovery.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
@@ -2760,6 +2803,17 @@ PrefabInstance:
       propertyPath: m_Text
       value: Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the damage and reduces the cooldown
+        of the laser.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!224 &469585005 stripped
@@ -2874,7 +2928,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+  m_Text: 'Slots Required : 3
+
+    Unlocks a second gun.'
 --- !u!222 &628175035
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3379,6 +3435,17 @@ PrefabInstance:
     - target: {fileID: 406741131604086666, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
       value: Chain Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 2
+
+        Increases the damage dealt by the chain
+        explosion.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
@@ -4057,6 +4124,21 @@ PrefabInstance:
       propertyPath: m_Text
       value: Bomb Damage
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Reduces cooltime and increases damage of
+        the bomb.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!224 &922908379 stripped
@@ -4556,6 +4638,16 @@ PrefabInstance:
     - target: {fileID: 406741131604086666, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
       value: Bullet Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the bullet speed (helpers included).'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
@@ -5066,6 +5158,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Helpers
       objectReference: {fileID: 0}
+    - target: {fileID: 406741130543640424, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 406741130556820560, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5193,6 +5289,17 @@ PrefabInstance:
     - target: {fileID: 406741131604086666, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
       value: Helpers
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 2
+
+        Increases the damage and number of active
+        helpers.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
@@ -5857,6 +5964,17 @@ PrefabInstance:
       propertyPath: m_Text
       value: Nuke
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the damage and reduces the cooldown
+        of the nuke.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!224 &1406686879 stripped
@@ -6354,6 +6472,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: Maximum Life
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the maximum life of the fortress.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!1001 &1492987770
@@ -6770,6 +6898,17 @@ PrefabInstance:
     - target: {fileID: 406741131604086666, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
       value: Revive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the health you revive with upon
+        the first defeat.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
@@ -7611,6 +7750,17 @@ PrefabInstance:
       propertyPath: m_Text
       value: Pull Enemies
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the force and frequency of pull
+        on enemies.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!224 &1762882103 stripped
@@ -8165,6 +8315,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: Aoe Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 2
+
+        Increases the damage of the AOE effect.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!224 &1801181787 stripped
@@ -8666,6 +8826,17 @@ PrefabInstance:
       propertyPath: m_Text
       value: Bullet Damage
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the damage dealt by each bullet
+        (helpers included).'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!224 &1853836758 stripped
@@ -9086,7 +9257,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 406741131604086666, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
-      value: Life Recovery (per wave)
+      value: Life Recovery
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the healing rate of the fortress.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
@@ -9848,6 +10029,17 @@ PrefabInstance:
       propertyPath: m_Text
       value: Ammunition Maximum
       objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the maximum ammunition storage
+        limit.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
 --- !u!224 &2051261891 stripped
@@ -10269,6 +10461,17 @@ PrefabInstance:
     - target: {fileID: 406741131604086666, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
       value: Pierce
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 1
+
+        Increases the number of enemies the bullet
+        can pierce.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
@@ -11805,6 +12008,17 @@ PrefabInstance:
     - target: {fileID: 406741131550696001, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072733930134588927, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_Text
+      value: 'Slots Required : 0
+
+        Unlocks more slots for upgrades during
+        combat.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}

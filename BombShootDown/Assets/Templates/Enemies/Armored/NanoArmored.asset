@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
   m_Name: NanoArmored
   m_EditorClassIdentifier: 
-  name: Nano Bomb
+  name: Armored Nano
   enemyDescription: A bomb too small it would take a miracle for it do any damage.
   sprite: {fileID: 21300000, guid: d3e712ecd00a6974fa3c1851edfc68ea, type: 3}
   Boss: 0
@@ -22,5 +22,5 @@ MonoBehaviour:
   Speed: 1
   MaxShield: 1
   Shield: 0
-  Armor: 4
+  Armor: 1
   Taunt: 0

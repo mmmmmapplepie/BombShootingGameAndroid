@@ -3,7 +3,7 @@ bomb 5-20       laser 20-170        nuke 50 - 350
 (basic, armor, shield)
 (sideways on top - speed, damag, weight)
 
-nano   1, 0.5, 1
+nano   1, 0.5, 1  basic       armored       shield
 life            - 0.4           0.4          0.2
 armor             - 0            1            0
 shield (max)    - 0(1)          0(1)         1(1)
@@ -14,7 +14,7 @@ armor             - 0            2            0
 shield (max)    - 0(2)          0(1)         3(3)
 
 kilo       1.5, 3, 5
-life             - 10            10            3
+life             - 10            10            4
 armor             - 0            3             0
 shield (max)    - 0(3)          0(2)         4(4)
 

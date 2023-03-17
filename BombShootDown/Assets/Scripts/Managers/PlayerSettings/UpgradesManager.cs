@@ -4,8 +4,6 @@ public class UpgradesManager
 {
   public static int[] pricing = { 0, 50, 60, 70, 80, 90, 100, 120, 140, 170, 0 };
   public static int DoubleGunPricing = 10000;
-  //(for first 3 how many are being...)[using, enabled, unavailable, , pricing, upgradeSlotsItRequiresToUse]
-  //except for doubleGun
 
   public static Dictionary<string, int[]> UpgradeOptions = new Dictionary<string, int[]>();
   public static int[] returnDictionaryValue(string s)
@@ -25,7 +23,7 @@ public class UpgradesManager
     //world 1
     UpgradeOptions.Add("UpgradeSlot", new int[] { 1, 1, 10, 0 });
     UpgradeOptions.Add("MaximumLife", new int[] { 1, 1, 2, 1 });
-    UpgradeOptions.Add("LifeRecovery", new int[] { 1, 1, 1, 1 });
+    UpgradeOptions.Add("LifeRecovery", new int[] { 1, 1, 4, 1 });
     UpgradeOptions.Add("AmmunitionMax", new int[] { 1, 1, 2, 1 });
     UpgradeOptions.Add("AmmunitionRate", new int[] { 1, 1, 2, 1 });
     UpgradeOptions.Add("Damage", new int[] { 1, 1, 3, 1 });
@@ -44,7 +42,7 @@ public class UpgradesManager
     UpgradeOptions.Add("Nuke", new int[] { 1, 1, 5, 1 });
     UpgradeOptions.Add("ChainExplosion", new int[] { 1, 1, 5, 2 });
     UpgradeOptions.Add("PullEnemies", new int[] { 1, 1, 3, 1 });
-    //for DoubleGun [usingstatus,    unlockedstatus, pricing(never used), upgslots]
+    //for DoubleGun [usingstatus, unlockedstatus, pricing(never used), upgslots]
     UpgradeOptions.Add("DoubleGun", new int[] { 0, 0, 5, 3 });
   }
   public static void loadAllData()
