@@ -4069,11 +4069,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 506353824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25859663ae351b84c8d2147895eac82c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6839513ad53bdb84bbe787f1c7150883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: fc9b0d3f5c88c2a4c9d11b27822de009, type: 2}
+  waveControllerScript: {fileID: 0}
   waveRunning: 0
+  AllWaveTriggerEnemies: []
+  SpecificWaveTriggerEnemies: []
+  NoneTriggerEnemies: []
 --- !u!4 &506353826
 Transform:
   m_ObjectHideFlags: 0
@@ -5880,7 +5884,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f7fa19066769554f9e1e774627706b3, type: 2}
   - {fileID: 11400000, guid: c587756a9b445cd4d8d93935573c169f, type: 2}
   - {fileID: 11400000, guid: 39ed1df8de12f9942ac8d6de17e98d21, type: 2}
-  waveController: {fileID: 1771383793}
+  waveController: {fileID: 0}
   OpenUpgSlots: {fileID: 1023825790}
   ChosenUpgContainer: {fileID: 972446026}
   UpgIconPrefab: {fileID: 7829580174360567492, guid: c27cb1dfd11eadd47b086d1cd603c394, type: 3}
@@ -12169,7 +12173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3665624a89b2b05478a4dad5276f8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveController: {fileID: 1771383791}
+  waveController: {fileID: 0}
 --- !u!1001 &1702639302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12866,7 +12870,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1771383793
 MonoBehaviour:
@@ -14543,7 +14547,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1970696610
 PrefabInstance:

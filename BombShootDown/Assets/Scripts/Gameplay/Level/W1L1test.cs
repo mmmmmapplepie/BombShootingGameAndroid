@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class W1L1test : LevelSpawnerBase {
+  [SerializeField]
+  GameObject winPanel;
   // [SerializeField]
   // spawning animation prefab spawnEffect;
   void Update() {
@@ -16,9 +18,18 @@ public class W1L1test : LevelSpawnerBase {
     while (totalEnemies > 0) {
       totalEnemies--;
       float x = randomWithRange(-5f, 5f);
-      spawnEnemy("NanoBasic", x, 10f, addToList.All);
+      spawnEnemyInMap("NanoBasic", x, 0f, addToList.All, false);
+      print(AllWaveTriggerEnemies.Count);
+
       yield return new WaitForSeconds(3f);
     }
-    StartCoroutine("WaveTriggerEnemiesCleared");
+    StartCoroutine("EndLevel");
+    print("WaveEndedTechnically");
+  }
+  IEnumerator EndLevel() {
+    while (AllWaveTriggerEnemies.Count > 0) {
+      yield return null;
+    }
+    winPanel.SetActive(true);
   }
 }

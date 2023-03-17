@@ -3,8 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class ChosenUpg : MonoBehaviour
-{
+public class ChosenUpg : MonoBehaviour {
   [SerializeField]
   List<UpgradePick> UpgTemplates;
   [SerializeField]
@@ -40,6 +39,7 @@ public class ChosenUpg : MonoBehaviour
     RenderAll();
     Time.timeScale = 0f;
     BowManager.GunsReady = false;
+    print("inUpgrades");
   }
   void RenderAll() {
     EmptyHolder();

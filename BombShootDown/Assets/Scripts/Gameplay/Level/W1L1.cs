@@ -20,7 +20,7 @@ public class W1L1 : LevelSpawnerBase {
       spawnEnemy("NanoBasic", x, 10f, addToList.All);
       yield return new WaitForSeconds(0.1f);
     }
-    StartCoroutine("WaveTriggerEnemiesCleared");
+    StartCoroutine("AllTriggerEnemiesCleared");
   }
   IEnumerator wave2() {
     int totalEnemies = 1000;
@@ -30,7 +30,7 @@ public class W1L1 : LevelSpawnerBase {
       spawnEnemy("NanoBasic", x, 10f, addToList.All);
       yield return new WaitForSeconds(0.15f);
     }
-    StartCoroutine("WaveTriggerEnemiesCleared");
+    StartCoroutine("AllTriggerEnemiesCleared");
   }
   #endregion
 }

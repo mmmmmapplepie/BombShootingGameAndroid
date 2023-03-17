@@ -64,14 +64,9 @@ public class Upgrades : MonoBehaviour {
     }
   }
   void setLifeRecovery() {
-    void LifeRecovery() {
-      float newLife = Mathf.Min(LifeManager.CurrentLife + BowManager.MaxLife * BowManager.LifeRecovery, BowManager.MaxLife);
-      LifeManager.CurrentLife = newLife;
-    }
     if (UpgradesEquipped.EquippedUpgrades.Contains("LifeRecovery")) {
       int lvl = UpgradesManager.returnDictionaryValue("LifeRecovery")[1];
       BowManager.LifeRecovery = (float)lvl / 10f;
-      LifeRecovery();
     }
   }
   void setDamage() {

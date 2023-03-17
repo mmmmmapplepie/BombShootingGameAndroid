@@ -20,6 +20,8 @@ public class LevelSpawnerBase : MonoBehaviour, IGetLevelDataInterface {
   [HideInInspector]
   public List<GameObject> SpecificWaveTriggerEnemies = new List<GameObject>();
   [HideInInspector]
+  public List<GameObject> NoneTriggerEnemies = new List<GameObject>();
+  [HideInInspector]
   public enum addToList { All, Specific, None };
 
 
@@ -48,7 +50,6 @@ public class LevelSpawnerBase : MonoBehaviour, IGetLevelDataInterface {
       //must name the individual wave coroutines as "wave##" format.
       string waveRoutineName = "wave" + currWave.ToString();
       waveRunning = true;
-      resetWaveSettings();
       StartCoroutine(waveRoutineName);
     }
   }
@@ -61,13 +62,28 @@ public class LevelSpawnerBase : MonoBehaviour, IGetLevelDataInterface {
   public void cleanWaveLists() {
     AllWaveTriggerEnemies.RemoveAll(x => x == null);
     SpecificWaveTriggerEnemies.RemoveAll(x => x == null);
+    NoneTriggerEnemies.RemoveAll(x => x == null);
   }
-  public void resetWaveSettings() {
-    AllWaveTriggerEnemies.Clear();
-    SpecificWaveTriggerEnemies.Clear();
-  }
-  public IEnumerator WaveTriggerEnemiesCleared() {
+  public IEnumerator AllTriggerEnemiesCleared() {
     while (AllWaveTriggerEnemies.Count > 0) {
+      yield return null;
+    }
+    waveCleared();
+  }
+  public IEnumerator SpecificTriggerEnemiesCleared() {
+    while (SpecificWaveTriggerEnemies.Count > 0) {
+      yield return null;
+    }
+    waveCleared();
+  }
+  public IEnumerator LastWaveEnemiesCleared() {
+    while (SpecificWaveTriggerEnemies.Count > 0) {
+      yield return null;
+    }
+    while (AllWaveTriggerEnemies.Count > 0) {
+      yield return null;
+    }
+    while (NoneTriggerEnemies.Count > 0) {
       yield return null;
     }
     waveCleared();
@@ -79,7 +95,6 @@ public class LevelSpawnerBase : MonoBehaviour, IGetLevelDataInterface {
     }
     waveRunning = false;
   }
-
   #endregion
 
 
@@ -90,7 +105,7 @@ public class LevelSpawnerBase : MonoBehaviour, IGetLevelDataInterface {
     GameObject spawnedEnemy = Instantiate(enemyPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     AddEnemyToList(spawnedEnemy, listname);
   }
-  public void spawnEnemyInMap(string name, float xpos, float ypos, bool big, addToList listname) {
+  public void spawnEnemyInMap(string name, float xpos, float ypos, addToList listname, bool big) {
     if (big) {
       Instantiate(BigSpawnPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     } else {
