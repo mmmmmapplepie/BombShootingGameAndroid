@@ -3392,6 +3392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 506353826}
   - component: {fileID: 506353825}
+  - component: {fileID: 506353827}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -3408,10 +3409,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 506353824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6839513ad53bdb84bbe787f1c7150883, type: 3}
+  m_Script: {fileID: 11500000, guid: 25859663ae351b84c8d2147895eac82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: fc9b0d3f5c88c2a4c9d11b27822de009, type: 2}
+  winPanel: {fileID: 1689323656}
 --- !u!4 &506353826
 Transform:
   m_ObjectHideFlags: 0
@@ -3424,8 +3426,26 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &506353827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506353824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13d0698e651da2449fb9b2381af2f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BigSpawnPrefab: {fileID: 7632971244896627631, guid: 215dfd9bb77ed8247acbaaea85c4952b, type: 3}
+  SmallSpawnPrefab: {fileID: 8142019964058786821, guid: 373fa35063fa4db4fbda71b55ebf2d8f, type: 3}
+  waveRunning: 0
+  AllWaveTriggerEnemies: []
+  SpecificWaveTriggerEnemies: []
+  NoneTriggerEnemies: []
 --- !u!1 &511237934
 GameObject:
   m_ObjectHideFlags: 0
@@ -9394,7 +9414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5197789660741548067, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5197789660741548067, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
       propertyPath: m_LocalPosition.x

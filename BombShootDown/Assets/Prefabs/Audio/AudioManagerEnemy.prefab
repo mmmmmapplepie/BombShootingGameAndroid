@@ -94,15 +94,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: EnemyDamageSmall
     clip: {fileID: 8300000, guid: c955f3a36496c6d47a1dbe044db2bf9d, type: 3}
-    volume: 1
-    pitch: 1
+    volume: 0.5
+    pitch: 2
     loop: 0
     playOnAwake: 1
     priority: 120
     source: {fileID: 0}
   - name: EnemyDamageMid
     clip: {fileID: 8300000, guid: acf9ad82c88896f4cb4a76699f79dee1, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
     playOnAwake: 1
@@ -110,7 +110,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: EnemyDamageBig
     clip: {fileID: 8300000, guid: 725390e6d169d14428e19d5261030800, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
     playOnAwake: 1

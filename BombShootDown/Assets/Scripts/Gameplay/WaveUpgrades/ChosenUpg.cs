@@ -3,10 +3,10 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class ChosenUpg : MonoBehaviour {
+public class ChosenUpg : MonoBehaviour
+{
   [SerializeField]
   List<UpgradePick> UpgTemplates;
-  [SerializeField]
   WaveController waveController;
   [SerializeField]
   Text OpenUpgSlots;
@@ -28,76 +28,100 @@ public class ChosenUpg : MonoBehaviour {
   GameObject AmmoLife;
   int ItemsInList;
   int tempupgnum = 0;
-  void Update() {
-    if (UpgradesEquipped.tempUpgHolder.Count != tempupgnum) {
+  void Awake()
+  {
+    waveController = GameObject.FindObjectOfType<WaveController>();
+  }
+  void Update()
+  {
+    if (UpgradesEquipped.tempUpgHolder.Count != tempupgnum)
+    {
       RenderAll();
       tempupgnum = UpgradesEquipped.tempUpgHolder.Count;
     }
     ChangeAvailableSlots();
   }
-  void OnEnable() {
+  void OnEnable()
+  {
     RenderAll();
     Time.timeScale = 0f;
     BowManager.GunsReady = false;
-    print("inUpgrades");
   }
-  void RenderAll() {
+  void RenderAll()
+  {
     EmptyHolder();
     RenderPresetUpg();
     RenderAllOptions();
   }
-  void RenderPresetUpg() {
-    foreach (string upg in UpgradesEquipped.EquippedUpgrades) {
+  void RenderPresetUpg()
+  {
+    foreach (string upg in UpgradesEquipped.EquippedUpgrades)
+    {
       GameObject icon = Instantiate(UpgIconPrefab, ChosenUpgContainer);
       icon.GetComponent<RenderPreSetUpgradeIcon>().pick = FindTemplate(upg);
       icon.GetComponent<RenderPreSetUpgradeIcon>().RenderUpg();
     }
   }
-  void AppendUpgradesToEquippedUpgrades() {
-    foreach (string name in UpgradesEquipped.tempUpgHolder) {
+  void AppendUpgradesToEquippedUpgrades()
+  {
+    foreach (string name in UpgradesEquipped.tempUpgHolder)
+    {
       UpgradesEquipped.EquippedUpgrades.Add(name);
     }
     UpgradesEquipped.tempUpgHolder.Clear();
   }
-  UpgradePick FindTemplate(string name) {
-    foreach (UpgradePick options in UpgTemplates) {
-      if (options.name == name) {
+  UpgradePick FindTemplate(string name)
+  {
+    foreach (UpgradePick options in UpgTemplates)
+    {
+      if (options.name == name)
+      {
         return options;
       }
     }
     return null;
   }
-  void RenderAllOptions() {
-    foreach (string upg in UpgradesEquipped.tempUpgHolder) {
+  void RenderAllOptions()
+  {
+    foreach (string upg in UpgradesEquipped.tempUpgHolder)
+    {
       CreateUpgradeOption(upg);
     }
   }
-  void CreateUpgradeOption(string name) {
+  void CreateUpgradeOption(string name)
+  {
     GameObject icon = Instantiate(NewUpgIconPrefab, ChosenUpgContainer);
     icon.GetComponent<NewUpgradeIcon>().pick = FindTemplate(name);
     icon.GetComponent<NewUpgradeIcon>().RenderUpg();
   }
-  void ChangeAvailableSlots() {
+  void ChangeAvailableSlots()
+  {
     UpgradesEquipped.AvailableSlots = Mathf.Min(UpgradesEquipped.LevelSlots, UpgradesEquipped.UpgradedSlots);
-    foreach (Transform child in ChosenUpgContainer) {
-      if (child.GetComponent<NewUpgradeIcon>() != null) {
+    foreach (Transform child in ChosenUpgContainer)
+    {
+      if (child.GetComponent<NewUpgradeIcon>() != null)
+      {
         int weight = child.GetComponent<NewUpgradeIcon>().pick.upgradeSlots;
         UpgradesEquipped.AvailableSlots -= weight;
       }
 
-      if (child.GetComponent<RenderPreSetUpgradeIcon>() != null) {
+      if (child.GetComponent<RenderPreSetUpgradeIcon>() != null)
+      {
         int weight = child.GetComponent<RenderPreSetUpgradeIcon>().pick.upgradeSlots;
         UpgradesEquipped.AvailableSlots -= weight;
       }
     }
     AvailableSlotText.text = UpgradesEquipped.AvailableSlots.ToString();
   }
-  void EmptyHolder() {
-    for (int i = 0; i < ChosenUpgContainer.childCount; i++) {
+  void EmptyHolder()
+  {
+    for (int i = 0; i < ChosenUpgContainer.childCount; i++)
+    {
       Destroy(ChosenUpgContainer.GetChild(i).gameObject);
     }
   }
-  public void DisableUpgrades() {
+  public void DisableUpgrades()
+  {
     AppendUpgradesToEquippedUpgrades();
     UpgradesScript.setUpgrades();
     cooldowns.GetComponent<Bomb>().checkUpgradesForBombDamageEquipped();
