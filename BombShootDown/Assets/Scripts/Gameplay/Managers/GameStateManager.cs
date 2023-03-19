@@ -9,6 +9,9 @@ public class GameStateManager : MonoBehaviour {
   GameObject WinScreen;
   [SerializeField]
   GameObject revivePanel;
+  void Awake() {
+    ResetGameplayManagerVariables();
+  }
   void Update() {
     if (LifeManager.CurrentLife <= 0f) {
       if (BowManager.ReviveUsable == true && LifeManager.ReviveUsed == false) {
@@ -44,13 +47,6 @@ public class GameStateManager : MonoBehaviour {
     LifeManager.ReviveRoutine = false;
   }
 
-
-
-
-  void OnDestroy() {
-    //ResetAll the manager variables;
-    ResetGameplayManagerVariables();
-  }
   void ResetGameplayManagerVariables() {
     BowManager.MaxAmmo = 10;//base 10
     BowManager.CurrentAmmo = BowManager.MaxAmmo;
@@ -102,6 +98,5 @@ public class GameStateManager : MonoBehaviour {
       WaveController.WavesCleared = 0;
       WaveController.startWave = false;
     }
-
   }
 }
