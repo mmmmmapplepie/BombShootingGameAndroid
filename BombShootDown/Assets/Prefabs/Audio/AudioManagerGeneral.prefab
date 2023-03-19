@@ -50,7 +50,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 1
-    priority: 100
+    priority: 156
     source: {fileID: 0}
   - name: MidShot
     clip: {fileID: 8300000, guid: 4de891ed8deedfc498798b217824f47b, type: 3}
@@ -58,7 +58,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 1
-    priority: 100
+    priority: 156
     source: {fileID: 0}
   - name: FastShot
     clip: {fileID: 8300000, guid: 6f7364cab8c8966408ad6962e800271c, type: 3}
@@ -66,7 +66,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 1
-    priority: 100
+    priority: 156
     source: {fileID: 0}
   - name: PullSound
     clip: {fileID: 8300000, guid: f258c9d3a3f27824b86d66e62952187f, type: 3}
@@ -74,7 +74,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 1
-    priority: 100
+    priority: 256
     source: {fileID: 0}
   - name: Bomb
     clip: {fileID: 8300000, guid: 7a572d1b78ee67949874d7fbc526001b, type: 3}
@@ -82,7 +82,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 1
-    priority: 150
+    priority: 106
     source: {fileID: 0}
   - name: Laser
     clip: {fileID: 8300000, guid: e626496c4a444c848a3138efbb60e7dc, type: 3}
@@ -90,7 +90,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 1
-    priority: 150
+    priority: 106
     source: {fileID: 0}
   - name: Nuke
     clip: {fileID: 8300000, guid: 4833ca1833188a04db4df34945fb3a2b, type: 3}
@@ -98,7 +98,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 1
-    priority: 150
+    priority: 106
     source: {fileID: 0}
 --- !u!1 &5197789660336990335
 GameObject:
@@ -280,7 +280,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     playOnAwake: 1
-    priority: 256
+    priority: 0
     source: {fileID: 0}
   - name: MapTheme
     clip: {fileID: 8300000, guid: 5142b627a4d1ccf4ba6caca0316213f9, type: 3}
@@ -288,7 +288,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     playOnAwake: 1
-    priority: 256
+    priority: 0
     source: {fileID: 0}
   currentBGM:
     name: 
