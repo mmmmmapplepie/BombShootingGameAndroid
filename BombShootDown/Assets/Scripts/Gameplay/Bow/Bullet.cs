@@ -102,11 +102,8 @@ public class Bullet : MonoBehaviour {
   }
   void OnTriggerEnter2D(Collider2D coll) {
     if (coll.gameObject.tag == "TauntEnemy" || coll.gameObject.tag == "Enemy") {
-
       if (chain && coll.transform.root.GetComponent<ChainExplosion>().Chained == false) {
-        Transform Lifebar = coll.transform.root.Find("State").Find("Life").Find("Background");
         coll.transform.root.GetComponent<ChainExplosion>().Chained = true;
-        CreateEffect(Effects.Find(x => x.name == "ChainedEffect"), Lifebar, Lifebar.position);
       }
       EnemyLife life = coll.transform.root.gameObject.GetComponent<EnemyLife>();
       Transform enemyCenter = coll.transform.root;

@@ -5,7 +5,7 @@ public class ChainExplosion : MonoBehaviour {
   GameObject chainedAnimation;
   [HideInInspector]
   public bool Chained = false;
-  bool animationAdd = false;
+  public bool animationAdded = false;
   RectTransform rect;
   AudioManagerEnemy audioManager;
   void Awake() {
@@ -13,9 +13,10 @@ public class ChainExplosion : MonoBehaviour {
     rect = GetComponent<RectTransform>();
   }
   void Update() {
-    if (Chained && !animationAdd && gameObject.GetComponent<EnemyLife>().currentLife > 0f && Time.timeScale != 0f) {
-      animationAdd = true;
-      Instantiate(chainedAnimation, transform.Find("State").Find("Life").Find("Background"));
+    if (Chained && !animationAdded && gameObject.GetComponent<EnemyLife>().currentLife > 0f) {
+      animationAdded = true;
+      Transform anchorParent = transform.Find("State").Find("Life").Find("Background");
+      Instantiate(chainedAnimation, anchorParent.position, Quaternion.identity, anchorParent);
     }
   }
   public void Explode() {
