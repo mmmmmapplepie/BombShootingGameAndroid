@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLife : MonoBehaviour
-{
+public class EnemyLife : MonoBehaviour {
   [SerializeField]
   public Enemy data;
   GameObject bombObject;
@@ -25,8 +24,7 @@ public class EnemyLife : MonoBehaviour
   [HideInInspector]
   public bool dead = false;
   AudioManagerEnemy audioManager;
-  void Awake()
-  {
+  void Awake() {
     bombObject = transform.Find("Enemy").gameObject;
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
     maxLife = data.Life;
@@ -35,88 +33,65 @@ public class EnemyLife : MonoBehaviour
     Shield = data.Shield;
     MaxShield = data.MaxShield;
     Taunt = data.Taunt;
-    if (Taunt)
-    {
+    if (Taunt) {
       bombObject.tag = "TauntEnemy";
-    }
-    else
-    {
+    } else {
       bombObject.tag = "Enemy";
     }
   }
-  public void takeTrueDamage(float damage)
-  {
+  public void takeTrueDamage(float damage) {
     audioManager.PlayAudio("NormalHit");
     currentLife -= damage;
-    if (currentLife <= 0f && !dead)
-    {
+    if (currentLife <= 0f && !dead) {
       ShotDeath();
     }
   }
-  public void takeDamage(float damage)
-  {
-    if (Shield > 0)
-    {
+  public void takeDamage(float damage) {
+    if (Shield > 0) {
       audioManager.PlayAudio("ShieldHit");
       Shield--;
-    }
-    else
-    {
+    } else {
       int Armordiff = Armor - BowManager.ArmorPierce;
-      if (Armordiff > 0)
-      {
-        if (Armordiff > 4)
-        {
+      if (Armordiff > 0) {
+        if (Armordiff > 4) {
           audioManager.PlayAudio("HeavyArmorHit");
           currentLife -= damage / 50f; //2% damage only
-        }
-        else
-        {
+        } else {
           audioManager.PlayAudio("ArmorHit");
           currentLife -= damage - damage * ((float)Armordiff / 5f); //each lvl diff takes a 20% decrease in dmg
         }
-      }
-      else
-      {
+      } else {
         audioManager.PlayAudio("NormalHit");
         currentLife -= damage;
       }
     }
-    if (currentLife <= 0f && !dead)
-    {
+    if (currentLife <= 0f && !dead) {
       ShotDeath();
     }
   }
-  public void AoeHit(float damage)
-  {
+  public void AoeHit(float damage) {
     Collider2D[] Objects = Physics2D.OverlapCircleAll(transform.position, 1f);
-    foreach (Collider2D coll in Objects)
-    {
-      if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") && coll.gameObject != gameObject)
-      {
-        coll.transform.parent.gameObject.GetComponent<EnemyLife>().takeDamage(BowManager.AOEDmg * damage);
+    foreach (Collider2D coll in Objects) {
+      if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") && coll.gameObject != gameObject) {
+        coll.transform.root.gameObject.GetComponent<EnemyLife>().takeDamage(BowManager.AOEDmg * damage);
       }
     }
   }
-  public void ChainExplosion()
-  {
+  public void ChainExplosion() {
     takeDamage(BowManager.ChainExplosionDmg * BowManager.BulletDmg);
   }
-  void RemoveAtDeathComponents()
-  {
+  void RemoveAtDeathComponents() {
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     Destroy(transform.Find("Enemy").gameObject.GetComponent<Collider2D>());
     Destroy(transform.Find("MovementControl").gameObject);
     Destroy(transform.Find("State").gameObject);
   }
-  IEnumerator deathSequence()
-  {
+  IEnumerator deathSequence() {
     dead = true;
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
-    for (int i = 0; i < 20; i++)
-    {
+    for (int i = 0; i < 20; i++) {
       float angle = (Mathf.Sin(i)) / (i + 1);
       float ratio = 1f / (1f + i);
       transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -125,16 +100,13 @@ public class EnemyLife : MonoBehaviour
     }
     Destroy(gameObject);
   }
-  IEnumerator ChainExplodePreheat(ChainExplosion script)
-  {
+  IEnumerator ChainExplodePreheat(ChainExplosion script) {
     yield return new WaitForSeconds(0.2f);
     script.Explode();
   }
-  void ShotDeath()
-  {
+  void ShotDeath() {
     ChainExplosion script = gameObject.GetComponent<ChainExplosion>();
-    if (script.Chained == true)
-    {
+    if (script.Chained == true) {
       Instantiate(chainExplosionEffect, transform.position, Quaternion.identity);
       StartCoroutine("ChainExplodePreheat", script);
     }

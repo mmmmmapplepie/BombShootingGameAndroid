@@ -23,12 +23,15 @@ public class Upgrades : MonoBehaviour {
     setUpgradeSlot();
   }
   void Update() {
-    if (LifeManager.CurrentLife < BowManager.MaxLife && Time.timeScale != 0f && BowManager.LifeRecovery != 0f) {
+    LifeRecoveryInGame();
+  }
+  void LifeRecoveryInGame() {
+    if (LifeManager.CurrentLife < BowManager.MaxLife && Time.timeScale != 0f && UpgradesEquipped.EquippedUpgrades.Contains("LifeRecovery")) {
       float recovery = BowManager.LifeRecovery;
-      if (LifeManager.CurrentLife + recovery > BowManager.MaxLife) {
+      if ((LifeManager.CurrentLife + recovery * Time.deltaTime) > BowManager.MaxLife) {
         LifeManager.CurrentLife = BowManager.MaxLife;
       } else {
-        LifeManager.CurrentLife += recovery;
+        LifeManager.CurrentLife += recovery * Time.deltaTime;
       }
     }
   }
@@ -58,15 +61,15 @@ public class Upgrades : MonoBehaviour {
   void setMaximumLife() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("MaximumLife")) {
       int lvl = UpgradesManager.returnDictionaryValue("MaximumLife")[1];
+      float remainingliferatio = LifeManager.CurrentLife / BowManager.MaxLife;
       BowManager.MaxLife = 10f + (float)lvl * 10f;
-      float remainingliferatio = LifeManager.CurrentLife / 10f;
       LifeManager.CurrentLife = remainingliferatio * BowManager.MaxLife;
     }
   }
   void setLifeRecovery() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("LifeRecovery")) {
       int lvl = UpgradesManager.returnDictionaryValue("LifeRecovery")[1];
-      BowManager.LifeRecovery = (float)lvl / 10f;
+      BowManager.LifeRecovery = (float)lvl / 5f;
     }
   }
   void setDamage() {
@@ -93,7 +96,7 @@ public class Upgrades : MonoBehaviour {
   void setBulletSpeed() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("BulletSpeed")) {
       int lvl = UpgradesManager.returnDictionaryValue("BulletSpeed")[1];
-      BowManager.BulletSpeed = 5f + 30f * (float)lvl;
+      BowManager.BulletSpeed = 5f + 3f * (float)lvl;
     }
   }
   void setReloadTime() {

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackupW1L1 : MonoBehaviour, IGetLevelDataInterface {
+public class BackupW1L1 : MonoBehaviour, IGetLevelDataInterface
+{
   [SerializeField]
   public Level level;
   WaveController waveControllerScript;
@@ -11,45 +12,57 @@ public class BackupW1L1 : MonoBehaviour, IGetLevelDataInterface {
   bool waveRunning = false;
   List<GameObject> WaveTriggerEnemiesAll = new List<GameObject>();
 
-  void Awake() {
+  void Awake()
+  {
     waveControllerScript = FindObjectOfType<WaveController>();
   }
-  public Level GetLevelData() {
+  public Level GetLevelData()
+  {
     return level;
   }
-  void Update() {
+  void Update()
+  {
     cleanWaveLists();
-    if (WaveController.CurrentWave > WaveController.WavesCleared && WaveController.startWave == true && waveRunning == false) {
+    if (WaveController.CurrentWave > WaveController.WavesCleared && WaveController.startWave == true && waveRunning == false)
+    {
       findCorrectWaveToStart();
     }
   }
   #region generalfunctions
   //With should be probably from -5, to 5 and height the maximum depth at y = -5ish
-  float randomWithRange(float min, float max) {
+  float randomWithRange(float min, float max)
+  {
     float ranNum = Random.Range(min, max);
     return ranNum;
   }
-  void cleanWaveLists() {
+  void cleanWaveLists()
+  {
     WaveTriggerEnemiesAll.RemoveAll(x => x == null);
   }
-  void resetWaveSettings() {
+  void resetWaveSettings()
+  {
     WaveTriggerEnemiesAll.Clear();
   }
-  IEnumerator WaveTriggerEnemiesCleared() {
-    while (WaveTriggerEnemiesAll.Count > 0) {
+  IEnumerator WaveTriggerEnemiesCleared()
+  {
+    while (WaveTriggerEnemiesAll.Count > 0)
+    {
       yield return null;
     }
     waveCleared();
   }
-  GameObject spawnEnemy(string name, float xpos, float ypos) {
+  GameObject spawnEnemy(string name, float xpos, float ypos)
+  {
     GameObject enemyPrefab = level.Enemies.Find(x => x.enemyPrefab.name == name).enemyPrefab;
     GameObject spawnedEnemy = Instantiate(enemyPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     return spawnedEnemy;
   }
-  void findCorrectWaveToStart() {
+  void findCorrectWaveToStart()
+  {
     int currWave = 1;
     currWave = WaveController.WavesCleared + 1;
-    if (currWave <= level.upgradesPerWave.Count) {
+    if (currWave <= level.upgradesPerWave.Count)
+    {
       //must name the individual wave coroutines as "wave##" format.
       string waveRoutineName = "wave" + currWave.ToString();
       waveRunning = true;
@@ -57,9 +70,11 @@ public class BackupW1L1 : MonoBehaviour, IGetLevelDataInterface {
       StartCoroutine(waveRoutineName);
     }
   }
-  void waveCleared() {
+  void waveCleared()
+  {
     WaveController.WavesCleared++;
-    if (WaveController.WavesCleared == level.upgradesPerWave.Count) {
+    if (WaveController.WavesCleared == level.upgradesPerWave.Count)
+    {
       WaveController.LevelCleared = true;
     }
     waveRunning = false;
@@ -67,9 +82,11 @@ public class BackupW1L1 : MonoBehaviour, IGetLevelDataInterface {
   #endregion
 
   #region LevelDesign
-  IEnumerator wave1() {
+  IEnumerator wave1()
+  {
     int totalEnemies = 20;
-    while (totalEnemies > 0) {
+    while (totalEnemies > 0)
+    {
       totalEnemies--;
       float x = randomWithRange(-5f, 5f);
       WaveTriggerEnemiesAll.Add(spawnEnemy("NanoBasic", x, 10f));
@@ -77,9 +94,11 @@ public class BackupW1L1 : MonoBehaviour, IGetLevelDataInterface {
     }
     StartCoroutine("WaveTriggerEnemiesCleared");
   }
-  IEnumerator wave2() {
+  IEnumerator wave2()
+  {
     int totalEnemies = 1000;
-    while (totalEnemies > 0) {
+    while (totalEnemies > 0)
+    {
       totalEnemies--;
       float x = randomWithRange(-5f, 5f);
       WaveTriggerEnemiesAll.Add(spawnEnemy("NanoBasic", x, 10f));

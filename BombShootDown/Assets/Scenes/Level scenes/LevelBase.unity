@@ -5835,7 +5835,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f7fa19066769554f9e1e774627706b3, type: 2}
   - {fileID: 11400000, guid: c587756a9b445cd4d8d93935573c169f, type: 2}
   - {fileID: 11400000, guid: 39ed1df8de12f9942ac8d6de17e98d21, type: 2}
-  waveController: {fileID: 1771383793}
   OpenUpgSlots: {fileID: 1023825790}
   ChosenUpgContainer: {fileID: 972446026}
   UpgIconPrefab: {fileID: 7829580174360567492, guid: c27cb1dfd11eadd47b086d1cd603c394, type: 3}
@@ -12124,7 +12123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3665624a89b2b05478a4dad5276f8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveController: {fileID: 1771383791}
 --- !u!1 &1706326598
 GameObject:
   m_ObjectHideFlags: 0

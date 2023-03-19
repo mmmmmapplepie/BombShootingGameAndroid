@@ -24,21 +24,24 @@ public class GameStateManager : MonoBehaviour {
   }
   void Revive() {
     revivePanel.SetActive(true);
-    StartCoroutine("Reviving");
-    Invoke("deactivatePanel", 2f);
+    float revtime = BowManager.Revive * 10f;
+    StartCoroutine("Reviving", revtime);
+    Invoke("deactivatePanel", revtime);
   }
   void deactivatePanel() {
     revivePanel.SetActive(false);
   }
-  IEnumerator Reviving() {
+  IEnumerator Reviving(float revtime) {
     float time = Time.time;
+    LifeManager.CurrentLife = BowManager.MaxLife * BowManager.Revive;
+    LifeManager.ReviveRoutine = true;
     while (revivePanel.activeSelf == true) {
-      float ratio = 1 - 0.5f * (Time.time - time);
-      LifeManager.CurrentLife = BowManager.MaxLife * BowManager.Revive;
+      float ratio = 1f - 1f * (Time.time - time) / revtime;
       revivePanel.GetComponent<Image>().color = new Color(1f, 1f, 1f, ratio);
       yield return null;
     }
     revivePanel.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+    LifeManager.ReviveRoutine = false;
   }
 
 
@@ -91,6 +94,7 @@ public class GameStateManager : MonoBehaviour {
     LifeManager.CurrentLife = 10f;
     LifeManager.Alive = true;
     LifeManager.ReviveUsed = false;
+    LifeManager.ReviveRoutine = false;
 
     if (GameObject.Find("WaveController") != null) {
       WaveController.LevelCleared = false;

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
-public class ChainExplosion : MonoBehaviour
-{
+public class ChainExplosion : MonoBehaviour {
   [SerializeField]
   GameObject chainedAnimation;
   [HideInInspector]
@@ -9,37 +8,29 @@ public class ChainExplosion : MonoBehaviour
   bool animationAdd = false;
   RectTransform rect;
   AudioManagerEnemy audioManager;
-  void Awake()
-  {
+  void Awake() {
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
     rect = GetComponent<RectTransform>();
   }
-  void Update()
-  {
-    if (Chained && !animationAdd && gameObject.GetComponent<EnemyLife>().currentLife > 0f && Time.timeScale != 0f)
-    {
+  void Update() {
+    if (Chained && !animationAdd && gameObject.GetComponent<EnemyLife>().currentLife > 0f && Time.timeScale != 0f) {
       animationAdd = true;
       Instantiate(chainedAnimation, transform.Find("State").Find("Life").Find("Background"));
     }
   }
-  public void Explode()
-  {
+  public void Explode() {
     audioManager.PlayAudio("ChainExplosion");
     Collider2D[] Objects = Physics2D.OverlapCircleAll(transform.position, 1.5f);
-    foreach (Collider2D coll in Objects)
-    {
-      if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy")
-      {
-        if (coll.gameObject == gameObject)
-        {
+    foreach (Collider2D coll in Objects) {
+      if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") {
+        if (coll.gameObject == gameObject) {
           continue;
         }
-        coll.transform.parent.GetComponent<ChainExplosion>().Chained = true;
-        if (coll.transform.parent.GetComponent<EnemyLife>().currentLife <= 0)
-        {
+        coll.transform.root.GetComponent<ChainExplosion>().Chained = true;
+        if (coll.transform.root.GetComponent<EnemyLife>().currentLife <= 0) {
           continue;
         }
-        coll.transform.parent.GetComponent<EnemyLife>().ChainExplosion();
+        coll.transform.root.GetComponent<EnemyLife>().ChainExplosion();
       }
     }
   }

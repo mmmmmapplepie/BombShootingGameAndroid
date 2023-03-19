@@ -10,6 +10,8 @@ public class EnemyCondition : MonoBehaviour {
   [SerializeField]
   GameObject shieldBar;
   [SerializeField]
+  GameObject shielded;
+  [SerializeField]
   GameObject bossSprite;
   [SerializeField]
   List<Sprite> bossSpritesList;
@@ -63,6 +65,11 @@ public class EnemyCondition : MonoBehaviour {
   void showShields() {
     float ratio = (float)gameObject.GetComponent<EnemyLife>().Shield / (float)maxShield;
     shieldBar.GetComponent<Slider>().value = ratio;
+    if (gameObject.GetComponent<EnemyLife>().Shield > 0) {
+      shielded.SetActive(true);
+    } else {
+      shielded.SetActive(false);
+    }
   }
   void showLife() {
     float ratio = gameObject.GetComponent<EnemyLife>().currentLife / maxlife * lifeBarScale;

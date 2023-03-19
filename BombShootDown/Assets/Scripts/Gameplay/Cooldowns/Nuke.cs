@@ -10,8 +10,7 @@ using System.Collections;
 // chained 0.2;
 
 
-public class Nuke : MonoBehaviour
-{
+public class Nuke : MonoBehaviour {
   [SerializeField]
   GameObject NukeEffect;
   [SerializeField]
@@ -25,87 +24,71 @@ public class Nuke : MonoBehaviour
   float NukeDamage = 50f;
   float remainingTime = 0f;
   float cooldownTimerChangeReceptor;
-  void Awake()
-  {
+  void Awake() {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     SetBaseCooldown();
     cooldownTimerChangeReceptor = BowManager.CoolDownRate;
   }
-  public void checkUpgradesForNukeEquipped()
-  {
-    if (UpgradesEquipped.EquippedUpgrades.Contains("Nuke"))
-    {
+  public void checkUpgradesForNukeEquipped() {
+    if (UpgradesEquipped.EquippedUpgrades.Contains("Nuke")) {
       NukeButton.SetActive(true);
     }
   }
-  void SetBaseCooldown()
-  {
+  void SetBaseCooldown() {
     int lvl = UpgradesManager.returnDictionaryValue("Nuke")[1];
     BaseNukeCooldown = 250f - 5f * (float)lvl;
     NukeDamage = 50f + 35f * (float)lvl;
   }
-  void Update()
-  {
-    if (BowManager.CoolDownRate != cooldownTimerChangeReceptor)
-    {
+  void Update() {
+    if (BowManager.CoolDownRate != cooldownTimerChangeReceptor) {
       float oldBaseTime = BaseNukeCooldown / cooldownTimerChangeReceptor;
       float newBaseTime = BaseNukeCooldown / BowManager.CoolDownRate;
       float ratioRemaining = remainingTime / oldBaseTime;
       float newRemaining = ratioRemaining * newBaseTime;
       remainingTime = newRemaining;
     }
-    if (remainingTime > 0f)
-    {
+    if (remainingTime > 0f) {
       countDownTimer();
     }
-    if (remainingTime <= 0f)
-    {
+    if (remainingTime <= 0f) {
       NukeButton.GetComponent<Button>().interactable = true;
       cooldownCover.fillAmount = 0;
       remainingTime = 0f;
     }
   }
-  void countDownTimer()
-  {
+  void countDownTimer() {
     remainingTime -= Time.deltaTime;
     RenderCooldownImage();
   }
-  void RenderCooldownImage()
-  {
+  void RenderCooldownImage() {
     float oldBaseTime = BaseNukeCooldown / cooldownTimerChangeReceptor;
     float ratioRemaining = remainingTime / oldBaseTime;
     cooldownCover.fillAmount = ratioRemaining;
   }
-  IEnumerator FireNuke()
-  {
+  IEnumerator FireNuke() {
     Instantiate(NukeEffect, new Vector3(0f, 0f, 0f), Quaternion.identity);
     audioManager.PlayAudio("Nuke");
     yield return new WaitForSeconds(0.5f);
     nukeDamage();
   }
 
-  public void UseNuke()
-  {
-    if (BowManager.UsingCooldown || remainingTime != 0f)
-    {
+  public void UseNuke() {
+    if (BowManager.UsingCooldown || remainingTime != 0f) {
       return;
     }
     NukeButton.GetComponent<Button>().interactable = false;
     remainingTime = BaseNukeCooldown / cooldownTimerChangeReceptor;
     StartCoroutine("FireNuke");
   }
-  void nukeDamage()
-  {
+  void nukeDamage() {
     //instantiate and sound effects
     GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
     GameObject[] TauntEnemies = GameObject.FindGameObjectsWithTag("TauntEnemy");
-    foreach (GameObject enemies in Enemies)
-    {
-      enemies.transform.parent.gameObject.GetComponent<EnemyLife>().takeTrueDamage(NukeDamage);
+    foreach (GameObject enemies in Enemies) {
+      enemies.transform.root.gameObject.GetComponent<EnemyLife>().takeTrueDamage(NukeDamage);
     }
-    foreach (GameObject enemies in TauntEnemies)
-    {
-      enemies.transform.parent.gameObject.GetComponent<EnemyLife>().takeTrueDamage(NukeDamage);
+    foreach (GameObject enemies in TauntEnemies) {
+      enemies.transform.root.gameObject.GetComponent<EnemyLife>().takeTrueDamage(NukeDamage);
     }
   }
 
