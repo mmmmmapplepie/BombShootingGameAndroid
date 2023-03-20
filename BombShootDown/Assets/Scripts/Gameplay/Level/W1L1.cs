@@ -24,7 +24,7 @@ public class W1L1 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   #region LevelDesign
-  IEnumerator wave2() {
+  IEnumerator wave1() {
     int totalEnemies = 20;
     while (totalEnemies > 0) {
       totalEnemies--;
@@ -34,7 +34,7 @@ public class W1L1 : MonoBehaviour, IGetLevelDataInterface {
     }
     StartCoroutine(spawner.AllTriggerEnemiesCleared());
   }
-  IEnumerator wave1() {
+  IEnumerator wave2() {
     int totalEnemies = 1000;
     while (totalEnemies > 0) {
       totalEnemies--;

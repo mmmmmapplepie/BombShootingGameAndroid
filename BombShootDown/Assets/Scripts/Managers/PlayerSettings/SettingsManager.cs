@@ -1,6 +1,5 @@
 using UnityEngine;
-public class SettingsManager
-{
+public class SettingsManager {
   #region VolumeSettings
   public static float volumeTheme = 1f;
   public static float volumeEnemy = 1f;
@@ -9,8 +8,10 @@ public class SettingsManager
 
   #region PlayerProgress
   // first value is the world 2nd is the stage of that world
-  public static int[] world = new int[2]{1, 1};
-  public static float[] currentFocusLevelTransform = new float[2] {443f, 682f};
+  public static int[] world = new int[2] { 1, 1 };
+  public static float endlessOriginalHS = 0f;
+  public static float endlessUpgradedHS = 0f;
+  public static float[] currentFocusLevelTransform = new float[2] { 443f, 682f };
   public static void clearStage(int wold, int lvl) {
     //world 1 settings 25 lvls
     if (wold == 1 && lvl < 25) {
@@ -27,7 +28,7 @@ public class SettingsManager
       world[1] = 1;
     }
     //world 3 settings 46 lvls
-    if (wold  == 3 && lvl < 50) {
+    if (wold == 3 && lvl < 50) {
       world[1] = lvl + 1;
     } else if (wold == 3 && lvl > 50) {
       world[1] = 51;

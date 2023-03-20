@@ -2,69 +2,55 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameModeCannon : MonoBehaviour
-{
+public class GameModeCannon : MonoBehaviour {
   public GameObject MenuAimLine;
   string currentClicked1;
   string newscene;
-  void Awake()
-  {
-    if (GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().currentBGM.name != "MenuTheme")
-    {
+  AudioManagerUI UIaudio;
+  void Awake() {
+    UIaudio = GameObject.Find("AudioManagerUI").GetComponent<AudioManagerUI>();
+    if (GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().currentBGM.name != "MenuTheme") {
       GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().ChangeBGM("MenuTheme");
     }
   }
-  public void checkClicked(Button button)
-  {
+  public void checkClicked(Button button) {
     string btn = button.name;
-    if (btn == currentClicked1)
-    {
+    UIaudio.PlayAudio("Click");
+    if (btn == currentClicked1) {
       moveCannonPointer(btn);
-      //movescene sound
       moveScene(btn);
-    }
-    else
-    {
-      //click sound
+    } else {
       moveCannonPointer(btn);
       currentClicked1 = btn;
     }
   }
 
-  void moveCannonPointer(string clickedbutton)
-  {
+  void moveCannonPointer(string clickedbutton) {
     LineRenderer LR = MenuAimLine.GetComponent<LineRenderer>();
     Transform transform = gameObject.GetComponent<Transform>();
-    if (clickedbutton == "StoryBtn")
-    {
+    if (clickedbutton == "StoryBtn") {
       LR.SetPosition(1, new Vector3(-4.55f, 3f, 0f));
       transform.rotation = Quaternion.Euler(0, 0, -1.9f);
     }
-    if (clickedbutton == "EndlessUpgraded")
-    {
+    if (clickedbutton == "EndlessUpgraded") {
       LR.SetPosition(1, new Vector3(-2f, 0f, 0f));
       transform.rotation = Quaternion.Euler(0, 0, -21.80141f);
     }
-    if (clickedbutton == "EndlessOriginal")
-    {
+    if (clickedbutton == "EndlessOriginal") {
       LR.SetPosition(1, new Vector3(3f, -4f, 0f));
       transform.rotation = Quaternion.Euler(0, 0, -51.84277f);
     }
   }
 
 
-  void moveScene(string btn)
-  {
-    if (btn == "StoryBtn")
-    {
+  void moveScene(string btn) {
+    if (btn == "StoryBtn") {
       SceneManager.LoadScene("Worlds");
     }
-    if (btn == "EndlessUpgraded")
-    {
+    if (btn == "EndlessUpgraded") {
       SceneManager.LoadScene("EndlessUpgraded");
     }
-    if (btn == "EndlessOriginal")
-    {
+    if (btn == "EndlessOriginal") {
       SceneManager.LoadScene("EndlessOriginal");
     }
   }

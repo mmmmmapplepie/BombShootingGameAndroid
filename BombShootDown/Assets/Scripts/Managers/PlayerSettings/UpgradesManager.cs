@@ -50,12 +50,16 @@ public class UpgradesManager {
       }
       SettingsManager.world = data.currentworld;
       SettingsManager.currentFocusLevelTransform = data.FocusLevelTransform;
+      SettingsManager.endlessOriginalHS = data.endlessOriginalHS;
+      SettingsManager.endlessUpgradedHS = data.endlessUpgradedHS;
       MoneyManager.money = data.money;
     } else {
       UpgradeOptions.Clear();
       dictionaryBaseLog();
       SettingsManager.world = new int[2] { 3, 1 };
       SettingsManager.currentFocusLevelTransform = new float[2] { 443, 682 };
+      SettingsManager.endlessOriginalHS = 0f;
+      SettingsManager.endlessUpgradedHS = 0f;
       MoneyManager.money = 300;
     }
   }
