@@ -13,13 +13,13 @@ public class MoneyManager
   }
   public static void addMoney(int val)
   {
-    if (money + val < 1000000000)
+    if (money + val < 10000000)
     {
       money = (int)Mathf.Floor(money + val);
     }
     else
     {
-      money = 1000000000;
+      money = 10000000;
     }
     SaveSystem.saveSettings();
   }
