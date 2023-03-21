@@ -40,7 +40,6 @@ public class AudioManagerBGM : AudioManagerGeneral
     if (changingBGM)
     {
       StopCoroutine("BGMFadeOutIn");
-      print("stopped");
     }
     StartCoroutine("BGMFadeOutIn", newBGMname);
   }

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ac5d81429c07647b438a5cf8219fb8, type: 3}
   m_Name: 1-3
   m_EditorClassIdentifier: 
-  name: 1-3TR
+  name: 1-3
   upgradesPerWave: 0300000005000000
   firstClearRewards: 100
-  clearRewards: 20
+  clearRewards: 10
   Enemies:
   - {fileID: 11400000, guid: c87ddd41b56fe474cbf8fd5fad5ce3a8, type: 2}
   - {fileID: 11400000, guid: 01ee98b30550a2f44a545f9b1bc183c3, type: 2}

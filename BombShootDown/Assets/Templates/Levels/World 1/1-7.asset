@@ -15,6 +15,6 @@ MonoBehaviour:
   name: 1-7
   upgradesPerWave: 
   firstClearRewards: 100
-  clearRewards: 25
+  clearRewards: 15
   Enemies: []
   stageInWorld: 0100000007000000

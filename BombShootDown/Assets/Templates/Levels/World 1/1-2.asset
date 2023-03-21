@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 1-2
   m_EditorClassIdentifier: 
   name: 1-2TR
-  upgradesPerWave: 03000000
+  upgradesPerWave: 0300000004000000
   firstClearRewards: 100
-  clearRewards: 20
+  clearRewards: 0
   Enemies:
   - {fileID: 11400000, guid: c87ddd41b56fe474cbf8fd5fad5ce3a8, type: 2}
   stageInWorld: 0100000002000000

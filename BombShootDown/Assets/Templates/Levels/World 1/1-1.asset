@@ -15,7 +15,7 @@ MonoBehaviour:
   name: 1-1TR
   upgradesPerWave: 0a0000000f000000
   firstClearRewards: 100
-  clearRewards: 20
+  clearRewards: 0
   Enemies:
   - {fileID: 11400000, guid: c87ddd41b56fe474cbf8fd5fad5ce3a8, type: 2}
   stageInWorld: 0100000001000000
