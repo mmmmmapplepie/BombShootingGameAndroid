@@ -525,6 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chainedAnimation: {fileID: 3190854738746908884, guid: e0497198279913746880e132ec87e0d0, type: 3}
   Chained: 0
+  animationAdded: 0
 --- !u!114 &7511504544025807726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +550,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 15
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 0
@@ -1099,7 +1100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2172528103502488531}
-  - component: {fileID: 3669208529077005031}
+  - component: {fileID: 712371352232915525}
   m_Layer: 0
   m_Name: MovementControl
   m_TagString: Untagged
@@ -1121,7 +1122,7 @@ Transform:
   m_Father: {fileID: 3112957866081141616}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3669208529077005031
+--- !u!114 &712371352232915525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1130,9 +1131,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5089559303648433309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b474f854ed2b2a147b49812973589686, type: 3}
+  m_Script: {fileID: 11500000, guid: dd71842021868b54fa446897e1e9360b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shiftRate: 0.8
+  forceMultiplier: 6
 --- !u!1001 &6948247854197933761
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Upgrades : MonoBehaviour {
+public class UpgradesMaxed : MonoBehaviour {
   string[] world1Upg = new string[10] { "UpgradeSlot", "MaximumLife", "LifeRecovery", "AmmunitionMax", "AmmunitionRate", "Damage", "Helpers", "BulletSpeed", "ReloadTime", "BombDamage" };
   string[] world2Upg = new string[6] { "Revive", "ArmorPierce", "HitsPerHit", "Pierce", "AoeHit", "Laser" };
   string[] world3Upg = new string[4] { "Nuke", "ChainExplosion", "PullEnemies", "DoubleGun" };
@@ -55,33 +55,29 @@ public class Upgrades : MonoBehaviour {
     setDoubleGun();
   }
   void setUpgradeSlot() {
-    int lvl = UpgradesManager.returnDictionaryValue("UpgradeSlot")[1];
-    UpgradesEquipped.UpgradedSlots = 5 + 2 * lvl;
+    UpgradesEquipped.UpgradedSlots = 25;
   }
   void setMaximumLife() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("MaximumLife")) {
-      int lvl = UpgradesManager.returnDictionaryValue("MaximumLife")[1];
       float remainingliferatio = LifeManager.CurrentLife / BowManager.MaxLife;
-      BowManager.MaxLife = 10f + (float)lvl * 10f;
+      BowManager.MaxLife = 10f + 10f * 10f;
       LifeManager.CurrentLife = remainingliferatio * BowManager.MaxLife;
     }
   }
   void setLifeRecovery() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("LifeRecovery")) {
-      int lvl = UpgradesManager.returnDictionaryValue("LifeRecovery")[1];
-      BowManager.LifeRecovery = (float)lvl / 5f;
+      BowManager.LifeRecovery = 10f / 5f;
     }
   }
   void setDamage() {
     BowManager.BulletDmg = 1f;
     if (UpgradesEquipped.EquippedUpgrades.Contains("Damage")) {
-      int lvl = UpgradesManager.returnDictionaryValue("Damage")[1];
-      BowManager.BulletDmg = 1f + (float)lvl;
+      BowManager.BulletDmg = 1f + 10f;
     }
   }
   void setHelpers() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Helpers")) {
-      int lvl = UpgradesManager.returnDictionaryValue("Helpers")[1];
+      int lvl = 10;
       float damageUp = 0.5f + (float)lvl * 0.05f;
       BowManager.HelperDmg = BowManager.BulletDmg * damageUp;
       outerHelpers.SetActive(true);
@@ -95,33 +91,28 @@ public class Upgrades : MonoBehaviour {
   }
   void setBulletSpeed() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("BulletSpeed")) {
-      int lvl = UpgradesManager.returnDictionaryValue("BulletSpeed")[1];
-      BowManager.BulletSpeed = 5f + 3f * (float)lvl;
+      BowManager.BulletSpeed = 5f + 3f * 10f;
     }
   }
   void setReloadTime() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("ReloadTime")) {
-      int lvl = UpgradesManager.returnDictionaryValue("ReloadTime")[1];
-      BowManager.ReloadRate = 2f / (1f + 2f * (float)lvl);
+      BowManager.ReloadRate = 2f / (1f + 20f);
     }
   }
   void setRevive() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Revive")) {
-      int lvl = UpgradesManager.returnDictionaryValue("Revive")[1];
-      BowManager.Revive = (float)lvl / 10;
+      BowManager.Revive = 10f / 10f;
       BowManager.ReviveUsable = true;
     }
   }
   void setArmorPierce() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("ArmorPierce")) {
-      int lvl = UpgradesManager.returnDictionaryValue("ArmorPierce")[1];
-      BowManager.ArmorPierce = lvl;
+      BowManager.ArmorPierce = 10;
     }
   }
   void setHitsPerHit() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("HitsPerHit")) {
-      int lvl = UpgradesManager.returnDictionaryValue("HitsPerHit")[1];
-      BowManager.HitsPerHit = lvl;
+      BowManager.HitsPerHit = 10;
     }
   }
   void setPierce() {
@@ -132,38 +123,32 @@ public class Upgrades : MonoBehaviour {
   }
   void setAoeHit() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("AoeHit")) {
-      int lvl = UpgradesManager.returnDictionaryValue("AoeHit")[1];
       BowManager.AOE = true;
-      BowManager.AOEDmg = 0.5f + (float)lvl / 20f;
+      BowManager.AOEDmg = 0.5f + 10f / 20f;
     }
   }
   void setChainExplosion() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("ChainExplosion")) {
-      int lvl = UpgradesManager.returnDictionaryValue("ChainExplosion")[1];
-      BowManager.ChainExplosionDmg = 0.2f * (float)lvl;
+      BowManager.ChainExplosionDmg = 0.2f * 10f;
       BowManager.ChainExplosion = true;
     }
   }
   void setPullEnemies() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("PullEnemies")) {
-      int lvl = UpgradesManager.returnDictionaryValue("PullEnemies")[1];
-      BowManager.PullForce = (float)lvl;
+      BowManager.PullForce = 10f;
     }
   }
   void setAmmunitionRate() {
-    //resetting this so that double gun doesnt repeatedly increase things.
     BowManager.AmmoRate = 4f;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionRate")) {
-      int lvl = UpgradesManager.returnDictionaryValue("AmmunitionRate")[1];
-      BowManager.AmmoRate = 4f / (0.5f + (float)lvl);
+      BowManager.AmmoRate = 4f / (0.2f + 10f);
     }
   }
   void setAmmunitionMax() {
     //resetting this so that double gun doesnt repeatedly increase things.
     BowManager.MaxAmmo = 10;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionMax")) {
-      int lvl = UpgradesManager.returnDictionaryValue("AmmunitionMax")[1];
-      BowManager.MaxAmmo = 5 * lvl;
+      BowManager.MaxAmmo = 60;
       BowManager.CurrentAmmo = BowManager.MaxAmmo + BowManager.CurrentAmmo - 10;
     }
   }
@@ -174,7 +159,7 @@ public class Upgrades : MonoBehaviour {
       bow2.SetActive(true);
       bow1.transform.position = tempos1;
       bow2.transform.position = tempos2;
-      BowManager.AmmoRate = BowManager.AmmoRate * 1.1f;
+      BowManager.AmmoRate = BowManager.AmmoRate / 1.1f;
       BowManager.MaxAmmo = BowManager.MaxAmmo * 2;
       //double ammomax and rate
     }

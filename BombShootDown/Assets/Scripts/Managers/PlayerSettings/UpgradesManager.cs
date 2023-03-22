@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 public class UpgradesManager {
-  public static int[] pricing = { 0, 50, 60, 70, 80, 90, 100, 120, 140, 170, 0 };
+  public static int[] pricing = { 0, 50, 60, 70, 80, 90, 100, 120, 140, 170, 250 };
   public static int DoubleGunPricing = 10000;
 
   public static Dictionary<string, int[]> UpgradeOptions = new Dictionary<string, int[]>();

@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour {
         //pull animation
         if ((coll.transform.root.position.x - transform.position.x) != 0f) {
           float diff = coll.transform.root.position.x - transform.position.x;
-          float forcemag = 1 / Mathf.Pow((Mathf.Abs(diff) - 3.5f), 2f);
+          float forcemag = 1 / Mathf.Pow((Mathf.Abs(diff) - 4.5f), 2f);
           if (diff > 0f) {
             force = -forcemag;
           } else {

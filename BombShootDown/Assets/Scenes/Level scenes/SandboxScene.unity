@@ -622,7 +622,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: e14dd8924d6ab9b4bbcfa0343e6650cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5407,7 +5407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 723412573}
-  - component: {fileID: 723412575}
+  - component: {fileID: 723412574}
   m_Layer: 0
   m_Name: GameMechanics
   m_TagString: Untagged
@@ -5429,7 +5429,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &723412575
+--- !u!114 &723412574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5438,7 +5438,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 723412572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266d78881e9e0cb48b7decae13973d15, type: 3}
+  m_Script: {fileID: 11500000, guid: ac0d4d2146fe3124d95ddfca72eb0168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bow1: {fileID: 1554476900}
@@ -5869,7 +5869,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 804028640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9bebe4fb0edf349883702cb8ca5740, type: 3}
+  m_Script: {fileID: 11500000, guid: c956e24feb127c3488cc61bc8699b591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UpgTemplates:
@@ -5898,7 +5898,7 @@ MonoBehaviour:
   NewUpgIconPrefab: {fileID: 3653339596813965720, guid: 73938eb438ce89643aabc2f0a70cf8bb, type: 3}
   AvailableSlotText: {fileID: 1023825790}
   UpgradesPanel: {fileID: 1931365584}
-  UpgradesScript: {fileID: 723412575}
+  UpgradesScript: {fileID: 723412574}
   cooldowns: {fileID: 1463959778}
   AmmoLife: {fileID: 913763583}
 --- !u!1 &811791009
@@ -7311,7 +7311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 991882676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6cb0e9fe53892459492410d2c2425d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8341cd60a2f0d364384fa1f7dd1e4581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UpgTemplates:
@@ -9758,7 +9758,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 804028644}
-        m_TargetAssemblyTypeName: ChosenUpg, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChosenUpgMaxed, Assembly-CSharp
         m_MethodName: DisableUpgrades
         m_Mode: 1
         m_Arguments:
@@ -11416,10 +11416,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1517418100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6839513ad53bdb84bbe787f1c7150883, type: 3}
+  m_Script: {fileID: 11500000, guid: 25859663ae351b84c8d2147895eac82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: fc9b0d3f5c88c2a4c9d11b27822de009, type: 2}
+  level: {fileID: 11400000, guid: 591215a4e46661c43a110a7852aac1f9, type: 2}
 --- !u!1 &1537146466
 GameObject:
   m_ObjectHideFlags: 0

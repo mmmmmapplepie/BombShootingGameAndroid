@@ -17,9 +17,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: dc69fa68a5cce424698cb04b0e891056, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 9579d57651e8fd3409e6e59892163eef, type: 3}
-  Life: 0
-  Damage: 0
-  Speed: 0
+  Life: 5
+  Damage: 1
+  Speed: 1
   MaxShield: 0
   Shield: 0
   Armor: 0

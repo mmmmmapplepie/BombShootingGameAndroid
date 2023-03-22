@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class W3Upg : MonoBehaviour {
+public class DoubleGunEnabled : MonoBehaviour {
   [SerializeField]
   List<UpgradePick> UpgTemplates;
   [SerializeField]
@@ -30,14 +30,7 @@ public class W3Upg : MonoBehaviour {
       }
     }
     foreach (string upg in AvailableUpg) {
-      if (upg != "DoubleGun") {
-        CreateUpgradeOption(upg);
-      } else {
-        int[] DGdata = UpgradesManager.returnDictionaryValue(upg);
-        if (DGdata[0] == 1) {
-          CreateUpgradeOption(upg);
-        }
-      }
+      CreateUpgradeOption(upg);
     }
     RenderAllOptions();
   }
@@ -77,4 +70,5 @@ public class W3Upg : MonoBehaviour {
     icon.GetComponent<Button>().interactable = false;
   }
 }
+
 

@@ -450,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chainedAnimation: {fileID: 3190854738746908884, guid: e0497198279913746880e132ec87e0d0, type: 3}
   Chained: 0
+  animationAdded: 0
 --- !u!114 &7511504544025807726
 MonoBehaviour:
   m_ObjectHideFlags: 0

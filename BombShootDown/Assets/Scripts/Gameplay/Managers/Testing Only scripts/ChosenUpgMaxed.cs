@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class ChosenUpg : MonoBehaviour {
+public class ChosenUpgMaxed : MonoBehaviour {
   [SerializeField]
   List<UpgradePick> UpgTemplates;
   WaveController waveController;
@@ -20,7 +20,7 @@ public class ChosenUpg : MonoBehaviour {
   [SerializeField]
   GameObject UpgradesPanel;
   [SerializeField]
-  Upgrades UpgradesScript;
+  UpgradesMaxed UpgradesScript;
   [SerializeField]
   GameObject cooldowns;
   [SerializeField]

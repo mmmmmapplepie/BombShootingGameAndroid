@@ -60,10 +60,6 @@ public class LevelDataDisplay : MonoBehaviour
     {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
     }
-    else if (thislevel.name == "1-3TR")
-    {
-      SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
-    }
     else
     {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);

@@ -1,39 +1,29 @@
 using UnityEngine;
-public class Basic : MonoBehaviour
-{
+public class Basic : MonoBehaviour {
   Enemy data;
   float speed;
   float driftMag;
   float drift;
-  void Awake()
-  {
-    data = transform.parent.GetComponent<EnemyLife>().data;
+  void Awake() {
+    data = transform.root.GetComponent<EnemyLife>().data;
     speed = data.Speed;
     drift = Random.Range(-0.5f, 0.5f);
     driftMag = Mathf.Abs(drift);
   }
-  void checkFlip()
-  {
-    if (transform.position.x < -5f && drift < 0f)
-    {
+  void checkFlip() {
+    if (transform.position.x < -5f && drift < 0f) {
       drift = driftMag;
     }
-    if (transform.position.x > 5f && drift > 0f)
-    {
+    if (transform.position.x > 5f && drift > 0f) {
       drift = -driftMag;
     }
   }
-  void FixedUpdate()
-  {
+  void FixedUpdate() {
     checkFlip();
-    Vector3 old = transform.parent.position;
+    Vector3 old = transform.root.position;
     Vector3 normDir = new Vector3(drift, -1f, 0f);
     normDir.Normalize();
     Vector3 newPos = old + Time.deltaTime * speed * BowManager.EnemySpeed * normDir;
-    transform.parent.position = newPos;
-  }
-  void yes()
-  {
-
+    transform.root.position = newPos;
   }
 }
