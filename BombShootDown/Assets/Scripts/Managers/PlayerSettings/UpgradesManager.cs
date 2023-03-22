@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 public class UpgradesManager {
-  public static int[] pricing = { 0, 50, 60, 70, 80, 90, 100, 120, 140, 170, 250 };
+  public static int[] pricing = { 0, 50, 60, 70, 80, 90, 100, 120, 140, 170, 0 };
+  //translates to 880 max for pricing "1" upgrade.
+  //totals to 61600 in total for ALL upgrades as of 23rd of march 2023.
   public static int DoubleGunPricing = 10000;
 
   public static Dictionary<string, int[]> UpgradeOptions = new Dictionary<string, int[]>();
@@ -19,11 +21,11 @@ public class UpgradesManager {
     //world 1
     UpgradeOptions.Add("UpgradeSlot", new int[] { 1, 1, 10, 0 });
     UpgradeOptions.Add("MaximumLife", new int[] { 1, 1, 2, 1 });
-    UpgradeOptions.Add("LifeRecovery", new int[] { 1, 1, 5, 1 });
-    UpgradeOptions.Add("AmmunitionMax", new int[] { 1, 1, 2, 1 });
-    UpgradeOptions.Add("AmmunitionRate", new int[] { 1, 1, 2, 1 });
+    UpgradeOptions.Add("LifeRecovery", new int[] { 1, 1, 5, 2 });
+    UpgradeOptions.Add("AmmunitionMax", new int[] { 1, 1, 1, 1 });
+    UpgradeOptions.Add("AmmunitionRate", new int[] { 1, 1, 3, 1 });
     UpgradeOptions.Add("Damage", new int[] { 1, 1, 3, 1 });
-    UpgradeOptions.Add("Helpers", new int[] { 1, 1, 4, 2 });
+    UpgradeOptions.Add("Helpers", new int[] { 1, 1, 5, 2 });
     UpgradeOptions.Add("BulletSpeed", new int[] { 1, 1, 1, 1 });
     UpgradeOptions.Add("ReloadTime", new int[] { 1, 1, 3, 1 });
     UpgradeOptions.Add("BombDamage", new int[] { 1, 1, 2, 1 });
@@ -33,13 +35,13 @@ public class UpgradesManager {
     UpgradeOptions.Add("HitsPerHit", new int[] { 1, 1, 4, 2 });
     UpgradeOptions.Add("Pierce", new int[] { 1, 1, 4, 1 });
     UpgradeOptions.Add("AoeHit", new int[] { 1, 1, 3, 2 });
-    UpgradeOptions.Add("Laser", new int[] { 1, 1, 4, 1 });
+    UpgradeOptions.Add("Laser", new int[] { 1, 1, 4, 2 });
     //world 3
-    UpgradeOptions.Add("Nuke", new int[] { 1, 1, 5, 1 });
+    UpgradeOptions.Add("Nuke", new int[] { 1, 1, 5, 2 });
     UpgradeOptions.Add("ChainExplosion", new int[] { 1, 1, 5, 2 });
-    UpgradeOptions.Add("PullEnemies", new int[] { 1, 1, 2, 1 });
+    UpgradeOptions.Add("PullEnemies", new int[] { 1, 1, 5, 2 });
     //for DoubleGun [usingstatus, unlockedstatus, pricing(never used), upgslots]
-    UpgradeOptions.Add("DoubleGun", new int[] { 0, 0, 5, 3 });
+    UpgradeOptions.Add("DoubleGun", new int[] { 0, 0, 5, 4 });
   }
   public static void loadAllData() {
     PlayerData data = SaveSystem.loadSettings();

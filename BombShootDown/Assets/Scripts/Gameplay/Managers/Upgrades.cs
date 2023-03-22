@@ -57,6 +57,9 @@ public class Upgrades : MonoBehaviour {
   void setUpgradeSlot() {
     int lvl = UpgradesManager.returnDictionaryValue("UpgradeSlot")[1];
     UpgradesEquipped.UpgradedSlots = 5 + 2 * lvl;
+    if (lvl == 10) {
+      UpgradesEquipped.UpgradedSlots = 30;
+    }
   }
   void setMaximumLife() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("MaximumLife")) {

@@ -2990,7 +2990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
-      value: 'Slots Required : 1
+      value: 'Slots Required : 2
 
         Increases the damage and reduces the cooldown
         of the laser.'
@@ -3109,7 +3109,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Slots Required : 3
+  m_Text: 'Slots Required : 4
 
     Unlocks a second gun.'
 --- !u!222 &628175035
@@ -6343,7 +6343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
-      value: 'Slots Required : 1
+      value: 'Slots Required : 2
 
         Increases the damage and reduces the cooldown
         of the nuke.'
@@ -8358,7 +8358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
-      value: 'Slots Required : 1
+      value: 'Slots Required : 2
 
         Increases the force and frequency of pull
         on enemies.'
@@ -9946,7 +9946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: m_Text
-      value: 'Slots Required : 1
+      value: 'Slots Required : 2
 
         Increases the healing rate of the fortress.'
       objectReference: {fileID: 0}

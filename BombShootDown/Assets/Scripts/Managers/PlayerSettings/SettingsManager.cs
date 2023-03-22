@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 public class SettingsManager {
   #region VolumeSettings
   public static float volumeTheme = 1f;
@@ -34,5 +35,13 @@ public class SettingsManager {
       world[1] = 51;
     }
   }
+  #endregion
+  #region skin
+  public static string currFortressSkin = null;
+  public static string currBowSkin = null;
+  public static string currBulletSkin = null;
+  public static List<string> unlockedFortressSkin = new List<string>();
+  public static List<string> unlockedBowSkin = new List<string>();
+  public static List<string> unlockedBulletSkin = new List<string>();
   #endregion
 }
