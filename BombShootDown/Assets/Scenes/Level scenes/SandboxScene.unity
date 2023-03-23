@@ -575,7 +575,6 @@ GameObject:
   m_Component:
   - component: {fileID: 88118949}
   - component: {fileID: 88118948}
-  - component: {fileID: 88118950}
   m_Layer: 0
   m_Name: FortressArt
   m_TagString: Untagged
@@ -648,19 +647,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &88118950
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 88118947}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 9, y: 16, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &105235997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2388614927702618999, guid: ff07121a98ee4194b9b402d0d2c53e30, type: 3}
@@ -5573,7 +5559,7 @@ SpriteRenderer:
   m_Size: {x: 5.75, y: 0.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &762725459
@@ -7261,6 +7247,92 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979304481}
   m_CullTransparentMesh: 1
+--- !u!1 &984715686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 984715690}
+  - component: {fileID: 984715689}
+  - component: {fileID: 984715688}
+  - component: {fileID: 984715687}
+  m_Layer: 0
+  m_Name: SkinManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &984715687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984715686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151834689424dba4dbb1097ae995750d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfFortressSkins:
+  - {fileID: 11400000, guid: 71ccf4c2ef5b024468d3bb1b68244901, type: 2}
+  fortress: {fileID: 88118947}
+--- !u!114 &984715688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984715686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a3d748da1b43e489a97acfd4869c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfBulletSkins:
+  - {fileID: 11400000, guid: 55ff39de246a72f419913590ec3ff23b, type: 2}
+--- !u!114 &984715689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984715686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c30ec6ad8792a48b60aeb121b11b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfBowSkins:
+  - {fileID: 11400000, guid: 2199c1f43c57eaf41806c1de12b147fc, type: 2}
+  - {fileID: 11400000, guid: 6aa5333760bf65240b6bdf50ac21c2e4, type: 2}
+  Bow1: {fileID: 433118168}
+  Bow2: {fileID: 1919185865}
+  helpers:
+  - {fileID: 677190707}
+  - {fileID: 1162895636}
+  - {fileID: 1858944001}
+  - {fileID: 721974857}
+  - {fileID: 1712882998}
+  - {fileID: 1076465926}
+--- !u!4 &984715690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984715686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3315221, y: -3.5424185, z: -1.290782}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &991882676
 GameObject:
   m_ObjectHideFlags: 0
@@ -8803,7 +8875,7 @@ GameObject:
   - component: {fileID: 1175112784}
   - component: {fileID: 1175112785}
   m_Layer: 0
-  m_Name: StringHolderR (1)
+  m_Name: StringHolderR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8817,11 +8889,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175112783}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 3.2340002, z: 0}
+  m_LocalPosition: {x: 5.500001, y: 3.2340002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1355668481}
-  m_RootOrder: 4
+  m_Father: {fileID: 1919185865}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1175112785
 SpriteRenderer:
@@ -10454,8 +10526,6 @@ Transform:
   - {fileID: 1919185865}
   - {fileID: 80048801}
   - {fileID: 449322770}
-  - {fileID: 1569311924}
-  - {fileID: 1175112784}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11560,7 +11630,7 @@ SpriteRenderer:
   m_Size: {x: 5.84, y: 0.42}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1549614597
@@ -11655,7 +11725,7 @@ GameObject:
   - component: {fileID: 1569311924}
   - component: {fileID: 1569311925}
   m_Layer: 0
-  m_Name: StringHolderL (1)
+  m_Name: StringHolderL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11669,11 +11739,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569311923}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 3.2340002, z: 0}
+  m_LocalPosition: {x: -5.500001, y: 3.2340002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1355668481}
-  m_RootOrder: 3
+  m_Father: {fileID: 1919185865}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1569311925
 SpriteRenderer:
@@ -14220,6 +14290,8 @@ Transform:
   m_Children:
   - {fileID: 760229607}
   - {fileID: 1549614597}
+  - {fileID: 1569311924}
+  - {fileID: 1175112784}
   m_Father: {fileID: 1355668481}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

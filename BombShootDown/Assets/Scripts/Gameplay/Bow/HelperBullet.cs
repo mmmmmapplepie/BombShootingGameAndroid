@@ -13,6 +13,9 @@ public class HelperBullet : MonoBehaviour {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     gameObject.GetComponent<CircleCollider2D>().enabled = false;
   }
+  void OnEnable() {
+    GameObject.Find("SkinManager").GetComponent<BulletSkinChanger>().changeBulletSprite(gameObject);
+  }
   void Update() {
     // destroy when outside area
     if (transform.position.x > 7f || transform.position.x < -7f || transform.position.y > 13f || transform.position.y < -13f) {

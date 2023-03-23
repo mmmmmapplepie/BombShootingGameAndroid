@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a972d0117e6e6d940acc8dac8eadf9a1, type: 3}
+  m_Name: Bronze Bow
+  m_EditorClassIdentifier: 
+  name: Bronze Bow
+  particleEffect: {fileID: 0}
+  mainBody: {fileID: 5010643592830274869, guid: da3a3be34f97f6e4abad93a966180ad9, type: 3}
+  LeftString: {fileID: 3136139660488721067, guid: da3a3be34f97f6e4abad93a966180ad9, type: 3}
+  RightString: {fileID: 4251739898012650573, guid: da3a3be34f97f6e4abad93a966180ad9, type: 3}
+  LeftBolt: {fileID: 4035159467983931355, guid: da3a3be34f97f6e4abad93a966180ad9, type: 3}
+  RightBolt: {fileID: 4187023180619627206, guid: da3a3be34f97f6e4abad93a966180ad9, type: 3}

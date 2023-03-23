@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a972d0117e6e6d940acc8dac8eadf9a1, type: 3}
+  m_Name: Wooden Bow
+  m_EditorClassIdentifier: 
+  name: Wooden Bow
+  particleEffect: {fileID: 0}
+  bowSkin: 1
+  mainBody: {fileID: 8984809140821327461, guid: b32dbc92e87882544ae980274cc6190a, type: 3}
+  LeftString: {fileID: -6821423880142712601, guid: b32dbc92e87882544ae980274cc6190a, type: 3}
+  RightString: {fileID: -1972236846639000396, guid: b32dbc92e87882544ae980274cc6190a, type: 3}
+  LeftBolt: {fileID: -2621592646956661001, guid: b32dbc92e87882544ae980274cc6190a, type: 3}
+  RightBolt: {fileID: -5642404654014700102, guid: b32dbc92e87882544ae980274cc6190a, type: 3}

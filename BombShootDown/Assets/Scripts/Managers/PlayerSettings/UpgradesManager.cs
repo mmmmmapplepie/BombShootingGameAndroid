@@ -55,6 +55,12 @@ public class UpgradesManager {
       SettingsManager.endlessOriginalHS = data.endlessOriginalHS;
       SettingsManager.endlessUpgradedHS = data.endlessUpgradedHS;
       MoneyManager.money = data.money;
+      SettingsManager.currBowSkin = data.currBowSkin;
+      SettingsManager.currBulletSkin = data.currBulletSkin;
+      SettingsManager.currFortressSkin = data.currFortressSkin;
+      SettingsManager.unlockedBowSkin = data.unlockedBowSkin;
+      SettingsManager.unlockedBulletSkin = data.unlockedBulletSkin;
+      SettingsManager.unlockedFortressSkin = data.unlockedFortressSkin;
     } else {
       UpgradeOptions.Clear();
       dictionaryBaseLog();
@@ -63,6 +69,12 @@ public class UpgradesManager {
       SettingsManager.endlessOriginalHS = 0f;
       SettingsManager.endlessUpgradedHS = 0f;
       MoneyManager.money = 300;
+      SettingsManager.currBowSkin = "Bronze Bow";
+      SettingsManager.currBulletSkin = "Wooden Bullet";
+      SettingsManager.currFortressSkin = "Wooden Fortress";
+      SettingsManager.unlockedBowSkin = new List<string>() { "Wooden Bow", "Bronze Bow" };
+      SettingsManager.unlockedBulletSkin = new List<string>() { "Wooden Bullet" };
+      SettingsManager.unlockedFortressSkin = new List<string>() { "Wooden Fortress" };
     }
   }
 }

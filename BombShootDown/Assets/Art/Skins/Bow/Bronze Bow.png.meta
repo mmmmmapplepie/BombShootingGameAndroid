@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: f70932cfc334f8443a31c40750a49aad
+guid: da3a3be34f97f6e4abad93a966180ad9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1118077061899485251
-    second: SSBase1_3
+      213: 3136139660488721067
+    second: Bronze Bow_0
+  - first:
+      213: 4251739898012650573
+    second: Bronze Bow_1
+  - first:
+      213: 5010643592830274869
+    second: Bronze Bow_2
+  - first:
+      213: 4035159467983931355
+    second: Bronze Bow_3
+  - first:
+      213: 4187023180619627206
+    second: Bronze Bow_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -119,55 +131,76 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SSBase1_0
+      name: Bronze Bow_0
       rect:
         serializedVersion: 2
-        x: 144
-        y: 1828
-        width: 575
-        height: 44
+        x: 9
+        y: 1948
+        width: 555
+        height: 46
       alignment: 9
-      pivot: {x: 0.0042968486, y: 0.5}
+      pivot: {x: 0, y: 0.4420909}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20dd7fa381be9c1a0800000000000000
-      internalID: -6788636473983247102
+      spriteID: ba2c17db76ec58b20800000000000000
+      internalID: 3136139660488721067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SSBase1_1
+      name: Bronze Bow_1
       rect:
         serializedVersion: 2
-        x: 876
-        y: 1834
-        width: 584
-        height: 42
+        x: 1036
+        y: 1948
+        width: 555
+        height: 46
       alignment: 9
-      pivot: {x: 1.0017481, y: 0.5}
+      pivot: {x: 1, y: 0.3841818}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a65bf864eca3929f0800000000000000
-      internalID: -492798026598861462
+      spriteID: d4c466a19e6310b30800000000000000
+      internalID: 4251739898012650573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SSBase1_2
+      name: Bronze Bow_2
       rect:
         serializedVersion: 2
-        x: 52
-        y: 380
-        width: 1492
-        height: 1312
+        x: 21
+        y: 210
+        width: 1557
+        height: 1500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.54866666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d4cb6dcc1698540800000000000000
+      internalID: 5010643592830274869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bronze Bow_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 21
+        width: 187
+        height: 185
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e347b4c40273e580800000000000000
-      internalID: -8799063882146036763
+      spriteID: bd78c3d2824cff730800000000000000
+      internalID: 4035159467983931355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SSBase1_3
+      name: Bronze Bow_4
       rect:
         serializedVersion: 2
-        x: 140
-        y: 0
-        width: 1374
-        height: 204
+        x: 1277
+        y: 21
+        width: 187
+        height: 185
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 340080af925348f00800000000000000
-      internalID: 1118077061899485251
+      spriteID: 6cab823266b4b1a30800000000000000
+      internalID: 4187023180619627206
       vertices: []
       indices: 
       edges: []
