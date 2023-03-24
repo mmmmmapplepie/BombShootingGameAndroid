@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: ChainExplosion
   sprite: {fileID: 21300000, guid: de5ac6c25101c0a48bea88a73aa1ac76, type: 3}
-  upgradeSlots: 2
+  upgradeSlots: 3

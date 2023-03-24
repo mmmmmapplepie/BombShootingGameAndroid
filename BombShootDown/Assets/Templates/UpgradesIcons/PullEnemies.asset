@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: PullEnemies
   sprite: {fileID: 21300000, guid: 2f7ef53660092554cb8ecd5a0920c88a, type: 3}
-  upgradeSlots: 1
+  upgradeSlots: 3

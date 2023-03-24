@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     gameObject.GetComponent<CircleCollider2D>().enabled = false;
   }
-  void OnEnable() {
+  void Start() {
     if (GameObject.Find("SkinManager") != null) {
       GameObject.Find("SkinManager").GetComponent<BulletSkinChanger>().changeBulletSprite(gameObject);
     }

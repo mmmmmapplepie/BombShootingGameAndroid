@@ -35,11 +35,11 @@ public class UpgradesManager {
     UpgradeOptions.Add("HitsPerHit", new int[] { 1, 1, 4, 2 });
     UpgradeOptions.Add("Pierce", new int[] { 1, 1, 4, 1 });
     UpgradeOptions.Add("AoeHit", new int[] { 1, 1, 3, 2 });
-    UpgradeOptions.Add("Laser", new int[] { 1, 1, 4, 2 });
+    UpgradeOptions.Add("Laser", new int[] { 1, 1, 4, 1 });
     //world 3
-    UpgradeOptions.Add("Nuke", new int[] { 1, 1, 5, 2 });
-    UpgradeOptions.Add("ChainExplosion", new int[] { 1, 1, 5, 2 });
-    UpgradeOptions.Add("PullEnemies", new int[] { 1, 1, 5, 2 });
+    UpgradeOptions.Add("Nuke", new int[] { 1, 1, 5, 1 });
+    UpgradeOptions.Add("ChainExplosion", new int[] { 1, 1, 5, 3 });
+    UpgradeOptions.Add("PullEnemies", new int[] { 1, 1, 5, 3 });
     //for DoubleGun [usingstatus, unlockedstatus, pricing(never used), upgslots]
     UpgradeOptions.Add("DoubleGun", new int[] { 0, 0, 5, 4 });
   }
