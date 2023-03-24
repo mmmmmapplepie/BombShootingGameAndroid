@@ -38,10 +38,10 @@ public class SettingsManager {
   #endregion
   #region skin
   public static string currFortressSkin = "Wooden Fortress";
-  public static string currBowSkin = "Bronze Bow";
+  public static string currBowSkin = "Wooden Bow";
   public static string currBulletSkin = "Wooden Bullet";
   public static List<string> unlockedFortressSkin = new List<string>() { "Wooden Fortress" };
-  public static List<string> unlockedBowSkin = new List<string>() { "Wooden Bow", "Bronze Bow" };
+  public static List<string> unlockedBowSkin = new List<string>() { "Wooden Bow" };
   public static List<string> unlockedBulletSkin = new List<string>() { "Wooden Bullet" };
   #endregion
 }

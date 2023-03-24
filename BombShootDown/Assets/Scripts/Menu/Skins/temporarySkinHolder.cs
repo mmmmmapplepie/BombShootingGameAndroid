@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class temporarySkinHolder : MonoBehaviour {
-  public Skin tempBow;
-  public Skin tempBullet;
-  public Skin tempFortress;
+  public GameObject clickedButton;
+  [HideInInspector]
+  public Skin tempBow, tempBullet, tempFortress;
   [SerializeField]
-  List<Skin> allBowSkins;
+  public List<Skin> allBowSkins;
   [SerializeField]
-  List<Skin> allBulletSkins;
+  public List<Skin> allBulletSkins;
   [SerializeField]
-  List<Skin> allFortressSkins;
+  public List<Skin> allFortressSkins;
+  [SerializeField]
+  GameObject bowpanel, bulletpanel, fortresspanel;
+  [SerializeField]
+  GameObject bowPreview, fortressPreview;
+
   void Awake() {
     tempBow = FindSkin(allBowSkins, SettingsManager.currBowSkin);
     tempBullet = FindSkin(allBulletSkins, SettingsManager.currBulletSkin);
@@ -21,12 +27,42 @@ public class temporarySkinHolder : MonoBehaviour {
     tempBow = FindSkin(allBowSkins, name);
   }
   public void changeTempBullet(string name) {
-    tempBow = FindSkin(allBulletSkins, name);
+    tempBullet = FindSkin(allBulletSkins, name);
   }
   public void changeTempFortress(string name) {
-    tempBow = FindSkin(allFortressSkins, name);
+    tempFortress = FindSkin(allFortressSkins, name);
   }
   Skin FindSkin(List<Skin> searchList, string name) {
     return searchList.Find(x => x.name == SettingsManager.currFortressSkin);
+  }
+  public void changeClickedButton(GameObject newBtn) {
+    Color original = newBtn.GetComponent<Image>().color;
+    Color newColor = new Color(0.9f, 0.2f, 0.1f, 1f);
+    clickedButton.GetComponent<Image>().color = original;
+    newBtn.GetComponent<Image>().color = newColor;
+    clickedButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(clickedButton.GetComponent<RectTransform>().anchoredPosition.x, 0f);
+    newBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(newBtn.GetComponent<RectTransform>().anchoredPosition.x, 30f);
+    clickedButton = newBtn;
+    changeSkinPanel();
+  }
+  void changeSkinPanel() {
+    bowpanel.SetActive(false);
+    bulletpanel.SetActive(false);
+    fortresspanel.SetActive(false);
+    if (clickedButton.name == "BowBtn") {
+      bowpanel.SetActive(true);
+      bowPreview.SetActive(true);
+      fortressPreview.SetActive(false);
+    }
+    if (clickedButton.name == "BulletBtn") {
+      bulletpanel.SetActive(true);
+      bowPreview.SetActive(true);
+      fortressPreview.SetActive(false);
+    }
+    if (clickedButton.name == "FortressBtn") {
+      fortresspanel.SetActive(true);
+      bowPreview.SetActive(false);
+      fortressPreview.SetActive(true);
+    }
   }
 }

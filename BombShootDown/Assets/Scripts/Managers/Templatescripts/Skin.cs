@@ -5,6 +5,10 @@ using UnityEngine.UI;
 public class Skin : ScriptableObject {
   public new string name;
   public GameObject particleEffect = null;
+  public int price = 0;
+  public enum skinType { Bow, Fortress, Bullet };
+  [SerializeField]
+  public skinType type;
   public Sprite mainBody;
   public Sprite LeftString = null;
   public Sprite RightString = null;

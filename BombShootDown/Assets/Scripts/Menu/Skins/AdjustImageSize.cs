@@ -33,7 +33,6 @@ public class AdjustImageSize : MonoBehaviour {
   }
   void adjustImageCenter(Image img) {
     float ypivot = img.sprite.bounds.center.y;
-    print(img.sprite.bounds.center.y);
     mainBody.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainBody.GetComponent<RectTransform>().position.x, ypivot * factor);
   }
 }

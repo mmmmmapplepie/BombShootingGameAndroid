@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wooden Bullet
   particleEffect: {fileID: 0}
-  bowSkin: 0
+  price: 0
+  type: 2
   mainBody: {fileID: 21300000, guid: fd35d7b2cbbe91840acb9e0eb72a9ac1, type: 3}
   LeftString: {fileID: 0}
   RightString: {fileID: 0}

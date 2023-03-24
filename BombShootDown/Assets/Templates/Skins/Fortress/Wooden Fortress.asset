@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wooden Fortress
   particleEffect: {fileID: 0}
-  bowSkin: 0
+  price: 0
+  type: 1
   mainBody: {fileID: 21300000, guid: e14dd8924d6ab9b4bbcfa0343e6650cd, type: 3}
   LeftString: {fileID: 0}
   RightString: {fileID: 0}
