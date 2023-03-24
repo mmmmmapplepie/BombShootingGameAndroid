@@ -23,7 +23,9 @@ public class Bullet : MonoBehaviour {
     gameObject.GetComponent<CircleCollider2D>().enabled = false;
   }
   void OnEnable() {
-    GameObject.Find("SkinManager").GetComponent<BulletSkinChanger>().changeBulletSprite(gameObject);
+    if (GameObject.Find("SkinManager") != null) {
+      GameObject.Find("SkinManager").GetComponent<BulletSkinChanger>().changeBulletSprite(gameObject);
+    }
   }
   void Update() {
     // destroy when outside area

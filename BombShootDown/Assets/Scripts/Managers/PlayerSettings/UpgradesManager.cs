@@ -69,10 +69,10 @@ public class UpgradesManager {
       SettingsManager.endlessOriginalHS = 0f;
       SettingsManager.endlessUpgradedHS = 0f;
       MoneyManager.money = 300;
-      SettingsManager.currBowSkin = "Bronze Bow";
+      SettingsManager.currBowSkin = "Wooden Bow";
       SettingsManager.currBulletSkin = "Wooden Bullet";
       SettingsManager.currFortressSkin = "Wooden Fortress";
-      SettingsManager.unlockedBowSkin = new List<string>() { "Wooden Bow", "Bronze Bow" };
+      SettingsManager.unlockedBowSkin = new List<string>() { "Wooden Bow" };
       SettingsManager.unlockedBulletSkin = new List<string>() { "Wooden Bullet" };
       SettingsManager.unlockedFortressSkin = new List<string>() { "Wooden Fortress" };
     }

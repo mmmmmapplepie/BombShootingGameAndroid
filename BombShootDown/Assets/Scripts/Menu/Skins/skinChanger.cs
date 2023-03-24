@@ -22,6 +22,9 @@ public class skinChanger : MonoBehaviour {
     currFortress = temp.tempFortress;
     currBullet = temp.tempBullet;
     currBow = temp.tempBow;
+    changeBow();
+    changeBullet();
+    changeFortress();
   }
   void Update() {
     if (currBow != temp.tempBow) {

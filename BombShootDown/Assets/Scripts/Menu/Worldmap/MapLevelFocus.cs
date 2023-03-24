@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MapLevelFocus : MonoBehaviour
-{
+public class MapLevelFocus : MonoBehaviour {
   GameObject panelHolder;
   [SerializeField]
   Level lvl;
@@ -24,7 +23,7 @@ public class MapLevelFocus : MonoBehaviour
     if (tempclearworld > lvl.stageInWorld[0]) {
       Fog.SetActive(false);
       button.interactable = true;
-    } else if (tempclearworld >= lvl.stageInWorld[0] &&   tempclearlvl >= lvl.stageInWorld[1]) {
+    } else if (tempclearworld >= lvl.stageInWorld[0] && tempclearlvl >= lvl.stageInWorld[1]) {
       Fog.SetActive(false);
       button.interactable = true;
     }

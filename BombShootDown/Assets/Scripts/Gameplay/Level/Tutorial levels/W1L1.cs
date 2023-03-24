@@ -5,45 +5,38 @@ using UnityEngine;
 public class W1L1 : MonoBehaviour, IGetLevelDataInterface {
   [SerializeField]
   Level level;
+  [SerializeField]
+  GameObject winPanel;
   // [SerializeField]
   // spawning animation prefab spawnEffect;
   LevelSpawner spawner;
-
+  new AudioManagerBGM audio;
   public Level GetLevelData() {
     return level;
   }
   void Awake() {
     spawner = gameObject.GetComponent<LevelSpawner>();
-    GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().ChangeBGM("MenuTheme");
+    spawner.setLevelData(level);
+    audio = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
+    audio.ChangeBGM("MenuTheme");
   }
-  void Update() {
-    if (spawner.waveRunning == false && WaveController.startWave == true) {
-      string name = spawner.findCorrectWaveToStart();
-      if (name != null) {
-        StartCoroutine(name);
-      }
-    }
+
+  void Start() {
+    StartCoroutine("wave1");
   }
-  #region LevelDesign
   IEnumerator wave1() {
-    int totalEnemies = 20;
+    int totalEnemies = 5;
     while (totalEnemies > 0) {
       totalEnemies--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.1f);
+      spawner.spawnEnemy("NanoBasic", 0f, 10f, LevelSpawner.addToList.All);
+      yield return new WaitForSeconds(3f);
     }
-    StartCoroutine(spawner.AllTriggerEnemiesCleared());
+    StartCoroutine("EndLevel");
   }
-  IEnumerator wave2() {
-    int totalEnemies = 1000;
-    while (totalEnemies > 0) {
-      totalEnemies--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.1f);
+  IEnumerator EndLevel() {
+    while (spawner.AllWaveTriggerEnemies.Count > 0) {
+      yield return null;
     }
-    StartCoroutine(spawner.LastWaveEnemiesCleared());
+    yield return new WaitForSeconds(1f);
   }
-  #endregion
 }

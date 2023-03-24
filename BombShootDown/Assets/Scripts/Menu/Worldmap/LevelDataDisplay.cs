@@ -2,38 +2,31 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelDataDisplay : MonoBehaviour
-{
+public class LevelDataDisplay : MonoBehaviour {
   Level thislevel;
   public Text LevelNameTxt;
   public Text WaveNumberTxt;
   public Transform EnemiesDescriptionBoxT;
   public GameObject enemyBoxPrefab;
-  void OnEnable()
-  {
+  void OnEnable() {
     thislevel = FocusLevelUpdater.focusLevel;
     LevelNameTxt.text = thislevel.name;
     WaveNumberTxt.text = "Waves: " + thislevel.upgradesPerWave.Count.ToString();
     ClearBox();
-    foreach (Enemy enemy in thislevel.Enemies)
-    {
+    foreach (Enemy enemy in thislevel.Enemies) {
       CreateEnemyBox(enemy);
     }
   }
-  void ClearBox()
-  {
-    foreach (Transform childT in EnemiesDescriptionBoxT)
-    {
+  void ClearBox() {
+    foreach (Transform childT in EnemiesDescriptionBoxT) {
       Destroy(childT.gameObject);
     }
   }
-  void BoxPosReset()
-  {
+  void BoxPosReset() {
     Vector2 updatepos = new Vector2(0f, 0f);
     EnemiesDescriptionBoxT.gameObject.GetComponent<RectTransform>().anchoredPosition = updatepos;
   }
-  void CreateEnemyBox(Enemy enemy)
-  {
+  void CreateEnemyBox(Enemy enemy) {
     BoxPosReset();
     GameObject enemyBox = Instantiate(enemyBoxPrefab, EnemiesDescriptionBoxT);
     Transform enemyBoxT = enemyBox.GetComponent<Transform>();
@@ -46,22 +39,17 @@ public class LevelDataDisplay : MonoBehaviour
     enemyDes.text = enemy.enemyDescription;
   }
   #region BtnNavigation
-  public void CloseLevelPanel()
-  {
+  public void CloseLevelPanel() {
     gameObject.SetActive(false);
   }
-  public void EnterStoryPlay()
-  {
-    if (thislevel.name == "1-1TR")
-    {
+  public void EnterStoryPlay() {
+    if (thislevel.name == "1-1TR") {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
-    }
-    else if (thislevel.name == "1-2TR")
-    {
+    } else if (thislevel.name == "1-2TR") {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
-    }
-    else
-    {
+    } else if (thislevel.name == "SandboxScene") {
+      SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
+    } else {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
       SceneManager.LoadScene("LevelBase", LoadSceneMode.Additive);
     }

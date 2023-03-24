@@ -81,7 +81,6 @@ public class skinPrefabSetup : MonoBehaviour {
     MoneyManager.useMoney(skin.price);
     boughtOrNotCheck();
     closeConfirmation();
-    SaveSystem.saveSettings();
   }
   public void changePreview() {
     if (skin.type == Skin.skinType.Bow) {

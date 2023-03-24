@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ac5d81429c07647b438a5cf8219fb8, type: 3}
   m_Name: Sandbox
   m_EditorClassIdentifier: 
-  name: sandbox
+  name: SandboxScene
   upgradesPerWave: 19000000
   firstClearRewards: 0
   clearRewards: 0
@@ -39,4 +39,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c18fe447778d4174889b5c4089722592, type: 2}
   - {fileID: 11400000, guid: 75170788c55421b4f8ed87caaa417b0a, type: 2}
   - {fileID: 11400000, guid: fad9dfe0b0f46fb4aa9d8c00afa8068f, type: 2}
-  stageInWorld: 
+  stageInWorld: 0100000003000000

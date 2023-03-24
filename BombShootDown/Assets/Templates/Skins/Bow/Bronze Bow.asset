@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bronze Bow
   particleEffect: {fileID: 0}
-  price: 2000
+  price: 200
   type: 0
   mainBody: {fileID: 5010643592830274869, guid: da3a3be34f97f6e4abad93a966180ad9, type: 3}
   LeftString: {fileID: 3136139660488721067, guid: da3a3be34f97f6e4abad93a966180ad9, type: 3}

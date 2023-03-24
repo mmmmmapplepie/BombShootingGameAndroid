@@ -19,21 +19,29 @@ public class temporarySkinHolder : MonoBehaviour {
   GameObject bowPreview, fortressPreview;
 
   void Awake() {
-    tempBow = FindSkin(allBowSkins, SettingsManager.currBowSkin);
-    tempBullet = FindSkin(allBulletSkins, SettingsManager.currBulletSkin);
-    tempFortress = FindSkin(allFortressSkins, SettingsManager.currFortressSkin);
+    changeTempBow(SettingsManager.currBowSkin);
+    changeTempBullet(SettingsManager.currBulletSkin);
+    changeTempFortress(SettingsManager.currFortressSkin);
   }
   public void changeTempBow(string name) {
-    tempBow = FindSkin(allBowSkins, name);
+    tempBow = FindSkin(allBowSkins, name, Skin.skinType.Bow);
   }
   public void changeTempBullet(string name) {
-    tempBullet = FindSkin(allBulletSkins, name);
+    tempBullet = FindSkin(allBulletSkins, name, Skin.skinType.Bullet);
   }
   public void changeTempFortress(string name) {
-    tempFortress = FindSkin(allFortressSkins, name);
+    tempFortress = FindSkin(allFortressSkins, name, Skin.skinType.Fortress);
   }
-  Skin FindSkin(List<Skin> searchList, string name) {
-    return searchList.Find(x => x.name == SettingsManager.currFortressSkin);
+  Skin FindSkin(List<Skin> searchList, string name, Skin.skinType type) {
+    Skin retskin;
+    if (type == Skin.skinType.Bow) {
+      retskin = searchList.Find(x => x.name == SettingsManager.currBowSkin);
+    } else if (type == Skin.skinType.Bullet) {
+      retskin = searchList.Find(x => x.name == SettingsManager.currBulletSkin);
+    } else {
+      retskin = searchList.Find(x => x.name == SettingsManager.currFortressSkin);
+    }
+    return retskin;
   }
   public void changeClickedButton(GameObject newBtn) {
     Color original = newBtn.GetComponent<Image>().color;
