@@ -43,7 +43,7 @@ public class AudioManagerBGM : AudioManagerGeneral {
     AudioSource source = currentBGM.source;
     float volumeLvlInitial = source.volume;
     while (currTime < duration) {
-      currTime += Time.deltaTime;
+      currTime += Time.unscaledDeltaTime;
       currentBGM.source.volume = Mathf.Lerp(volumeLvlInitial, 0f, currTime / duration);
       yield return null;
     }
@@ -51,7 +51,7 @@ public class AudioManagerBGM : AudioManagerGeneral {
     currentBGM.source.Stop();
     PlayAudio(newBGM);
     while (currTime < duration) {
-      currTime += Time.deltaTime;
+      currTime += Time.unscaledDeltaTime;
       currentBGM.source.volume = Mathf.Lerp(0f, volumeLvl, currTime / duration);
       yield return null;
     }

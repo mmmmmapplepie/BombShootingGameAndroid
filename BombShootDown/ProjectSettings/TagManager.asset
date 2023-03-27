@@ -16,7 +16,7 @@ TagManager:
   - ParticleEffects
   - Water
   - UI
-  - 
+  - UIEffects
   - 
   - 
   - 
@@ -51,4 +51,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2423991693
+    locked: 0
+  - name: UIEffects
+    uniqueID: 2656221225
     locked: 0

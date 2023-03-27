@@ -38,5 +38,6 @@ public class W1L1 : MonoBehaviour, IGetLevelDataInterface {
       yield return null;
     }
     yield return new WaitForSeconds(1f);
+    winPanel.SetActive(true);
   }
 }

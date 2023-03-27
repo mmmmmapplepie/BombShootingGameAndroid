@@ -7,21 +7,38 @@ public class GameWin : MonoBehaviour {
   int prize;
   int firstTimePrize;
   int[] thisLevel;
-  void Awake() {
-    data = GameObject.FindObjectOfType<LevelSpawner>().level;
-  }
-
+  [SerializeField] GameObject winParticleEffect;
+  [SerializeField] Button nextLevelBtn;
+  [SerializeField] Text clearRewards, levelNameTxt;
+  new AudioManagerUI audio;
   void OnEnable() {
+    data = GameObject.FindObjectOfType<LevelSpawner>().level;
+    audio = GameObject.FindObjectOfType<AudioManagerUI>();
     Time.timeScale = 0f;
+    Instantiate(winParticleEffect, new Vector3(0f, -11f, 0f), Quaternion.identity);
+
+    // audio.PlayAudio("Win");
     thisLevel = data.stageInWorld;
+    levelNameTxt.text = data.name;
+    nextLevelAvailableCheck();
     prize = data.clearRewards;
     firstTimePrize = data.firstClearRewards;
+    clearRewards.text = data.clearRewards.ToString();
     if (SettingsManager.world[0] < thisLevel[0]) {
-      MoneyManager.addMoney(firstTimePrize);
+      newClearLevel();
     } else if (SettingsManager.world[0] == thisLevel[0] && SettingsManager.world[1] < thisLevel[1]) {
-      MoneyManager.addMoney(firstTimePrize);
+      newClearLevel();
     }
     MoneyManager.addMoney(prize);
+  }
+  void nextLevelAvailableCheck() {
+    if (thisLevel[0] == 1 && thisLevel[1] == 25) {
+      nextLevelBtn.interactable = false;
+    }
+  }
+  void newClearLevel() {
+    clearRewards.text = clearRewards.text + $"\n{data.firstClearRewards.ToString()}" + " (FirstClear)";
+    MoneyManager.addMoney(firstTimePrize);
     SettingsManager.clearStage(thisLevel[0], thisLevel[1]);
   }
   public void NextLevel() {
