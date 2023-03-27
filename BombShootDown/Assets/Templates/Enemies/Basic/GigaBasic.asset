@@ -20,7 +20,7 @@ MonoBehaviour:
   Life: 250
   Damage: 35
   Speed: 0.4
-  MaxShield: 8
+  MaxShield: 10
   Shield: 0
   Armor: 0
   Taunt: 0

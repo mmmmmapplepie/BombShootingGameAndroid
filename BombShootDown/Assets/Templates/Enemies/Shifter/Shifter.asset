@@ -18,9 +18,9 @@ MonoBehaviour:
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: c3049508770830a49a02827b58d869e3, type: 3}
   Life: 5
-  Damage: 1
+  Damage: 4
   Speed: 1
-  MaxShield: 0
+  MaxShield: 1
   Shield: 0
   Armor: 0
   Taunt: 0
