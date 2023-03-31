@@ -64,7 +64,7 @@ public class skinPrefabSetup : MonoBehaviour {
     confirmationPanel.SetActive(false);
   }
   public void checkConfirmation() {
-    if (MoneyManager.money > skin.price) {
+    if (MoneyManager.money >= skin.price) {
       confirmationPanel.SetActive(true);
     }
   }

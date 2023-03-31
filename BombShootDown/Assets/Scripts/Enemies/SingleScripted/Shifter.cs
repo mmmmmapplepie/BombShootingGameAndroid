@@ -34,7 +34,7 @@ public class Shifter : MonoBehaviour {
   }
   void shiftImpulse() {
     float dir = (float)getDirection();
-    rb.AddForce(new Vector2(rb.mass * dir * forceMultiplier, 0), ForceMode2D.Impulse);
+    rb.AddForce(new Vector2(rb.mass * dir * forceMultiplier * BowManager.EnemySpeed, 0), ForceMode2D.Impulse);
   }
   int getDirection() {
     float ran = Random.Range(-1f, 1f);

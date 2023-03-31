@@ -23,7 +23,7 @@ public class EnemyDamage : MonoBehaviour {
         StartCoroutine("deathSequence");
         return;
       }
-      LifeManager.CurrentLife -= Damage;
+      LifeManager.CurrentLife -= Damage * BowManager.EnemyDamage;
       DamageEffect();
       StartCoroutine("deathSequence");
     }

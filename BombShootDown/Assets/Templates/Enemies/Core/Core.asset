@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
+  m_Name: Core
+  m_EditorClassIdentifier: 
+  name: Core
+  enemyDescription: 
+  sprite: {fileID: 21300000, guid: 963fd42f5754be044b5d859e31c9ef89, type: 3}
+  Boss: 0
+  enemyPrefab: {fileID: 3112957866081141623, guid: 33af37d365f346a468674e59dfcc2569, type: 3}
+  Life: 15
+  Damage: 10
+  Speed: 1
+  MaxShield: 5
+  Shield: 0
+  Armor: 0
+  Taunt: 0

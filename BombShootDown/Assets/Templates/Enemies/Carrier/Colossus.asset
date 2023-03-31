@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
+  m_Name: Colossus
+  m_EditorClassIdentifier: 
+  name: Colossus
+  enemyDescription: 
+  sprite: {fileID: 21300000, guid: aca3eceb257c5a64fa87b3f0d10fc0c0, type: 3}
+  Boss: 0
+  enemyPrefab: {fileID: 3112957866081141623, guid: 9579d57651e8fd3409e6e59892163eef, type: 3}
+  Life: 8
+  Damage: 6
+  Speed: 1
+  MaxShield: 2
+  Shield: 0
+  Armor: 0
+  Taunt: 0

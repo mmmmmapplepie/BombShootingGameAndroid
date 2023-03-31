@@ -22,7 +22,7 @@ public class Basic : MonoBehaviour {
     checkFlip();
     Vector3 old = transform.root.position;
     Vector3 normDir = new Vector3(drift, -1f, 0f);
-    // normDir.Normalize();
+    normDir.Normalize();
     Vector3 newPos = old + Time.deltaTime * speed * BowManager.EnemySpeed * normDir;
     transform.root.position = newPos;
   }
