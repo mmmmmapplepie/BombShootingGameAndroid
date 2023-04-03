@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: KiloBasic
   m_EditorClassIdentifier: 
   name: Kilo Bomb
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: "Faster and stronger and\u2026 more durable. The speed can be
+    a threat. "
   sprite: {fileID: 21300000, guid: d25e476fecd9c10469190c32d43b11de, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: ab3151f86580f5a4c93a119cfecc1809, type: 3}

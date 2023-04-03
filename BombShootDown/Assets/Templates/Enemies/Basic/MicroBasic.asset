@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: MicroBasic
   m_EditorClassIdentifier: 
   name: Micro Bomb
-  enemyDescription: Its only redeeming quality is its superiority over the Nano Bomb.
+  enemyDescription: 'Its only redeeming quality is its superiority over the Nano
+    Bomb. '
   sprite: {fileID: 21300000, guid: 7b133c91933751f4fb35288c084813ad, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: d894cb168af67dd4188b22c1aa4e8ec5, type: 3}

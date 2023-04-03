@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: MacroZipper
   m_EditorClassIdentifier: 
   name: MacroZipper
-  enemyDescription: 
+  enemyDescription: 'A bomb very difficult to hit due to its maneuverability '
   sprite: {fileID: 21300000, guid: 2685616c6a52f6f45852e80b0c6135eb, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: ddccb50443a17294abaa046cfab8795b, type: 3}
-  Life: 10
+  Life: 40
   Damage: 8
-  Speed: 1
+  Speed: 3
   MaxShield: 3
   Shield: 0
   Armor: 0

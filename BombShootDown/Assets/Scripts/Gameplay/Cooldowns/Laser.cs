@@ -16,7 +16,7 @@ public class Laser : MonoBehaviour {
   AudioManagerCannon audioManager;
   bool shot = false;
   float LaserHalfWidth = 1.6875f;
-  float LaserDamage = 20f;
+  float LaserDamage = 100f;
   float BaseLaserCooldown = 100f;
   float remainingTime = 0f;
   float cooldownTimerChangeReceptor;
@@ -34,7 +34,7 @@ public class Laser : MonoBehaviour {
   void SetBaseSettings() {
     int lvl = UpgradesManager.returnDictionaryValue("Laser")[1];
     BaseLaserCooldown = 100f - 3f * (float)lvl;
-    LaserDamage = 20f + 15f * (float)lvl;
+    LaserDamage = 100f + 90f * (float)lvl; // max at 1000 dmg
   }
   void Update() {
     if (BowManager.CoolDownRate != cooldownTimerChangeReceptor) {

@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Ticker
   m_EditorClassIdentifier: 
   name: Ticker
-  enemyDescription: 
-  sprite: {fileID: 21300000, guid: 8708b0951b17a3f498d4d6b9e81aa3fd, type: 3}
+  enemyDescription: 'Dangerous bomb with high damage. The bomb requires some time
+    to warm up. '
+  sprite: {fileID: 21300000, guid: 5e1791957a6f3024daff923db7936d85, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 8e215269e54da7c4cbc9628cc7fee90c, type: 3}
-  Life: 5
-  Damage: 4
+  Life: 100
+  Damage: 75
   Speed: 1
-  MaxShield: 1
-  Shield: 0
+  MaxShield: 10
+  Shield: 2
   Armor: 0
   Taunt: 0

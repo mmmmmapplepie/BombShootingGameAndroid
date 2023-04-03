@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Outlier
   m_EditorClassIdentifier: 
   name: Outlier
-  enemyDescription: 
+  enemyDescription: 'A dangerous bomb that deals damage over time without contact.
+    Dangerous when unchecked. '
   sprite: {fileID: 21300000, guid: 150e045f9e80a3b47b99be0faf19d96b, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 45312935d1d3c4342a288e0855c637d8, type: 3}
-  Life: 15
+  Life: 200
   Damage: 10
-  Speed: 1
+  Speed: 2
   MaxShield: 5
   Shield: 0
   Armor: 0

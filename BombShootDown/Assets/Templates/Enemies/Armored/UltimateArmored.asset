@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UltimateArmored
   m_EditorClassIdentifier: 
   name: Armoratomb
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: 'Bomb with one of the heaviest armor in the alien bomb arsenal. '
   sprite: {fileID: 21300000, guid: b987e6ee883c96c4baf35835dd7fa881, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 62135e93feb96f64cadfe69bda007d70, type: 3}

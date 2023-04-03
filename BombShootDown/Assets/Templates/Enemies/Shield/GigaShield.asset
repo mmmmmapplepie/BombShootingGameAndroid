@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: GigaShield
   m_EditorClassIdentifier: 
   name: Nano Bomb
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: 'Highly dangerous bomb with its durable body protected by many
+    shields. '
   sprite: {fileID: 21300000, guid: d763f532840e98b40a94f394bbfcc88f, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: aa39f3045bbe4a34c95423698d1fa399, type: 3}

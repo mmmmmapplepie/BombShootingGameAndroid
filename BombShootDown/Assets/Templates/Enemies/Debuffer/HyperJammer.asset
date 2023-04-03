@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: HyperJammer
   m_EditorClassIdentifier: 
   name: HyperJammer
-  enemyDescription: 
+  enemyDescription: 'A odd yet extremely dangerous bomb that severely reduce the
+    cooldowns and bullet and ammo reload speeds. (they stack) '
   sprite: {fileID: 21300000, guid: 21a17d22ee1f52943bcfa2052ca5131b, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: e15fc214aa9d4ca428a2595926967635, type: 3}
-  Life: 5
-  Damage: 4
-  Speed: 1
-  MaxShield: 1
-  Shield: 0
-  Armor: 0
+  Life: 1500
+  Damage: 60
+  Speed: 0.1
+  MaxShield: 10
+  Shield: 10
+  Armor: 3
   Taunt: 0

@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Protector
   m_EditorClassIdentifier: 
   name: Protector
-  enemyDescription: 
+  enemyDescription: 'A dangerous bomb that is capable of protecting many allies by
+    providing them shields. (they stack) '
   sprite: {fileID: 21300000, guid: 14d8a61cf8a9d154c8a41b3c8b40455b, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 2fa9f8e4f7c27234ca6f8648f6315b75, type: 3}
-  Life: 15
-  Damage: 10
-  Speed: 1
-  MaxShield: 5
-  Shield: 0
-  Armor: 0
+  Life: 500
+  Damage: 40
+  Speed: 0.2
+  MaxShield: 150
+  Shield: 150
+  Armor: 1
   Taunt: 0

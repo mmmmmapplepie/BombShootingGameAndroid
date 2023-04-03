@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MegaShield
   m_EditorClassIdentifier: 
   name: Shield Mega
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: 'Slow, yet durable and heavily shielded bomb. '
   sprite: {fileID: 21300000, guid: fbcc57bfba75c0743bf3c3babcac101b, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: eea38bb19ffcbcd4d8c37d1468a9cb6f, type: 3}

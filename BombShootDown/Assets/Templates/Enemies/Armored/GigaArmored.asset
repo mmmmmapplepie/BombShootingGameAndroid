@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GigaArmored
   m_EditorClassIdentifier: 
   name: Armored Giga
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: 'Bomb with extreme armor and durability. '
   sprite: {fileID: 21300000, guid: 6531048bb0f9e494cb816cd3c8902dd6, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: b3a24f98b75a7c748837aea4ce73dd61, type: 3}

@@ -5484,7 +5484,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f7fa19066769554f9e1e774627706b3, type: 2}
   - {fileID: 11400000, guid: c587756a9b445cd4d8d93935573c169f, type: 2}
   - {fileID: 11400000, guid: 39ed1df8de12f9942ac8d6de17e98d21, type: 2}
-  OpenUpgSlots: {fileID: 1023825790}
   ChosenUpgContainer: {fileID: 972446026}
   UpgIconPrefab: {fileID: 7829580174360567492, guid: c27cb1dfd11eadd47b086d1cd603c394, type: 3}
   NewUpgIconPrefab: {fileID: 3653339596813965720, guid: 73938eb438ce89643aabc2f0a70cf8bb, type: 3}
@@ -10021,7 +10020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1351700696
 Transform:
   m_ObjectHideFlags: 0

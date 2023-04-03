@@ -8,8 +8,6 @@ public class ChosenUpgMaxed : MonoBehaviour {
   List<UpgradePick> UpgTemplates;
   WaveController waveController;
   [SerializeField]
-  Text OpenUpgSlots;
-  [SerializeField]
   Transform ChosenUpgContainer;
   [SerializeField]
   GameObject UpgIconPrefab;
@@ -26,7 +24,7 @@ public class ChosenUpgMaxed : MonoBehaviour {
   [SerializeField]
   GameObject AmmoLife;
   int ItemsInList;
-  int tempupgnum = 0;
+  int tempupgnum = -1;
   void Awake() {
     waveController = GameObject.FindObjectOfType<WaveController>();
   }
@@ -35,6 +33,9 @@ public class ChosenUpgMaxed : MonoBehaviour {
       RenderAll();
       tempupgnum = UpgradesEquipped.tempUpgHolder.Count;
     }
+  }
+  IEnumerator changeSlots() {
+    yield return null;
     ChangeAvailableSlots();
   }
   void OnEnable() {
@@ -46,6 +47,7 @@ public class ChosenUpgMaxed : MonoBehaviour {
     EmptyHolder();
     RenderPresetUpg();
     RenderAllOptions();
+    StartCoroutine(changeSlots());
   }
   void RenderPresetUpg() {
     foreach (string upg in UpgradesEquipped.EquippedUpgrades) {

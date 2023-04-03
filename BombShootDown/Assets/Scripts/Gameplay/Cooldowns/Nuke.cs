@@ -21,7 +21,7 @@ public class Nuke : MonoBehaviour {
   GameObject clickPanel;
   AudioManagerCannon audioManager;
   float BaseNukeCooldown = 250f;
-  float NukeDamage = 50f;
+  float NukeDamage = 500f;
   float remainingTime = 0f;
   float cooldownTimerChangeReceptor;
   void Awake() {
@@ -37,7 +37,7 @@ public class Nuke : MonoBehaviour {
   void SetBaseCooldown() {
     int lvl = UpgradesManager.returnDictionaryValue("Nuke")[1];
     BaseNukeCooldown = 250f - 5f * (float)lvl;
-    NukeDamage = 50f + 35f * (float)lvl;
+    NukeDamage = 500f + 150f * (float)lvl; // max at 2000 dmg
   }
   void Update() {
     if (BowManager.CoolDownRate != cooldownTimerChangeReceptor) {

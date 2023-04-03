@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UltimateShield
   m_EditorClassIdentifier: 
   name: Ultimashield
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: 'Highest shielded bomb of the conventioinal alien bombs. '
   sprite: {fileID: 21300000, guid: a6ea1d835cb28f742b6232356b3c1d36, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 39f55a83f8af9b54eb8c9f1edabdc407, type: 3}

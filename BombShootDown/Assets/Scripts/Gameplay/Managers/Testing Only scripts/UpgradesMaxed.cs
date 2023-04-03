@@ -55,7 +55,7 @@ public class UpgradesMaxed : MonoBehaviour {
     setDoubleGun();
   }
   void setUpgradeSlot() {
-    UpgradesEquipped.UpgradedSlots = 25;
+    UpgradesEquipped.UpgradedSlots = 30;
   }
   void setMaximumLife() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("MaximumLife")) {

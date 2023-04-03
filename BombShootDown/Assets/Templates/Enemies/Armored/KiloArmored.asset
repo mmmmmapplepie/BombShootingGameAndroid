@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KiloArmored
   m_EditorClassIdentifier: 
   name: Armored Kilo
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: 'A fast armored bomb. '
   sprite: {fileID: 21300000, guid: 45fd127d77da1ce4a9b0714f8392636c, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: b7f635117102e7e4f80e6f8c6163d241, type: 3}

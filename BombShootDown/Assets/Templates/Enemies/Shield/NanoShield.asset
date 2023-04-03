@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: NanoShield
   m_EditorClassIdentifier: 
   name: Shield Nano
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: 'A bomb with a protective shield. Can endure heavy damage once
+    per flight. '
   sprite: {fileID: 21300000, guid: 531e5a5e77aff7545a36b9f1aa1ad64d, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 6beede745c50c344b9a638ebda9aae2b, type: 3}

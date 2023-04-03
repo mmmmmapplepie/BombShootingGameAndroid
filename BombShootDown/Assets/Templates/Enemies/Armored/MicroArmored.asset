@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MicroArmored
   m_EditorClassIdentifier: 
   name: Armored Micro
-  enemyDescription: Its only redeeming quality is its superiority over the Nano Bomb.
+  enemyDescription: 'A armored Micro bomb. '
   sprite: {fileID: 21300000, guid: efee7a4082f252b46be16bb1161ec0f8, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: b739cbc8458b0cd4987deeb1ae83084d, type: 3}

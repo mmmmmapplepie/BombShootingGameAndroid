@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NanoArmored
   m_EditorClassIdentifier: 
   name: Armored Nano
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: 'A small yet armored bomb. '
   sprite: {fileID: 21300000, guid: d3e712ecd00a6974fa3c1851edfc68ea, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: b5ee37edc1ceb124daba5dd992884e77, type: 3}

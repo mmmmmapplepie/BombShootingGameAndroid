@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Zipper
   m_EditorClassIdentifier: 
   name: Zipper
-  enemyDescription: 
+  enemyDescription: 'A sneaky little bomb capable of dodging bullets. '
   sprite: {fileID: 21300000, guid: 212522bb5358ee64a8c660a303e62163, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 51390a396bd77f643a4bbbf74c54078c, type: 3}
-  Life: 5
-  Damage: 4
-  Speed: 1
+  Life: 30
+  Damage: 3
+  Speed: 3
   MaxShield: 1
   Shield: 0
   Armor: 0

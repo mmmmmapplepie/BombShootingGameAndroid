@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: MesoVessel
   m_EditorClassIdentifier: 
   name: MesoVessel
-  enemyDescription: 
+  enemyDescription: 'A slightly larger transport bomb. '
   sprite: {fileID: 21300000, guid: ef9dc7d187031824db577253a92a8caf, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 4a927673f131c8d47b17cd114d7285b3, type: 3}
-  Life: 8
-  Damage: 6
-  Speed: 1
-  MaxShield: 2
+  Life: 120
+  Damage: 0
+  Speed: 0.25
+  MaxShield: 10
   Shield: 0
-  Armor: 0
+  Armor: 2
   Taunt: 0

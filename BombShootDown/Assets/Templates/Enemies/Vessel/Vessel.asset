@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Vessel
   m_EditorClassIdentifier: 
   name: Vessel
-  enemyDescription: 
+  enemyDescription: 'A bomb holding a few other bombs within it similar to a transport. '
   sprite: {fileID: 21300000, guid: ef04b4fe3f5134d40a853efbf0c758af, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 484eb4d0db758bd4e997d4ee12ef2d1a, type: 3}
-  Life: 5
-  Damage: 4
-  Speed: 1
-  MaxShield: 1
+  Life: 100
+  Damage: 0
+  Speed: 0.3
+  MaxShield: 10
   Shield: 0
-  Armor: 0
+  Armor: 1
   Taunt: 0

@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Reflector
   m_EditorClassIdentifier: 
   name: Reflector
-  enemyDescription: 
+  enemyDescription: 'A bomb utilizing special armor capable of reflecting part of
+    the damage it receives. '
   sprite: {fileID: 21300000, guid: 0711f0a9f0a6a4e4fa255e0ccdaefe5f, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: d482e647cb4171845a956e649c3b3034, type: 3}
-  Life: 5
-  Damage: 4
-  Speed: 1
-  MaxShield: 1
+  Life: 700
+  Damage: 5
+  Speed: 0.1
+  MaxShield: 0
   Shield: 0
   Armor: 0
-  Taunt: 0
+  Taunt: 1

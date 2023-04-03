@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
   m_Name: MesoTeleporter
   m_EditorClassIdentifier: 
-  name: MesoTeleporter
-  enemyDescription: 
+  name: Meso Teleporter
+  enemyDescription: 'Further refining of the quantum powers has allowed larger scaled
+    teleportations for this bomb. '
   sprite: {fileID: 21300000, guid: 01c59e7528df7b54fb775377aca4eea6, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: ad2f3b5a8f1ea754ba714bfb05be5e5a, type: 3}
-  Life: 8
-  Damage: 6
+  Life: 15
+  Damage: 20
   Speed: 1
-  MaxShield: 2
-  Shield: 0
+  MaxShield: 10
+  Shield: 10
   Armor: 0
   Taunt: 0

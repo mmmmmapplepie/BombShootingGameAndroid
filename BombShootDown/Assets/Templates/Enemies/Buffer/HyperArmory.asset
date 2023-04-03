@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: HyperArmory
   m_EditorClassIdentifier: 
   name: Hyper Armory
-  enemyDescription: 
+  enemyDescription: 'A very dangerous bomb with high capability in providing allys
+    with armor. (they stack) '
   sprite: {fileID: 21300000, guid: 3a14df3c1165d0c46aa33f904f0397fd, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: b49180589790c884ebe659ffdd9471eb, type: 3}
-  Life: 15
-  Damage: 10
-  Speed: 1
+  Life: 1200
+  Damage: 50
+  Speed: 0.1
   MaxShield: 5
-  Shield: 0
-  Armor: 0
+  Shield: 5
+  Armor: 10
   Taunt: 0

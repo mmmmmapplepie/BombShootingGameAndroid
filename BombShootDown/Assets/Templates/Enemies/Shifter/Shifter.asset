@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shifter
   m_EditorClassIdentifier: 
   name: Shifter
-  enemyDescription: 
+  enemyDescription: 'A dangerous bomb that isn''t fully in control of its movements. '
   sprite: {fileID: 21300000, guid: 8708b0951b17a3f498d4d6b9e81aa3fd, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: c3049508770830a49a02827b58d869e3, type: 3}

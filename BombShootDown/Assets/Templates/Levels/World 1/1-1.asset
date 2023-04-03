@@ -18,4 +18,15 @@ MonoBehaviour:
   clearRewards: 0
   Enemies:
   - {fileID: 11400000, guid: c87ddd41b56fe474cbf8fd5fad5ce3a8, type: 2}
+  - {fileID: 11400000, guid: 9505a0a9cbe4cac488c0be52cbcb0429, type: 2}
+  - {fileID: 11400000, guid: 3ab3601753c9a194781bfca3512452e4, type: 2}
+  - {fileID: 11400000, guid: 3d55ec9e92884554c91695117f29fae1, type: 2}
+  - {fileID: 11400000, guid: 36763e759acc6e143935aae257a286ca, type: 2}
+  - {fileID: 11400000, guid: 177d0b9d5be865a4f8b2556c5d67a949, type: 2}
+  - {fileID: 11400000, guid: c57394eb7c357a2429d429a1cb116a47, type: 2}
+  - {fileID: 11400000, guid: 9f2d3f94125c1a04e8718cfe9d08b3ef, type: 2}
+  - {fileID: 11400000, guid: 24b5ed3a59cc97a41b846744c2f26a60, type: 2}
+  - {fileID: 11400000, guid: 678d4fef5289cb645bf542108e6cfa07, type: 2}
+  - {fileID: 11400000, guid: 03699675d6b786d4eaf21a5bc4c9376b, type: 2}
+  - {fileID: 11400000, guid: 06b041782bb8f92428c724bc8d4cdd67, type: 2}
   stageInWorld: 0100000001000000

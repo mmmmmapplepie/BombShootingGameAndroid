@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: MesoZipper
   m_EditorClassIdentifier: 
   name: MesoZipper
-  enemyDescription: 
+  enemyDescription: 'Fast and sneaky bomb adept at dodging bullets. '
   sprite: {fileID: 21300000, guid: ff1af05a2afe0c34b92763e5bc689f70, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 231a5b5ea431c454c867e7eea129251d, type: 3}
-  Life: 8
-  Damage: 6
-  Speed: 1
+  Life: 35
+  Damage: 5
+  Speed: 3
   MaxShield: 2
   Shield: 0
   Armor: 0

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: HyperShifter
   m_EditorClassIdentifier: 
   name: Hyper Shifter
-  enemyDescription: 
+  enemyDescription: 'A bomb with no brain. Its movement can never be predicted. A
+    bomb very difficult to bring down efficiently. '
   sprite: {fileID: 21300000, guid: fcbc4de6a3ddaa9409f9aa2a74f959e2, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 5bc714c3bdaa25b498f69e217ac2024d, type: 3}

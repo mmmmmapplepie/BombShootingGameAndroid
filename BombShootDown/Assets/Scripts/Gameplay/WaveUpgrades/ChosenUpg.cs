@@ -26,7 +26,7 @@ public class ChosenUpg : MonoBehaviour {
   [SerializeField]
   GameObject AmmoLife;
   int ItemsInList;
-  int tempupgnum = 0;
+  int tempupgnum = -1;
   void Awake() {
     waveController = GameObject.FindObjectOfType<WaveController>();
   }
@@ -35,7 +35,6 @@ public class ChosenUpg : MonoBehaviour {
       RenderAll();
       tempupgnum = UpgradesEquipped.tempUpgHolder.Count;
     }
-    ChangeAvailableSlots();
   }
   void OnEnable() {
     RenderAll();
@@ -46,6 +45,11 @@ public class ChosenUpg : MonoBehaviour {
     EmptyHolder();
     RenderPresetUpg();
     RenderAllOptions();
+    StartCoroutine(changeSlots());
+  }
+  IEnumerator changeSlots() {
+    yield return null;
+    ChangeAvailableSlots();
   }
   void RenderPresetUpg() {
     foreach (string upg in UpgradesEquipped.EquippedUpgrades) {
@@ -95,7 +99,7 @@ public class ChosenUpg : MonoBehaviour {
   }
   void EmptyHolder() {
     for (int i = 0; i < ChosenUpgContainer.childCount; i++) {
-      Destroy(ChosenUpgContainer.GetChild(i).gameObject);
+      DestroyImmediate(ChosenUpgContainer.GetChild(i).gameObject);
     }
   }
   public void DisableUpgrades() {

@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: HyperHavoc
   m_EditorClassIdentifier: 
   name: Hyper Havoc
-  enemyDescription: 
+  enemyDescription: 'A very dangerous bomb that dramatically increases the damage
+    of allies. (they stack) '
   sprite: {fileID: 21300000, guid: 8a911bd319c30b94db81d9214f8428d3, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 72760b7bc8ead464e83767961dd1910f, type: 3}
-  Life: 8
-  Damage: 6
-  Speed: 1
-  MaxShield: 2
+  Life: 1500
+  Damage: 200
+  Speed: 0.1
+  MaxShield: 30
   Shield: 0
-  Armor: 0
+  Armor: 5
   Taunt: 0

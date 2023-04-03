@@ -32,25 +32,19 @@ public class W1Upg : MonoBehaviour
     foreach (string upg in AvailableUpg) {
       CreateUpgradeOption(upg);
     }
-    RenderAllOptions();
   }
   void CreateUpgradeOption(string name) {
+    RenderOption(name);
     GameObject icon = Instantiate(IconPrefab, Holder.GetComponent<Transform>());
-    icon.GetComponent<RenderUpgradeIcon>().pick = FindTemplate(name);
     icon.GetComponent<RenderUpgradeIcon>().RenderUpg();
   }
-  void RenderAllOptions() {
-    foreach (Transform option in Holder.GetComponent<Transform>()) {
-      if (option != null) {
-        RenderOption(option);
-      }
-    }
-  }
-  void RenderOption(Transform option) {
-    GameObject icon = option.gameObject;
-    RenderUpgradeIcon script = icon.GetComponent<RenderUpgradeIcon>();
-    if (UpgradesEquipped.tempUpgHolder.Contains(script.pick.name) || SettingsManager.world[0] < 1) {
-      MakeIconUnclickable(icon);
+  void RenderOption(string name) {
+    RenderUpgradeIcon script = IconPrefab.GetComponent<RenderUpgradeIcon>();
+    script.pick = FindTemplate(name);
+    if (UpgradesEquipped.tempUpgHolder.Contains(script.pick.name) || SettingsManager.world[0] < 3) {
+      IconPrefab.GetComponent<Button>().interactable = false;
+    } else {
+      IconPrefab.GetComponent<Button>().interactable = true;
     }
   }
   UpgradePick FindTemplate(string name) {

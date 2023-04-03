@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UltimateBasic
   m_EditorClassIdentifier: 
   name: Ultimatomb
-  enemyDescription: A bomb too small it would take a miracle for it do any damage.
+  enemyDescription: 'Pinnacle of conventional alien bombs. '
   sprite: {fileID: 21300000, guid: 5d8c3925c5a17d349a9cd6318b1196e7, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 4edadfe7d2c507748951505948537022, type: 3}

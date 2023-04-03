@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: MesoTicker
   m_EditorClassIdentifier: 
   name: MesoTicker
-  enemyDescription: 
-  sprite: {fileID: 21300000, guid: dc69fa68a5cce424698cb04b0e891056, type: 3}
+  enemyDescription: 'A faster and stronger version of the usual ticker bomb. Must
+    be one of the highest priority targets of a mission. '
+  sprite: {fileID: 21300000, guid: 36673bf4f3a6c9947ade17b4feddfa65, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: cad86cccd37fbf3489377ac1896f8fa3, type: 3}
-  Life: 8
-  Damage: 6
+  Life: 150
+  Damage: 85
   Speed: 1
-  MaxShield: 2
-  Shield: 0
+  MaxShield: 10
+  Shield: 4
   Armor: 0
   Taunt: 0

@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
-  m_Name: MesoShifter
+  m_Name: MesoOutlier
   m_EditorClassIdentifier: 
-  name: MesoShifter
-  enemyDescription: 
+  name: MesoOutlier
+  enemyDescription: 'One of the bombs that must be prioritized to remove during a
+    mission due to its devastating damage over time. '
   sprite: {fileID: 21300000, guid: afb9959fc339a28468018ba15a5a54ee, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 0c3e0eb5bc427f842972c7b2a3905218, type: 3}
-  Life: 8
-  Damage: 6
-  Speed: 1
-  MaxShield: 2
+  Life: 220
+  Damage: 20
+  Speed: 2
+  MaxShield: 10
   Shield: 0
   Armor: 0
   Taunt: 0

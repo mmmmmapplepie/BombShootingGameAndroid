@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
   m_Name: HyperTeleporter
   m_EditorClassIdentifier: 
-  name: HyperTeleporter
-  enemyDescription: 
+  name: Hyper Teleporter
+  enemyDescription: 'Perfecting the quantum technology this bomb can teleport more
+    frequently than its counterparts. '
   sprite: {fileID: 21300000, guid: c16af7a02dd32ca42be9aed79ff9f090, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: ebd5d9403f2327c4086cc138a7936f3b, type: 3}
-  Life: 15
-  Damage: 10
+  Life: 25
+  Damage: 30
   Speed: 1
-  MaxShield: 5
-  Shield: 0
+  MaxShield: 20
+  Shield: 20
   Armor: 0
   Taunt: 0

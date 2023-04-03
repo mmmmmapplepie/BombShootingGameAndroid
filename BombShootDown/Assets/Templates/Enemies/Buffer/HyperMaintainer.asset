@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: HyperMaintainer
   m_EditorClassIdentifier: 
   name: Hyper Maintainer
-  enemyDescription: 
+  enemyDescription: 'A very dangerous bomb capable of rapidly fixing bombs in its
+    vicinity. (they stack) '
   sprite: {fileID: 21300000, guid: 8204ce9033e44914094094185723721d, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: c4ee5ad42071dcb41aba3d902260f318, type: 3}
-  Life: 8
-  Damage: 6
-  Speed: 1
-  MaxShield: 2
-  Shield: 0
-  Armor: 0
+  Life: 1500
+  Damage: 60
+  Speed: 0.1
+  MaxShield: 20
+  Shield: 10
+  Armor: 5
   Taunt: 0

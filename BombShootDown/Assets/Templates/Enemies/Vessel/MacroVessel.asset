@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: MacroVessel
   m_EditorClassIdentifier: 
   name: MacroVessel
-  enemyDescription: 
+  enemyDescription: 'Large transporting bomb. '
   sprite: {fileID: 21300000, guid: 1e7e1aed7e927e0498f4607dd63eb078, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 2d403cb011b0e5e43a592f684fd20aaa, type: 3}
-  Life: 10
-  Damage: 8
-  Speed: 1
-  MaxShield: 3
+  Life: 140
+  Damage: 0
+  Speed: 0.2
+  MaxShield: 15
   Shield: 0
-  Armor: 0
+  Armor: 3
   Taunt: 0

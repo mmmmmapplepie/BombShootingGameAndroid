@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: MesoShifter
   m_EditorClassIdentifier: 
   name: Meso Shifter
-  enemyDescription: 
+  enemyDescription: 'A faster version of the Shifter with further lack of control
+    in movement. '
   sprite: {fileID: 21300000, guid: dc69fa68a5cce424698cb04b0e891056, type: 3}
   Boss: 0
   enemyPrefab: {fileID: 3112957866081141623, guid: 9579d57651e8fd3409e6e59892163eef, type: 3}
