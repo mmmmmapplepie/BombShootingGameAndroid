@@ -72,7 +72,7 @@ public class Upgrades : MonoBehaviour {
   void setLifeRecovery() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("LifeRecovery")) {
       int lvl = UpgradesManager.returnDictionaryValue("LifeRecovery")[1];
-      BowManager.LifeRecovery = (float)lvl / 5f;
+      BowManager.LifeRecovery = (float)lvl;
     }
   }
   void setDamage() {

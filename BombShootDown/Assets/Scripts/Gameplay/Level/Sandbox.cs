@@ -27,10 +27,11 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
     while (totalEnemies > 0) {
       totalEnemies--;
       float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("Teleporter", x, 10f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("MesoTeleporter", x, 10f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("MacroTeleporter", x, 10f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("HyperTeleporter", x, 10f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("Ticker", x, 10f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("MesoTicker", x, 10f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("MacroTicker", x, 10f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("HyperTicker", x, 10f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("Outlier", x, 10f, LevelSpawner.addToList.All);
       yield return new WaitForSeconds(0.1f);
     }
   }

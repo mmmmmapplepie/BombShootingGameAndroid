@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyDescription: 'A highly defensive type of bomb geared in protecting its fellow
     bombs. '
   sprite: {fileID: 21300000, guid: 963fd42f5754be044b5d859e31c9ef89, type: 3}
-  Boss: 0
+  Boss: 1
   enemyPrefab: {fileID: 3112957866081141623, guid: 33af37d365f346a468674e59dfcc2569, type: 3}
   Life: 2000
   Damage: 50

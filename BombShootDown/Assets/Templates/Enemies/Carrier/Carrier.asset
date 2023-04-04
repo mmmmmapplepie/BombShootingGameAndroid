@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyDescription: 'One of the rarer bombs only appearing on large battles. The
     carrier constantly teleport other bombs into the battle. '
   sprite: {fileID: 21300000, guid: 68e407649c2b2084982c1ae5b8376b5d, type: 3}
-  Boss: 0
+  Boss: 1
   enemyPrefab: {fileID: 3112957866081141623, guid: 524485ff995984b4e94a9f6297ba733c, type: 3}
   Life: 1000
   Damage: 80

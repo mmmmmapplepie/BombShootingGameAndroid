@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelSpawner : MonoBehaviour
-{
+public class LevelSpawner : MonoBehaviour {
   [HideInInspector]
   public Level level;
   [SerializeField]
@@ -27,17 +26,14 @@ public class LevelSpawner : MonoBehaviour
 
 
   #region dataManagement
-  void Awake()
-  {
+  void Awake() {
     waveControllerScript = FindObjectOfType<WaveController>();
     level = gameObject.GetComponent<IGetLevelDataInterface>().GetLevelData();
   }
-  void Update()
-  {
+  void Update() {
     cleanWaveLists();
   }
-  public void setLevelData(Level data)
-  {
+  public void setLevelData(Level data) {
     level = data;
   }
   #endregion
@@ -46,17 +42,14 @@ public class LevelSpawner : MonoBehaviour
 
   #region generalfunctions
   //With should be probably from -5, to 5 and height the maximum depth at y = -5ish
-  public float randomWithRange(float min, float max)
-  {
+  public float randomWithRange(float min, float max) {
     float ranNum = Random.Range(min, max);
     return ranNum;
   }
-  public string findCorrectWaveToStart()
-  {
+  public string findCorrectWaveToStart() {
     int currWave = 1;
     currWave = WaveController.WavesCleared + 1;
-    if (currWave <= level.upgradesPerWave.Count)
-    {
+    if (currWave <= level.upgradesPerWave.Count) {
       //must name the individual wave coroutines as "wave##" format.
       string waveRoutineName = "wave" + currWave.ToString();
       waveRunning = true;
@@ -70,49 +63,38 @@ public class LevelSpawner : MonoBehaviour
 
 
   #region waveClearFunctions
-  public void cleanWaveLists()
-  {
+  public void cleanWaveLists() {
     AllWaveTriggerEnemies.RemoveAll(x => x == null);
     SpecificWaveTriggerEnemies.RemoveAll(x => x == null);
     NoneTriggerEnemies.RemoveAll(x => x == null);
   }
-  public IEnumerator AllTriggerEnemiesCleared()
-  {
-    while (AllWaveTriggerEnemies.Count > 0)
-    {
+  public IEnumerator AllTriggerEnemiesCleared() {
+    while (AllWaveTriggerEnemies.Count > 0) {
       yield return null;
     }
     waveCleared();
   }
-  public IEnumerator SpecificTriggerEnemiesCleared()
-  {
-    while (SpecificWaveTriggerEnemies.Count > 0)
-    {
+  public IEnumerator SpecificTriggerEnemiesCleared() {
+    while (SpecificWaveTriggerEnemies.Count > 0) {
       yield return null;
     }
     waveCleared();
   }
-  public IEnumerator LastWaveEnemiesCleared()
-  {
-    while (SpecificWaveTriggerEnemies.Count > 0)
-    {
+  public IEnumerator LastWaveEnemiesCleared() {
+    while (SpecificWaveTriggerEnemies.Count > 0) {
       yield return null;
     }
-    while (AllWaveTriggerEnemies.Count > 0)
-    {
+    while (AllWaveTriggerEnemies.Count > 0) {
       yield return null;
     }
-    while (NoneTriggerEnemies.Count > 0)
-    {
+    while (NoneTriggerEnemies.Count > 0) {
       yield return null;
     }
     waveCleared();
   }
-  public void waveCleared()
-  {
+  public void waveCleared() {
     WaveController.WavesCleared++;
-    if (WaveController.WavesCleared == level.upgradesPerWave.Count)
-    {
+    if (WaveController.WavesCleared == level.upgradesPerWave.Count) {
       WaveController.LevelCleared = true;
     }
     waveRunning = false;
@@ -122,42 +104,32 @@ public class LevelSpawner : MonoBehaviour
 
 
   #region spawnEnemyFunctions
-  public void spawnEnemy(string name, float xpos, float ypos, addToList listname)
-  {
+  public void spawnEnemy(string name, float xpos, float ypos, addToList listname) {
     GameObject enemyPrefab = level.Enemies.Find(x => x.enemyPrefab.name == name).enemyPrefab;
     GameObject spawnedEnemy = Instantiate(enemyPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     AddEnemyToList(spawnedEnemy, listname);
   }
-  public void spawnEnemyInMap(string name, float xpos, float ypos, addToList listname, bool big)
-  {
-    if (big)
-    {
+  public void spawnEnemyInMap(string name, float xpos, float ypos, addToList listname, bool big) {
+    if (big) {
       Instantiate(BigSpawnPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
-    }
-    else
-    {
+    } else {
       Instantiate(SmallSpawnPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     }
     StartCoroutine(mapSpawnRoutine(listname, name, xpos, ypos));
   }
-  IEnumerator mapSpawnRoutine(addToList listname, string name, float xpos, float ypos)
-  {
+  IEnumerator mapSpawnRoutine(addToList listname, string name, float xpos, float ypos) {
     yield return new WaitForSeconds(0.5f);
     spawnEnemy(name, xpos, ypos, listname);
   }
-  void AddEnemyToList(GameObject enemy, addToList listname)
-  {
-    if (listname == addToList.None)
-    {
+  void AddEnemyToList(GameObject enemy, addToList listname) {
+    if (listname == addToList.None) {
       return;
     }
-    if (listname == addToList.All)
-    {
+    if (listname == addToList.All) {
       AllWaveTriggerEnemies.Add(enemy);
       return;
     }
-    if (listname == addToList.Specific)
-    {
+    if (listname == addToList.Specific) {
       SpecificWaveTriggerEnemies.Add(enemy);
       return;
     }

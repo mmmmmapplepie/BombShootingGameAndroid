@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyDescription: 'A bomb of mystery. Some sources say this bomb is capable of
     teleporting entire armies. People hope never to see this bomb. '
   sprite: {fileID: 21300000, guid: 73f3c205b71dcaf42a044417f17a79cb, type: 3}
-  Boss: 0
+  Boss: 2
   enemyPrefab: {fileID: 3112957866081141623, guid: 33a0fd7010d32e84caba5cb81acc9c96, type: 3}
   Life: 2500
   Damage: 140

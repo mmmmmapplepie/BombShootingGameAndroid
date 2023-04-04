@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyDescription: 'A bomb commanding higher leadership than the Core bomb and has
     higher durability. '
   sprite: {fileID: 21300000, guid: 2949caff6ec4e1d4680beb99dbccbfe3, type: 3}
-  Boss: 0
+  Boss: 1
   enemyPrefab: {fileID: 3112957866081141623, guid: a30b3637f818e8d46a2e4f5f2cc64a42, type: 3}
   Life: 3000
   Damage: 70

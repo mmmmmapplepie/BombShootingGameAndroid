@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyDescription: 'Rumors say that with this bomb in the battlefield, other ally
     bombs never get damaged. '
   sprite: {fileID: 21300000, guid: 11333b5f1923ec34ead0ad03d8441680, type: 3}
-  Boss: 0
+  Boss: 2
   enemyPrefab: {fileID: 3112957866081141623, guid: 5793bf65aaa1ed64bbf3fc1b9b3f62c7, type: 3}
   Life: 5000
   Damage: 110

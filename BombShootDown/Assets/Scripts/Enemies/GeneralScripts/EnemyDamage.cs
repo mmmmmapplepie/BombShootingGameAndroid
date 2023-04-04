@@ -48,10 +48,14 @@ public class EnemyDamage : MonoBehaviour {
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++) {
-      float angle = (Mathf.Sin(i)) / (i + 1);
       float ratio = 1f / (1f + i);
-      transform.rotation = Quaternion.Euler(0, 0, angle);
       sprite.color = new Color(sprite.color.r / ratio, sprite.color.g / ratio, sprite.color.b / ratio, ratio);
+      foreach (Transform tra in transform.Find("Enemy")) {
+        if (tra.GetComponent<SpriteRenderer>() != null) {
+          SpriteRenderer spra = tra.gameObject.GetComponent<SpriteRenderer>();
+          spra.color = new Color(spra.color.r / ratio, spra.color.g / ratio, spra.color.b / ratio, ratio);
+        }
+      }
       yield return new WaitForSeconds(0.05f);
     }
     Destroy(gameObject);
