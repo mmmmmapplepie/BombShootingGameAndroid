@@ -6,7 +6,7 @@ public class EnemyDamage : MonoBehaviour {
   [SerializeField]
   List<GameObject> damageEffects;
   Enemy data;
-  float Damage;
+  public float Damage;
   AudioManagerEnemy audioManager;
   void Awake() {
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();

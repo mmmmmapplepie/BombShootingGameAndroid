@@ -66,7 +66,7 @@ public class UpgradesMaxed : MonoBehaviour {
   }
   void setLifeRecovery() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("LifeRecovery")) {
-      BowManager.LifeRecovery = 10f;
+      BowManager.LifeRecovery = 8f;
     }
   }
   void setDamage() {
@@ -141,7 +141,7 @@ public class UpgradesMaxed : MonoBehaviour {
   void setAmmunitionRate() {
     BowManager.AmmoRate = 4f;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionRate")) {
-      BowManager.AmmoRate = 4f / (0.2f + 10f);
+      BowManager.AmmoRate = 4f / 8f;
     }
   }
   void setAmmunitionMax() {

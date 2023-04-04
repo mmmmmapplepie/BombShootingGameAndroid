@@ -1,6 +1,5 @@
 using UnityEngine;
-public class Enigma : MonoBehaviour, IdestroyFunction {
-  [SerializeField] float deathDmg;
+public class VesselMovement : MonoBehaviour {
   Enemy data;
   float speed;
   float driftMag;
@@ -8,7 +7,7 @@ public class Enigma : MonoBehaviour, IdestroyFunction {
   void Awake() {
     data = transform.root.GetComponent<EnemyLife>().data;
     speed = data.Speed;
-    drift = Random.Range(-0.5f, 0.5f);
+    drift = Random.Range(-4f, 4f);
     driftMag = Mathf.Abs(drift);
   }
   void checkFlip() {
@@ -26,10 +25,5 @@ public class Enigma : MonoBehaviour, IdestroyFunction {
     normDir.Normalize();
     Vector3 newPos = old + Time.deltaTime * speed * BowManager.EnemySpeed * normDir;
     transform.root.position = newPos;
-  }
-  public void DestroyFunction() {
-    if (transform.root.position.y > -7.25f) {
-      LifeManager.CurrentLife -= deathDmg * BowManager.EnemyDamage;
-    }
   }
 }

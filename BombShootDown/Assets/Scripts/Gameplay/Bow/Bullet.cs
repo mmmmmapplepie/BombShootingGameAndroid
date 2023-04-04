@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour {
         float force = 0f;
         if ((coll.transform.root.position.x - transform.position.x) != 0f) {
           float diff = coll.transform.root.position.x - transform.position.x;
-          float forcemag = 1 / Mathf.Pow((Mathf.Abs(diff) - 4.5f), 2f);
+          float forcemag = 1f / Mathf.Pow((6.5f - Mathf.Abs(diff)), 2f);
           if (diff > 0f) {
             force = -forcemag;
           } else {
@@ -59,7 +59,8 @@ public class Bullet : MonoBehaviour {
         }
 
         Rigidbody2D rb = coll.transform.root.GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(force * pull, 0f), ForceMode2D.Impulse);
+        print(GetComponent<Rigidbody2D>().velocity.magnitude);
+        rb.AddForce(new Vector2(Mathf.Log(GetComponent<Rigidbody2D>().velocity.magnitude + 1) * force * pull, 0f), ForceMode2D.Impulse);
       }
     }
   }

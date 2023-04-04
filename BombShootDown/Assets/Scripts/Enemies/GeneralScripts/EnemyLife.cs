@@ -84,8 +84,15 @@ public class EnemyLife : MonoBehaviour {
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     Destroy(transform.Find("Enemy").gameObject.GetComponent<Collider2D>());
-    Destroy(transform.Find("MovementControl").gameObject);
+    EnemyFunctionalityDestroy();
     Destroy(transform.Find("State").gameObject);
+  }
+  void EnemyFunctionalityDestroy() {
+    GameObject funct = transform.Find("MovementControl").gameObject;
+    if (funct.GetComponent<IdestroyFunction>() != null) {
+      funct.GetComponent<IdestroyFunction>().DestroyFunction();
+    }
+    Destroy(funct);
   }
   IEnumerator deathSequence() {
     dead = true;

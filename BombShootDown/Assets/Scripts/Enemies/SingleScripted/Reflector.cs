@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class Reflector : MonoBehaviour {
+public class Reflector : MonoBehaviour, IdestroyFunction {
   [SerializeField] float reflectRatio;
   Enemy data;
   EnemyLife currLife;
@@ -55,7 +55,7 @@ public class Reflector : MonoBehaviour {
     Vector3 newPos = old + Time.deltaTime * BowManager.EnemySpeed * normDir;
     transform.root.position = newPos;
   }
-  void OnDestroy() {
+  public void DestroyFunction() {
     if (LifeManager.ReviveRoutine == false) {
       LifeManager.CurrentLife -= health * reflectRatio * BowManager.EnemyDamage;
     }

@@ -23,15 +23,18 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
     StartCoroutine("wave1");
   }
   IEnumerator wave1() {
-    int totalEnemies = 1;
+    int totalEnemies = 3;
     while (totalEnemies > 0) {
       totalEnemies--;
       float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("Zipper", x, 10f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("MesoZipper", x, 10f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("MacroZipper", x, 10f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("HyperZipper", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.1f);
+      // spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
+      // x = spawner.randomWithRange(-5f, 5f);
+      // spawner.spawnEnemy("MesoVessel", x, 10f, LevelSpawner.addToList.All);
+      // x = spawner.randomWithRange(-5f, 5f);
+      // spawner.spawnEnemy("MacroVessel", x, 10f, LevelSpawner.addToList.All);
+      // x = spawner.randomWithRange(-5f, 5f);
+      // spawner.spawnEnemy("HyperVessel", x, 10f, LevelSpawner.addToList.All);
+      yield return new WaitForSeconds(30f);
     }
   }
   //   // StartCoroutine("EndLevel");

@@ -72,7 +72,7 @@ public class Upgrades : MonoBehaviour {
   void setLifeRecovery() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("LifeRecovery")) {
       int lvl = UpgradesManager.returnDictionaryValue("LifeRecovery")[1];
-      BowManager.LifeRecovery = (float)lvl;
+      BowManager.LifeRecovery = (float)lvl * 0.8f;
     }
   }
   void setDamage() {
@@ -158,7 +158,7 @@ public class Upgrades : MonoBehaviour {
     BowManager.AmmoRate = 4f;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionRate")) {
       int lvl = UpgradesManager.returnDictionaryValue("AmmunitionRate")[1];
-      BowManager.AmmoRate = 4f / (0.5f + (float)lvl);
+      BowManager.AmmoRate = 4f / (0.5f + (float)lvl * 0.75f);
     }
   }
   void setAmmunitionMax() {
