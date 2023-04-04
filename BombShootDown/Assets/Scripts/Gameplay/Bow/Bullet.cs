@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour {
   bool pullStarted = false;
   int pierce;
   float speed;
+  bool used = false;
 
   void Awake() {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
@@ -28,7 +29,6 @@ public class Bullet : MonoBehaviour {
     }
   }
   void Update() {
-    // destroy when outside area
     if (transform.position.x > 7f || transform.position.x < -7f || transform.position.y > 13f || transform.position.y < -13f) {
       Destroy(gameObject);
     }
@@ -48,7 +48,6 @@ public class Bullet : MonoBehaviour {
           continue;
         }
         float force = 0f;
-        //pull animation
         if ((coll.transform.root.position.x - transform.position.x) != 0f) {
           float diff = coll.transform.root.position.x - transform.position.x;
           float forcemag = 1 / Mathf.Pow((Mathf.Abs(diff) - 4.5f), 2f);
@@ -106,6 +105,9 @@ public class Bullet : MonoBehaviour {
     GameObject effect = Instantiate(prefab, pos, Quaternion.identity, parent);
   }
   void OnTriggerEnter2D(Collider2D coll) {
+    if (used == true) {
+      return;
+    }
     if (coll.gameObject.tag == "TauntEnemy" || coll.gameObject.tag == "Enemy") {
       if (chain && coll.transform.root.GetComponent<ChainExplosion>().Chained == false) {
         coll.transform.root.GetComponent<ChainExplosion>().Chained = true;
@@ -127,6 +129,7 @@ public class Bullet : MonoBehaviour {
       pierce--;
       if (pierce <= 0) {
         gameObject.GetComponent<Collider2D>().enabled = false;
+        used = true;
         Destroy(gameObject);
       }
     }

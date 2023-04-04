@@ -160,7 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3112957865846596067}
   - component: {fileID: 3112957865846596066}
-  - component: {fileID: 3112957865846597148}
+  - component: {fileID: 1674002307410404903}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -233,7 +233,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3112957865846597148
+--- !u!61 &1674002307410404903
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,7 +246,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.09518039}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -257,8 +257,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.94389784, y: 0.8534947}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.11956375, y: 0.2824061}
+  m_EdgeRadius: 0.3
 --- !u!1 &3112957865910395871
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +351,6 @@ GameObject:
   - component: {fileID: 3112957866081141619}
   - component: {fileID: 3112957866081141618}
   - component: {fileID: 3112957866081141617}
-  - component: {fileID: 7511504544025807726}
   - component: {fileID: 5007360293035530302}
   m_Layer: 0
   m_Name: Zipper
@@ -451,18 +450,6 @@ MonoBehaviour:
   chainedAnimation: {fileID: 3190854738746908884, guid: e0497198279913746880e132ec87e0d0, type: 3}
   Chained: 0
   animationAdded: 0
---- !u!114 &7511504544025807726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3112957866081141623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e395ae4b1b096ba40a3b2023b4033a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &5007360293035530302
 Rigidbody2D:
   serializedVersion: 4
@@ -476,7 +463,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 1
+  m_LinearDrag: 600
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1025,7 +1012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2172528103502488531}
-  - component: {fileID: 7310814964961581807}
+  - component: {fileID: 8575344611702572606}
   m_Layer: 0
   m_Name: MovementControl
   m_TagString: Untagged
@@ -1047,7 +1034,7 @@ Transform:
   m_Father: {fileID: 3112957866081141616}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7310814964961581807
+--- !u!114 &8575344611702572606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1056,11 +1043,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5089559303648433309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd71842021868b54fa446897e1e9360b, type: 3}
+  m_Script: {fileID: 11500000, guid: fe994fdfb4b109e44aeceb0abbdfe89c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shiftRate: 1.5
-  forceMultiplier: 4
+  evadeForce: 150
+  dodgeRadius: 2
 --- !u!1 &6883247232560790703
 GameObject:
   m_ObjectHideFlags: 0

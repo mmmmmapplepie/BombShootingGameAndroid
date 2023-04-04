@@ -9,6 +9,7 @@ public class HelperBullet : MonoBehaviour {
   float damage;
   int pierce;
   float speed;
+  bool used = false;
   void Awake() {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     gameObject.GetComponent<CircleCollider2D>().enabled = false;
@@ -19,7 +20,6 @@ public class HelperBullet : MonoBehaviour {
     }
   }
   void Update() {
-    // destroy when outside area
     if (transform.position.x > 7f || transform.position.x < -7f || transform.position.y > 13f || transform.position.y < -13f) {
       Destroy(gameObject);
     }
@@ -65,6 +65,9 @@ public class HelperBullet : MonoBehaviour {
   }
 
   void OnTriggerEnter2D(Collider2D coll) {
+    if (used == true) {
+      return;
+    }
     if (coll.gameObject.tag == "TauntEnemy" || coll.gameObject.tag == "Enemy") {
       EnemyLife life = coll.transform.root.gameObject.GetComponent<EnemyLife>();
       Transform enemyCenter = coll.transform.root;
@@ -79,6 +82,7 @@ public class HelperBullet : MonoBehaviour {
       pierce--;
       if (pierce <= 0) {
         gameObject.GetComponent<Collider2D>().enabled = false;
+        used = true;
         Destroy(gameObject);
       }
     }

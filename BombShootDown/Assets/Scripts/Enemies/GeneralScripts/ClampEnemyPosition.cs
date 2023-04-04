@@ -24,6 +24,7 @@ public class ClampEnemyPosition : MonoBehaviour {
         float y = rb.velocity.y;
         rb.velocity = new Vector2(-x, y);
       }
+      correctPosition(-5.1f);
     }
   }
   void correctPosition(float x) {

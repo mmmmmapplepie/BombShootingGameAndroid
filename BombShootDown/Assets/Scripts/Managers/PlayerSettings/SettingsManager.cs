@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 public class SettingsManager {
   #region VolumeSettings
-  public static float volumeTheme = 1f;
-  public static float volumeEnemy = 1f;
-  public static float volumeCannon = 1f;
+  public static float volumeTheme = 0f;
+  public static float volumeEnemy = 0f;
+  public static float volumeCannon = 0f;
   #endregion
 
   #region PlayerProgress

@@ -19,7 +19,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 3112957866081141623, guid: ddccb50443a17294abaa046cfab8795b, type: 3}
   Life: 40
   Damage: 8
-  Speed: 3
+  Speed: 1
   MaxShield: 3
   Shield: 0
   Armor: 0
