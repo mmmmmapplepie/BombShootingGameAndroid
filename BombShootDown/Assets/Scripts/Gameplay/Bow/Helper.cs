@@ -95,8 +95,8 @@ public class Helper : MonoBehaviour {
     aiming = false;
   }
   IEnumerator AimAndShoot() {
-    float AimTime = BowManager.ReloadRate;
-    float bulletLoad = Random.Range(1f, 2f) * BowManager.AmmoRate;
+    float AimTime = BowManager.ReloadRate * BowManager.CoolDownRate;
+    float bulletLoad = Random.Range(1f, 2f) * BowManager.AmmoRate * BowManager.CoolDownRate;
     float ratio = 0f;
     SnapBack();
     while (ratio < 1f) {

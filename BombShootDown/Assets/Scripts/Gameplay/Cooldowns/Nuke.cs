@@ -23,11 +23,10 @@ public class Nuke : MonoBehaviour {
   float BaseNukeCooldown = 250f;
   float NukeDamage = 500f;
   float remainingTime = 0f;
-  float cooldownTimerChangeReceptor;
+  float cooldownTimerChangeReceptor = 1f;
   void Awake() {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     SetBaseCooldown();
-    cooldownTimerChangeReceptor = BowManager.CoolDownRate;
   }
   public void checkUpgradesForNukeEquipped() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Nuke")) {
@@ -41,11 +40,12 @@ public class Nuke : MonoBehaviour {
   }
   void Update() {
     if (BowManager.CoolDownRate != cooldownTimerChangeReceptor) {
-      float oldBaseTime = BaseNukeCooldown / cooldownTimerChangeReceptor;
-      float newBaseTime = BaseNukeCooldown / BowManager.CoolDownRate;
+      float oldBaseTime = BaseNukeCooldown * cooldownTimerChangeReceptor;
+      float newBaseTime = BaseNukeCooldown * BowManager.CoolDownRate;
       float ratioRemaining = remainingTime / oldBaseTime;
       float newRemaining = ratioRemaining * newBaseTime;
       remainingTime = newRemaining;
+      cooldownTimerChangeReceptor = BowManager.CoolDownRate;
     }
     if (remainingTime > 0f) {
       countDownTimer();
@@ -61,8 +61,8 @@ public class Nuke : MonoBehaviour {
     RenderCooldownImage();
   }
   void RenderCooldownImage() {
-    float oldBaseTime = BaseNukeCooldown / cooldownTimerChangeReceptor;
-    float ratioRemaining = remainingTime / oldBaseTime;
+    float BaseTime = BaseNukeCooldown * cooldownTimerChangeReceptor;
+    float ratioRemaining = remainingTime / BaseTime;
     cooldownCover.fillAmount = ratioRemaining;
   }
   IEnumerator FireNuke() {
@@ -77,7 +77,7 @@ public class Nuke : MonoBehaviour {
       return;
     }
     NukeButton.GetComponent<Button>().interactable = false;
-    remainingTime = BaseNukeCooldown / cooldownTimerChangeReceptor;
+    remainingTime = BaseNukeCooldown * cooldownTimerChangeReceptor;
     StartCoroutine("FireNuke");
   }
   void nukeDamage() {

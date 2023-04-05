@@ -78,7 +78,7 @@ public class EnemyLife : MonoBehaviour {
     }
   }
   public void ChainExplosion() {
-    takeDamage(BowManager.ChainExplosionDmg * BowManager.BulletDmg);
+    takeDamage(BowManager.ChainExplosionDmg * BowManager.BulletDmg * BowManager.BulletMultiplier);
   }
   void RemoveAtDeathComponents() {
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;

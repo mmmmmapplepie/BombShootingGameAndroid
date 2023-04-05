@@ -8,7 +8,7 @@ public class BoosterBuff : MonoBehaviour {
   public static int hyperBoosterCount = 0;
   void OnEnable() {
     addBoosterCount();
-    adjustDamageBuff();
+    adjustSpeedBuff();
   }
   void addBoosterCount() {
     if (hyperBooster) {
@@ -17,7 +17,7 @@ public class BoosterBuff : MonoBehaviour {
       BoosterCount++;
     }
   }
-  void adjustDamageBuff() {
+  void adjustSpeedBuff() {
     BowManager.EnemySpeed = 1f + (float)BoosterCount * 0.2f + (float)hyperBoosterCount * 0.5f;
   }
   void OnDestroy() {
@@ -26,5 +26,6 @@ public class BoosterBuff : MonoBehaviour {
     } else {
       BoosterCount--;
     }
+    adjustSpeedBuff();
   }
 }

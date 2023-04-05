@@ -53,6 +53,7 @@ public class GameStateManager : MonoBehaviour {
     BowManager.AmmoRate = 4f;//base 4
     BowManager.ReloadRate = 2f;//base 2
     BowManager.BulletDmg = 1f;//base 1
+    BowManager.BulletMultiplier = 1f;//for debuffs
     BowManager.HelperDmg = 0.5f; //base 0.5. max at equal to bulletdmg
     BowManager.ArmorPierce = 0;//0 at base
     BowManager.BulletSpeed = 5f;//base 5

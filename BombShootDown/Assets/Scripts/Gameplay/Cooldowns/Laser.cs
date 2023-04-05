@@ -19,12 +19,11 @@ public class Laser : MonoBehaviour {
   float LaserDamage = 100f;
   float BaseLaserCooldown = 100f;
   float remainingTime = 0f;
-  float cooldownTimerChangeReceptor;
+  float cooldownTimerChangeReceptor = 1f;
   //Initial setup including upgrades
   void Awake() {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     SetBaseSettings();
-    cooldownTimerChangeReceptor = BowManager.CoolDownRate;
   }
   public void checkUpgradesForLaserEquipped() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Laser")) {
@@ -38,11 +37,12 @@ public class Laser : MonoBehaviour {
   }
   void Update() {
     if (BowManager.CoolDownRate != cooldownTimerChangeReceptor) {
-      float oldBaseTime = BaseLaserCooldown / cooldownTimerChangeReceptor;
-      float newBaseTime = BaseLaserCooldown / BowManager.CoolDownRate;
+      float oldBaseTime = BaseLaserCooldown * cooldownTimerChangeReceptor;
+      float newBaseTime = BaseLaserCooldown * BowManager.CoolDownRate;
       float ratioRemaining = remainingTime / oldBaseTime;
       float newRemaining = ratioRemaining * newBaseTime;
       remainingTime = newRemaining;
+      cooldownTimerChangeReceptor = BowManager.CoolDownRate;
     }
     if (remainingTime > 0f) {
       countDownTimer();
@@ -58,8 +58,8 @@ public class Laser : MonoBehaviour {
     RenderCooldownImage();
   }
   void RenderCooldownImage() {
-    float oldBaseTime = BaseLaserCooldown / cooldownTimerChangeReceptor;
-    float ratioRemaining = remainingTime / oldBaseTime;
+    float BaseTime = BaseLaserCooldown * cooldownTimerChangeReceptor;
+    float ratioRemaining = remainingTime / BaseTime;
     cooldownCover.fillAmount = ratioRemaining;
   }
   public void UseLaser() {
@@ -67,7 +67,7 @@ public class Laser : MonoBehaviour {
       return;
     }
     LaserButton.GetComponent<Button>().interactable = false;
-    remainingTime = BaseLaserCooldown / cooldownTimerChangeReceptor;
+    remainingTime = BaseLaserCooldown * cooldownTimerChangeReceptor;
 
     clickPanel.SetActive(true);
     LaserAimer.SetActive(true);

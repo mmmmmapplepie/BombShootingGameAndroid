@@ -17,11 +17,10 @@ public class Bomb : MonoBehaviour {
   float BombDamage = 5f;
   float BaseBombCooldown = 20f; //base is actually 19f due to lvl being 1 at the beginning;
   float remainingTime = 0f;
-  float cooldownTimerChangeReceptor;
+  float cooldownTimerChangeReceptor = 1f;
   void Awake() {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     SetBaseSettings();
-    cooldownTimerChangeReceptor = BowManager.CoolDownRate;
   }
   public void checkUpgradesForBombDamageEquipped() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("BombDamage")) {
@@ -35,11 +34,12 @@ public class Bomb : MonoBehaviour {
   }
   void Update() {
     if (BowManager.CoolDownRate != cooldownTimerChangeReceptor) {
-      float oldBaseTime = BaseBombCooldown / cooldownTimerChangeReceptor;
-      float newBaseTime = BaseBombCooldown / BowManager.CoolDownRate;
+      float oldBaseTime = BaseBombCooldown * cooldownTimerChangeReceptor;
+      float newBaseTime = BaseBombCooldown * BowManager.CoolDownRate;
       float ratioRemaining = remainingTime / oldBaseTime;
       float newRemaining = ratioRemaining * newBaseTime;
       remainingTime = newRemaining;
+      cooldownTimerChangeReceptor = BowManager.CoolDownRate;
     }
     if (remainingTime > 0f) {
       countDownTimer();
@@ -55,8 +55,8 @@ public class Bomb : MonoBehaviour {
     RenderCooldownImage();
   }
   void RenderCooldownImage() {
-    float oldBaseTime = BaseBombCooldown / cooldownTimerChangeReceptor;
-    float ratioRemaining = remainingTime / oldBaseTime;
+    float BaseTime = BaseBombCooldown * cooldownTimerChangeReceptor;
+    float ratioRemaining = remainingTime / BaseTime;
     cooldownCover.fillAmount = ratioRemaining;
   }
   //Bomb functionality
@@ -65,7 +65,7 @@ public class Bomb : MonoBehaviour {
       return;
     }
     BombButton.GetComponent<Button>().interactable = false;
-    remainingTime = BaseBombCooldown / cooldownTimerChangeReceptor;
+    remainingTime = BaseBombCooldown * cooldownTimerChangeReceptor;
 
     clickPanel.SetActive(true);
     BowManager.UsingCooldown = true;
@@ -141,15 +141,4 @@ public class Bomb : MonoBehaviour {
       }
     }
   }
-
-
-
-
-
-
-
-
-
-
-
 }

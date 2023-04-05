@@ -54,9 +54,9 @@ public class HelperBullet : MonoBehaviour {
   }
   void SetHelperBulletSettings() {
     hits = BowManager.HitsPerHit;
-    damage = BowManager.HelperDmg;
+    damage = BowManager.HelperDmg * BowManager.BulletMultiplier;
     pierce = BowManager.Pierce;
-    speed = BowManager.BulletSpeed;
+    speed = BowManager.BulletSpeed * BowManager.BulletMultiplier;
     gameObject.GetComponent<CircleCollider2D>().enabled = true;
   }
 

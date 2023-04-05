@@ -23,22 +23,26 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
     StartCoroutine("wave1");
   }
   IEnumerator wave1() {
-    int totalEnemies = 10;
+    spawner.spawnEnemyInMap("HyperEnigma", -3f, 7f, LevelSpawner.addToList.All, true);
+    // spawner.spawnEnemyInMap("HyperMaintainer", 3f, 7f, LevelSpawner.addToList.All, true);
+    int totalEnemies = 20;
     while (totalEnemies > 0) {
       totalEnemies--;
       float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("UltimateBasic", x, 10f, LevelSpawner.addToList.All);
+      // spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
       // x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("MesoVessel", x, 10f, LevelSpawner.addToList.All);
       // x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("MacroVessel", x, 10f, LevelSpawner.addToList.All);
       // x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("HyperVessel", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.1f);
+      // x = spawner.randomWithRange(-5f, 5f);
+      // spawner.spawnEnemyInMap("HyperProtector", x, 8f, LevelSpawner.addToList.All, true);
+      // spawner.spawnEnemyInMap("HyperBooster", x, 8f, LevelSpawner.addToList.All, true);
+      yield return new WaitForSeconds(4f);
     }
-    yield return new WaitForSeconds(2f);
-    spawner.spawnEnemyInMap("Booster", -5f, 9f, LevelSpawner.addToList.All, true);
-    spawner.spawnEnemyInMap("HyperBooster", 5, 9f, LevelSpawner.addToList.All, true);
+    yield return new WaitForSeconds(5f);
+
   }
   //   // StartCoroutine("EndLevel");
   //   yield return null;

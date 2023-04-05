@@ -93,12 +93,12 @@ public class Bullet : MonoBehaviour {
   }
   void SetBulletSettings() {
     hits = BowManager.HitsPerHit;
-    damage = BowManager.BulletDmg;
+    damage = BowManager.BulletDmg * BowManager.BulletMultiplier;
     aoe = BowManager.AOE;
     chain = BowManager.ChainExplosion;
     pull = BowManager.PullForce;
     pierce = BowManager.Pierce;
-    speed = BowManager.BulletSpeed;
+    speed = BowManager.BulletSpeed * BowManager.BulletMultiplier;
     gameObject.GetComponent<CircleCollider2D>().enabled = true;
   }
   void CreateEffect(GameObject prefab, Transform parent, Vector3 pos) {

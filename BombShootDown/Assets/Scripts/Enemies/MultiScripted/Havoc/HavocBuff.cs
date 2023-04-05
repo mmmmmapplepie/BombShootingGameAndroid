@@ -26,5 +26,6 @@ public class HavocBuff : MonoBehaviour {
     } else {
       havocCount--;
     }
+    adjustDamageBuff();
   }
 }

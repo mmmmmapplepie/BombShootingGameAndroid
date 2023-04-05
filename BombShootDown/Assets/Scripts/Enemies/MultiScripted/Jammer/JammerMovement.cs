@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisruptorMovement : MonoBehaviour {
+public class JammerMovement : MonoBehaviour {
   [SerializeField] Transform aniO, aniM, aniI;
   Enemy data;
   float speed;
@@ -18,9 +18,9 @@ public class DisruptorMovement : MonoBehaviour {
     data = transform.root.gameObject.GetComponent<EnemyLife>().data;
     speed = data.Speed;
     initialDistance = Random.Range(1f, 4f);
-    waitTime = Random.Range(20f, 25f);
+    waitTime = Random.Range(35f, 45f);
     startyPos = transform.root.position.y;
-    drift = Random.Range(-0.4f, 0.4f);
+    drift = Random.Range(-0.5f, 0.5f);
     driftMag = Mathf.Abs(drift);
     havocAniIniSet();
   }
@@ -32,7 +32,7 @@ public class DisruptorMovement : MonoBehaviour {
     dirO = Random.Range(-1f, 1f);
     dirM = Random.Range(-1f, 1f);
     dirI = Random.Range(-1f, 1f);
-    magO = Random.Range(-0.1f, 0.1f);
+    magO = Random.Range(-2f, 2f);
     magM = Random.Range(-0.1f, 0.1f);
     magI = Random.Range(-0.1f, 0.1f);
   }

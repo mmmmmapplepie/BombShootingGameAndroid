@@ -118,7 +118,7 @@ public class UpgradesMaxed : MonoBehaviour {
   void setPierce() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Pierce")) {
       int lvl = UpgradesManager.returnDictionaryValue("Pierce")[1];
-      BowManager.Pierce = lvl + 1;
+      BowManager.Pierce = 10;
     }
   }
   void setAoeHit() {

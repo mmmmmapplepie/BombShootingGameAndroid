@@ -8,6 +8,7 @@ public class BowManager {
   public static float AmmoRate = 4f;//base 4
   public static float ReloadRate = 2f;//base 2
   public static float BulletDmg = 1f;//base 1
+  public static float BulletMultiplier = 1f;//for debuff
   public static float HelperDmg = 0.5f;//helpers get the hits/hit and pierce/ and armor pierce.
   public static int ArmorPierce = 0;//0 at base +1 with pierce upgrade base
   public static float BulletSpeed = 5f;//base 5 max at 35f;
