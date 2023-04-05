@@ -59,7 +59,6 @@ public class Bullet : MonoBehaviour {
         }
 
         Rigidbody2D rb = coll.transform.root.GetComponent<Rigidbody2D>();
-        print(GetComponent<Rigidbody2D>().velocity.magnitude);
         rb.AddForce(new Vector2(Mathf.Log(GetComponent<Rigidbody2D>().velocity.magnitude + 1) * force * pull, 0f), ForceMode2D.Impulse);
       }
     }

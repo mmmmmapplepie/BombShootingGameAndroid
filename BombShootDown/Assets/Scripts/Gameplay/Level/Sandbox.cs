@@ -23,19 +23,22 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
     StartCoroutine("wave1");
   }
   IEnumerator wave1() {
-    int totalEnemies = 3;
+    int totalEnemies = 10;
     while (totalEnemies > 0) {
       totalEnemies--;
       float x = spawner.randomWithRange(-5f, 5f);
-      // spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("UltimateBasic", x, 10f, LevelSpawner.addToList.All);
       // x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("MesoVessel", x, 10f, LevelSpawner.addToList.All);
       // x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("MacroVessel", x, 10f, LevelSpawner.addToList.All);
       // x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("HyperVessel", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(30f);
+      yield return new WaitForSeconds(0.1f);
     }
+    yield return new WaitForSeconds(2f);
+    spawner.spawnEnemyInMap("Booster", -5f, 9f, LevelSpawner.addToList.All, true);
+    spawner.spawnEnemyInMap("HyperBooster", 5, 9f, LevelSpawner.addToList.All, true);
   }
   //   // StartCoroutine("EndLevel");
   //   yield return null;

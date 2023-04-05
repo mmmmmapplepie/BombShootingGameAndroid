@@ -11,15 +11,13 @@ public class LevelSpawner : MonoBehaviour {
   GameObject SmallSpawnPrefab;
   [HideInInspector]
   WaveController waveControllerScript;
-  // [SerializeField]
-  // spawning animation prefab spawnEffect;
   public bool waveRunning = false;
   [HideInInspector]
   public List<GameObject> AllWaveTriggerEnemies = new List<GameObject>();
   [HideInInspector]
   public List<GameObject> SpecificWaveTriggerEnemies = new List<GameObject>();
   [HideInInspector]
-  public List<GameObject> NoneTriggerEnemies = new List<GameObject>();
+  public List<GameObject> NonTriggerEnemies = new List<GameObject>();
   [HideInInspector]
   public enum addToList { All, Specific, None };
 
@@ -66,7 +64,7 @@ public class LevelSpawner : MonoBehaviour {
   public void cleanWaveLists() {
     AllWaveTriggerEnemies.RemoveAll(x => x == null);
     SpecificWaveTriggerEnemies.RemoveAll(x => x == null);
-    NoneTriggerEnemies.RemoveAll(x => x == null);
+    NonTriggerEnemies.RemoveAll(x => x == null);
   }
   public IEnumerator AllTriggerEnemiesCleared() {
     while (AllWaveTriggerEnemies.Count > 0) {
@@ -87,7 +85,7 @@ public class LevelSpawner : MonoBehaviour {
     while (AllWaveTriggerEnemies.Count > 0) {
       yield return null;
     }
-    while (NoneTriggerEnemies.Count > 0) {
+    while (NonTriggerEnemies.Count > 0) {
       yield return null;
     }
     waveCleared();
@@ -105,6 +103,20 @@ public class LevelSpawner : MonoBehaviour {
 
   #region spawnEnemyFunctions
   public void spawnEnemy(string name, float xpos, float ypos, addToList listname) {
+    //null debugger //////////////
+    // int i = 0;
+    // foreach (Enemy en in level.Enemies) {
+    //   print(i);
+    //   i++;
+    //   print(en.enemyPrefab);
+    //   print(en.enemyPrefab.name);
+    // }
+    // Enemy ene = level.Enemies.Find(x => x.enemyPrefab.name == name);
+    // if (ene == null) {
+    //   return;
+    // }
+    ///////////////////////////////
+
     GameObject enemyPrefab = level.Enemies.Find(x => x.enemyPrefab.name == name).enemyPrefab;
     GameObject spawnedEnemy = Instantiate(enemyPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     AddEnemyToList(spawnedEnemy, listname);

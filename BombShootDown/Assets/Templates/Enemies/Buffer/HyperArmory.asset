@@ -17,7 +17,7 @@ MonoBehaviour:
     with armor. (they stack) '
   sprite: {fileID: 21300000, guid: 3a14df3c1165d0c46aa33f904f0397fd, type: 3}
   Boss: 0
-  enemyPrefab: {fileID: 3112957866081141623, guid: b49180589790c884ebe659ffdd9471eb, type: 3}
+  enemyPrefab: {fileID: 3112957866081141623, guid: 47232923144cf654d9bdc7a9e268ec76, type: 3}
   Life: 1200
   Damage: 50
   Speed: 0.1

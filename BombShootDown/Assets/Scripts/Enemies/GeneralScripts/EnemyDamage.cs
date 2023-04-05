@@ -6,6 +6,7 @@ public class EnemyDamage : MonoBehaviour {
   [SerializeField]
   List<GameObject> damageEffects;
   Enemy data;
+  [HideInInspector]
   public float Damage;
   AudioManagerEnemy audioManager;
   void Awake() {
