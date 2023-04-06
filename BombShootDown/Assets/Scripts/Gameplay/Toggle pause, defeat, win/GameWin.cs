@@ -35,6 +35,12 @@ public class GameWin : MonoBehaviour {
     if (thisLevel[0] == 1 && thisLevel[1] == 25) {
       nextLevelBtn.interactable = false;
     }
+    if (thisLevel[0] == 2 && thisLevel[1] == 30) {
+      nextLevelBtn.interactable = false;
+    }
+    if (thisLevel[0] == 3 && thisLevel[1] == 51) {
+      nextLevelBtn.interactable = false;
+    }
   }
   void newClearLevel() {
     clearRewards.text = clearRewards.text + $"\n{data.firstClearRewards.ToString()}" + " (FirstClear)";
@@ -43,7 +49,13 @@ public class GameWin : MonoBehaviour {
   }
   public void NextLevel() {
     Time.timeScale = 1f;
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    if (thisLevel[0] == 1 && (thisLevel[1] == 1 || thisLevel[1] == 2)) {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+    } else {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+      SceneManager.LoadScene("LevelBase", LoadSceneMode.Additive);
+    }
+
   }
   public void WorldMap() {
     Time.timeScale = 1f;

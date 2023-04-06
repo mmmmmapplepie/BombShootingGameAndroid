@@ -18,30 +18,31 @@ public class UpgradesManager {
 
   //[currentlvl, openlvls, pricing, upgradespacerequired]
   static void dictionaryBaseLog() {
-    //world 1
+    //world 1  slots 13
     UpgradeOptions.Add("UpgradeSlot", new int[] { 1, 1, 10, 0 });
-    UpgradeOptions.Add("MaximumLife", new int[] { 1, 1, 2, 1 });
+    UpgradeOptions.Add("MaximumLife", new int[] { 1, 1, 3, 2 });
     UpgradeOptions.Add("LifeRecovery", new int[] { 1, 1, 5, 2 });
     UpgradeOptions.Add("AmmunitionMax", new int[] { 1, 1, 1, 1 });
     UpgradeOptions.Add("AmmunitionRate", new int[] { 1, 1, 3, 1 });
     UpgradeOptions.Add("Damage", new int[] { 1, 1, 3, 1 });
-    UpgradeOptions.Add("Helpers", new int[] { 1, 1, 5, 2 });
+    UpgradeOptions.Add("Helpers", new int[] { 1, 1, 5, 3 });
     UpgradeOptions.Add("BulletSpeed", new int[] { 1, 1, 1, 1 });
     UpgradeOptions.Add("ReloadTime", new int[] { 1, 1, 3, 1 });
     UpgradeOptions.Add("BombDamage", new int[] { 1, 1, 2, 1 });
-    //world 2
+    //world 2  slots 10
     UpgradeOptions.Add("Revive", new int[] { 1, 1, 3, 1 });
     UpgradeOptions.Add("ArmorPierce", new int[] { 1, 1, 2, 1 });
-    UpgradeOptions.Add("HitsPerHit", new int[] { 1, 1, 4, 2 });
-    UpgradeOptions.Add("Pierce", new int[] { 1, 1, 4, 1 });
+    UpgradeOptions.Add("HitsPerHit", new int[] { 1, 1, 4, 3 });
+    UpgradeOptions.Add("Pierce", new int[] { 1, 1, 4, 2 });
     UpgradeOptions.Add("AoeHit", new int[] { 1, 1, 3, 2 });
     UpgradeOptions.Add("Laser", new int[] { 1, 1, 4, 1 });
-    //world 3
+    //world 3  slots 12
     UpgradeOptions.Add("Nuke", new int[] { 1, 1, 5, 1 });
     UpgradeOptions.Add("ChainExplosion", new int[] { 1, 1, 5, 3 });
     UpgradeOptions.Add("PullEnemies", new int[] { 1, 1, 5, 3 });
+    UpgradeOptions.Add("DoubleGun", new int[] { 0, 0, 5, 5 });
     //for DoubleGun [usingstatus, unlockedstatus, pricing(never used), upgslots]
-    UpgradeOptions.Add("DoubleGun", new int[] { 0, 0, 5, 4 });
+    //total 35 slots
   }
   public static void loadAllData() {
     PlayerData data = SaveSystem.loadSettings();

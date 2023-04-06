@@ -42,7 +42,6 @@ public class VesselContents : MonoBehaviour, IdestroyFunction {
     foreach (Enemy ene in heldEnemies) {
       script.Damage += ene.Damage;
     }
-    print(script.Damage);
   }
   public void DestroyFunction() {
     foreach (Enemy ene in heldEnemies) {

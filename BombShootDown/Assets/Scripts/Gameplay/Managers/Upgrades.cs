@@ -56,16 +56,16 @@ public class Upgrades : MonoBehaviour {
   }
   void setUpgradeSlot() {
     int lvl = UpgradesManager.returnDictionaryValue("UpgradeSlot")[1];
-    UpgradesEquipped.UpgradedSlots = 5 + 2 * lvl;
+    UpgradesEquipped.UpgradedSlots = 5 * lvl;
     if (lvl == 10) {
-      UpgradesEquipped.UpgradedSlots = 30;
+      UpgradesEquipped.UpgradedSlots = 35;
     }
   }
   void setMaximumLife() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("MaximumLife")) {
       int lvl = UpgradesManager.returnDictionaryValue("MaximumLife")[1];
       float remainingliferatio = LifeManager.CurrentLife / BowManager.MaxLife;
-      BowManager.MaxLife = 10f + (float)lvl * 10f;
+      BowManager.MaxLife = 10f + (float)lvl * 20f;
       LifeManager.CurrentLife = remainingliferatio * BowManager.MaxLife;
     }
   }

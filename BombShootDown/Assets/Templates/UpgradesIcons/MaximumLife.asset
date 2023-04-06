@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MaximumLife
   sprite: {fileID: 21300000, guid: 2f55ebfdf788e6f4690c3818b12d8a01, type: 3}
-  upgradeSlots: 1
+  upgradeSlots: 2

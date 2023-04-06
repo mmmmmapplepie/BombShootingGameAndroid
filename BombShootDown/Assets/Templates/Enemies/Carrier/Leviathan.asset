@@ -16,10 +16,10 @@ MonoBehaviour:
   enemyDescription: 'A rarely seen bomb of even higher capabilites than that of the
     Colossus bomb. Facing it is never easy. '
   sprite: {fileID: 21300000, guid: e1fd5b712432730409bd3bd819af4852, type: 3}
-  Boss: 1
+  Boss: 2
   enemyPrefab: {fileID: 3112957866081141623, guid: f01855dd511877e468d8d67dc5e5be05, type: 3}
-  Life: 2000
-  Damage: 120
+  Life: 3000
+  Damage: 200
   Speed: 0.02
   MaxShield: 150
   Shield: 20

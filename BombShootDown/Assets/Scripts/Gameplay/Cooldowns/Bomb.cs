@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Bomb : MonoBehaviour {
   [SerializeField]
+  GameObject BombGuide;
+  [SerializeField]
   GameObject BombEffect;
   [SerializeField]
   GameObject BombButton;
@@ -68,6 +70,7 @@ public class Bomb : MonoBehaviour {
     remainingTime = BaseBombCooldown * cooldownTimerChangeReceptor;
 
     clickPanel.SetActive(true);
+    BombGuide.SetActive(true);
     BowManager.UsingCooldown = true;
     BowManager.GunsReady = false;
     StartCoroutine("RemoveButtonTouch");
@@ -101,6 +104,7 @@ public class Bomb : MonoBehaviour {
   }
   void ResetValues() {
     clickPanel.SetActive(false);
+    BombGuide.SetActive(false);
     shot = false;
     BowManager.UsingCooldown = false;
     Invoke("readyguns", 0.5f);

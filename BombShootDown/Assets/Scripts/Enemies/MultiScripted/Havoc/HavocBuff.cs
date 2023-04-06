@@ -18,7 +18,7 @@ public class HavocBuff : MonoBehaviour {
     }
   }
   void adjustDamageBuff() {
-    BowManager.EnemyDamage = 1f + (float)havocCount * 0.2f + (float)hyperHavocCount * 0.5f;
+    BowManager.EnemyDamage = 1f + (float)havocCount * 0.1f + (float)hyperHavocCount * 0.3f;
   }
   void OnDestroy() {
     if (hyperHavoc) {

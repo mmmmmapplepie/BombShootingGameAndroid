@@ -17,8 +17,6 @@ public class Nuke : MonoBehaviour {
   GameObject NukeButton;
   [SerializeField]
   Image cooldownCover;
-  [SerializeField]
-  GameObject clickPanel;
   AudioManagerCannon audioManager;
   float BaseNukeCooldown = 250f;
   float NukeDamage = 500f;

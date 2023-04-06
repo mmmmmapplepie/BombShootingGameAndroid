@@ -17,18 +17,20 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
     spawner.setLevelData(level);
     audio = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
   }
-
   void Start() {
     audio.ChangeBGM("MenuTheme");
     StartCoroutine("wave1");
   }
   IEnumerator wave1() {
-    spawner.spawnEnemyInMap("HyperEnigma", -3f, 7f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("HyperMaintainer", 3f, 7f, LevelSpawner.addToList.All, true);
+    spawner.spawnEnemyInMap("Carrier", 0f, 5f, LevelSpawner.addToList.All, true);
+    spawner.spawnEnemyInMap("Colossus", 0f, 10f, LevelSpawner.addToList.All, true);
+    // spawner.spawnEnemyInMap("Leviathan", 3f, 5f, LevelSpawner.addToList.All, true);
+    // spawner.spawnEnemyInMap("Behemoth", 3f, 5f, LevelSpawner.addToList.All, true);
+    yield return new WaitForSeconds(10f);
     int totalEnemies = 20;
     while (totalEnemies > 0) {
       totalEnemies--;
-      float x = spawner.randomWithRange(-5f, 5f);
+      // float x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
       // x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("MesoVessel", x, 10f, LevelSpawner.addToList.All);
@@ -36,9 +38,6 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
       // spawner.spawnEnemy("MacroVessel", x, 10f, LevelSpawner.addToList.All);
       // x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("HyperVessel", x, 10f, LevelSpawner.addToList.All);
-      // x = spawner.randomWithRange(-5f, 5f);
-      // spawner.spawnEnemyInMap("HyperProtector", x, 8f, LevelSpawner.addToList.All, true);
-      // spawner.spawnEnemyInMap("HyperBooster", x, 8f, LevelSpawner.addToList.All, true);
       yield return new WaitForSeconds(4f);
     }
     yield return new WaitForSeconds(5f);

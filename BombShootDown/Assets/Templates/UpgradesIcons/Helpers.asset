@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Helpers
   sprite: {fileID: 21300000, guid: 9260a132402937b4983d90d60736de26, type: 3}
-  upgradeSlots: 2
+  upgradeSlots: 3

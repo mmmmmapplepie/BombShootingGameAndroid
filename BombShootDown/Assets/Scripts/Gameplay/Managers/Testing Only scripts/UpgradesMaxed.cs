@@ -60,7 +60,7 @@ public class UpgradesMaxed : MonoBehaviour {
   void setMaximumLife() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("MaximumLife")) {
       float remainingliferatio = LifeManager.CurrentLife / BowManager.MaxLife;
-      BowManager.MaxLife = 10f + 10f * 10f;
+      BowManager.MaxLife = 10f + 200f;
       LifeManager.CurrentLife = remainingliferatio * BowManager.MaxLife;
     }
   }

@@ -16,10 +16,10 @@ MonoBehaviour:
   enemyDescription: 'Bomb with incredible abilities in protecting its fellow bombs.
     It often draws opponents towards itself away from its allys. '
   sprite: {fileID: 21300000, guid: dff445d06b3eff749a98742a6bf55ec9, type: 3}
-  Boss: 1
+  Boss: 2
   enemyPrefab: {fileID: 3112957866081141623, guid: 8678a0733565878469924e5da51e9fec, type: 3}
-  Life: 4000
-  Damage: 90
+  Life: 5500
+  Damage: 170
   Speed: 0.015
   MaxShield: 80
   Shield: 80

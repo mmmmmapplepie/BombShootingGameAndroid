@@ -19,7 +19,7 @@ MonoBehaviour:
   Boss: 1
   enemyPrefab: {fileID: 3112957866081141623, guid: a30b3637f818e8d46a2e4f5f2cc64a42, type: 3}
   Life: 3000
-  Damage: 70
+  Damage: 140
   Speed: 0.04
   MaxShield: 50
   Shield: 50

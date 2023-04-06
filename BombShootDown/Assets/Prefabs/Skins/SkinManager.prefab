@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6842064149280478062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6842064149280478050}
+  - component: {fileID: 6842064149280478049}
+  - component: {fileID: 6842064149280478048}
+  - component: {fileID: 6842064149280478063}
+  m_Layer: 0
+  m_Name: SkinManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6842064149280478050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842064149280478062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3315221, y: -3.5424185, z: -1.290782}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6842064149280478049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842064149280478062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c30ec6ad8792a48b60aeb121b11b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfBowSkins:
+  - {fileID: 11400000, guid: 2199c1f43c57eaf41806c1de12b147fc, type: 2}
+  - {fileID: 11400000, guid: 6aa5333760bf65240b6bdf50ac21c2e4, type: 2}
+  Bow1: {fileID: 0}
+  Bow2: {fileID: 0}
+  helpers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &6842064149280478048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842064149280478062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a3d748da1b43e489a97acfd4869c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfBulletSkins:
+  - {fileID: 11400000, guid: 55ff39de246a72f419913590ec3ff23b, type: 2}
+--- !u!114 &6842064149280478063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842064149280478062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151834689424dba4dbb1097ae995750d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfFortressSkins:
+  - {fileID: 11400000, guid: 71ccf4c2ef5b024468d3bb1b68244901, type: 2}
+  fortress: {fileID: 0}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pierce
   sprite: {fileID: 21300000, guid: 98d410beb9ac19c42a112e190f5e468b, type: 3}
-  upgradeSlots: 1
+  upgradeSlots: 2
