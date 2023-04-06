@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1-3TR
   m_EditorClassIdentifier: 
   name: 1-3TR
-  upgradesPerWave: 1e0000001e000000
+  upgradesPerWave: 6400000064000000
   firstClearRewards: 0
   clearRewards: 0
   Enemies:

@@ -75,7 +75,7 @@ public class CarrierMechanics : MonoBehaviour {
   IEnumerator Summon() {
     while (true) {
       Summoning = true;
-      float wait = Random.Range(1f, 3f);
+      float wait = Random.Range(1f, 2f);
       yield return new WaitForSeconds(wait);
       float difficulty = Random.Range(0, 100);
       if (difficulty <= BigStrongRawPercent) {

@@ -53,12 +53,12 @@ public class EnemyLife : MonoBehaviour {
     } else {
       int Armordiff = Armor - BowManager.ArmorPierce;
       if (Armordiff > 0) {
-        if (Armordiff > 4) {
+        if (Armordiff > 9) {
           audioManager.PlayAudio("HeavyArmorHit");
           currentLife -= damage / 50f; //2% damage only
         } else {
           audioManager.PlayAudio("ArmorHit");
-          currentLife -= damage - damage * ((float)Armordiff / 5f); //each lvl diff takes a 20% decrease in dmg
+          currentLife -= damage - damage * ((float)Armordiff / 10f); //each lvl diff takes a 20% decrease in dmg
         }
       } else {
         audioManager.PlayAudio("NormalHit");

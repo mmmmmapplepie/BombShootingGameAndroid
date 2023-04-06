@@ -55,7 +55,7 @@ public class UpgradesMaxed : MonoBehaviour {
     setDoubleGun();
   }
   void setUpgradeSlot() {
-    UpgradesEquipped.UpgradedSlots = 30;
+    UpgradesEquipped.UpgradedSlots = 35;
   }
   void setMaximumLife() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("MaximumLife")) {
@@ -78,7 +78,7 @@ public class UpgradesMaxed : MonoBehaviour {
   void setHelpers() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Helpers")) {
       int lvl = 10;
-      float damageUp = 0.5f + (float)lvl * 0.05f;
+      float damageUp = 0.25f;
       BowManager.HelperDmg = BowManager.BulletDmg * damageUp;
       outerHelpers.SetActive(true);
       if (lvl > 3) {

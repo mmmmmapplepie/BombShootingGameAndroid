@@ -85,7 +85,7 @@ public class Upgrades : MonoBehaviour {
   void setHelpers() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Helpers")) {
       int lvl = UpgradesManager.returnDictionaryValue("Helpers")[1];
-      float damageUp = 0.5f + (float)lvl * 0.05f;
+      float damageUp = (float)lvl * 0.025f;
       BowManager.HelperDmg = BowManager.BulletDmg * damageUp;
       outerHelpers.SetActive(true);
       if (lvl > 3) {

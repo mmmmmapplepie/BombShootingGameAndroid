@@ -30,13 +30,15 @@ public class EnemyDamage : MonoBehaviour {
     }
   }
   void DamageEffect() {
-    if (Damage >= 50) {
+    float dmg = Damage * BowManager.EnemyDamage;
+    Camera.main.gameObject.GetComponent<CameraShake>().cameraShake(dmg);
+    if (dmg >= 100) {
       audioManager.PlayAudio("EnemyDamageTre");
       CreateEffect(damageEffects.Find(x => x.name == "EnemyDealDamageTremendous"), null, gameObject.transform.position);
-    } else if (Damage >= 30) {
+    } else if (dmg >= 50) {
       audioManager.PlayAudio("EnemyDamageBig");
       CreateEffect(damageEffects.Find(x => x.name == "EnemyDealDamageBig"), null, gameObject.transform.position);
-    } else if (Damage >= 10) {
+    } else if (dmg >= 15) {
       audioManager.PlayAudio("EnemyDamageMid");
       CreateEffect(damageEffects.Find(x => x.name == "EnemyDealDamageMedium"), null, gameObject.transform.position);
     } else {

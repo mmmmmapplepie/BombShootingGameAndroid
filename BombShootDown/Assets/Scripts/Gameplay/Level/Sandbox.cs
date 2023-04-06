@@ -22,11 +22,11 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
     StartCoroutine("wave1");
   }
   IEnumerator wave1() {
-    spawner.spawnEnemyInMap("Carrier", 0f, 5f, LevelSpawner.addToList.All, true);
-    spawner.spawnEnemyInMap("Colossus", 0f, 10f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("Leviathan", 3f, 5f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("Behemoth", 3f, 5f, LevelSpawner.addToList.All, true);
-    yield return new WaitForSeconds(10f);
+    // spawner.spawnEnemyInMap("Core", 0f, 5f, LevelSpawner.addToList.All, true);
+    spawner.spawnEnemyInMap("Carrier", -5f, 8f, LevelSpawner.addToList.All, true);
+    spawner.spawnEnemyInMap("Colossus", 5f, 8f, LevelSpawner.addToList.All, true);
+    spawner.spawnEnemyInMap("Leviathan", 1.5f, 8f, LevelSpawner.addToList.All, true);
+    spawner.spawnEnemyInMap("Behemoth", -1.5f, 8f, LevelSpawner.addToList.All, true);
     int totalEnemies = 20;
     while (totalEnemies > 0) {
       totalEnemies--;
@@ -38,7 +38,7 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
       // spawner.spawnEnemy("MacroVessel", x, 10f, LevelSpawner.addToList.All);
       // x = spawner.randomWithRange(-5f, 5f);
       // spawner.spawnEnemy("HyperVessel", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(4f);
+      yield return new WaitForSeconds(0.1f);
     }
     yield return new WaitForSeconds(5f);
 

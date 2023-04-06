@@ -48,7 +48,7 @@ public class EnemyCondition : MonoBehaviour {
       return;
     } else {
       bossSprite.gameObject.SetActive(true);
-      bossSprite.GetComponent<SpriteRenderer>().sprite = bossSpritesList[bossType - 1];
+      bossSprite.GetComponent<Image>().sprite = bossSpritesList[bossType - 1];
     }
   }
   void showArmor() {

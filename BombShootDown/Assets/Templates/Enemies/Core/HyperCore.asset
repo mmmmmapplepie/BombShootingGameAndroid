@@ -23,5 +23,5 @@ MonoBehaviour:
   Speed: 0.015
   MaxShield: 100
   Shield: 100
-  Armor: 5
+  Armor: 10
   Taunt: 1
