@@ -17,9 +17,6 @@ public class Upgrades : MonoBehaviour {
 
 
   void Awake() {
-    //Just while testing/////////////
-    UpgradesManager.loadAllData();
-    /////////////////////////////////
     setUpgradeSlot();
   }
   void Update() {
@@ -85,7 +82,7 @@ public class Upgrades : MonoBehaviour {
   void setHelpers() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Helpers")) {
       int lvl = UpgradesManager.returnDictionaryValue("Helpers")[1];
-      float damageUp = 0.5f + (float)lvl * 0.05f;
+      float damageUp = 0.3f + (float)lvl * 0.05f;
       BowManager.HelperDmg = BowManager.BulletDmg * damageUp;
       outerHelpers.SetActive(true);
       if (lvl > 3) {
@@ -161,7 +158,7 @@ public class Upgrades : MonoBehaviour {
     BowManager.AmmoRate = 4f;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionRate")) {
       int lvl = UpgradesManager.returnDictionaryValue("AmmunitionRate")[1];
-      BowManager.AmmoRate = 4f / (0.5f + (float)lvl * 0.75f);
+      BowManager.AmmoRate = 4f / (1f + (float)lvl * 0.5f);
     }
   }
   void setAmmunitionMax() {

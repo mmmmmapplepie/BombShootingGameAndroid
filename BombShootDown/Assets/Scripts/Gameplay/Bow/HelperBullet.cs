@@ -52,13 +52,22 @@ public class HelperBullet : MonoBehaviour {
     shootSound(speed * direction.magnitude);
     GetComponent<Rigidbody2D>().velocity = speed * direction;
   }
-  void SetHelperBulletSettings() {
-    if (BowManager.HitsPerHit > 5) {
+  void setHits() {
+    if (BowManager.HitsPerHit > 2) {
       hits = 1;
     }
-    if (BowManager.HitsPerHit > 10) {
+    if (BowManager.HitsPerHit > 4) {
       hits = 2;
     }
+    if (BowManager.HitsPerHit > 6) {
+      hits = 3;
+    }
+    if (BowManager.HitsPerHit > 9) {
+      hits = 4;
+    }
+  }
+  void SetHelperBulletSettings() {
+
     damage = BowManager.HelperDmg * BowManager.BulletMultiplier;
     pierce = BowManager.Pierce;
     speed = BowManager.BulletSpeed * BowManager.BulletMultiplier;

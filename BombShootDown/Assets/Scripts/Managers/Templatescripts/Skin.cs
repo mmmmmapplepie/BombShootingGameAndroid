@@ -14,4 +14,6 @@ public class Skin : ScriptableObject {
   public Sprite RightString = null;
   public Sprite LeftBolt = null;
   public Sprite RightBolt = null;
+  public float PS_Scale = 1f;
+  public Vector3 PS_Position = Vector3.zero;
 }

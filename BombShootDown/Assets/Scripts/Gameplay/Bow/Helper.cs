@@ -114,7 +114,7 @@ public class Helper : MonoBehaviour {
   }
   IEnumerator AimAndShoot() {
     float AimTime = BowManager.ReloadRate * BowManager.CoolDownRate;
-    float bulletLoad = Random.Range(1f, 2f) * BowManager.AmmoRate * BowManager.CoolDownRate;
+    float bulletLoad = Random.Range(2f, 3f) * BowManager.AmmoRate * BowManager.CoolDownRate;
     float startTime = Time.time;
     SnapBack();
     while (Time.time - startTime <= AimTime) {
@@ -142,7 +142,7 @@ public class Helper : MonoBehaviour {
   }
   IEnumerator Reload(float time) {
     yield return new WaitForSeconds(time);
-    GameObject bullet = Instantiate(HelperBulletPrefab, new Vector3(0f, -10f, 0f), Quaternion.identity, transform);
+    GameObject bullet = Instantiate(HelperBulletPrefab, new Vector3(0f, -10f, 0f), transform.rotation, transform);
     bullet.transform.localPosition = new Vector3(0f, 3.234f, 0f);
     aiming = false;
     waiting = false;

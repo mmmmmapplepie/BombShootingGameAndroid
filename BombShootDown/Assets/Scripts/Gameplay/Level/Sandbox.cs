@@ -23,10 +23,10 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
   }
   IEnumerator wave1() {
     // spawner.spawnEnemyInMap("Core", 0f, 5f, LevelSpawner.addToList.All, true);
-    spawner.spawnEnemyInMap("Carrier", -5f, 8f, LevelSpawner.addToList.All, true);
+    // spawner.spawnEnemyInMap("Carrier", -5f, 8f, LevelSpawner.addToList.All, true);
     // spawner.spawnEnemyInMap("Colossus", 5f, 8f, LevelSpawner.addToList.All, true);
     // spawner.spawnEnemyInMap("Leviathan", 1.5f, 8f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("Behemoth", -1.5f, 8f, LevelSpawner.addToList.All, true);
+    spawner.spawnEnemyInMap("HyperCore", -1.5f, 8f, LevelSpawner.addToList.All, true);
     int totalEnemies = 20;
     while (totalEnemies > 0) {
       totalEnemies--;

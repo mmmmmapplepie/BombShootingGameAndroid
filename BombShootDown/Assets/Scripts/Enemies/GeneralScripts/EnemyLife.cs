@@ -58,7 +58,7 @@ public class EnemyLife : MonoBehaviour {
           currentLife -= damage / 50f; //2% damage only
         } else {
           audioManager.PlayAudio("ArmorHit");
-          currentLife -= damage - damage * ((float)Armordiff / 10f); //each lvl diff takes a 20% decrease in dmg
+          currentLife -= damage - damage * ((float)Armordiff / 10f); //each lvl diff takes a 10% decrease in dmg
         }
       } else {
         audioManager.PlayAudio("NormalHit");

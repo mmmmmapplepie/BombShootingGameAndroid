@@ -2433,7 +2433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.1, y: -4.2}
+  m_AnchoredPosition: {x: -2.0999985, y: -4.200001}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1223729337
@@ -2783,6 +2783,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6aa5333760bf65240b6bdf50ac21c2e4, type: 2}
   allBulletSkins:
   - {fileID: 11400000, guid: 55ff39de246a72f419913590ec3ff23b, type: 2}
+  - {fileID: 11400000, guid: 461108eeb526c79459a3b3af3954362b, type: 2}
+  - {fileID: 11400000, guid: a6637c5e8d8e6cf49b2ecfc003606ad0, type: 2}
   allFortressSkins:
   - {fileID: 11400000, guid: 71ccf4c2ef5b024468d3bb1b68244901, type: 2}
   bowpanel: {fileID: 1311058952}

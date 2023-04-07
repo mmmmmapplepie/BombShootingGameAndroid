@@ -69,7 +69,7 @@ public class UpgradesManager {
       SettingsManager.currentFocusLevelTransform = new float[2] { 443, 682 };
       SettingsManager.endlessOriginalHS = 0f;
       SettingsManager.endlessUpgradedHS = 0f;
-      MoneyManager.money = 300;
+      MoneyManager.money = 100000;
       SettingsManager.currBowSkin = "Wooden Bow";
       SettingsManager.currBulletSkin = "Wooden Bullet";
       SettingsManager.currFortressSkin = "Wooden Fortress";

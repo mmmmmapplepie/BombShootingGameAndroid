@@ -10,8 +10,17 @@ public class FortressSkinChanger : MonoBehaviour {
   void Awake() {
     Skin skin = FindFortressSkin();
     fortress.GetComponent<SpriteRenderer>().sprite = skin.mainBody;
+    addEffect(skin);
   }
   Skin FindFortressSkin() {
     return listOfFortressSkins.Find(x => x.name == SettingsManager.currFortressSkin);
+  }
+  void addEffect(Skin skin) {
+    if (skin.particleEffect != null) {
+      Transform tra = fortress.transform;
+      GameObject effect = skin.particleEffect;
+      effect.transform.localScale = skin.PS_Scale * new Vector3(1f, 1f, 1f / skin.PS_Scale);
+      Instantiate(effect, tra);
+    }
   }
 }

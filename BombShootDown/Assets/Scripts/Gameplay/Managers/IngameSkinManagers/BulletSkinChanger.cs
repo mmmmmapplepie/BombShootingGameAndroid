@@ -20,7 +20,8 @@ public class BulletSkinChanger : MonoBehaviour {
     ob.GetComponent<SpriteRenderer>().sprite = currSkin.mainBody;
     if (effect != null) {
       Transform tra = ob.GetComponent<Transform>();
-      Instantiate(effect, tra.position, tra.rotation, tra);
+      effect.transform.localScale = new Vector3(currSkin.PS_Scale, currSkin.PS_Scale, 1f / currSkin.PS_Scale);
+      Instantiate(effect, tra);
     }
   }
 }

@@ -18,7 +18,7 @@ public class ReloadBow : MonoBehaviour {
     while (Time.time - startTime <= waitTime) {
       yield return null;
     }
-    GameObject bullet = Instantiate(BulletPrefab, new Vector3(0f, -10f, 0f), Quaternion.identity, transform);
+    GameObject bullet = Instantiate(BulletPrefab, new Vector3(0f, -10f, 0f), transform.rotation, transform);
     bullet.transform.localPosition = new Vector3(0f, 3.234f, 0f);
     wait = false;
   }

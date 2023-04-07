@@ -2,21 +2,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class BackButton : MonoBehaviour
-{
+public class BackButton : MonoBehaviour {
   //back to Main Menu
-  public void BackMM()
-  {
+  public void BackMM() {
     GameObject.Find("AudioManagerUI").GetComponent<AudioManagerUI>().PlayAudio("Back");
     SceneManager.LoadScene("MainMenu");
   }
-  public void BackGM()
-  {
+  public void BackGM() {
     GameObject.Find("AudioManagerUI").GetComponent<AudioManagerUI>().PlayAudio("Back");
     SceneManager.LoadScene("GameMode");
   }
-  public void BackW(string world)
-  {
+  public void BackW(string world) {
     GameObject.Find("AudioManagerUI").GetComponent<AudioManagerUI>().PlayAudio("Back");
     SceneManager.LoadScene(world);
   }

@@ -30,8 +30,9 @@ public class AmmoLifeReviveUI : MonoBehaviour {
   IEnumerator LoadAmmo() {
     BowManager.CurrentAmmo++;
     float startT = Time.time;
-    while (Time.time - startT < (BowManager.AmmoRate * BowManager.CoolDownRate)) {
-      float ratio = (Time.time - startT) / (BowManager.AmmoRate * BowManager.CoolDownRate);
+    float rate = (BowManager.AmmoRate * BowManager.CoolDownRate);
+    while (Time.time - startT < rate) {
+      float ratio = (Time.time - startT) / rate;
       if (ratio > 0f) {
         AmmoReloadMask.GetComponent<Image>().fillAmount = 1f - ratio;
       }

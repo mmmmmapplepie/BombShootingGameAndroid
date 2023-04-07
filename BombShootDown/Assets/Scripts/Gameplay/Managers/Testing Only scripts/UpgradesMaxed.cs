@@ -78,7 +78,7 @@ public class UpgradesMaxed : MonoBehaviour {
   void setHelpers() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Helpers")) {
       int lvl = 10;
-      float damageUp = 1f;
+      float damageUp = 0.8f;
       BowManager.HelperDmg = BowManager.BulletDmg * damageUp;
       outerHelpers.SetActive(true);
       if (lvl > 3) {
