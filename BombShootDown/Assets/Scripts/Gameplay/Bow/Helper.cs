@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Helper : MonoBehaviour {
   [SerializeField]
@@ -21,14 +22,31 @@ public class Helper : MonoBehaviour {
       } else {
         SnapBack();
       }
-      LockedOnEnemy = GameObject.FindWithTag("TauntEnemy");
+      FindNewEnemy(true);
       if (LockedOnEnemy == null) {
-        LockedOnEnemy = GameObject.FindWithTag("Enemy");
+        FindNewEnemy(false);
       }
     }
     if (LockedOnEnemy != null && findChildBullet() != null && aiming == false) {
       aiming = true;
       StartCoroutine("AimAndShoot");
+    }
+  }
+  void FindNewEnemy(bool TauntEnemy) {
+    if (TauntEnemy) {
+      List<GameObject> enemies = new List<GameObject>(GameObject.
+      FindGameObjectsWithTag("TauntEnemy"));
+      if (enemies.Count == 0) {
+        return;
+      }
+      LockedOnEnemy = enemies[Random.Range(0, enemies.Count)];
+    } else {
+      List<GameObject> enemies = new List<GameObject>(GameObject.
+      FindGameObjectsWithTag("Enemy"));
+      if (enemies.Count == 0) {
+        return;
+      }
+      LockedOnEnemy = enemies[Random.Range(0, enemies.Count)];
     }
   }
   void Move(float stage, Vector3 Direction) {
@@ -97,22 +115,22 @@ public class Helper : MonoBehaviour {
   IEnumerator AimAndShoot() {
     float AimTime = BowManager.ReloadRate * BowManager.CoolDownRate;
     float bulletLoad = Random.Range(1f, 2f) * BowManager.AmmoRate * BowManager.CoolDownRate;
-    float ratio = 0f;
+    float startTime = Time.time;
     SnapBack();
-    while (ratio < 1f) {
+    while (Time.time - startTime <= AimTime) {
       if (LockedOnEnemy != null) {
         Vector3 EnemyPosition = LockedOnEnemy.transform.position;
         Vector3 BowPosition = transform.position;
         Vector3 Direction = EnemyPosition - BowPosition;
-        ratio += 1f / 40f;
+        float ratio = ((Time.time - startTime) / AimTime);
         Move(ratio, Direction);
-        yield return new WaitForSeconds(AimTime / 40f);
+        yield return null;
       } else {
         EnemyDed();
-        break;
+        yield break;
       }
     }
-    if (ratio >= 1f) {
+    if (Time.time - startTime >= AimTime) {
       waiting = true;
       float angularDir = transform.eulerAngles.z;
       Transform bullet = findChildBullet();
@@ -121,7 +139,6 @@ public class Helper : MonoBehaviour {
       SnapBack();
       StartCoroutine("Reload", bulletLoad);
     }
-    yield return null;
   }
   IEnumerator Reload(float time) {
     yield return new WaitForSeconds(time);

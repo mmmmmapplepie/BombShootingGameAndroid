@@ -2,17 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MainAim : MonoBehaviour
-{
+public class MainAim : MonoBehaviour {
   [SerializeField]
   GameObject LeftString;
   [SerializeField]
   GameObject RightString;
-
-    //max at the mag about 5? i think.
   public void DragMove(Vector3 currPos, Vector3 center) {
     Vector3 dragDirection = currPos - center;
-    float ratio = (dragDirection.magnitude)*Mathf.Sqrt(3f)/5f;
+    float ratio = (dragDirection.magnitude) * Mathf.Sqrt(3f) / 5f;
     RotateBase(dragDirection);
     RotateLeft(ratio);
     RotateRight(ratio);
@@ -20,14 +17,14 @@ public class MainAim : MonoBehaviour
   }
   void RotateBase(Vector3 direction) {
     if (direction.y <= 0) {
-      float angle = Mathf.Atan(direction.x/direction.y)*180/Mathf.PI;
+      float angle = Mathf.Atan(direction.x / direction.y) * 180 / Mathf.PI;
       transform.rotation = Quaternion.Euler(0, 0, -angle);
     } else {
       if (direction.x >= 0) {
-        float angle = 90+Mathf.Atan(direction.y/direction.x)*180/Mathf.PI ;
+        float angle = 90 + Mathf.Atan(direction.y / direction.x) * 180 / Mathf.PI;
         transform.rotation = Quaternion.Euler(0, 0, angle);
       } else {
-        float angle = -90+Mathf.Atan(direction.y/direction.x)*180/Mathf.PI;
+        float angle = -90 + Mathf.Atan(direction.y / direction.x) * 180 / Mathf.PI;
         transform.rotation = Quaternion.Euler(0, 0, angle);
       }
     }
@@ -35,28 +32,28 @@ public class MainAim : MonoBehaviour
   //maximum stretch goes to double length???? so scale = 2 at that point.
   Transform findChildBullet() {
     Transform childBullet = null;
-    foreach(Transform tra in transform) {
-      if(tra.CompareTag("Bullet")) {
-         childBullet = tra;
-         break;
+    foreach (Transform tra in transform) {
+      if (tra.CompareTag("Bullet")) {
+        childBullet = tra;
+        break;
       }
     }
     return childBullet;
   }
   void RotateLeft(float ratio) {
     if (ratio < Mathf.Sqrt(3f)) {
-      float angle = Mathf.Atan(ratio)*180/Mathf.PI;
-      float length = Mathf.Sqrt(Mathf.Pow(ratio, 2f ) + 1);
-      Vector3 scale = new Vector3 (length , 1f, 1f);
+      float angle = Mathf.Atan(ratio) * 180 / Mathf.PI;
+      float length = Mathf.Sqrt(Mathf.Pow(ratio, 2f) + 1);
+      Vector3 scale = new Vector3(length, 1f, 1f);
       LeftString.transform.localRotation = Quaternion.Euler(0, 0, -angle);
       LeftString.transform.localScale = scale;
     }
   }
   void RotateRight(float ratio) {
     if (ratio < Mathf.Sqrt(3f)) {
-      float angle = Mathf.Atan(ratio)*180/Mathf.PI;
-      float length = Mathf.Sqrt(Mathf.Pow(ratio, 2f ) + 1);
-      Vector3 scale = new Vector3 (length , 1f, 1f);
+      float angle = Mathf.Atan(ratio) * 180 / Mathf.PI;
+      float length = Mathf.Sqrt(Mathf.Pow(ratio, 2f) + 1);
+      Vector3 scale = new Vector3(length, 1f, 1f);
       RightString.transform.localRotation = Quaternion.Euler(0, 0, angle);
       RightString.transform.localScale = scale;
     }
@@ -65,14 +62,14 @@ public class MainAim : MonoBehaviour
     Transform bullet = findChildBullet();
     if (bullet != null) {
       if (ratio < Mathf.Sqrt(3f)) {
-        bullet.localPosition = new Vector3 (0f, 3.234f-ratio*5, 0f);
+        bullet.localPosition = new Vector3(0f, 3.234f - ratio * 5, 0f);
       } else {
-        bullet.localPosition = new Vector3 (0f, 3.234f-Mathf.Sqrt(3f)*5, 0f);
+        bullet.localPosition = new Vector3(0f, 3.234f - Mathf.Sqrt(3f) * 5, 0f);
       }
     }
   }
   public void ShootBullet(float mag) {
-    float ratio = mag*Mathf.Sqrt(3f)/5f;
+    float ratio = mag * Mathf.Sqrt(3f) / 5f;
     if (ratio >= Mathf.Sqrt(3f)) {
       ratio = Mathf.Sqrt(3f);
     }
@@ -88,13 +85,13 @@ public class MainAim : MonoBehaviour
   public void SnapBack() {
     Transform bullet = findChildBullet();
     if (bullet != null) {
-      bullet.localPosition = new Vector3 (0f, 3.234f, 0f);
+      bullet.localPosition = new Vector3(0f, 3.234f, 0f);
     }
     transform.rotation = Quaternion.Euler(0, 0, 0);
     RightString.transform.localRotation = Quaternion.Euler(0, 0, 0);
-    RightString.transform.localScale = new Vector3 (1f, 1f, 1f);
+    RightString.transform.localScale = new Vector3(1f, 1f, 1f);
     LeftString.transform.localRotation = Quaternion.Euler(0, 0, 0);
-    LeftString.transform.localScale = new Vector3 (1f, 1f, 1f);
+    LeftString.transform.localScale = new Vector3(1f, 1f, 1f);
   }
   //  COROUTINE SEEMS TOO COMPLICATED AS I CANT BE BOTHERED ATM =--------------------------------------------------------
   // IEnumerator ReturnBack() {

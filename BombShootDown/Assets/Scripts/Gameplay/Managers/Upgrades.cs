@@ -85,7 +85,7 @@ public class Upgrades : MonoBehaviour {
   void setHelpers() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Helpers")) {
       int lvl = UpgradesManager.returnDictionaryValue("Helpers")[1];
-      float damageUp = (float)lvl * 0.025f;
+      float damageUp = 0.5f + (float)lvl * 0.05f;
       BowManager.HelperDmg = BowManager.BulletDmg * damageUp;
       outerHelpers.SetActive(true);
       if (lvl > 3) {
@@ -105,7 +105,10 @@ public class Upgrades : MonoBehaviour {
   void setReloadTime() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("ReloadTime")) {
       int lvl = UpgradesManager.returnDictionaryValue("ReloadTime")[1];
-      BowManager.ReloadRate = 2f / (1f + 2f * (float)lvl);
+      BowManager.ReloadRate = 2f / (4f * (float)lvl);
+      if (lvl == 10) {
+        BowManager.ReloadRate = 0f;
+      }
     }
   }
   void setRevive() {

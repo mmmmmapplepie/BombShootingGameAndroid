@@ -53,7 +53,12 @@ public class HelperBullet : MonoBehaviour {
     GetComponent<Rigidbody2D>().velocity = speed * direction;
   }
   void SetHelperBulletSettings() {
-    hits = BowManager.HitsPerHit;
+    if (BowManager.HitsPerHit > 5) {
+      hits = 1;
+    }
+    if (BowManager.HitsPerHit > 10) {
+      hits = 2;
+    }
     damage = BowManager.HelperDmg * BowManager.BulletMultiplier;
     pierce = BowManager.Pierce;
     speed = BowManager.BulletSpeed * BowManager.BulletMultiplier;

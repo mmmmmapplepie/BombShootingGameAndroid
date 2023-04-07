@@ -17,8 +17,9 @@ public class CameraShake : MonoBehaviour {
   }
   IEnumerator cameraShakeRoutine(float mag) {
     float time = Time.unscaledTime;
-    while (Time.unscaledTime < time + 0.5f) {
-      float newY = mag * (Mathf.Abs(Mathf.Sin(Mathf.PI * ((Time.unscaledTime - time) * 2f) * 6f))) * 2f * ((0.5f + time - Time.unscaledTime));
+    float shakeDuration = 1f;
+    while (Time.unscaledTime < time + shakeDuration) {
+      float newY = mag * (Mathf.Abs(Mathf.Sin(Mathf.PI * ((Time.unscaledTime - time) / shakeDuration) * 6f))) * 2f * ((shakeDuration + time - Time.unscaledTime));
       transform.position = new Vector3(0f, newY, -100f);
       yield return null;
     }

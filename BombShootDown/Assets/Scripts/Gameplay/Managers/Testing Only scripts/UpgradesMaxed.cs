@@ -78,7 +78,7 @@ public class UpgradesMaxed : MonoBehaviour {
   void setHelpers() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("Helpers")) {
       int lvl = 10;
-      float damageUp = 0.25f;
+      float damageUp = 1f;
       BowManager.HelperDmg = BowManager.BulletDmg * damageUp;
       outerHelpers.SetActive(true);
       if (lvl > 3) {
@@ -96,7 +96,7 @@ public class UpgradesMaxed : MonoBehaviour {
   }
   void setReloadTime() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("ReloadTime")) {
-      BowManager.ReloadRate = 2f / (1f + 20f);
+      BowManager.ReloadRate = 0f;
     }
   }
   void setRevive() {
@@ -159,7 +159,7 @@ public class UpgradesMaxed : MonoBehaviour {
       bow2.SetActive(true);
       bow1.transform.position = tempos1;
       bow2.transform.position = tempos2;
-      BowManager.AmmoRate = BowManager.AmmoRate / 1.1f;
+      BowManager.AmmoRate = BowManager.AmmoRate / 1.2f;
       BowManager.MaxAmmo = BowManager.MaxAmmo * 2;
       //double ammomax and rate
     }
