@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a972d0117e6e6d940acc8dac8eadf9a1, type: 3}
+  m_Name: Water Fortress
+  m_EditorClassIdentifier: 
+  name: Water Fortress
+  particleEffect: {fileID: 7375115928816714904, guid: 9b2e68e6971961f4eb7be4410af040fa, type: 3}
+  price: 800
+  type: 1
+  mainBody: {fileID: 0}
+  LeftString: {fileID: 0}
+  RightString: {fileID: 0}
+  LeftBolt: {fileID: 0}
+  RightBolt: {fileID: 0}
+  PS_Scale: 1
+  PS_Position: {x: 0, y: 0, z: 0}
