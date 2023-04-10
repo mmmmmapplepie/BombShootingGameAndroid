@@ -568,7 +568,7 @@ Transform:
   m_GameObject: {fileID: 88118947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -584,7 +584,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 16, z: 0.2}
+  m_Size: {x: 11.25, y: 20, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &105235997 stripped
 Transform:
@@ -2201,6 +2201,11 @@ PrefabInstance:
 --- !u!224 &281406100 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 976806095699222941, guid: 824b28626a18d094d9f8c87897d1ccfc, type: 3}
+  m_PrefabInstance: {fileID: 281406099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &281406101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 976806095699222940, guid: 824b28626a18d094d9f8c87897d1ccfc, type: 3}
   m_PrefabInstance: {fileID: 281406099}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &286156227
@@ -13846,7 +13851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameEndScreen: {fileID: 1834696945}
-  WinScreen: {fileID: 0}
+  WinScreen: {fileID: 281406101}
   revivePanel: {fileID: 1778076048}
 --- !u!4 &1958166822
 Transform:
@@ -13957,8 +13962,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e0c18c2d582b6934ca6071b09384bcfa, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

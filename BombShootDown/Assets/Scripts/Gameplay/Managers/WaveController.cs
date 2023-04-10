@@ -51,7 +51,6 @@ public class WaveController : MonoBehaviour {
   void makeGunsReady() {
     BowManager.GunsReady = true;
   }
-
   IEnumerator MoveWaveScreen() {
     Invoke("makeGunsReady", 0.05f);
     CurrentWave++;

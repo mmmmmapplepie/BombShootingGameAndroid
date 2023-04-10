@@ -14,10 +14,11 @@ public class W1L2 : MonoBehaviour, IGetLevelDataInterface {
   }
   void Awake() {
     spawner = gameObject.GetComponent<LevelSpawner>();
+    spawner.setLevelData(level);
     GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().ChangeBGM("MenuTheme");
   }
   void Update() {
-    if (spawner.waveRunning == false && WaveController.startWave == true) {
+    if (spawner.waveRunning == false && WaveController.startWave == true && WaveController.LevelCleared == false) {
       string name = spawner.findCorrectWaveToStart();
       if (name != null) {
         StartCoroutine(name);
@@ -33,7 +34,7 @@ public class W1L2 : MonoBehaviour, IGetLevelDataInterface {
       spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
       yield return new WaitForSeconds(2f);
     }
-    StartCoroutine(spawner.AllTriggerEnemiesCleared());
+    spawner.AllTriggerEnemiesCleared();
   }
   IEnumerator wave2() {
     int totalEnemies = 10;
@@ -43,7 +44,7 @@ public class W1L2 : MonoBehaviour, IGetLevelDataInterface {
       spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
       yield return new WaitForSeconds(1f);
     }
-    StartCoroutine(spawner.LastWaveEnemiesCleared());
+    spawner.LastWaveEnemiesCleared();
   }
   #endregion
 }

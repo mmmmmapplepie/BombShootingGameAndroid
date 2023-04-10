@@ -18,6 +18,7 @@ public class LevelSpawner : MonoBehaviour {
   public List<GameObject> SpecificWaveTriggerEnemies = new List<GameObject>();
   [HideInInspector]
   public List<GameObject> NonTriggerEnemies = new List<GameObject>();
+  public List<GameObject> AllEnemiesListDynamic = new List<GameObject>();
   [HideInInspector]
   public enum addToList { All, Specific, None };
 
@@ -59,26 +60,64 @@ public class LevelSpawner : MonoBehaviour {
 
 
 
-
   #region waveClearFunctions
-  public void cleanWaveLists() {
+  void cleanWaveLists() {
     AllWaveTriggerEnemies.RemoveAll(x => x == null);
     SpecificWaveTriggerEnemies.RemoveAll(x => x == null);
     NonTriggerEnemies.RemoveAll(x => x == null);
+    AllEnemiesListDynamic.RemoveAll(x => x == null);
   }
-  public IEnumerator AllTriggerEnemiesCleared() {
+  void updateAllEnemiesList() {
+    GameObject[] ene = GameObject.FindGameObjectsWithTag("Enemy");
+    GameObject[] tene = GameObject.FindGameObjectsWithTag("TauntEnemy");
+    foreach (GameObject go in ene) {
+      if (AllEnemiesListDynamic.Contains(go)) {
+        return;
+      } else {
+        AllEnemiesListDynamic.Add(go);
+      }
+    }
+    foreach (GameObject go in tene) {
+      if (AllEnemiesListDynamic.Contains(go)) {
+        return;
+      } else {
+        AllEnemiesListDynamic.Add(go);
+      }
+    }
+  }
+  public void AllTriggerEnemiesCleared() {
+    StartCoroutine(AllTriggerEnemiesClearedRoutine());
+  }
+  IEnumerator AllTriggerEnemiesClearedRoutine() {
     while (AllWaveTriggerEnemies.Count > 0) {
       yield return null;
     }
     waveCleared();
   }
-  public IEnumerator SpecificTriggerEnemiesCleared() {
+  public void SpecificWaveTriggerEnemiesCleared() {
+    StartCoroutine(SpecificTriggerEnemiesClearedRoutine());
+  }
+  IEnumerator SpecificTriggerEnemiesClearedRoutine() {
     while (SpecificWaveTriggerEnemies.Count > 0) {
       yield return null;
     }
     waveCleared();
   }
-  public IEnumerator LastWaveEnemiesCleared() {
+  public void AllEnemiesCleared() {
+    StartCoroutine(AllEnemiesClearedRoutine());
+  }
+  IEnumerator AllEnemiesClearedRoutine() {
+    updateAllEnemiesList();
+    while (AllEnemiesListDynamic.Count > 0) {
+      yield return new WaitForSeconds(1f);
+      updateAllEnemiesList();
+    }
+    waveCleared();
+  }
+  public void LastWaveEnemiesCleared() {
+    StartCoroutine(LastWaveEnemiesClearedRoutine());
+  }
+  IEnumerator LastWaveEnemiesClearedRoutine() {
     while (SpecificWaveTriggerEnemies.Count > 0) {
       yield return null;
     }
@@ -88,7 +127,7 @@ public class LevelSpawner : MonoBehaviour {
     while (NonTriggerEnemies.Count > 0) {
       yield return null;
     }
-    waveCleared();
+    AllEnemiesCleared();
   }
   public void waveCleared() {
     WaveController.WavesCleared++;

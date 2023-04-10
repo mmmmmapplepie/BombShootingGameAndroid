@@ -19,30 +19,44 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
   }
   void Start() {
     audio.ChangeBGM("MenuTheme");
-    StartCoroutine("wave1");
+    // StartCoroutine("wave1");
   }
-  IEnumerator wave1() {
-    // spawner.spawnEnemyInMap("Core", 0f, 5f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("Carrier", -5f, 8f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("Colossus", 5f, 8f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("Leviathan", 1.5f, 8f, LevelSpawner.addToList.All, true);
-    spawner.spawnEnemyInMap("HyperCore", -1.5f, 8f, LevelSpawner.addToList.All, true);
-    int totalEnemies = 20;
-    while (totalEnemies > 0) {
-      totalEnemies--;
-      // float x = spawner.randomWithRange(-5f, 5f);
-      // spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
-      // x = spawner.randomWithRange(-5f, 5f);
-      // spawner.spawnEnemy("MesoVessel", x, 10f, LevelSpawner.addToList.All);
-      // x = spawner.randomWithRange(-5f, 5f);
-      // spawner.spawnEnemy("MacroVessel", x, 10f, LevelSpawner.addToList.All);
-      // x = spawner.randomWithRange(-5f, 5f);
-      // spawner.spawnEnemy("HyperVessel", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.1f);
+  void Update() {
+    if (spawner.waveRunning == false && WaveController.startWave == true && WaveController.LevelCleared == false) {
+      string name = spawner.findCorrectWaveToStart();
+      if (name != null) {
+        StartCoroutine(name);
+      }
     }
-    yield return new WaitForSeconds(5f);
-
   }
+IEnumerator wave1() {
+  // spawner.spawnEnemyInMap("Core", 0f, 5f, LevelSpawner.addToList.All, true);
+  // spawner.spawnEnemyInMap("Carrier", -5f, 8f, LevelSpawner.addToList.All, true);
+  // spawner.spawnEnemyInMap("Colossus", 5f, 8f, LevelSpawner.addToList.All, true);
+  // spawner.spawnEnemyInMap("Leviathan", 1.5f, 8f, LevelSpawner.addToList.All, true);
+  // spawner.spawnEnemyInMap("HyperCore", -1.5f, 8f, LevelSpawner.addToList.All, true);
+  int totalEnemies = 1;
+  while (totalEnemies > 0) {
+    totalEnemies--;
+    float x = spawner.randomWithRange(-5f, 5f);
+    spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
+    // x = spawner.randomWithRange(-5f, 5f);
+    // spawner.spawnEnemy("MesoVessel", x, 10f, LevelSpawner.addToList.All);
+    // x = spawner.randomWithRange(-5f, 5f);
+    // spawner.spawnEnemy("MacroVessel", x, 10f, LevelSpawner.addToList.All);
+    // x = spawner.randomWithRange(-5f, 5f);
+    // spawner.spawnEnemy("HyperVessel", x, 10f, LevelSpawner.addToList.All);
+    yield return new WaitForSeconds(0.1f);
+  }
+  // yield return new WaitForSeconds(5f);
+  spawner.AllTriggerEnemiesCleared();
+}
+IEnumerator wave2() {
+  float x = spawner.randomWithRange(-5f, 5f);
+  spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
+  yield return null;
+  spawner.LastWaveEnemiesCleared();
+}
   //   // StartCoroutine("EndLevel");
   //   yield return null;
   // }

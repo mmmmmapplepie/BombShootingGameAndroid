@@ -12,7 +12,11 @@ public class skinPrefabSetup : MonoBehaviour {
   Text skinName, price;
   [SerializeField]
   GameObject confirmationPanel, equipBtn;
+  new AudioManagerUI audio;
   temporarySkinHolder temp;
+  void Awake() {
+    audio = GameObject.FindObjectOfType<AudioManagerUI>();
+  }
   void Start() {
     main.sprite = skin.mainBody;
     if (skin.type == Skin.skinType.Bow) {
@@ -62,13 +66,16 @@ public class skinPrefabSetup : MonoBehaviour {
   }
   public void closeConfirmation() {
     confirmationPanel.SetActive(false);
+    audio.PlayAudio("Back");
   }
   public void checkConfirmation() {
+    audio.PlayAudio("Click");
     if (MoneyManager.money >= skin.price) {
       confirmationPanel.SetActive(true);
     }
   }
   public void buyUpgrade() {
+    audio.PlayAudio("Upgrade");
     if (skin.type == Skin.skinType.Bow) {
       SettingsManager.unlockedBowSkin.Add(skin.name);
     }
@@ -80,9 +87,10 @@ public class skinPrefabSetup : MonoBehaviour {
     }
     MoneyManager.useMoney(skin.price);
     boughtOrNotCheck();
-    closeConfirmation();
+    confirmationPanel.SetActive(false);
   }
   public void changePreview() {
+    audio.PlayAudio("Click");
     if (skin.type == Skin.skinType.Bow) {
       temp.tempBow = skin;
     }
@@ -94,16 +102,19 @@ public class skinPrefabSetup : MonoBehaviour {
     }
   }
   public void equip() {
+    audio.PlayAudio("UpLevel");
     if (skin.type == Skin.skinType.Bow) {
       SettingsManager.currBowSkin = skin.name;
+      temp.tempBow = skin;
     }
     if (skin.type == Skin.skinType.Bullet) {
       SettingsManager.currBulletSkin = skin.name;
+      temp.tempBullet = skin;
     }
     if (skin.type == Skin.skinType.Fortress) {
       SettingsManager.currFortressSkin = skin.name;
+      temp.tempFortress = skin;
     }
-    changePreview();
     SaveSystem.saveSettings();
   }
 }
