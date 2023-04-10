@@ -16,7 +16,7 @@ public class temporarySkinHolder : MonoBehaviour {
   [SerializeField]
   GameObject bowpanel, bulletpanel, fortresspanel;
   [SerializeField]
-  GameObject bowPreview, fortressPreview;
+  GameObject bowPreview, fortressPreview, fortressMask, bowMask;
 
   void Awake() {
     changeTempBow(SettingsManager.currBowSkin);
@@ -61,16 +61,22 @@ public class temporarySkinHolder : MonoBehaviour {
       bowpanel.SetActive(true);
       bowPreview.SetActive(true);
       fortressPreview.SetActive(false);
+      bowMask.SetActive(true);
+      fortressMask.SetActive(false);
     }
     if (clickedButton.name == "BulletBtn") {
       bulletpanel.SetActive(true);
       bowPreview.SetActive(true);
       fortressPreview.SetActive(false);
+      bowMask.SetActive(true);
+      fortressMask.SetActive(false);
     }
     if (clickedButton.name == "FortressBtn") {
       fortresspanel.SetActive(true);
       bowPreview.SetActive(false);
       fortressPreview.SetActive(true);
+      bowMask.SetActive(false);
+      fortressMask.SetActive(true);
     }
   }
 }

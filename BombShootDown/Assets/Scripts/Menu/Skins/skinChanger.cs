@@ -94,12 +94,14 @@ public class skinChanger : MonoBehaviour {
     //because pivot in this case is from bottom of image we add the 10 units.
     PS.transform.localPosition = new Vector3(0f, 80f * scaleRatio * (PSprefab.transform.localPosition.y + 10f), 0f);
     PS.transform.localScale = new Vector3(scaleRatio * skin.PS_Scale, scaleRatio * skin.PS_Scale, 1f);
+    SpriteMask(PS);
     //for some reason the child objects dont seem to actually scale down with the parent. (same with the position as now they are in pixel units and not "units aka. 80px/unit"). So we have to manually scale them.
     foreach (Transform tra in PS.transform) {
       float xscale = tra.localScale.x * scaleRatio * skin.PS_Scale;
       float yscale = tra.localScale.y * scaleRatio * skin.PS_Scale;
       tra.transform.localScale = new Vector3(xscale, yscale, 1f);
       tra.localPosition = 80f * (new Vector3(tra.localPosition.x, tra.localPosition.y, 0f));
+      SpriteMask(tra.gameObject);
     }
   }
   void bulletPS(Transform parent, Skin skin) {
@@ -120,11 +122,13 @@ public class skinChanger : MonoBehaviour {
     GameObject PS = Instantiate(PSprefab, parent);
     PS.transform.localScale = new Vector3(scale, scale, 1f);
     PS.transform.localPosition = new Vector3(0f, 0f, 0f);
+    SpriteMask(PS);
     foreach (Transform tra in PS.transform) {
       float xscale = tra.localScale.x * skin.PS_Scale * scale;
       float yscale = tra.localScale.y * skin.PS_Scale * scale;
       tra.transform.localScale = new Vector3(xscale, yscale, 1f);
       tra.localPosition = new Vector3(tra.localPosition.x * 80f, tra.localPosition.y * 80f, 0f);
+      SpriteMask(tra.gameObject);
     }
   }
   void emptyEffectsChild(Transform parent) {
@@ -133,5 +137,9 @@ public class skinChanger : MonoBehaviour {
         Destroy(tra.gameObject);
       }
     }
+  }
+  void SpriteMask(GameObject GO) {
+    ParticleSystemRenderer masker = GO.GetComponent<ParticleSystemRenderer>();
+    masker.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
   }
 }
