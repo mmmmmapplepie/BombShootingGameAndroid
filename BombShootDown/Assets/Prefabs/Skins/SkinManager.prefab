@@ -71,6 +71,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfBulletSkins:
   - {fileID: 11400000, guid: 55ff39de246a72f419913590ec3ff23b, type: 2}
+  - {fileID: 11400000, guid: 461108eeb526c79459a3b3af3954362b, type: 2}
+  - {fileID: 11400000, guid: a6637c5e8d8e6cf49b2ecfc003606ad0, type: 2}
 --- !u!114 &6842064149280478063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,4 +87,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfFortressSkins:
   - {fileID: 11400000, guid: 71ccf4c2ef5b024468d3bb1b68244901, type: 2}
+  - {fileID: 11400000, guid: 126ca83284b3b1740a4ac61f3aa504e1, type: 2}
   fortress: {fileID: 0}

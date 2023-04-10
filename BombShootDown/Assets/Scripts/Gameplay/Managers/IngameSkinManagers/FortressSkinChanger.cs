@@ -19,8 +19,8 @@ public class FortressSkinChanger : MonoBehaviour {
     if (skin.particleEffect != null) {
       Transform tra = fortress.transform;
       GameObject effect = skin.particleEffect;
-      effect.transform.localScale = skin.PS_Scale * new Vector3(1f, 1f, 1f / skin.PS_Scale);
-      Instantiate(effect, tra);
+      GameObject PS = Instantiate(effect, effect.transform.localPosition, Quaternion.identity, tra);
+      PS.transform.localScale = skin.PS_Scale * Vector3.one / tra.localScale.x;
     }
   }
 }

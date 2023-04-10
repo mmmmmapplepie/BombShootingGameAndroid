@@ -55,7 +55,7 @@ public class BowSkinChanger : MonoBehaviour {
   }
   void addEffect(Transform parent, Skin skin) {
     GameObject effect = skin.particleEffect;
-    effect.transform.localScale = skin.PS_Scale * new Vector3(1f, 1f, 1f / skin.PS_Scale);
-    Instantiate(effect, parent);
+    GameObject PS = Instantiate(effect, parent, true);
+    PS.transform.localPosition = new Vector3(parent.position.x, 0f, 0f);
   }
 }

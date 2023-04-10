@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a972d0117e6e6d940acc8dac8eadf9a1, type: 3}
+  m_Name: Water Bow
+  m_EditorClassIdentifier: 
+  name: Water Bow
+  particleEffect: {fileID: 2852125771155971408, guid: c1363eb912652ac42b2ec2eba09774b5, type: 3}
+  price: 8000
+  type: 0
+  mainBody: {fileID: -26456166291273536, guid: 8950fd2eb5e256244ba8403a2b2af37a, type: 3}
+  LeftString: {fileID: -5880442412421303659, guid: 8950fd2eb5e256244ba8403a2b2af37a, type: 3}
+  RightString: {fileID: 3033016447264475341, guid: 8950fd2eb5e256244ba8403a2b2af37a, type: 3}
+  LeftBolt: {fileID: -8949988560793133375, guid: 8950fd2eb5e256244ba8403a2b2af37a, type: 3}
+  RightBolt: {fileID: 3847593597989430143, guid: 8950fd2eb5e256244ba8403a2b2af37a, type: 3}
+  PS_Scale: 1
+  PS_Position: {x: 0, y: 1, z: 0}

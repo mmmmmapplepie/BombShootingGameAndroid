@@ -16,10 +16,10 @@ MonoBehaviour:
   particleEffect: {fileID: 7375115928816714904, guid: 9b2e68e6971961f4eb7be4410af040fa, type: 3}
   price: 800
   type: 1
-  mainBody: {fileID: 0}
+  mainBody: {fileID: 21300000, guid: 3a1c1d4380e4fce4cb53e9e5c1be1007, type: 3}
   LeftString: {fileID: 0}
   RightString: {fileID: 0}
   LeftBolt: {fileID: 0}
   RightBolt: {fileID: 0}
   PS_Scale: 1
-  PS_Position: {x: 0, y: 0, z: 0}
+  PS_Position: {x: 0, y: -8.925, z: 0}

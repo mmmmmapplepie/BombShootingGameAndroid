@@ -1,7 +1,22 @@
 fileFormatVersion: 2
-guid: e14dd8924d6ab9b4bbcfa0343e6650cd
+guid: 8950fd2eb5e256244ba8403a2b2af37a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5880442412421303659
+    second: Water Bow_0
+  - first:
+      213: 3033016447264475341
+    second: Water Bow_1
+  - first:
+      213: -8949988560793133375
+    second: Water Bow_2
+  - first:
+      213: -26456166291273536
+    second: Water Bow_3
+  - first:
+      213: 3847593597989430143
+    second: Water Bow_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -41,12 +56,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,7 +129,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Water Bow_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1948
+        width: 555
+        height: 46
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 592bc7528c8746ea0800000000000000
+      internalID: -5880442412421303659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Bow_1
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 1948
+        width: 555
+        height: 46
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc8cd11a360771a20800000000000000
+      internalID: 3033016447264475341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Bow_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 15
+        width: 187
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce9d12b2d04bc380800000000000000
+      internalID: -8949988560793133375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Bow_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 246
+        width: 1468
+        height: 1697
+      alignment: 9
+      pivot: {x: 0.5, y: 0.46376}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c80716c14202aff0800000000000000
+      internalID: -26456166291273536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Bow_4
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 14
+        width: 187
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f732a30fdf5656530800000000000000
+      internalID: 3847593597989430143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

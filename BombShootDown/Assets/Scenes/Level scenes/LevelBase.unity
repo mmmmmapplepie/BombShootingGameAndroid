@@ -6437,6 +6437,14 @@ PrefabInstance:
       propertyPath: helpers.Array.data[5]
       value: 
       objectReference: {fileID: 1076465926}
+    - target: {fileID: 6842064149280478049, guid: 33cafa6a5554c3f49aedeb91b4d6038f, type: 3}
+      propertyPath: listOfBowSkins.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842064149280478049, guid: 33cafa6a5554c3f49aedeb91b4d6038f, type: 3}
+      propertyPath: listOfBowSkins.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 64fc64ade3626ab49b2c23b9b84569a2, type: 2}
     - target: {fileID: 6842064149280478050, guid: 33cafa6a5554c3f49aedeb91b4d6038f, type: 3}
       propertyPath: m_RootOrder
       value: 12

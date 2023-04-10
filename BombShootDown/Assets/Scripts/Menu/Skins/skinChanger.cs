@@ -47,9 +47,10 @@ public class skinChanger : MonoBehaviour {
     RS.sprite = currBow.RightString;
     LB.sprite = currBow.LeftBolt;
     RB.sprite = currBow.RightBolt;
-    emptyEffectsChild(BowMain.transform);
     if (currBow.particleEffect != null) {
-      addEffect(BowMain.transform, currBow);
+      StartCoroutine(BowEffectAdd());
+    } else {
+      emptyEffectsChild(BowMain.transform);
     }
   }
   void changeBullet() {
@@ -57,6 +58,8 @@ public class skinChanger : MonoBehaviour {
     emptyEffectsChild(Bullet.transform);
     if (currBullet.particleEffect != null) {
       addEffect(Bullet.transform, currBullet);
+    } else {
+      emptyEffectsChild(Bullet.transform);
     }
   }
   void changeFortress() {
@@ -64,16 +67,65 @@ public class skinChanger : MonoBehaviour {
     emptyEffectsChild(Fortress.transform);
     if (currFortress.particleEffect != null) {
       addEffect(Fortress.transform, currFortress);
+    } else {
+      emptyEffectsChild(Fortress.transform);
     }
   }
+  IEnumerator BowEffectAdd() {
+    yield return null;
+    emptyEffectsChild(BowMain.transform);
+    addEffect(BowMain.transform, currBow);
+  }
   void addEffect(Transform parent, Skin skin) {
-    print(parent.localScale);
-    print(parent.position);
+    if (skin.type == Skin.skinType.Fortress) {
+      fortressPS(parent, skin);
+    }
+    if (skin.type == Skin.skinType.Bullet) {
+      bulletPS(parent, skin);
+    }
+    if (skin.type == Skin.skinType.Bow) {
+      bowPS(parent, skin);
+    }
+  }
+  void fortressPS(Transform parent, Skin skin) {
     GameObject PSprefab = skin.particleEffect;
-    float scale = parent.gameObject.GetComponent<RectTransform>().rect.size.y * skin.PS_Scale / 80f;
-    PSprefab.transform.localScale = new Vector3(scale, scale, 1f);
-    PSprefab.transform.position = Vector3.zero;
-    Instantiate(PSprefab, parent);
+    float scaleRatio = parent.gameObject.GetComponent<RectTransform>().rect.size.x / 900f;
+    GameObject PS = Instantiate(PSprefab, parent);
+    //because pivot in this case is from bottom of image we add the 10 units.
+    PS.transform.localPosition = new Vector3(0f, 80f * scaleRatio * (PSprefab.transform.localPosition.y + 10f), 0f);
+    PS.transform.localScale = new Vector3(scaleRatio * skin.PS_Scale, scaleRatio * skin.PS_Scale, 1f);
+    //for some reason the child objects dont seem to actually scale down with the parent. (same with the position as now they are in pixel units and not "units aka. 80px/unit"). So we have to manually scale them.
+    foreach (Transform tra in PS.transform) {
+      float xscale = tra.localScale.x * scaleRatio * skin.PS_Scale;
+      float yscale = tra.localScale.y * scaleRatio * skin.PS_Scale;
+      tra.transform.localScale = new Vector3(xscale, yscale, 1f);
+      tra.localPosition = 80f * (new Vector3(tra.localPosition.x, tra.localPosition.y, 0f));
+    }
+  }
+  void bulletPS(Transform parent, Skin skin) {
+    GameObject PSprefab = skin.particleEffect;
+    GameObject PS = Instantiate(PSprefab, parent);
+    PS.transform.localPosition = new Vector3(0f, 0f, 0f);
+    float scale = (parent.gameObject.GetComponent<RectTransform>().rect.size.x / 80f) * PSprefab.transform.localScale.x;
+    PS.transform.localScale = new Vector3(scale, scale, 1f);
+    foreach (Transform tra in PS.transform) {
+      float xscale = tra.localScale.x * scale;
+      float yscale = tra.localScale.y * scale;
+      tra.transform.localScale = new Vector3(xscale, yscale, 1f);
+    }
+  }
+  void bowPS(Transform parent, Skin skin) {
+    GameObject PSprefab = skin.particleEffect;
+    float scale = (parent.gameObject.GetComponent<RectTransform>().rect.size.x) / (parent.gameObject.GetComponent<Image>().sprite.bounds.extents.x * 2f * 0.2f * 80f);
+    GameObject PS = Instantiate(PSprefab, parent);
+    PS.transform.localScale = new Vector3(scale, scale, 1f);
+    PS.transform.localPosition = new Vector3(0f, 0f, 0f);
+    foreach (Transform tra in PS.transform) {
+      float xscale = tra.localScale.x * skin.PS_Scale * scale;
+      float yscale = tra.localScale.y * skin.PS_Scale * scale;
+      tra.transform.localScale = new Vector3(xscale, yscale, 1f);
+      tra.localPosition = new Vector3(tra.localPosition.x * 80f, tra.localPosition.y * 80f, 0f);
+    }
   }
   void emptyEffectsChild(Transform parent) {
     if (parent.childCount > 0) {
