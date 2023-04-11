@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameModeCannon : MonoBehaviour {
+  [SerializeField] GameObject loadPanel;
+  [SerializeField] Text loadPercent;
   public GameObject MenuAimLine;
   string currentClicked1;
   string newscene;
@@ -41,17 +44,34 @@ public class GameModeCannon : MonoBehaviour {
       transform.rotation = Quaternion.Euler(0, 0, -51.84277f);
     }
   }
-
-
   void moveScene(string btn) {
     if (btn == "StoryBtn") {
-      SceneManager.LoadScene("Worlds");
+      StartCoroutine(loadSceneAsync("Worlds"));
     }
     if (btn == "EndlessUpgraded") {
-      SceneManager.LoadScene("EndlessUpgraded");
+      StartCoroutine(loadSceneAsync("EndlessUpgraded"));
     }
     if (btn == "EndlessOriginal") {
-      SceneManager.LoadScene("EndlessOriginal");
+      StartCoroutine(loadSceneAsync("EndlessOriginal"));
+    }
+  }
+  IEnumerator loadSceneAsync(string sceneName) {
+    loadPanel.SetActive(true);
+    AsyncOperation asyncScene = SceneManager.LoadSceneAsync(sceneName);
+    asyncScene.allowSceneActivation = false;
+    float loadedAmount = 0f;
+    while (!asyncScene.isDone) {
+      float percent = asyncScene.progress * 100f;
+      if (loadedAmount < 90f && percent >= 90f) {
+        loadedAmount += 10f;
+        loadPercent.text = loadedAmount.ToString() + "%";
+        yield return new WaitForSeconds(0.2f);
+      }
+      if (loadedAmount >= 90f && percent >= 90f) {
+        asyncScene.allowSceneActivation = true;
+        loadPercent.text = "100%";
+        yield return null;
+      }
     }
   }
 }
