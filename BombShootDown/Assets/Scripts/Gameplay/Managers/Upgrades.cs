@@ -166,8 +166,9 @@ public class Upgrades : MonoBehaviour {
     BowManager.MaxAmmo = 10;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionMax")) {
       int lvl = UpgradesManager.returnDictionaryValue("AmmunitionMax")[1];
-      BowManager.MaxAmmo = 5 * lvl;
-      BowManager.CurrentAmmo = BowManager.MaxAmmo + BowManager.CurrentAmmo - 10;
+      int extraAmmmo = 9 * lvl;
+      BowManager.MaxAmmo = extraAmmmo + 10;
+      BowManager.CurrentAmmo = Mathf.Min(BowManager.CurrentAmmo + extraAmmmo, BowManager.MaxAmmo);
     }
   }
   void setDoubleGun() {
@@ -177,9 +178,9 @@ public class Upgrades : MonoBehaviour {
       bow2.SetActive(true);
       bow1.transform.position = tempos1;
       bow2.transform.position = tempos2;
-      BowManager.AmmoRate = BowManager.AmmoRate * 1.1f;
-      BowManager.MaxAmmo = BowManager.MaxAmmo * 2;
-      //double ammomax and rate
+      BowManager.AmmoRate = BowManager.AmmoRate / 1.2f;
+      BowManager.MaxAmmo = Mathf.FloorToInt(BowManager.MaxAmmo * 1.2f);
+      //increase ammomax and rate
     }
   }
   public void SpeedUpTimeAfterUpgrades() {

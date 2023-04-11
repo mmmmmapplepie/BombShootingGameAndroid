@@ -32,6 +32,7 @@ public class Laser : MonoBehaviour {
   }
   void SetBaseSettings() {
     int lvl = UpgradesManager.returnDictionaryValue("Laser")[1];
+    // int lvl = 1; //testing
     BaseLaserCooldown = 100f - 3f * (float)lvl;
     LaserDamage = 100f + 90f * (float)lvl; // max at 1000 dmg
   }

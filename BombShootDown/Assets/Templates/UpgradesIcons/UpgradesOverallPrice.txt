@@ -1,0 +1,29 @@
+W1L5        9360
+W1L5-10     22320
+W2L5        5200
+W2L5-10     12400
+W3L5        3900
+W3L5-10     19300
+
+total 
+W1          31680
+W2          17600
+W3          23200
+GrandTotal  72480
+
+/////////FIRST DROP = ~400
+101 levels
+assuming avg 400 per lvl
+40400 free currency
+
+/////////NORMAL DROP = ~100
+have to earn 32080 separately
+avg ~100/lvl clear gives 321 clears required.
+101 cleared happen automatically.
+220 clears required repeated.
+
+assume 20 repeats.
+200 clear worth required
+20000 currency.
+over 4 days makes to 5000 per day reward.
+Make reward 2000 per/day.
