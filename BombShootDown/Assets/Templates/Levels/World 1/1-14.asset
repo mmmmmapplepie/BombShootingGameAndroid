@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: 1-14
   m_EditorClassIdentifier: 
   name: 1-14
-  upgradesPerWave: 
-  firstClearRewards: 100
-  clearRewards: 15
-  Enemies: []
+  upgradesPerWave: 06000000080000000a000000
+  firstClearRewards: 130
+  clearRewards: 25
+  Enemies:
+  - {fileID: 11400000, guid: 78b6652f6652db0409126ba63cd26400, type: 2}
+  - {fileID: 11400000, guid: 1e9cb806ecea9414885bbbbce5089139, type: 2}
+  - {fileID: 11400000, guid: df3efa50e3b9fb743877b6f8da048d6d, type: 2}
   stageInWorld: 010000000e000000

@@ -2,15 +2,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameModeCannon : MonoBehaviour {
   [SerializeField] GameObject loadPanel;
-  [SerializeField] Text loadPercent;
+  [SerializeField] Text loadPercent, tipsText;
+  [SerializeField] List<string> tipsList;
   public GameObject MenuAimLine;
   string currentClicked1;
   string newscene;
   AudioManagerUI UIaudio;
+  int totalTips;
   void Awake() {
+    totalTips = tipsList.Count;
     UIaudio = GameObject.Find("AudioManagerUI").GetComponent<AudioManagerUI>();
     if (GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().currentBGM.name != "MenuTheme") {
       GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().ChangeBGM("MenuTheme");
@@ -57,17 +61,19 @@ public class GameModeCannon : MonoBehaviour {
   }
   IEnumerator loadSceneAsync(string sceneName) {
     loadPanel.SetActive(true);
+    int tipIndex = Random.Range(0, totalTips);
+    tipsText.text = tipsList[tipIndex];
     AsyncOperation asyncScene = SceneManager.LoadSceneAsync(sceneName);
     asyncScene.allowSceneActivation = false;
     float loadedAmount = 0f;
     while (!asyncScene.isDone) {
       float percent = asyncScene.progress * 100f;
-      if (loadedAmount < 90f && percent >= 90f) {
-        loadedAmount += 10f;
+      if (loadedAmount < 100f && percent >= 90f) {
+        loadedAmount += 1f;
         loadPercent.text = loadedAmount.ToString() + "%";
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.04f);
       }
-      if (loadedAmount >= 90f && percent >= 90f) {
+      if (loadedAmount >= 99f && percent >= 90f) {
         asyncScene.allowSceneActivation = true;
         loadPercent.text = "100%";
         yield return null;

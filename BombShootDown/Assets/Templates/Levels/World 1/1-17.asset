@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ac5d81429c07647b438a5cf8219fb8, type: 3}
   m_Name: 1-17
   m_EditorClassIdentifier: 
-  name: 
-  upgradesPerWave: 
-  firstClearRewards: 100
-  clearRewards: 15
-  Enemies: []
+  name: 1-17
+  upgradesPerWave: 0700000008000000
+  firstClearRewards: 140
+  clearRewards: 30
+  Enemies:
+  - {fileID: 11400000, guid: 75170788c55421b4f8ed87caaa417b0a, type: 2}
+  - {fileID: 11400000, guid: 696d544845bf1ea4daf5ef85969bc46e, type: 2}
   stageInWorld: 0100000011000000
