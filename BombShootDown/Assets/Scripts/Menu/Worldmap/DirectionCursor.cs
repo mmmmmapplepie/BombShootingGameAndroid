@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DirectionCursor : MonoBehaviour {
-  RectTransform RT;
+  [SerializeField] GameObject Cursor;
   Image img;
   Color color;
   GameObject clickedObject;
@@ -12,8 +12,7 @@ public class DirectionCursor : MonoBehaviour {
     GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().ChangeBGM("MapTheme");
   }
   void Start() {
-    RT = gameObject.GetComponent<RectTransform>();
-    img = gameObject.GetComponent<Image>();
+    img = Cursor.GetComponent<Image>();
     color = img.color;
     hidePointer();
   }
@@ -42,22 +41,24 @@ public class DirectionCursor : MonoBehaviour {
   void hidePointer() {
     color.a = 0f;
     img.color = color;
+    Cursor.SetActive(false);
   }
   void pointerSpin() {
     if (clickedObjectPosition.x <= 0) {
       float angle = Mathf.Atan(clickedObjectPosition.y / clickedObjectPosition.x) * 180 / Mathf.PI;
-      RT.transform.rotation = Quaternion.Euler(0, 0, angle);
+      Cursor.transform.rotation = Quaternion.Euler(0, 0, angle);
     } else {
       if (clickedObjectPosition.y >= 0) {
         float angle = -180 + Mathf.Atan(clickedObjectPosition.y / clickedObjectPosition.x) * 180 / Mathf.PI;
-        RT.transform.rotation = Quaternion.Euler(0, 0, angle);
+        Cursor.transform.rotation = Quaternion.Euler(0, 0, angle);
       } else {
         float angle = 180 + Mathf.Atan(clickedObjectPosition.y / clickedObjectPosition.x) * 180 / Mathf.PI;
-        RT.transform.rotation = Quaternion.Euler(0, 0, angle);
+        Cursor.transform.rotation = Quaternion.Euler(0, 0, angle);
       }
     }
   }
   void renderPointer() {
+    Cursor.SetActive(true);
     if (Distance > 20f) {
       color.a = 1f;
     } else {

@@ -69,10 +69,10 @@ public class W1L4 : MonoBehaviour, IGetLevelDataInterface {
 
   IEnumerator wave2() {
     wave1Pattern1(2, "MicroBasic");
-    yield return new WaitForSeconds(20f);
+    yield return new WaitForSeconds(15f);
     wave1Pattern1(2, "MicroBasic");
-    yield return new WaitForSeconds(20f);
-    wave1Pattern1(3, "Shifter");
+    yield return new WaitForSeconds(15f);
+    wave1Pattern1(1, "Shifter");
     spawner.LastWaveEnemiesCleared();
   }
 }

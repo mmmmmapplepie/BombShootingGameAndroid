@@ -27,29 +27,32 @@ public class W1L8 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-    int i = 20;
-    while (i > 0) {
-      i--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
-    }
-    yield return null;
+    spawner.spawnEnemy("Teleporter", 0, 10f, LevelSpawner.addToList.All);
+    yield return new WaitForSeconds(10f);
+    spawner.spawnEnemy("Teleporter", 0, 10f, LevelSpawner.addToList.All);
+    yield return new WaitForSeconds(15f);
+    spawner.spawnEnemy("Teleporter", 0, 10f, LevelSpawner.addToList.All);
     spawner.AllTriggerEnemiesCleared();
   }
   IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
+    for (int i = 0; i < 2; i++) {
+      if (i == 0) {
+        spawner.spawnEnemy("MicroBasic", 5f, 10f, LevelSpawner.addToList.All);
+        spawner.spawnEnemy("MicroBasic", -5f, 10f, LevelSpawner.addToList.All);
+        spawner.spawnEnemy("Teleporter", 0, 10f, LevelSpawner.addToList.All);
+        yield return new WaitForSeconds(5f);
+        spawner.spawnEnemy("Shifter", 0, 10f, LevelSpawner.addToList.All);
+        yield return new WaitForSeconds(5f);
+        spawner.spawnEnemy("Zipper", 0, 10f, LevelSpawner.addToList.All);
+      } else {
+        spawner.spawnEnemy("MicroBasic", 5f, 10f, LevelSpawner.addToList.All);
+        spawner.spawnEnemy("MicroBasic", -5f, 10f, LevelSpawner.addToList.All);
+        spawner.spawnEnemy("Teleporter", 0, 10f, LevelSpawner.addToList.All);
+        yield return new WaitForSeconds(5f);
+        spawner.spawnEnemy("Teleporter", 0, 10f, LevelSpawner.addToList.All);
+        yield return new WaitForSeconds(5f);
+        spawner.spawnEnemy("Teleporter", 0, 10f, LevelSpawner.addToList.All);
       }
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
     }
     spawner.LastWaveEnemiesCleared();
   }

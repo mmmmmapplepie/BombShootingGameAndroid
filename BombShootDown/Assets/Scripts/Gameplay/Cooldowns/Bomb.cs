@@ -30,7 +30,7 @@ public class Bomb : MonoBehaviour {
     }
   }
   void SetBaseSettings() {
-    int lvl = UpgradesManager.returnDictionaryValue("BombDamage")[1];
+    int lvl = UpgradesManager.returnDictionaryValue("BombDamage")[0];
     // int lvl = 1; //testing
     BaseBombCooldown = 20f - 1.5f * (float)lvl;
     BombDamage = 5f + 4.5f * (float)lvl; // max at 50 dmg

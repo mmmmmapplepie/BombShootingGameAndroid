@@ -23,12 +23,12 @@ public class AmmoLifeReviveUI : MonoBehaviour {
       ammoLoadWait = true;
       StartCoroutine("LoadAmmo");
     }
+    if (BowManager.CurrentAmmo == BowManager.MaxAmmo) AmmoReloadMask.GetComponent<Image>().fillAmount = 0f;
   }
   void ammoText() {
     remainingAmmo.text = BowManager.CurrentAmmo.ToString();
   }
   IEnumerator LoadAmmo() {
-    BowManager.CurrentAmmo++;
     float startT = Time.time;
     float rate = (BowManager.AmmoRate * BowManager.CoolDownRate);
     while (Time.time - startT < rate) {
@@ -38,6 +38,7 @@ public class AmmoLifeReviveUI : MonoBehaviour {
       }
       yield return null;
     }
+    BowManager.CurrentAmmo++;
     ammoLoadWait = false;
   }
   void lifeRender() {

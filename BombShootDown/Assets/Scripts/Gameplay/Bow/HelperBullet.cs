@@ -62,8 +62,11 @@ public class HelperBullet : MonoBehaviour {
     if (BowManager.HitsPerHit > 6) {
       hits = 3;
     }
-    if (BowManager.HitsPerHit > 9) {
+    if (BowManager.HitsPerHit > 8) {
       hits = 4;
+    }
+    if (BowManager.HitsPerHit > 9) {
+      hits = 5;
     }
   }
   void SetHelperBulletSettings() {

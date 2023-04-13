@@ -8,10 +8,10 @@ public class ReloadBow : MonoBehaviour {
   void Update() {
     if (BowManager.CurrentAmmo > 0 && findChildBullet() == null && wait == false) {
       wait = true;
-      StartCoroutine(WaitReload());
+      StartCoroutine(ReloadAndWait());
     }
   }
-  IEnumerator WaitReload() {
+  IEnumerator ReloadAndWait() {
     BowManager.CurrentAmmo--;
     float waitTime = BowManager.ReloadRate * BowManager.CoolDownRate;
     float startTime = Time.time;

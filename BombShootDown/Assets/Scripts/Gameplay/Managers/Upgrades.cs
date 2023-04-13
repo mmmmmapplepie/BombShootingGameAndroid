@@ -162,7 +162,7 @@ public class Upgrades : MonoBehaviour {
     BowManager.AmmoRate = 4f;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionRate")) {
       int lvl = UpgradesManager.returnDictionaryValue("AmmunitionRate")[0];
-      BowManager.AmmoRate = 4f / (1f + (float)lvl * 0.5f);
+      BowManager.AmmoRate = 4f / (1f + (float)lvl * 0.7f);
     }
   }
   void setAmmunitionMax() {

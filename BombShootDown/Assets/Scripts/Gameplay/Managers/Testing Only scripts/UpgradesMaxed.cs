@@ -159,7 +159,7 @@ public class UpgradesMaxed : MonoBehaviour {
   void setAmmunitionRate() {
     BowManager.AmmoRate = 4f;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionRate")) {
-      BowManager.AmmoRate = 4f / (1f + ammunitionrate * 0.5f);
+      BowManager.AmmoRate = 4f / (1f + ammunitionrate * 0.7f);
     }
   }
   void setAmmunitionMax() {

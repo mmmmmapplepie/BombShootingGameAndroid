@@ -27,29 +27,29 @@ public class W1L9 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-    int i = 20;
+    int i = 2;
     while (i > 0) {
       i--;
       float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
+      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
+      yield return new WaitForSeconds(5f);
+      x = spawner.randomWithRange(-5f, 5f);
+      spawner.spawnEnemy("MesoShifter", x, 10f, LevelSpawner.addToList.All);
+      yield return new WaitForSeconds(10f);
     }
     yield return null;
     spawner.AllTriggerEnemiesCleared();
   }
   IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
-      }
-      x = spawner.randomWithRange(-5f, 5f);
+    float x = spawner.randomWithRange(-3f, 3f);
+    spawner.spawnEnemy("Ticker", x, 10f, LevelSpawner.addToList.All);
+    yield return new WaitForSeconds(45f);
+    spawner.spawnEnemy("Ticker", 5, 10f, LevelSpawner.addToList.All);
+    yield return new WaitForSeconds(10f);
+    for (int i = 0; i < 10; i++) {
+      x = spawner.randomWithRange(-5f, 0f);
       spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
+      yield return new WaitForSeconds(3.5f);
     }
     spawner.LastWaveEnemiesCleared();
   }

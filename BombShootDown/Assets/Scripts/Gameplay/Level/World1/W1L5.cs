@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class W1L5 : MonoBehaviour, IGetLevelDataInterface {
   [SerializeField]
   Level level;
   LevelSpawner spawner;
   new AudioManagerBGM audio;
+  bool wave1Done = false;
   public Level GetLevelData() {
     return level;
   }
@@ -27,30 +27,40 @@ public class W1L5 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-    int i = 20;
+    int i = 10;
+    StartCoroutine(Wave1_1());
     while (i > 0) {
       i--;
       float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
-    }
-    yield return null;
-    spawner.AllTriggerEnemiesCleared();
-  }
-  IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
-      }
-      x = spawner.randomWithRange(-5f, 5f);
       spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
+      yield return new WaitForSeconds(10f);
+    }
+    while (wave1Done == false) {
+      yield return null;
     }
     spawner.LastWaveEnemiesCleared();
+  }
+  IEnumerator Wave1_1() {
+    yield return new WaitForSeconds(10f);
+    int counter = 0;
+    while (counter < 9) {
+      counter++;
+      if (counter % 3 == 0) {
+        spawner.spawnEnemy("Zipper", 0, 10f, LevelSpawner.addToList.All);
+        yield return new WaitForSeconds(10f);
+      } else {
+        spawner.spawnEnemy("Shifter", -5f, 10f, LevelSpawner.addToList.All);
+        spawner.spawnEnemy("Shifter", 5f, 10f, LevelSpawner.addToList.All);
+        yield return new WaitForSeconds(15f);
+      }
+    }
+    wave1Done = true;
+  }
+  void wave1Pattern1(int enemies, string enemyname) {
+    float x;
+    for (int i = 0; i < enemies; i++) {
+      x = spawner.randomWithRange(-5f, 5f);
+      spawner.spawnEnemy(enemyname, x, 10f, LevelSpawner.addToList.All);
+    }
   }
 }
