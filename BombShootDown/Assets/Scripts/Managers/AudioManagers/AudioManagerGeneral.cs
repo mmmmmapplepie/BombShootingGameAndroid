@@ -2,34 +2,25 @@ using UnityEngine.Audio;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AudioManagerGeneral : MonoBehaviour
-{
+public class AudioManagerGeneral : MonoBehaviour {
   static GameObject instance;
-  void Awake()
-  {
-    if (instance == null)
-    {
+  void Awake() {
+    if (instance == null) {
       instance = gameObject;
-    }
-    else
-    {
+      DontDestroyOnLoad(instance);
+    } else {
       Destroy(gameObject);
     }
-    DontDestroyOnLoad(gameObject);
   }
-  protected Sound FindSound(string soundname, List<Sound> SoundList)
-  {
+  protected Sound FindSound(string soundname, List<Sound> SoundList) {
     Sound sound = SoundList.Find(s => s.name == soundname);
-    if (sound == null)
-    {
+    if (sound == null) {
       Debug.Log("Sound " + soundname + " was not found!");
     }
     return sound;
   }
-  protected void SetAudioSources(List<Sound> list, GameObject obj)
-  {
-    foreach (Sound s in list)
-    {
+  protected void SetAudioSources(List<Sound> list, GameObject obj) {
+    foreach (Sound s in list) {
       s.source = obj.AddComponent<AudioSource>();
       s.source.clip = s.clip;
       s.source.volume = s.volume;

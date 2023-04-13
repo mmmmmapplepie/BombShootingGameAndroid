@@ -34,10 +34,6 @@ public class ChosenUpgMaxed : MonoBehaviour {
       tempupgnum = UpgradesEquipped.tempUpgHolder.Count;
     }
   }
-  IEnumerator changeSlots() {
-    yield return null;
-    ChangeAvailableSlots();
-  }
   void OnEnable() {
     RenderAll();
     Time.timeScale = 0f;
@@ -48,6 +44,10 @@ public class ChosenUpgMaxed : MonoBehaviour {
     RenderPresetUpg();
     RenderAllOptions();
     StartCoroutine(changeSlots());
+  }
+  IEnumerator changeSlots() {
+    yield return null;
+    ChangeAvailableSlots();
   }
   void RenderPresetUpg() {
     foreach (string upg in UpgradesEquipped.EquippedUpgrades) {
@@ -64,9 +64,7 @@ public class ChosenUpgMaxed : MonoBehaviour {
   }
   UpgradePick FindTemplate(string name) {
     foreach (UpgradePick options in UpgTemplates) {
-      if (options.name == name) {
-        return options;
-      }
+      if (options.name == name) return options;
     }
     return null;
   }

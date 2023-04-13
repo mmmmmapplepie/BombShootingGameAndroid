@@ -71,7 +71,7 @@ public class GameModeCannon : MonoBehaviour {
       if (loadedAmount < 100f && percent >= 90f) {
         loadedAmount += 1f;
         loadPercent.text = loadedAmount.ToString() + "%";
-        yield return new WaitForSeconds(0.04f);
+        yield return null;
       }
       if (loadedAmount >= 99f && percent >= 90f) {
         asyncScene.allowSceneActivation = true;

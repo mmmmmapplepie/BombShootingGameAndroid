@@ -118,6 +118,7 @@ public class UpgradesUI : MonoBehaviour {
         if (upgrade[1] != 1) {
           GameObject.Find("AudioManagerUI").GetComponent<AudioManagerUI>().PlayAudio("Upgrade");
           UpgradesManager.setDictionary(upgstring, 1, 1);
+          UpgradesManager.setDictionary(upgstring, 0, 1);
           MoneyManager.useMoney(UpgradesManager.DoubleGunPricing);
         }
       } else {

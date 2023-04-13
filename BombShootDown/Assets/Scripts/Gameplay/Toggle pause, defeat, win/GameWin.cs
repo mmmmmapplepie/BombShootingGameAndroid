@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Collections;
 
 public class GameWin : MonoBehaviour {
   Level data;
@@ -10,12 +12,16 @@ public class GameWin : MonoBehaviour {
   [SerializeField] GameObject winParticleEffect;
   [SerializeField] Button nextLevelBtn;
   [SerializeField] Text clearRewards, levelNameTxt;
+  [SerializeField] List<string> tipsList;
+  [SerializeField] Text tipsText, loadPercent;
+  [SerializeField] GameObject loadPanel;
   new AudioManagerUI audio;
+  GameObject instantiatedEffect;
   void OnEnable() {
     data = GameObject.FindObjectOfType<LevelSpawner>().level;
     audio = GameObject.FindObjectOfType<AudioManagerUI>();
     Time.timeScale = 0f;
-    Instantiate(winParticleEffect, new Vector3(0f, -11f, 0f), Quaternion.identity);
+    instantiatedEffect = Instantiate(winParticleEffect, new Vector3(0f, -11f, 0f), Quaternion.identity);
 
     // audio.PlayAudio("Win");
     thisLevel = data.stageInWorld;
@@ -58,11 +64,34 @@ public class GameWin : MonoBehaviour {
 
   }
   public void WorldMap() {
-    Time.timeScale = 1f;
-    SceneManager.LoadScene("Worlds");
+    StartCoroutine(loadSceneAsync("Worlds"));
+    Destroy(instantiatedEffect);
   }
   public void MainMenu() {
     Time.timeScale = 1f;
     SceneManager.LoadScene("MainMenu");
+  }
+  IEnumerator loadSceneAsync(string sceneName) {
+    loadPanel.SetActive(true);
+    int totalTips = tipsList.Count;
+    int tipIndex = Random.Range(0, totalTips);
+    tipsText.text = tipsList[tipIndex];
+    AsyncOperation asyncScene = SceneManager.LoadSceneAsync(sceneName);
+    asyncScene.allowSceneActivation = false;
+    float loadedAmount = 0f;
+    while (!asyncScene.isDone) {
+      float percent = asyncScene.progress * 100f;
+      if (loadedAmount < 100f && percent >= 90f) {
+        loadedAmount += 1f;
+        loadPercent.text = loadedAmount.ToString() + "%";
+        yield return null;
+      }
+      if (loadedAmount >= 99f && percent >= 90f) {
+        asyncScene.allowSceneActivation = true;
+        loadPercent.text = "100%";
+        yield return null;
+      }
+    }
+    Time.timeScale = 1f;
   }
 }

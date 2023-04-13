@@ -8,8 +8,6 @@ public class ChosenUpg : MonoBehaviour {
   List<UpgradePick> UpgTemplates;
   WaveController waveController;
   [SerializeField]
-  Text OpenUpgSlots;
-  [SerializeField]
   Transform ChosenUpgContainer;
   [SerializeField]
   GameObject UpgIconPrefab;
@@ -66,9 +64,7 @@ public class ChosenUpg : MonoBehaviour {
   }
   UpgradePick FindTemplate(string name) {
     foreach (UpgradePick options in UpgTemplates) {
-      if (options.name == name) {
-        return options;
-      }
+      if (options.name == name) return options;
     }
     return null;
   }
@@ -99,7 +95,7 @@ public class ChosenUpg : MonoBehaviour {
   }
   void EmptyHolder() {
     for (int i = 0; i < ChosenUpgContainer.childCount; i++) {
-      DestroyImmediate(ChosenUpgContainer.GetChild(i).gameObject);
+      Destroy(ChosenUpgContainer.GetChild(i).gameObject);
     }
   }
   public void DisableUpgrades() {

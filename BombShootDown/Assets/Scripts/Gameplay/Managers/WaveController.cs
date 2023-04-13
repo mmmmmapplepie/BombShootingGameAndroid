@@ -5,15 +5,9 @@ using UnityEngine.UI;
 
 public class WaveController : MonoBehaviour {
   [SerializeField]
-  Text WaveStartDisplay;
+  Text WaveStartDisplay, waveDisplay, waveShadowDisplay;
   [SerializeField]
-  Text waveDisplay;
-  [SerializeField]
-  Text waveShadowDisplay;
-  [SerializeField]
-  GameObject WaveStartPanel;
-  [SerializeField]
-  GameObject UpgradesPanel;
+  GameObject WaveStartPanel, UpgradesPanel;
   [HideInInspector]
   public Level thisLevelData;
   public static bool LevelCleared = false;
@@ -30,12 +24,15 @@ public class WaveController : MonoBehaviour {
       inCue = true;
       UpgradesEquipped.LevelSlots = thisLevelData.upgradesPerWave[WavesCleared];
       startWave = false;
-      Time.timeScale = 0f;
       StartCoroutine("UpgradesDelayUnscaled", 1f);
     }
   }
   IEnumerator UpgradesDelayUnscaled(float sec) {
     yield return new WaitForSecondsRealtime(sec);
+    while (GamePauseBehaviour.gamePaused == true) {
+      yield return null;
+    }
+    GamePauseBehaviour.Pausable = false;
     CueUpgrades();
   }
   void CueUpgrades() {
@@ -70,5 +67,6 @@ public class WaveController : MonoBehaviour {
     WaveStartPanel.GetComponent<Image>().color = new Color(r_, g_, b_, 2f / 3f);
     WaveStartPanel.SetActive(false);
     startWave = true;
+    GamePauseBehaviour.Pausable = true;
   }
 }

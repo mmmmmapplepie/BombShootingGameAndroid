@@ -76,7 +76,11 @@ public class UpgradesMaxed : MonoBehaviour {
   }
   void setLifeRecovery() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("LifeRecovery")) {
-      BowManager.LifeRecovery = 0.8f * (float)liferecovery;
+      if (liferecovery < 5) {
+        BowManager.LifeRecovery = (float)liferecovery * 0.4f;
+      } else {
+        BowManager.LifeRecovery = (float)liferecovery * 0.8f;
+      }
     }
   }
   void setDamage() {

@@ -47,7 +47,7 @@ public class LevelDataDisplay : MonoBehaviour {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
     } else if (thislevel.name == "1-2TR") {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
-    } else if (thislevel.name == "1-3TR") {
+    } else if (thislevel.name == "Sandbox") {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
     } else {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
