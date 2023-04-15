@@ -111,7 +111,7 @@ public class UpgradesMaxed : MonoBehaviour {
   void setReloadTime() {
     if (UpgradesEquipped.EquippedUpgrades.Contains("ReloadTime")) {
       int lvl = reloadtime;
-      BowManager.ReloadRate = 2f / (4f * (float)lvl);
+      BowManager.ReloadRate = 2f / (4f + (float)lvl);
       if (lvl == 10) {
         BowManager.ReloadRate = 0f;
       }
@@ -157,17 +157,24 @@ public class UpgradesMaxed : MonoBehaviour {
     }
   }
   void setAmmunitionRate() {
-    BowManager.AmmoRate = 4f;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionRate")) {
-      BowManager.AmmoRate = 4f / (1f + ammunitionrate * 0.7f);
+      if (UpgradesEquipped.EquippedUpgrades.Contains("DoubleGun")) {
+        BowManager.AmmoRate = (4f / (1f + (float)ammunitionrate * 0.7f)) / 1.2f;
+      } else {
+        BowManager.AmmoRate = 4f / (1f + (float)ammunitionrate * 0.7f);
+      }
     }
+
   }
   void setAmmunitionMax() {
-    //resetting this so that double gun doesnt repeatedly increase things.
-    BowManager.MaxAmmo = 10;
     if (UpgradesEquipped.EquippedUpgrades.Contains("AmmunitionMax")) {
-      BowManager.MaxAmmo = 9 * ammunitionmax;
-      BowManager.CurrentAmmo = BowManager.MaxAmmo + BowManager.CurrentAmmo - 10;
+      int extraAmmmo = 9 * ammunitionmax;
+      if (UpgradesEquipped.EquippedUpgrades.Contains("DoubleGun")) {
+        BowManager.MaxAmmo = Mathf.FloorToInt((float)(extraAmmmo + 10) * 1.2f);
+      } else {
+        BowManager.MaxAmmo = extraAmmmo + 10;
+      }
+      BowManager.CurrentAmmo = BowManager.MaxAmmo;
     }
   }
   void setDoubleGun() {
@@ -177,9 +184,6 @@ public class UpgradesMaxed : MonoBehaviour {
       bow2.SetActive(true);
       bow1.transform.position = tempos1;
       bow2.transform.position = tempos2;
-      BowManager.AmmoRate = BowManager.AmmoRate / 1.2f;
-      BowManager.MaxAmmo = Mathf.FloorToInt(BowManager.MaxAmmo * 1.2f);
-      //increase ammomax and rate
     }
   }
   public void SpeedUpTimeAfterUpgrades() {

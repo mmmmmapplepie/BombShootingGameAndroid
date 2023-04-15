@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameModeCannon : MonoBehaviour {
-  [SerializeField] GameObject loadPanel;
+  [SerializeField] GameObject loadPanel, loadTouchContinue;
   [SerializeField] Text loadPercent, tipsText;
   [SerializeField] List<string> tipsList;
   public GameObject MenuAimLine;
@@ -13,6 +13,8 @@ public class GameModeCannon : MonoBehaviour {
   string newscene;
   AudioManagerUI UIaudio;
   int totalTips;
+  bool touched = false;
+  bool loadReady = false;
   void Awake() {
     totalTips = tipsList.Count;
     UIaudio = GameObject.Find("AudioManagerUI").GetComponent<AudioManagerUI>();
@@ -31,7 +33,12 @@ public class GameModeCannon : MonoBehaviour {
       currentClicked1 = btn;
     }
   }
-
+  void Update() {
+    if (Input.touchCount > 0 && loadReady == true && touched == false) {
+      UIaudio.PlayAudio("Click");
+      touched = true;
+    }
+  }
   void moveCannonPointer(string clickedbutton) {
     LineRenderer LR = MenuAimLine.GetComponent<LineRenderer>();
     Transform transform = gameObject.GetComponent<Transform>();
@@ -69,15 +76,22 @@ public class GameModeCannon : MonoBehaviour {
     while (!asyncScene.isDone) {
       float percent = asyncScene.progress * 100f;
       if (loadedAmount < 100f && percent >= 90f) {
-        loadedAmount += 1f;
+        loadedAmount += 10f;
         loadPercent.text = loadedAmount.ToString() + "%";
         yield return null;
       }
-      if (loadedAmount >= 99f && percent >= 90f) {
-        asyncScene.allowSceneActivation = true;
+      if (loadedAmount >= 99f && percent >= 90f && loadReady == false) {
+        loadTouchContinue.SetActive(true);
+        loadReady = true;
         loadPercent.text = "100%";
         yield return null;
       }
+      if (touched == true && loadedAmount >= 99f) {
+        loadTouchContinue.GetComponent<Animator>().enabled = false;
+        yield return new WaitForSecondsRealtime(0.3f);
+        asyncScene.allowSceneActivation = true;
+      }
+      yield return null;
     }
   }
 }

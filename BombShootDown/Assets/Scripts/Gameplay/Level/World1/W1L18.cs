@@ -25,31 +25,39 @@ public class W1L18 : MonoBehaviour, IGetLevelDataInterface {
         StartCoroutine(name);
       }
     }
-  }
-  IEnumerator wave1() {
-    int i = 20;
-    while (i > 0) {
-      i--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
+    if (spawner.SpecificWaveTriggerEnemies.Count > 0) {
+      boosters[0] = spawner.SpecificWaveTriggerEnemies[0];
+      boosters[1] = spawner.SpecificWaveTriggerEnemies[spawner.SpecificWaveTriggerEnemies.Count - 1];
     }
-    yield return null;
-    spawner.AllTriggerEnemiesCleared();
   }
-  IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
+  GameObject[] boosters = new GameObject[2] { null, null };
+  IEnumerator wave1() {
+    StartCoroutine(wave1_1());
+    yield return new WaitForSeconds(10f);
+    spawner.spawnEnemyInMap("Booster", 0f, 10f, true, LevelSpawner.addToList.Specific);
+    yield return new WaitForSeconds(40f);
+    spawner.spawnEnemyInMap("Booster", 0f, 10f, true, LevelSpawner.addToList.Specific);
+    yield return new WaitForSeconds(5f);
+    spawner.LastWaveEnemiesCleared();
+  }
+  IEnumerator wave1_1() {
+    float time = Time.time;
+    List<string> grade1En = new List<string>() { "NanoBasic", "MicroBasic", "MicroShield", "KiloBasic" };
+    List<string> grade2En = new List<string>() { "Shifter", "Zipper", "MesoShifter", "MesoZipper" };
+    while (true) {
+      if (Time.time > time + 60f && boosters[0] == null && boosters[1] == null) {
+        break;
       }
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
+      int ran = Random.Range(0, 4);
+      if (Time.time < time + 50f) {
+        float x = spawner.randomWithRange(-5f, 5f);
+        spawner.spawnEnemy(grade1En[ran], x, 10f, LevelSpawner.addToList.All);
+        yield return new WaitForSeconds(0.5f);
+      } else {
+        float x = spawner.randomWithRange(-5f, 5f);
+        spawner.spawnEnemy(grade2En[ran], x, 10f, LevelSpawner.addToList.All);
+        yield return new WaitForSeconds(3f);
+      }
     }
     spawner.LastWaveEnemiesCleared();
   }

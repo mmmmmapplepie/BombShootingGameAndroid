@@ -26,31 +26,57 @@ public class W1L16 : MonoBehaviour, IGetLevelDataInterface {
       }
     }
   }
+  bool wave1Done = false;
   IEnumerator wave1() {
-    int i = 20;
+    spawner.spawnEnemyInMap("Ticker", 0f, 10f, true, LevelSpawner.addToList.All);
+    int i = 4;
+    yield return new WaitForSeconds(15f);
+    spawner.waveCleared();
     while (i > 0) {
+      float x = spawner.randomWithRange(0f, 5f);
+      spawner.spawnEnemyInMap("Ticker", x, 8f, true, LevelSpawner.addToList.All);
+      x = spawner.randomWithRange(0f, -5f);
+      spawner.spawnEnemyInMap("Outlier", x, 8f, false, LevelSpawner.addToList.All);
       i--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
+      yield return new WaitForSeconds(35f);
     }
-    yield return null;
-    spawner.AllTriggerEnemiesCleared();
+    wave1Done = true;
   }
   IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
+    StartCoroutine(wave2_Clear());
+    while (!wave1Done) {
+      int ran = Random.Range(0, 3);
+      float x = spawner.randomWithRange(0f, 5f);
+      if (ran == 0) {
+        spawner.spawnEnemy("Zipper", x, 8f, LevelSpawner.addToList.All);
       }
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
+      if (ran == 1) {
+        spawner.spawnEnemy("MicroBasic", x, 8f, LevelSpawner.addToList.All);
+      }
+      if (ran == 2) {
+        spawner.spawnEnemy("MicroArmored", x, 8f, LevelSpawner.addToList.All);
+      }
+      yield return new WaitForSeconds(10f);
     }
+  }
+  IEnumerator wave2_Clear() {
+    yield return new WaitForSeconds(30f);
+    spawner.waveCleared();
+  }
+  IEnumerator wave3() {
+    int i = 4;
+    while (i > 0) {
+      wave3Pattern(10, "MicroBasic");
+      i--;
+      yield return new WaitForSeconds(20f);
+    }
+    while (!wave1Done) yield return null;
     spawner.LastWaveEnemiesCleared();
+  }
+  void wave3Pattern(int enemies, string enename) {
+    for (int i = 0; i < enemies; i++) {
+      float x = Random.Range(-5f, 5f);
+      spawner.spawnEnemyInMap(enename, x, 9f, false, LevelSpawner.addToList.All);
+    }
   }
 }

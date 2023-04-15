@@ -6352,6 +6352,7 @@ MonoBehaviour:
   NewUpgIconPrefab: {fileID: 3653339596813965720, guid: 73938eb438ce89643aabc2f0a70cf8bb, type: 3}
   AvailableSlotText: {fileID: 1023825790}
   UpgradesPanel: {fileID: 1931365584}
+  upgradeConfirmBtn: {fileID: 1281127858}
   UpgradesScript: {fileID: 723412575}
   cooldowns: {fileID: 1463959778}
   AmmoLife: {fileID: 913763583}

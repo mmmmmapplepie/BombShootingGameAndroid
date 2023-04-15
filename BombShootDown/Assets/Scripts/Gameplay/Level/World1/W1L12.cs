@@ -27,29 +27,34 @@ public class W1L12 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-    int i = 20;
-    while (i > 0) {
-      i--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
+    for (int i = 0; i < 4; i++) {
+      float y = Random.Range(5f, 10f);
+      spawner.spawnEnemyInMap("Shifter", 0f, y, false, LevelSpawner.addToList.All);
+      yield return new WaitForSeconds(5f);
     }
-    yield return null;
     spawner.AllTriggerEnemiesCleared();
   }
   IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
-      }
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
+    for (int i = 0; i < 4; i++) {
+      float y = Random.Range(5f, 10f);
+      spawner.spawnEnemyInMap("Teleporter", 0f, y, true, LevelSpawner.addToList.All);
+      y = Random.Range(5f, 10f);
+      spawner.spawnEnemyInMap("Teleporter", 0f, y, true, LevelSpawner.addToList.All);
+      yield return new WaitForSeconds(5f);
+    }
+    spawner.AllTriggerEnemiesCleared();
+  }
+  IEnumerator wave3() {
+    for (int i = 0; i < 3; i++) {
+      float y = Random.Range(8f, 10f);
+      spawner.spawnEnemyInMap("Zipper", 0f, y, false, LevelSpawner.addToList.All);
+      y = Random.Range(8f, 10f);
+      spawner.spawnEnemyInMap("Zipper", 0f, y, false, LevelSpawner.addToList.All);
+      y = Random.Range(8f, 10f);
+      spawner.spawnEnemyInMap("Zipper", 0f, y, false, LevelSpawner.addToList.All);
+      y = Random.Range(8f, 10f);
+      spawner.spawnEnemyInMap("Zipper", 0f, y, false, LevelSpawner.addToList.All);
+      yield return new WaitForSeconds(5f);
     }
     spawner.LastWaveEnemiesCleared();
   }

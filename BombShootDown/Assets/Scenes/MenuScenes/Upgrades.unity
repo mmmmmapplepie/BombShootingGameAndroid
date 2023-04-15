@@ -10439,7 +10439,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047667438}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
@@ -10452,6 +10452,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 161685790}
     m_Modifications:
+    - target: {fileID: 204551599310618176, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 406741129629773265, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
       propertyPath: upgUI
       value: 3
@@ -10869,7 +10873,11 @@ PrefabInstance:
       value: 'Slots Required : 1
 
         Increases the maximum ammunition storage
-        limit.'
+        limit. (+Refill every wave)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222680676227586692, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab950fbc1bb5e640af017f35db7019e, type: 3}

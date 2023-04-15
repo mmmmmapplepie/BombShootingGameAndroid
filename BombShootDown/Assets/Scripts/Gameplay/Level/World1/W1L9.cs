@@ -43,9 +43,9 @@ public class W1L9 : MonoBehaviour, IGetLevelDataInterface {
   IEnumerator wave2() {
     float x = spawner.randomWithRange(-3f, 3f);
     spawner.spawnEnemy("Ticker", x, 10f, LevelSpawner.addToList.All);
-    yield return new WaitForSeconds(45f);
+    yield return new WaitForSeconds(35f);
     spawner.spawnEnemy("Ticker", 5, 10f, LevelSpawner.addToList.All);
-    yield return new WaitForSeconds(10f);
+    yield return null;
     for (int i = 0; i < 10; i++) {
       x = spawner.randomWithRange(-5f, 0f);
       spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);

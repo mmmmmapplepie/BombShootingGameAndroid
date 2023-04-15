@@ -26,31 +26,38 @@ public class W1L13 : MonoBehaviour, IGetLevelDataInterface {
       }
     }
   }
+  bool wave1Done = false;
   IEnumerator wave1() {
     int i = 20;
     while (i > 0) {
+      if (i == 15) spawner.waveCleared();
+      float x = spawner.randomWithRange(2.5f, 5f);
+      spawner.spawnEnemy("Enigma", x, 10f, LevelSpawner.addToList.All);
       i--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
+      yield return new WaitForSeconds(5f);
     }
-    yield return null;
-    spawner.AllTriggerEnemiesCleared();
+    wave1Done = true;
   }
   IEnumerator wave2() {
+    int i = 15;
+    while (i > 0) {
+      float x = spawner.randomWithRange(-2.5f, -5f);
+      spawner.spawnEnemy("KiloBasic", x, 10f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
+      i--;
+      if (i == 10) spawner.waveCleared();
+      yield return new WaitForSeconds(5f);
+    }
+  }
+
+  IEnumerator wave3() {
     int i = 5;
     while (i > 0) {
+      spawner.spawnEnemy("Teleporter", -5f, 10f, LevelSpawner.addToList.All);
       i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
-      }
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
+      yield return new WaitForSeconds(10f);
     }
+    while (wave1Done == false) yield return null;
     spawner.LastWaveEnemiesCleared();
   }
 }

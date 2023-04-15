@@ -141,26 +141,17 @@ public class LevelSpawner : MonoBehaviour {
 
 
   #region spawnEnemyFunctions
-  public void spawnEnemy(string name, float xpos, float ypos, addToList listname) {
-    //null debugger //////////////
-    // int i = 0;
-    // foreach (Enemy en in level.Enemies) {
-    //   print(i);
-    //   i++;
-    //   print(en.enemyPrefab);
-    //   print(en.enemyPrefab.name);
-    // }
-    // Enemy ene = level.Enemies.Find(x => x.enemyPrefab.name == name);
-    // if (ene == null) {
-    //   return;
-    // }
-    ///////////////////////////////
-
+  public GameObject spawnEnemy(string name, float xpos, float ypos, addToList listname = addToList.None, bool returnEnemyGameObject = true) {
     GameObject enemyPrefab = level.Enemies.Find(x => x.enemyPrefab.name == name).enemyPrefab;
     GameObject spawnedEnemy = Instantiate(enemyPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     AddEnemyToList(spawnedEnemy, listname);
+    if (returnEnemyGameObject) {
+      return spawnedEnemy;
+    } else {
+      return null;
+    }
   }
-  public void spawnEnemyInMap(string name, float xpos, float ypos, addToList listname, bool big) {
+  public void spawnEnemyInMap(string name, float xpos, float ypos, bool big, addToList listname = addToList.None) {
     if (big) {
       Instantiate(BigSpawnPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     } else {

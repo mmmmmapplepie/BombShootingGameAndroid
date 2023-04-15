@@ -74,7 +74,7 @@ public class GamePauseBehaviour : MonoBehaviour {
     while (!asyncScene.isDone) {
       float percent = asyncScene.progress * 100f;
       if (loadedAmount < 100f && percent >= 90f) {
-        loadedAmount += 1f;
+        loadedAmount += 10f;
         loadPercent.text = loadedAmount.ToString() + "%";
         yield return null;
       }

@@ -16,7 +16,7 @@ public class ChosenUpg : MonoBehaviour {
   [SerializeField]
   Text AvailableSlotText;
   [SerializeField]
-  GameObject UpgradesPanel;
+  GameObject UpgradesPanel, upgradeConfirmBtn;
   [SerializeField]
   Upgrades UpgradesScript;
   [SerializeField]
@@ -28,6 +28,10 @@ public class ChosenUpg : MonoBehaviour {
   void Awake() {
     waveController = GameObject.FindObjectOfType<WaveController>();
   }
+  IEnumerator enableConfirmBtn() {
+    yield return new WaitForSecondsRealtime(2f);
+    upgradeConfirmBtn.GetComponent<Button>().interactable = true;
+  }
   void Update() {
     if (UpgradesEquipped.tempUpgHolder.Count != tempupgnum) {
       RenderAll();
@@ -38,6 +42,8 @@ public class ChosenUpg : MonoBehaviour {
     RenderAll();
     Time.timeScale = 0f;
     BowManager.GunsReady = false;
+    upgradeConfirmBtn.GetComponent<Button>().interactable = false;
+    StartCoroutine(enableConfirmBtn());
   }
   void RenderAll() {
     EmptyHolder();

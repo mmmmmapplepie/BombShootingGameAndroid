@@ -27,29 +27,30 @@ public class W1L15 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-    int i = 20;
+    int i = 10;
     while (i > 0) {
-      i--;
       float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
+      spawner.spawnEnemy("KiloShield", x, 10f, LevelSpawner.addToList.All);
+      i--;
+      yield return new WaitForSeconds(3f);
     }
-    yield return null;
-    spawner.AllTriggerEnemiesCleared();
+    i = 20;
+    while (i > 0) {
+      float x = spawner.randomWithRange(-5f, 5f);
+      spawner.spawnEnemy("KiloBasic", x, 10f, LevelSpawner.addToList.All);
+      i--;
+      yield return new WaitForSeconds(1.5f);
+    }
+    spawner.waveCleared();
   }
   IEnumerator wave2() {
-    int i = 5;
+    int i = 20;
     while (i > 0) {
-      i--;
       float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
-      }
       x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
+      spawner.spawnEnemy("KiloArmored", x, 10f, LevelSpawner.addToList.All);
+      yield return new WaitForSeconds(0.5f);
+      i--;
     }
     spawner.LastWaveEnemiesCleared();
   }

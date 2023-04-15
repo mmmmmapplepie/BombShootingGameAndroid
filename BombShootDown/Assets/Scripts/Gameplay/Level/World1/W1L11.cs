@@ -27,29 +27,31 @@ public class W1L11 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-    int i = 20;
-    while (i > 0) {
-      i--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
+    int enemies = 3;
+    for (int i = 0; i < 4; i++) {
+      wave1Pattern(enemies, new List<string>() { "MicroShield", "NanoBasic" });
+      enemies += 2;
+      yield return new WaitForSeconds(5f);
     }
-    yield return null;
     spawner.AllTriggerEnemiesCleared();
   }
+  void wave1Pattern(int enemies, List<string> enemiesNames) {
+    for (int i = 0; i < enemies; i++) {
+      float x = spawner.randomWithRange(-5f, 5f);
+      int ran = Random.Range(0, enemiesNames.Count);
+      spawner.spawnEnemy(enemiesNames[ran % enemiesNames.Count], x, 10f, LevelSpawner.addToList.All);
+    }
+  }
   IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
+    int enemies = 3;
+    for (int i = 0; i < 6; i++) {
+      if (i % 2 == 0) {
+        wave1Pattern(enemies, new List<string>() { "MicroShield", "KiloShield" });
+      } else {
+        wave1Pattern(enemies, new List<string>() { "KiloBasic", "MesoShifter" });
+        enemies += 1;
       }
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
+      yield return new WaitForSeconds(12f);
     }
     spawner.LastWaveEnemiesCleared();
   }

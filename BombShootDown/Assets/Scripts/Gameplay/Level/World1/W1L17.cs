@@ -27,30 +27,47 @@ public class W1L17 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-    int i = 20;
+      int i = 3;
     while (i > 0) {
       i--;
       float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
+      spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
+      yield return new WaitForSeconds(20f);
     }
     yield return null;
-    spawner.AllTriggerEnemiesCleared();
+    spawner.AllEnemiesCleared();
   }
   IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
-      }
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
-    }
+    float x = spawner.randomWithRange(-5f, 5f);
+    spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
+    wave2_Pattern();
+    yield return new WaitForSeconds(5f);
+    wave2_Pattern();
+    yield return new WaitForSeconds(5f);
+    wave2_Pattern();
+    yield return new WaitForSeconds(5f);
+    wave2_Pattern();
+    yield return new WaitForSeconds(5f);
+    wave2_Pattern();
+    yield return new WaitForSeconds(10f);
+    x = spawner.randomWithRange(-5f, 5f);
+    spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
+    wave2_Pattern();
+    yield return new WaitForSeconds(5f);
+    wave2_Pattern();
+    yield return new WaitForSeconds(5f);
+    wave2_Pattern();
+    yield return new WaitForSeconds(5f);
+    wave2_Pattern();
+    yield return new WaitForSeconds(5f);
+    wave2_Pattern();
     spawner.LastWaveEnemiesCleared();
+  }
+  void wave2_Pattern() {
+    float x;
+    for (int k = 0; k < 10; k++) {
+      x = spawner.randomWithRange(-5f, 5f);
+      spawner.spawnEnemy("NanoShield", x, 10f, LevelSpawner.addToList.All);
+    }
   }
 }
