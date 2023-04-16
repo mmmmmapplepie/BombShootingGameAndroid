@@ -38,14 +38,15 @@ public class GameWin : MonoBehaviour {
     MoneyManager.addMoney(prize);
   }
   void nextLevelAvailableCheck() {
-    if (thisLevel[0] == 1 && thisLevel[1] == 25) {
-      nextLevelBtn.interactable = false;
+    nextLevelBtn.interactable = false;
+    if (thisLevel[0] == 1 && thisLevel[1] < 25) {
+      nextLevelBtn.interactable = true;
     }
-    if (thisLevel[0] == 2 && thisLevel[1] == 30) {
-      nextLevelBtn.interactable = false;
+    if (thisLevel[0] == 2 && thisLevel[1] < 30) {
+      nextLevelBtn.interactable = true;
     }
-    if (thisLevel[0] == 3 && thisLevel[1] == 51) {
-      nextLevelBtn.interactable = false;
+    if (thisLevel[0] == 3 && thisLevel[1] < 51) {
+      nextLevelBtn.interactable = true;
     }
   }
   void newClearLevel() {

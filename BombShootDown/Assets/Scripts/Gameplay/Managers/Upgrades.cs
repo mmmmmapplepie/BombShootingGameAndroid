@@ -53,7 +53,7 @@ public class Upgrades : MonoBehaviour {
   }
   void setUpgradeSlot() {
     int lvl = UpgradesManager.returnDictionaryValue("UpgradeSlot")[0];
-    UpgradesEquipped.UpgradedSlots = 5 * lvl;
+    UpgradesEquipped.UpgradedSlots = 3 * lvl;
     if (lvl == 10) {
       UpgradesEquipped.UpgradedSlots = 35;
     }

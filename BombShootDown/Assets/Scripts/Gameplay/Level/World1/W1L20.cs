@@ -26,31 +26,20 @@ public class W1L20 : MonoBehaviour, IGetLevelDataInterface {
       }
     }
   }
+  List<string> mobs = new List<string>() { "Teleporter", "KiloShield" };
   IEnumerator wave1() {
     int i = 20;
     while (i > 0) {
-      i--;
       float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
+      spawner.spawnEnemy(mobs[Random.Range(0, 2)], x, 10f);
+      i--;
+      yield return new WaitForSeconds(1f);
     }
-    yield return null;
-    spawner.AllTriggerEnemiesCleared();
+    spawner.waveCleared();
   }
   IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
-      }
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
-    }
+    spawner.spawnEnemyInMap("Carrier", 0, 11f, true, LevelSpawner.addToList.Specific, true);
+    yield return null;
     spawner.LastWaveEnemiesCleared();
   }
 }

@@ -1533,9 +1533,9 @@ MonoBehaviour:
   shieldrate: 4
   regen: 2
   DOT: 0.15
-  BigStrongRawPercent: 5
+  BigStrongRawPercent: 2
   BigWeakRawPercent: 0
-  SmallStrongRawPercent: 40
+  SmallStrongRawPercent: 20
 --- !u!114 &3478228410986830704
 MonoBehaviour:
   m_ObjectHideFlags: 0

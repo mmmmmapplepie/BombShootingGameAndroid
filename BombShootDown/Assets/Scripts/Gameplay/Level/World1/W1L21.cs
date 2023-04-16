@@ -27,30 +27,42 @@ public class W1L21 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-    int i = 20;
-    while (i > 0) {
-      i--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
-    }
+    float x = spawner.randomWithRange(-5f, 5f);
+    spawner.spawnEnemy("MegaShield", x, 10f);
     yield return null;
     spawner.AllTriggerEnemiesCleared();
   }
   IEnumerator wave2() {
-    int i = 5;
-    while (i > 0) {
-      i--;
-      float x;
-      for (int k = 0; k > i; k++) {
-        x = spawner.randomWithRange(-5f, 5f);
-        spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-        yield return new WaitForSeconds(0.2f);
-      }
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(2f);
+    for (int i = 0; i < 4; i++) {
+      float x = spawner.randomWithRange(-5f, 5f);
+      spawner.spawnEnemy("MegaShield", x, 10f);
+      yield return new WaitForSeconds(5f);
+    }
+    yield return new WaitForSeconds(10f);
+    for (int i = 0; i < 4; i++) {
+      float x = spawner.randomWithRange(-5f, 5f);
+      spawner.spawnEnemy("MegaShield", x, 10f);
+    }
+    spawner.AllTriggerEnemiesCleared();
+  }
+  IEnumerator wave3() {
+    int i = 0;
+    while (i < 2) {
+      StartCoroutine(wave3_Pattern(i + 1));
+      i++;
+      yield return new WaitForSeconds(30f);
     }
     spawner.LastWaveEnemiesCleared();
+  }
+  IEnumerator wave3_Pattern(int i) {
+    for (int k = i; k > 0; k--) {
+      float x = spawner.randomWithRange(-1f, 1f);
+      spawner.spawnEnemyInMap("MesoTicker", x, 10f, true);
+    }
+    yield return new WaitForSeconds(10f);
+    spawner.spawnEnemy("MegaShield", -2.5f, 10f);
+    spawner.spawnEnemy("MegaShield", -0.5f, 10f);
+    spawner.spawnEnemy("MegaShield", 0.5f, 10f);
+    spawner.spawnEnemy("MegaShield", 2.5f, 10f);
   }
 }

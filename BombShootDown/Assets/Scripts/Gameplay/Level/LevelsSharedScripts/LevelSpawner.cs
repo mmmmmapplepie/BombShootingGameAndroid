@@ -19,6 +19,7 @@ public class LevelSpawner : MonoBehaviour {
   [HideInInspector]
   public List<GameObject> NonTriggerEnemies = new List<GameObject>();
   public List<GameObject> AllEnemiesListDynamic = new List<GameObject>();
+  public List<GameObject> setEnemies = new List<GameObject>();
   [HideInInspector]
   public enum addToList { All, Specific, None };
 
@@ -141,27 +142,34 @@ public class LevelSpawner : MonoBehaviour {
 
 
   #region spawnEnemyFunctions
-  public GameObject spawnEnemy(string name, float xpos, float ypos, addToList listname = addToList.None, bool returnEnemyGameObject = true) {
+  public GameObject spawnEnemy(string name, float xpos, float ypos, addToList listname = addToList.All, bool setEnemy = false) {
     GameObject enemyPrefab = level.Enemies.Find(x => x.enemyPrefab.name == name).enemyPrefab;
     GameObject spawnedEnemy = Instantiate(enemyPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     AddEnemyToList(spawnedEnemy, listname);
-    if (returnEnemyGameObject) {
-      return spawnedEnemy;
-    } else {
-      return null;
+    if (setEnemy) {
+      setEnemies.Add(spawnedEnemy);
     }
+    return spawnedEnemy;
   }
-  public void spawnEnemyInMap(string name, float xpos, float ypos, bool big, addToList listname = addToList.None) {
+  public void spawnEnemyInMap(string name, float xpos, float ypos, bool big, addToList listname = addToList.All, bool setEnemy = false) {
     if (big) {
       Instantiate(BigSpawnPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     } else {
       Instantiate(SmallSpawnPrefab, new Vector3(xpos, ypos, 0f), Quaternion.identity);
     }
-    StartCoroutine(mapSpawnRoutine(listname, name, xpos, ypos));
+    if (setEnemy) {
+      StartCoroutine(mapSpawnRoutine(listname, name, xpos, ypos, true));
+    } else {
+      StartCoroutine(mapSpawnRoutine(listname, name, xpos, ypos));
+    }
   }
-  IEnumerator mapSpawnRoutine(addToList listname, string name, float xpos, float ypos) {
+  IEnumerator mapSpawnRoutine(addToList listname, string name, float xpos, float ypos, bool setEnemy = false) {
     yield return new WaitForSeconds(0.5f);
-    spawnEnemy(name, xpos, ypos, listname);
+    if (setEnemy) {
+      setEnemies.Add(spawnEnemy(name, xpos, ypos, listname));
+    } else {
+      spawnEnemy(name, xpos, ypos, listname);
+    }
   }
   void AddEnemyToList(GameObject enemy, addToList listname) {
     if (listname == addToList.None) {
