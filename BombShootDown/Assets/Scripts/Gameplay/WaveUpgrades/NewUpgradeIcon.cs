@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class NewUpgradeIcon : MonoBehaviour {
   [SerializeField] Text text;
   public UpgradePick pick;
+  new AudioManagerUI audio;
+  void Awake() {
+    audio = GameObject.FindObjectOfType<AudioManagerUI>();
+  }
   public void RenderUpg() {
     if (pick != null) {
       Image img = GetComponent<Image>();
@@ -14,6 +18,7 @@ public class NewUpgradeIcon : MonoBehaviour {
     }
   }
   public void UnSelect() {
+    audio.PlayAudio("DownLevel");
     UpgradesEquipped.tempUpgHolder.Remove(pick.name);
   }
 }

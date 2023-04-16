@@ -67,6 +67,5 @@ public class WaveController : MonoBehaviour {
     WaveStartPanel.GetComponent<Image>().color = new Color(r_, g_, b_, 2f / 3f);
     WaveStartPanel.SetActive(false);
     startWave = true;
-    GamePauseBehaviour.Pausable = true;
   }
 }

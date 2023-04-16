@@ -5,7 +5,7 @@ W2L5-10     12400
 W3L5        3900
 W3L5-10     19300
 
-total 
+total
 W1          31680
 W2          17600
 W3          23200
@@ -25,5 +25,4 @@ avg ~100/lvl clear gives 321 clears required.
 assume 20 repeats.
 200 clear worth required
 20000 currency.
-over 4 days makes to 5000 per day reward.
-Make reward 2000 per/day.
+over 4 days makes to about 5000 per day reward.

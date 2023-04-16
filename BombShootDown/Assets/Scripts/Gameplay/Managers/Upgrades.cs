@@ -198,6 +198,7 @@ public class Upgrades : MonoBehaviour {
       //this takes roughly 3.7sec unscaled time. Use 3.5 as its a nicer number.
     }
     Time.timeScale = 1f;
+    GamePauseBehaviour.Pausable = true;
     yield return null;
   }
 }

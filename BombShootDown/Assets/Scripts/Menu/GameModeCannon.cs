@@ -76,7 +76,7 @@ public class GameModeCannon : MonoBehaviour {
     while (!asyncScene.isDone) {
       float percent = asyncScene.progress * 100f;
       if (loadedAmount < 100f && percent >= 90f) {
-        loadedAmount += 10f;
+        loadedAmount += 5f;
         loadPercent.text = loadedAmount.ToString() + "%";
         yield return null;
       }

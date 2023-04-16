@@ -16,7 +16,7 @@ public class HelperBullet : MonoBehaviour {
   }
   void Start() {
     if (GameObject.Find("SkinManager") != null) {
-      GameObject.Find("SkinManager").GetComponent<BulletSkinChanger>().changeBulletSprite(gameObject);
+      GameObject.Find("SkinManager").GetComponent<BulletSkinChanger>().changeBulletSprite(gameObject, false);
     }
   }
   void Update() {

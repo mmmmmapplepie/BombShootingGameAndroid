@@ -25,11 +25,13 @@ public class ChosenUpg : MonoBehaviour {
   GameObject AmmoLife;
   int ItemsInList;
   int tempupgnum = -1;
+  new AudioManagerUI audio;
   void Awake() {
+    audio = GameObject.FindObjectOfType<AudioManagerUI>();
     waveController = GameObject.FindObjectOfType<WaveController>();
   }
   IEnumerator enableConfirmBtn() {
-    yield return new WaitForSecondsRealtime(2f);
+    yield return new WaitForSecondsRealtime(1f);
     upgradeConfirmBtn.GetComponent<Button>().interactable = true;
   }
   void Update() {
@@ -105,6 +107,7 @@ public class ChosenUpg : MonoBehaviour {
     }
   }
   public void DisableUpgrades() {
+    audio.PlayAudio("Click");
     AppendUpgradesToEquippedUpgrades();
     UpgradesScript.setUpgrades();
     cooldowns.GetComponent<Bomb>().checkUpgradesForBombDamageEquipped();

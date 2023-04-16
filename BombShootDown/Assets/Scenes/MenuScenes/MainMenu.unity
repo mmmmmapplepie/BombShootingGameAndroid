@@ -5659,6 +5659,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 50cf04c77d9b55943ae5b5a503ef7eec, type: 3}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[5].name
+      value: Victory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 80ccafe6e8198314eb76292046f927af, type: 3}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[6].name
+      value: Defeat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[5].pitch
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[6].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[5].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[6].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[5].priority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[5].playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197789660336990305, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
+      propertyPath: SoundList.Array.data[6].playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5197789660741548065, guid: c6d1c324387bc464e853e5af2aac3213, type: 3}
       propertyPath: m_Name
       value: AudioManagerGeneral

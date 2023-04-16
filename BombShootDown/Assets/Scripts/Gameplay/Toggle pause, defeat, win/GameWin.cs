@@ -21,9 +21,8 @@ public class GameWin : MonoBehaviour {
     data = GameObject.FindObjectOfType<LevelSpawner>().level;
     audio = GameObject.FindObjectOfType<AudioManagerUI>();
     Time.timeScale = 0f;
+    Invoke("winAudio", 0.2f);
     instantiatedEffect = Instantiate(winParticleEffect, new Vector3(0f, -11f, 0f), Quaternion.identity);
-
-    // audio.PlayAudio("Win");
     thisLevel = data.stageInWorld;
     levelNameTxt.text = data.name;
     nextLevelAvailableCheck();
@@ -36,6 +35,9 @@ public class GameWin : MonoBehaviour {
       newClearLevel();
     }
     MoneyManager.addMoney(prize);
+  }
+  void winAudio() {
+    audio.PlayAudio("Victory");
   }
   void nextLevelAvailableCheck() {
     nextLevelBtn.interactable = false;
@@ -56,6 +58,7 @@ public class GameWin : MonoBehaviour {
   }
   public void NextLevel() {
     Time.timeScale = 1f;
+    audio.PlayAudio("Click");
     if (thisLevel[0] == 1 && (thisLevel[1] == 1 || thisLevel[1] == 2)) {
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     } else {
@@ -65,10 +68,12 @@ public class GameWin : MonoBehaviour {
 
   }
   public void WorldMap() {
+    audio.PlayAudio("Click");
     StartCoroutine(loadSceneAsync("Worlds"));
     Destroy(instantiatedEffect);
   }
   public void MainMenu() {
+    audio.PlayAudio("Click");
     Time.timeScale = 1f;
     SceneManager.LoadScene("MainMenu");
   }

@@ -9,11 +9,19 @@ public class GameDefeat : MonoBehaviour {
   [SerializeField] List<string> tipsList;
   [SerializeField] Text tipsText, loadPercent;
   [SerializeField] GameObject loadPanel;
-
+  new AudioManagerUI audio;
+  void Awake() {
+    audio = GameObject.FindObjectOfType<AudioManagerUI>();
+  }
   void OnEnable() {
+    Invoke("loseAudio", 0.2f);
     Time.timeScale = 0f;
   }
+  void loseAudio() {
+    audio.PlayAudio("Defeat");
+  }
   public void Restart() {
+    audio.PlayAudio("Click");
     Time.timeScale = 1f;
     bool levelBaseUsed = false;
     if (SceneManager.GetSceneByName("LevelBase").isLoaded) {
@@ -25,12 +33,12 @@ public class GameDefeat : MonoBehaviour {
     }
   }
   public void WorldMap() {
+    audio.PlayAudio("Click");
     StartCoroutine(loadSceneAsync("Worlds"));
   }
   public void ContinueAfterAd() {
+    audio.PlayAudio("Click");
     AdButton.GetComponent<Button>().interactable = false;
-
-
     LifeManager.CurrentLife = BowManager.MaxLife;
     Time.timeScale = 1f;
     gameObject.SetActive(false);

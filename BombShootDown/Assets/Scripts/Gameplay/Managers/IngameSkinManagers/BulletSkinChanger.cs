@@ -16,9 +16,9 @@ public class BulletSkinChanger : MonoBehaviour {
   Skin FindBulletSkin() {
     return listOfBulletSkins.Find(x => x.name == SettingsManager.currBulletSkin);
   }
-  public void changeBulletSprite(GameObject ob) {
+  public void changeBulletSprite(GameObject ob, bool effects = true) {
     ob.GetComponent<SpriteRenderer>().sprite = currSkin.mainBody;
-    if (effect != null) {
+    if (effect != null && effects) {
       Transform tra = ob.GetComponent<Transform>();
       GameObject GO = Instantiate(effect, tra);
     }

@@ -13,7 +13,9 @@ public class GamePauseBehaviour : MonoBehaviour {
   public static bool gamePaused = false;
   public static bool Pausable = true;
   bool pausableCheck = true;
+  new AudioManagerUI audio;
   void Awake() {
+    audio = GameObject.FindObjectOfType<AudioManagerUI>();
     Pausable = true;
     gamePaused = false;
   }
@@ -34,6 +36,7 @@ public class GamePauseBehaviour : MonoBehaviour {
 
   // Update is called once per frame
   void Pause() {
+    audio.PlayAudio("Click");
     if (BowManager.UsingCooldown == true || Pausable == false) {
       return;
     }
@@ -42,6 +45,7 @@ public class GamePauseBehaviour : MonoBehaviour {
     PauseToggle.SetActive(true);
   }
   public void Restart() {
+    audio.PlayAudio("Click");
     gamePaused = false;
     Time.timeScale = 1f;
     PauseToggle.SetActive(false);
@@ -55,11 +59,13 @@ public class GamePauseBehaviour : MonoBehaviour {
     }
   }
   public void Continue() {
+    audio.PlayAudio("Click");
     gamePaused = false;
     Time.timeScale = 1f;
     PauseToggle.SetActive(false);
   }
   public void WorldMap() {
+    audio.PlayAudio("Click");
     gamePaused = false;
     StartCoroutine(loadSceneAsync("Worlds"));
   }
