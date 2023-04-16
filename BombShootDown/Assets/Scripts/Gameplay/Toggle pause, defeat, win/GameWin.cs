@@ -101,6 +101,5 @@ public class GameWin : MonoBehaviour {
         yield return null;
       }
     }
-    Time.timeScale = 1f;
   }
 }

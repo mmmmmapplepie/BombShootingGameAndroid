@@ -8,6 +8,10 @@ public class LevelDataDisplay : MonoBehaviour {
   public Text WaveNumberTxt;
   public Transform EnemiesDescriptionBoxT;
   public GameObject enemyBoxPrefab;
+  new AudioManagerUI audio;
+  void Awake() {
+    audio = GameObject.FindObjectOfType<AudioManagerUI>();
+  }
   void OnEnable() {
     thislevel = FocusLevelUpdater.focusLevel;
     LevelNameTxt.text = thislevel.name;
@@ -40,9 +44,11 @@ public class LevelDataDisplay : MonoBehaviour {
   }
   #region BtnNavigation
   public void CloseLevelPanel() {
+    audio.PlayAudio("DownLevel");
     gameObject.SetActive(false);
   }
   public void EnterStoryPlay() {
+    audio.PlayAudio("UpLevel");
     if (thislevel.name == "1-1TR") {
       SceneManager.LoadScene(thislevel.name, LoadSceneMode.Single);
     } else if (thislevel.name == "1-2TR") {

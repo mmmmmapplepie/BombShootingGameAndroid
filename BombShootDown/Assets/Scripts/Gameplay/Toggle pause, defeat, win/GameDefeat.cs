@@ -65,6 +65,5 @@ public class GameDefeat : MonoBehaviour {
         yield return null;
       }
     }
-    Time.timeScale = 1f;
   }
 }

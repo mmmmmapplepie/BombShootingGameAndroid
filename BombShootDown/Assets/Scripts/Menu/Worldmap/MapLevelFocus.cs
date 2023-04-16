@@ -29,6 +29,7 @@ public class MapLevelFocus : MonoBehaviour {
     }
   }
   void SetFocus() {
+    GameObject.FindObjectOfType<AudioManagerUI>().PlayAudio("Click");
     FocusLevelUpdater.cameraFocusObject = gameObject;
     SettingsManager.currentFocusLevelTransform[0] = thisRect.anchoredPosition.x;
     SettingsManager.currentFocusLevelTransform[1] = thisRect.anchoredPosition.y;

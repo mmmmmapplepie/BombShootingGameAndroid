@@ -10,6 +10,7 @@ public class DirectionCursor : MonoBehaviour {
   float Distance;
   void Awake() {
     GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().ChangeBGM("MapTheme");
+    Time.timeScale = 1f;
   }
   void Start() {
     img = Cursor.GetComponent<Image>();

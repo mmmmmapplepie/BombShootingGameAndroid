@@ -19,7 +19,7 @@ public class DailyReward : MonoBehaviour {
     checkNewRewardAvailable();
     currentTime = DateTime.Now;
   }
-  void Update() {
+  void LateUpdate() {
     currentTime = DateTime.Now;
     checkNewRewardAvailable();
   }
@@ -29,7 +29,6 @@ public class DailyReward : MonoBehaviour {
     } else {
       rewardAvailable = true;
       LatestClaimDateTime = DateTime.Now;
-      print("noClaims");
     }
   }
   void checkNewRewardAvailable() {
@@ -47,8 +46,9 @@ public class DailyReward : MonoBehaviour {
   }
   void updateTimer(TimeSpan timeDiff) {
     Text textBox = RemainingTimer.GetComponent<Text>();
-    double hours = timeDiff.Hours;
-    double minutes = timeDiff.Minutes;
+    double totalMinutes = 60 * 24 - timeDiff.TotalMinutes;
+    float hours = Mathf.Floor((float)totalMinutes / 60f);
+    float minutes = (float)totalMinutes % 60f;
     textBox.text = $"{hours.ToString("00")}:{minutes.ToString("00")}";
   }
   public void claimRewards() {
