@@ -2,15 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class W1Upg : MonoBehaviour
-{
+public class W1Upg : MonoBehaviour {
   [SerializeField]
   List<UpgradePick> UpgTemplates;
   [SerializeField]
   GameObject Holder;
   [SerializeField]
   GameObject IconPrefab;
-  string[] world1Upg = new string[9] {"MaximumLife", "LifeRecovery", "AmmunitionMax", "AmmunitionRate", "Damage", "Helpers", "BulletSpeed", "ReloadTime", "BombDamage"};
+  string[] world1Upg = new string[9] { "MaximumLife", "LifeRecovery", "AmmunitionMax", "AmmunitionRate", "Damage", "Helpers", "BulletSpeed", "ReloadTime", "BombDamage" };
   int tempupgnum = 0;
   void Update() {
     if (UpgradesEquipped.tempUpgHolder.Count != tempupgnum) {
@@ -41,7 +40,7 @@ public class W1Upg : MonoBehaviour
   void RenderOption(string name) {
     RenderUpgradeIcon script = IconPrefab.GetComponent<RenderUpgradeIcon>();
     script.pick = FindTemplate(name);
-    if (UpgradesEquipped.tempUpgHolder.Contains(script.pick.name) || SettingsManager.world[0] < 3) {
+    if (UpgradesEquipped.tempUpgHolder.Contains(script.pick.name) || SettingsManager.world[0] < 1) {
       IconPrefab.GetComponent<Button>().interactable = false;
     } else {
       IconPrefab.GetComponent<Button>().interactable = true;
@@ -56,11 +55,8 @@ public class W1Upg : MonoBehaviour
     return null;
   }
   void EmptyHolder() {
-    foreach(Transform child in Holder.GetComponent<Transform>()) {
+    foreach (Transform child in Holder.GetComponent<Transform>()) {
       Destroy(child.gameObject);
     }
-  }
-  void MakeIconUnclickable(GameObject icon) {
-    icon.GetComponent<Button>().interactable = false;
   }
 }

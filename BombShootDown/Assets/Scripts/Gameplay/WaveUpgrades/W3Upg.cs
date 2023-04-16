@@ -67,8 +67,5 @@ public class W3Upg : MonoBehaviour {
       Destroy(child.gameObject);
     }
   }
-  void MakeIconUnclickable(GameObject icon) {
-    icon.GetComponent<Button>().interactable = false;
-  }
 }
 

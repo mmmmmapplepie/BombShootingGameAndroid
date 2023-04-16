@@ -18,7 +18,9 @@ public class LevelSpawner : MonoBehaviour {
   public List<GameObject> SpecificWaveTriggerEnemies = new List<GameObject>();
   [HideInInspector]
   public List<GameObject> NonTriggerEnemies = new List<GameObject>();
+  [HideInInspector]
   public List<GameObject> AllEnemiesListDynamic = new List<GameObject>();
+  [HideInInspector]
   public List<GameObject> setEnemies = new List<GameObject>();
   [HideInInspector]
   public enum addToList { All, Specific, None };

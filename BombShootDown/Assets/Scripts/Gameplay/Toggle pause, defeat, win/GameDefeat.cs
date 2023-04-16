@@ -14,10 +14,11 @@ public class GameDefeat : MonoBehaviour {
     audio = GameObject.FindObjectOfType<AudioManagerUI>();
   }
   void OnEnable() {
-    Invoke("loseAudio", 0.2f);
+    StartCoroutine(loseAudio());
     Time.timeScale = 0f;
   }
-  void loseAudio() {
+  IEnumerator loseAudio() {
+    yield return new WaitForSecondsRealtime(0.2f);
     audio.PlayAudio("Defeat");
   }
   public void Restart() {

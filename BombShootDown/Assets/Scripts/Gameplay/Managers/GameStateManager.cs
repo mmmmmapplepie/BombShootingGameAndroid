@@ -93,11 +93,9 @@ public class GameStateManager : MonoBehaviour {
     LifeManager.ReviveUsed = false;
     LifeManager.ReviveRoutine = false;
 
-    if (GameObject.Find("WaveController") != null) {
-      WaveController.LevelCleared = false;
-      WaveController.CurrentWave = 0;
-      WaveController.WavesCleared = 0;
-      WaveController.startWave = false;
-    }
+    WaveController.LevelCleared = false;
+    WaveController.CurrentWave = 0;
+    WaveController.WavesCleared = 0;
+    WaveController.startWave = false;
   }
 }

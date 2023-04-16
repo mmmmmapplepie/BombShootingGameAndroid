@@ -17,11 +17,13 @@ public class GameWin : MonoBehaviour {
   [SerializeField] GameObject loadPanel;
   new AudioManagerUI audio;
   GameObject instantiatedEffect;
+  void Awake() {
+    audio = GameObject.FindObjectOfType<AudioManagerUI>();
+  }
   void OnEnable() {
     data = GameObject.FindObjectOfType<LevelSpawner>().level;
-    audio = GameObject.FindObjectOfType<AudioManagerUI>();
     Time.timeScale = 0f;
-    Invoke("winAudio", 0.2f);
+    StartCoroutine(winAudio());
     instantiatedEffect = Instantiate(winParticleEffect, new Vector3(0f, -11f, 0f), Quaternion.identity);
     thisLevel = data.stageInWorld;
     levelNameTxt.text = data.name;
@@ -31,12 +33,13 @@ public class GameWin : MonoBehaviour {
     clearRewards.text = data.clearRewards.ToString();
     if (SettingsManager.world[0] < thisLevel[0]) {
       newClearLevel();
-    } else if (SettingsManager.world[0] == thisLevel[0] && SettingsManager.world[1] < thisLevel[1]) {
+    } else if (SettingsManager.world[0] == thisLevel[0] && SettingsManager.world[1] <= thisLevel[1]) {
       newClearLevel();
     }
     MoneyManager.addMoney(prize);
   }
-  void winAudio() {
+  IEnumerator winAudio() {
+    yield return new WaitForSecondsRealtime(0.2f);
     audio.PlayAudio("Victory");
   }
   void nextLevelAvailableCheck() {
@@ -59,7 +62,7 @@ public class GameWin : MonoBehaviour {
   public void NextLevel() {
     Time.timeScale = 1f;
     audio.PlayAudio("Click");
-    if (thisLevel[0] == 1 && (thisLevel[1] == 1 || thisLevel[1] == 2)) {
+    if (thisLevel[0] == 1 && (thisLevel[1] == 1)) {
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     } else {
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);

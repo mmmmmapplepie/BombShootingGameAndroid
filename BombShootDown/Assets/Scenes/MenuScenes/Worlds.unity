@@ -13660,7 +13660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1400928857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20872,6 +20872,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 580224423}
     m_Modifications:
+    - target: {fileID: 4491211168664738334, guid: f33286649c1cae64fb5bc0eac4e25bba, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3a82ee241f82e90459c51cc66358898f, type: 3}
     - target: {fileID: 4491211168918591880, guid: f33286649c1cae64fb5bc0eac4e25bba, type: 3}
       propertyPath: Fog
       value: 
@@ -20963,6 +20967,10 @@ PrefabInstance:
     - target: {fileID: 4491211168918591882, guid: f33286649c1cae64fb5bc0eac4e25bba, type: 3}
       propertyPath: m_Name
       value: 1-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491211169291476405, guid: f33286649c1cae64fb5bc0eac4e25bba, type: 3}
+      propertyPath: m_Text
+      value: 1-1TR
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33286649c1cae64fb5bc0eac4e25bba, type: 3}

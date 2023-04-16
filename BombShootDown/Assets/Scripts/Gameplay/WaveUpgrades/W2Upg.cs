@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class W2Upg : MonoBehaviour
-{
+public class W2Upg : MonoBehaviour {
   [SerializeField]
   List<UpgradePick> UpgTemplates;
   [SerializeField]
   GameObject Holder;
   [SerializeField]
   GameObject IconPrefab;
-  string[] world2Upg = new string[6] {"Revive", "ArmorPierce", "HitsPerHit", "Pierce", "AoeHit", "Laser"};
+  string[] world2Upg = new string[6] { "Revive", "ArmorPierce", "HitsPerHit", "Pierce", "AoeHit", "Laser" };
 
   int tempupgnum = 0;
   void Update() {
@@ -43,7 +42,7 @@ public class W2Upg : MonoBehaviour
   void RenderOption(string name) {
     RenderUpgradeIcon script = IconPrefab.GetComponent<RenderUpgradeIcon>();
     script.pick = FindTemplate(name);
-    if (UpgradesEquipped.tempUpgHolder.Contains(script.pick.name) || SettingsManager.world[0] < 3) {
+    if (UpgradesEquipped.tempUpgHolder.Contains(script.pick.name) || SettingsManager.world[0] < 2) {
       IconPrefab.GetComponent<Button>().interactable = false;
     } else {
       IconPrefab.GetComponent<Button>().interactable = true;
@@ -58,12 +57,9 @@ public class W2Upg : MonoBehaviour
     return null;
   }
   void EmptyHolder() {
-    foreach(Transform child in Holder.GetComponent<Transform>()) {
+    foreach (Transform child in Holder.GetComponent<Transform>()) {
       Destroy(child.gameObject);
     }
-  }
-  void MakeIconUnclickable(GameObject icon) {
-    icon.GetComponent<Button>().interactable = false;
   }
 }
 

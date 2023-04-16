@@ -16,7 +16,6 @@ public class skinChanger : MonoBehaviour {
   Skin currBullet;
   Skin currBow;
   void Awake() {
-    UpgradesManager.loadAllData();
     temp = gameObject.GetComponent<temporarySkinHolder>();
   }
   void Start() {

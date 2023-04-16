@@ -77,6 +77,7 @@ public class GamePauseBehaviour : MonoBehaviour {
     AsyncOperation asyncScene = SceneManager.LoadSceneAsync(sceneName);
     asyncScene.allowSceneActivation = false;
     float loadedAmount = 0f;
+    StartCoroutine(worldTimeReturn(asyncScene));
     while (!asyncScene.isDone) {
       float percent = asyncScene.progress * 100f;
       if (loadedAmount < 100f && percent >= 90f) {
@@ -86,10 +87,20 @@ public class GamePauseBehaviour : MonoBehaviour {
       }
       if (loadedAmount >= 99f && percent >= 90f) {
         asyncScene.allowSceneActivation = true;
+        print(asyncScene.progress);
         loadPercent.text = "100%";
         yield return null;
       }
     }
+
     Time.timeScale = 1f;
+  }
+  IEnumerator worldTimeReturn(AsyncOperation sceneprog) {
+    while (false) {
+      if (sceneprog.isDone) {
+        print("AsyncDone");
+        yield break;
+      }
+    }
   }
 }

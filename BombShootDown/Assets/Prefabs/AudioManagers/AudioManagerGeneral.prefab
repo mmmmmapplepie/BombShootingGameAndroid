@@ -184,6 +184,22 @@ MonoBehaviour:
     playOnAwake: 1
     priority: 255
     source: {fileID: 0}
+  - name: Victory
+    clip: {fileID: 8300000, guid: 50cf04c77d9b55943ae5b5a503ef7eec, type: 3}
+    volume: 0.5
+    pitch: 1.2
+    loop: 0
+    playOnAwake: 1
+    priority: 0
+    source: {fileID: 0}
+  - name: Defeat
+    clip: {fileID: 8300000, guid: 80ccafe6e8198314eb76292046f927af, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 1
+    priority: 0
+    source: {fileID: 0}
 --- !u!1 &5197789660741548065
 GameObject:
   m_ObjectHideFlags: 0

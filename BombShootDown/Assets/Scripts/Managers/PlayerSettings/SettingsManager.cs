@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 public class SettingsManager {
   #region VolumeSettings
-  public static float volumeTheme = 0f;
-  public static float volumeEnemy = 0f;
-  public static float volumeCannon = 0f;
+  public static float volumeTheme = 1f;
+  public static float volumeEnemy = 1f;
+  public static float volumeCannon = 1f;
   #endregion
 
   #region PlayerProgress
@@ -13,26 +13,26 @@ public class SettingsManager {
   public static float endlessOriginalHS = 0f;
   public static float endlessUpgradedHS = 0f;
   public static float[] currentFocusLevelTransform = new float[2] { 443f, 682f };
-  public static void clearStage(int wold, int lvl) {
+  public static void clearStage(int _world, int lvl) {
     //world 1 settings 25 lvls
-    if (wold == 1 && lvl < 25) {
+    if (_world == 1 && lvl < 25) {
       world[1] = lvl + 1;
-    } else if (wold == 1 && lvl == 25) {
-      world[0] = wold + 1;
+    } else if (_world == 1 && lvl == 25) {
+      world[0] = _world + 1;
       world[1] = 1;
     }
     //world 2 settings 30 lvls
-    if (wold == 2 && lvl < 30) {
+    if (_world == 2 && lvl < 30) {
       world[1] = lvl + 1;
-    } else if (wold == 2 && lvl == 30) {
-      world[0] = wold + 1;
+    } else if (_world == 2 && lvl == 30) {
+      world[0] = _world + 1;
       world[1] = 1;
     }
     //world 3 settings 46 lvls
-    if (wold == 3 && lvl < 50) {
+    if (_world == 3 && lvl < 46) {
       world[1] = lvl + 1;
-    } else if (wold == 3 && lvl > 50) {
-      world[1] = 51;
+    } else if (_world == 3 && lvl > 45) {
+      world[1] = 47;
     }
   }
   #endregion

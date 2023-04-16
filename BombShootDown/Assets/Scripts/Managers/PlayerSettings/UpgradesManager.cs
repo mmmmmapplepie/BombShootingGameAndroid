@@ -8,7 +8,8 @@ public class UpgradesManager {
 
   public static Dictionary<string, int[]> UpgradeOptions = new Dictionary<string, int[]>();
   public static int[] returnDictionaryValue(string s) {
-    return UpgradeOptions[s];
+    if (UpgradeOptions.ContainsKey(s)) return UpgradeOptions[s];
+    return null;
   }
   public static void setDictionary(string key, int index, int value) {
     int[] temp = UpgradeOptions[key];
