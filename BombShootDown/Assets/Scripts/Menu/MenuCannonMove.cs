@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuCannonMove : MonoBehaviour {
+  [SerializeField] Button shop, upgrades;
   public GameObject MenuAimLine;
   string currentClicked1;
   string newscene;
@@ -13,6 +14,13 @@ public class MenuCannonMove : MonoBehaviour {
     BGM = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
     if (BGM.currentBGM.name != "MenuTheme") {
       BGM.ChangeBGM("MenuTheme");
+    }
+    checkBtnAvailable();
+  }
+  void checkBtnAvailable() {
+    if (SettingsManager.world[0] == 1 && SettingsManager.world[1] <= 2) {
+      shop.interactable = false;
+      upgrades.interactable = false;
     }
   }
   public void checkClicked(Button button) {

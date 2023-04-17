@@ -20,6 +20,7 @@ public class ResetDataBtn : MonoBehaviour {
     SettingsManager.unlockedFortressSkin.Clear();
     SettingsManager.unlockedBowSkin.Clear();
     SettingsManager.unlockedBulletSkin.Clear();
+    PlayerPrefs.DeleteKey("LatestClaimTime");
     SaveSystem.resetSaveData();
     confirmationPanel.SetActive(false);
     UpgradesManager.loadAllData();

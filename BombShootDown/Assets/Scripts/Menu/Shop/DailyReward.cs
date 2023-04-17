@@ -19,6 +19,15 @@ public class DailyReward : MonoBehaviour {
     checkNewRewardAvailable();
     currentTime = DateTime.Now;
   }
+  void Update() {
+    textAnimation();
+  }
+  void textAnimation() {
+    if (!RewardButton.activeSelf) {
+      Color original = RemainingTimer.GetComponent<Text>().color;
+      RemainingTimer.GetComponent<Text>().color = new Color(original.r, original.g, original.b, 0.5f * Mathf.Abs(Mathf.Sin(Time.unscaledTime * Mathf.PI * 0.5f)) + 0.5f);
+    }
+  }
   void LateUpdate() {
     currentTime = DateTime.Now;
     checkNewRewardAvailable();
@@ -48,7 +57,8 @@ public class DailyReward : MonoBehaviour {
     Text textBox = RemainingTimer.GetComponent<Text>();
     double totalMinutes = 60 * 24 - timeDiff.TotalMinutes;
     float hours = Mathf.Floor((float)totalMinutes / 60f);
-    float minutes = (float)totalMinutes % 60f;
+    float minutes = Mathf.Ceil(Mathf.Floor((float)totalMinutes + 1) % 60f);
+    if (minutes == 0) hours += 1;
     textBox.text = $"{hours.ToString("00")}:{minutes.ToString("00")}";
   }
   public void claimRewards() {

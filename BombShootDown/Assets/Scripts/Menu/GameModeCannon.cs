@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 public class GameModeCannon : MonoBehaviour {
   [SerializeField] GameObject loadPanel, loadTouchContinue;
+  [SerializeField] Button endlessOriginalBtn, endlessUpgBtn;
   [SerializeField] Text loadPercent, tipsText;
   [SerializeField] List<string> tipsList;
   public GameObject MenuAimLine;
@@ -20,6 +21,13 @@ public class GameModeCannon : MonoBehaviour {
     UIaudio = GameObject.Find("AudioManagerUI").GetComponent<AudioManagerUI>();
     if (GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().currentBGM.name != "MenuTheme") {
       GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().ChangeBGM("MenuTheme");
+    }
+    checkEndlessEnabled();
+  }
+  void checkEndlessEnabled() {
+    if (SettingsManager.world[0] <= 1 && SettingsManager.world[1] <= 2) {
+      endlessOriginalBtn.interactable = false;
+      endlessUpgBtn.interactable = false;
     }
   }
   public void checkClicked(Button button) {
