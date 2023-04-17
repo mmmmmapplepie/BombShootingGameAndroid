@@ -17,10 +17,16 @@ public class MenuCannonMove : MonoBehaviour {
     }
     checkBtnAvailable();
   }
+  void Update() {
+    checkBtnAvailable();
+  }
   void checkBtnAvailable() {
     if (SettingsManager.world[0] == 1 && SettingsManager.world[1] <= 2) {
       shop.interactable = false;
       upgrades.interactable = false;
+    } else {
+      shop.interactable = true;
+      upgrades.interactable = true;
     }
   }
   public void checkClicked(Button button) {

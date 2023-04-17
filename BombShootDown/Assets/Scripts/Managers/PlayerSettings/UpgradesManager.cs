@@ -67,7 +67,7 @@ public class UpgradesManager {
       UpgradeOptions.Clear();
       dictionaryBaseLog();
       SettingsManager.world = new int[2] { 1, 1 };
-      SettingsManager.currentFocusLevelTransform = new float[2] { 443, 682 };
+      SettingsManager.currentFocusLevelTransform = new float[2] { 0, 0 };
       SettingsManager.endlessOriginalHS = 0f;
       SettingsManager.endlessUpgradedHS = 0f;
       MoneyManager.money = 3000;

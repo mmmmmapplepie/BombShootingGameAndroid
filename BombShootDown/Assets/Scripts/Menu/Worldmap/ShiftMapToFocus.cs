@@ -6,44 +6,46 @@ using UnityEngine.UI;
 public class ShiftMapToFocus : MonoBehaviour {
   RectTransform RT;
   float[] lastLevelT;
-  float screenWidth;
-  float screenHeight;
+  float cameraScreenWidth;
+  float cameraScreenHeight;
   // map is 4096 wide by 3072 tall
   float shiftx;
   float shifty;
   float mapwidth;
   float mapheight;
   new Camera camera;
+  void Awake() {
+    RT = GetComponent<RectTransform>();
+  }
   void Start() {
     camera = Camera.main;
     lastLevelT = SettingsManager.currentFocusLevelTransform;
-    if (lastLevelT != null) {
-      Transform();
+    if (lastLevelT[0] == 0 && lastLevelT[1] == 0) {
+      cameraScreenHeight = (float)camera.pixelHeight;
+      cameraScreenWidth = (float)camera.pixelWidth;
+      RT.localPosition = new Vector2(-cameraScreenWidth * 0.5f, -cameraScreenHeight * 0.5f);
     } else {
-      screenHeight = (float)camera.pixelHeight;
-      screenWidth = (float)camera.pixelWidth;
-      RT.localPosition = new Vector2(-screenWidth * 0.5f, -screenHeight * 0.5f);
+      Transform();
     }
   }
   void Transform() {
-    RT = GetComponent<RectTransform>();
     mapwidth = RT.rect.width;
     mapheight = RT.rect.height;
-    screenHeight = (float)camera.pixelHeight;
-    screenWidth = (float)camera.pixelWidth;
+    cameraScreenHeight = (float)camera.pixelHeight;
+    cameraScreenWidth = (float)camera.pixelWidth;
     shiftx = lastLevelT[0];
     shifty = lastLevelT[1];
-    if ((mapwidth - lastLevelT[0]) < (screenWidth * 0.5f)) {
-      shiftx = mapwidth - screenWidth * 0.5f;
+    if ((mapwidth - lastLevelT[0]) < (cameraScreenWidth * 0.5f)) {
+      shiftx = mapwidth - cameraScreenWidth * 0.5f;
     }
-    if (lastLevelT[0] < (screenWidth * 0.5f)) {
-      shiftx = screenWidth * 0.5f;
+    if (lastLevelT[0] < (cameraScreenWidth * 0.5f)) {
+      shiftx = cameraScreenWidth * 0.5f;
     }
-    if ((mapheight - lastLevelT[1]) < (screenHeight * 0.5f)) {
-      shifty = mapheight - screenHeight * 0.5f;
+    if ((mapheight - lastLevelT[1]) < (cameraScreenHeight * 0.5f)) {
+      shifty = mapheight - cameraScreenHeight * 0.5f;
     }
-    if (lastLevelT[1] < (screenHeight * 0.5f)) {
-      shifty = screenHeight * 0.5f;
+    if (lastLevelT[1] < (cameraScreenHeight * 0.5f)) {
+      shifty = cameraScreenHeight * 0.5f;
     }
     RT.localPosition = new Vector2(-shiftx, -shifty);
   }

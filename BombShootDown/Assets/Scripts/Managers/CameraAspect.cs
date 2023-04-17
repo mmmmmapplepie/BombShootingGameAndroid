@@ -1,30 +1,35 @@
 using UnityEngine.UI;
 using UnityEngine;
 
-public class CameraAspect : MonoBehaviour
-{
+public class CameraAspect : MonoBehaviour {
+  // static GameObject caminstance = null;
+  // void Awake() {
+  //   if (caminstance == null) {
+  //     caminstance = gameObject;
+  //     DontDestroyOnLoad(caminstance);
+  //   } else {
+  //     Destroy(gameObject);
+  //   }
+  // }
   void Start() {
     CamAspect();
   }
-  void Update() {
-    CamAspect();
-  }
+  // void Update() {
+  //   CamAspect();
+  // }
   public void CamAspect() {
     float targetaspect = 9f / 16f;
     float windowaspect = (float)Screen.width / (float)Screen.height;
     float scaleheight = windowaspect / targetaspect;
     Camera camera = GetComponent<Camera>();
-    if (scaleheight < 1f)
-    {
+    if (scaleheight < 1f) {
       Rect rect = camera.rect;
       rect.width = 1f;
       rect.height = scaleheight;
       rect.x = 0;
       rect.y = (1f - scaleheight) / 2f;
       camera.rect = rect;
-    }
-    else
-    {
+    } else {
       float scalewidth = 1f / scaleheight;
       Rect rect = camera.rect;
       rect.width = scalewidth;
