@@ -2,21 +2,9 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class CameraAspect : MonoBehaviour {
-  // static GameObject caminstance = null;
-  // void Awake() {
-  //   if (caminstance == null) {
-  //     caminstance = gameObject;
-  //     DontDestroyOnLoad(caminstance);
-  //   } else {
-  //     Destroy(gameObject);
-  //   }
-  // }
-  void Start() {
+  void Awake() {
     CamAspect();
   }
-  // void Update() {
-  //   CamAspect();
-  // }
   public void CamAspect() {
     float targetaspect = 9f / 16f;
     float windowaspect = (float)Screen.width / (float)Screen.height;

@@ -5,7 +5,6 @@ public class ResetDataBtn : MonoBehaviour {
   public GameObject confirmationPanel;
   public Button confirm;
   public Button cancel;
-  // Start is called before the first frame update
   void Start() {
     Button button = gameObject.GetComponent<Button>();
     button.onClick.AddListener(deleteProcedure);

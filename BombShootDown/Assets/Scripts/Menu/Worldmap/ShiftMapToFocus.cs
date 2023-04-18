@@ -14,15 +14,14 @@ public class ShiftMapToFocus : MonoBehaviour {
   float mapwidth;
   float mapheight;
   new Camera camera;
-  void Awake() {
-    RT = GetComponent<RectTransform>();
-  }
   void Start() {
+    RT = GetComponent<RectTransform>();
     camera = Camera.main;
+    cameraScreenHeight = (float)camera.pixelHeight > 1600f ? 1600f : (float)camera.pixelHeight;
+    cameraScreenWidth = (float)camera.pixelWidth > 900f ? 900f : (float)camera.pixelWidth;
     lastLevelT = SettingsManager.currentFocusLevelTransform;
     if (lastLevelT[0] == 0 && lastLevelT[1] == 0) {
-      cameraScreenHeight = (float)camera.pixelHeight;
-      cameraScreenWidth = (float)camera.pixelWidth;
+
       RT.localPosition = new Vector2(-cameraScreenWidth * 0.5f, -cameraScreenHeight * 0.5f);
     } else {
       Transform();
@@ -31,8 +30,6 @@ public class ShiftMapToFocus : MonoBehaviour {
   void Transform() {
     mapwidth = RT.rect.width;
     mapheight = RT.rect.height;
-    cameraScreenHeight = (float)camera.pixelHeight;
-    cameraScreenWidth = (float)camera.pixelWidth;
     shiftx = lastLevelT[0];
     shifty = lastLevelT[1];
     if ((mapwidth - lastLevelT[0]) < (cameraScreenWidth * 0.5f)) {
