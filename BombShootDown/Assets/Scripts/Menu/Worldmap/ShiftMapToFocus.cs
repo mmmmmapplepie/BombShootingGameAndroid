@@ -14,6 +14,36 @@ public class ShiftMapToFocus : MonoBehaviour {
   float mapwidth;
   float mapheight;
   new Camera camera;
+  void Awake() {
+    checkPreviousAttemptedLevel();
+  }
+  void checkPreviousAttemptedLevel() {
+    if (FocusLevelUpdater.currentLevel[0] != 0) {
+      if (FocusLevelUpdater.currentLevel[0] == 1) {
+        //world1
+        Transform worldT = transform.Find("World1");
+        setFocusTransform(worldT);
+      }
+      if (FocusLevelUpdater.currentLevel[0] == 2) {
+        //world2
+        Transform worldT = transform.Find("World3");
+        setFocusTransform(worldT);
+      }
+      if (FocusLevelUpdater.currentLevel[0] == 3) {
+        //world3
+        Transform worldT = transform.Find("World3");
+        setFocusTransform(worldT);
+      }
+    }
+  }
+  void setFocusTransform(Transform worldParent) {
+    foreach (Transform lvl in worldParent) {
+      if (lvl.gameObject.GetComponent<MapLevelFocus>().lvl.stageInWorld[1] == FocusLevelUpdater.currentLevel[1]) {
+        SettingsManager.currentFocusLevelTransform[0] = lvl.gameObject.GetComponent<RectTransform>().anchoredPosition.x;
+        SettingsManager.currentFocusLevelTransform[1] = lvl.gameObject.GetComponent<RectTransform>().anchoredPosition.y;
+      }
+    }
+  }
   void Start() {
     RT = GetComponent<RectTransform>();
     camera = Camera.main;
@@ -45,5 +75,8 @@ public class ShiftMapToFocus : MonoBehaviour {
       shifty = cameraScreenHeight * 0.5f;
     }
     RT.localPosition = new Vector2(-shiftx, -shifty);
+  }
+  void OnDestroy() {
+    FocusLevelUpdater.currentLevel[0] = FocusLevelUpdater.currentLevel[1] = 0;
   }
 }

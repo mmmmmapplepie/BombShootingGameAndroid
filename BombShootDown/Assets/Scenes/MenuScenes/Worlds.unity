@@ -6455,7 +6455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 580224423}
   m_Layer: 5
-  m_Name: World 1
+  m_Name: World1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

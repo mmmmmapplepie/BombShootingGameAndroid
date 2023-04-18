@@ -71,6 +71,8 @@ public class GameWin : MonoBehaviour {
 
   }
   public void WorldMap() {
+    FocusLevelUpdater.currentLevel[0] = data.stageInWorld[0];
+    FocusLevelUpdater.currentLevel[1] = data.stageInWorld[1];
     audio.PlayAudio("Click");
     StartCoroutine(loadSceneAsync("Worlds"));
     Destroy(instantiatedEffect);

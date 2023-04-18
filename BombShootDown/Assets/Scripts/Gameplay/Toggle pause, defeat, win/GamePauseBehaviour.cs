@@ -65,6 +65,9 @@ public class GamePauseBehaviour : MonoBehaviour {
     PauseToggle.SetActive(false);
   }
   public void WorldMap() {
+    Level data = GameObject.FindObjectOfType<LevelSpawner>().level;
+    FocusLevelUpdater.currentLevel[0] = data.stageInWorld[0];
+    FocusLevelUpdater.currentLevel[1] = data.stageInWorld[1];
     audio.PlayAudio("Click");
     gamePaused = false;
     StartCoroutine(loadSceneAsync("Worlds"));

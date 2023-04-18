@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class MapLevelFocus : MonoBehaviour {
   GameObject panelHolder;
   [SerializeField]
-  Level lvl;
+  public Level lvl;
   [SerializeField]
   GameObject Fog;
   RectTransform thisRect;
