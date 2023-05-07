@@ -18,7 +18,7 @@ public class W1L1 : MonoBehaviour, IGetLevelDataInterface {
     spawner = gameObject.GetComponent<LevelSpawner>();
     spawner.setLevelData(level);
     audio = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
-    audio.ChangeBGM("MenuTheme");
+    audio.ChangeBGM("World1");
   }
 
   void Start() {

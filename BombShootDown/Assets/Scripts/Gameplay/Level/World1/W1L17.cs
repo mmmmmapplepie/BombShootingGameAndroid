@@ -16,7 +16,7 @@ public class W1L17 : MonoBehaviour, IGetLevelDataInterface {
     audio = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
   }
   void Start() {
-    audio.ChangeBGM("MenuTheme");
+    audio.ChangeBGM("World1");
   }
   void Update() {
     if (spawner.waveRunning == false && WaveController.startWave == true && WaveController.LevelCleared == false) {
@@ -27,7 +27,7 @@ public class W1L17 : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-      int i = 3;
+    int i = 3;
     while (i > 0) {
       i--;
       float x = spawner.randomWithRange(-5f, 5f);

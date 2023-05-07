@@ -306,6 +306,14 @@ MonoBehaviour:
     playOnAwake: 1
     priority: 0
     source: {fileID: 0}
+  - name: World1
+    clip: {fileID: 8300000, guid: 050181d636aea4f4fbe6adf2ad9f238b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 1
+    priority: 0
+    source: {fileID: 0}
   currentBGM:
     name: 
     clip: {fileID: 0}

@@ -16,7 +16,7 @@ public class W1L8 : MonoBehaviour, IGetLevelDataInterface {
     audio = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
   }
   void Start() {
-    audio.ChangeBGM("MenuTheme");
+    audio.ChangeBGM("World1");
   }
   void Update() {
     if (spawner.waveRunning == false && WaveController.startWave == true && WaveController.LevelCleared == false) {

@@ -15,7 +15,7 @@ public class W1L2 : MonoBehaviour, IGetLevelDataInterface {
   void Awake() {
     spawner = gameObject.GetComponent<LevelSpawner>();
     spawner.setLevelData(level);
-    GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().ChangeBGM("MenuTheme");
+    GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>().ChangeBGM("World1");
   }
   void Update() {
     if (spawner.waveRunning == false && WaveController.startWave == true && WaveController.LevelCleared == false) {
