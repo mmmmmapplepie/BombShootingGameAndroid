@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Couplad : MonoBehaviour, IDamageable {
-  static int deaths = 0;
+public class CoupladLife : MonoBehaviour, IDamageable {
+  public static GameObject instance;
+  public static int deaths = 0;
   static bool halfdeath = false;
-  static bool fulldeath = false;
+  public static bool fulldeath = false;
 
   [SerializeField]
   float reviveTime;
   [SerializeField]
-  public Enemy data;
+  public Enemy data { get; set; }
   GameObject bombObject;
   [SerializeField]
   GameObject chainExplosionEffect;
@@ -20,7 +21,7 @@ public class Couplad : MonoBehaviour, IDamageable {
   [HideInInspector]
   public float currentLife { get; set; }
   [HideInInspector]
-  public int Armor;
+  public int Armor { get; set; }
   [HideInInspector]
   public int MaxShield { get; set; }
   [HideInInspector]
@@ -28,10 +29,16 @@ public class Couplad : MonoBehaviour, IDamageable {
   [HideInInspector]
   bool Taunt;
   [HideInInspector]
-  public bool dead = false;
+  public bool dead { get; set; } = false;
   AudioManagerEnemy audioManager;
 
   void Awake() {
+    //only 1 couplad at a time
+    if (instance == null) {
+      instance = gameObject;
+    } else {
+      Destroy(gameObject);
+    }
     if (deaths != 0) {
       deaths = 0;
     }
@@ -95,6 +102,7 @@ public class Couplad : MonoBehaviour, IDamageable {
       ) / reviveTime));
       yield return null;
     }
+    currentLife = maxLife;
     yield return new WaitForSeconds(1f);
     //return to normal animation
     gameObject.GetComponent<Collider2D>().enabled = true;

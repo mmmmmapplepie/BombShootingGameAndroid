@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyLife : MonoBehaviour, IDamageable {
   [SerializeField]
-  public Enemy data;
+  public Enemy data { get; set; }
   GameObject bombObject;
   [SerializeField]
   GameObject chainExplosionEffect;
@@ -14,7 +14,7 @@ public class EnemyLife : MonoBehaviour, IDamageable {
   [HideInInspector]
   public float currentLife { get; set; }
   [HideInInspector]
-  public int Armor;
+  public int Armor { get; set; }
   [HideInInspector]
   public int MaxShield { get; set; }
   [HideInInspector]
@@ -22,7 +22,7 @@ public class EnemyLife : MonoBehaviour, IDamageable {
   [HideInInspector]
   bool Taunt;
   [HideInInspector]
-  public bool dead = false;
+  public bool dead { get; set; } = false;
   AudioManagerEnemy audioManager;
   void Awake() {
     bombObject = transform.Find("Enemy").gameObject;

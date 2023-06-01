@@ -28,7 +28,7 @@ public class EnemyCondition : MonoBehaviour {
 
   void Awake() {
     statusCanvas = lifeBar.GetComponent<Transform>().parent.parent.gameObject;
-    data = gameObject.GetComponent<EnemyLife>().data;
+    data = gameObject.GetComponent<IDamageable>().data;
     maxlife = data.Life;
     maxShield = data.MaxShield;
     bossType = data.Boss;
@@ -36,7 +36,7 @@ public class EnemyCondition : MonoBehaviour {
     showBoss();
   }
   void LateUpdate() {
-    if (!gameObject.GetComponent<EnemyLife>().dead && Time.timeScale != 0f && statusCanvas != null) {
+    if (!gameObject.GetComponent<IDamageable>().dead && Time.timeScale != 0f && statusCanvas != null) {
       showArmor();
       showLife();
       showShields();
@@ -52,27 +52,27 @@ public class EnemyCondition : MonoBehaviour {
     }
   }
   void showArmor() {
-    if (gameObject.GetComponent<EnemyLife>().Armor > 0) {
+    if (gameObject.GetComponent<IDamageable>().Armor > 0) {
       ArmorSprite.SetActive(true);
       ArmorNumber.gameObject.SetActive(true);
-      ArmorNumber.text = gameObject.GetComponent<EnemyLife>().Armor.ToString();
+      ArmorNumber.text = gameObject.GetComponent<IDamageable>().Armor.ToString();
     }
-    if (gameObject.GetComponent<EnemyLife>().Armor <= 0) {
+    if (gameObject.GetComponent<IDamageable>().Armor <= 0) {
       ArmorNumber.gameObject.SetActive(false);
       ArmorSprite.SetActive(false);
     }
   }
   void showShields() {
-    float ratio = (float)gameObject.GetComponent<EnemyLife>().Shield / (float)maxShield;
+    float ratio = (float)gameObject.GetComponent<IDamageable>().Shield / (float)maxShield;
     shieldBar.GetComponent<Slider>().value = ratio;
-    if (gameObject.GetComponent<EnemyLife>().Shield > 0) {
+    if (gameObject.GetComponent<IDamageable>().Shield > 0) {
       shielded.SetActive(true);
     } else {
       shielded.SetActive(false);
     }
   }
   void showLife() {
-    float ratio = gameObject.GetComponent<EnemyLife>().currentLife / maxlife * lifeBarScale;
+    float ratio = gameObject.GetComponent<IDamageable>().currentLife / maxlife * lifeBarScale;
     lifeBar.GetComponent<Slider>().value = ratio;
   }
 }
