@@ -141,8 +141,8 @@ public class Bomb : MonoBehaviour {
     audioManager.PlayAudio("Bomb");
     Collider2D[] Objects = Physics2D.OverlapCircleAll(new Vector2(x, y), bombRadius);
     foreach (Collider2D coll in Objects) {
-      if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy")) {
-        coll.transform.root.gameObject.GetComponent<EnemyLife>().takeTrueDamage(BombDamage);
+      if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") && coll.gameObject.GetComponent<IDamageable>() != null) {
+        coll.transform.root.gameObject.GetComponent<IDamageable>().takeTrueDamage(BombDamage);
       }
     }
   }

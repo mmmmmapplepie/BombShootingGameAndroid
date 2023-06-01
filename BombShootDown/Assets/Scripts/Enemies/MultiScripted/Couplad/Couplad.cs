@@ -2,7 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLife : MonoBehaviour, IDamageable {
+public class Couplad : MonoBehaviour, IDamageable {
+  static int deaths = 0;
+  static bool halfdeath = false;
+  static bool fulldeath = false;
+
+  [SerializeField]
+  float reviveTime;
   [SerializeField]
   public Enemy data;
   GameObject bombObject;
@@ -24,7 +30,20 @@ public class EnemyLife : MonoBehaviour, IDamageable {
   [HideInInspector]
   public bool dead = false;
   AudioManagerEnemy audioManager;
+
   void Awake() {
+    if (deaths != 0) {
+      deaths = 0;
+    }
+    if (halfdeath != false) {
+      halfdeath = false;
+    }
+    if (fulldeath != false) {
+      fulldeath = false;
+    }
+    CoupladStatsSettings();
+  }
+  void CoupladStatsSettings() {
     bombObject = transform.Find("Enemy").gameObject;
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
     maxLife = data.Life;
@@ -39,12 +58,51 @@ public class EnemyLife : MonoBehaviour, IDamageable {
       bombObject.tag = "Enemy";
     }
   }
-  public void takeTrueDamage(float damage) {
-    audioManager.PlayAudio("NormalHit");
-    currentLife -= damage;
-    if (currentLife <= 0f && !dead) {
+
+  void Update() {
+    checkDeathFinal();
+  }
+
+  void checkDeathFinal() {
+    if (fulldeath) {
+      StopCoroutine("revive");
       ShotDeath();
     }
+  }
+
+  void checkDamageCondition(float damage) {
+    if (currentLife - damage < 0) {
+      currentLife = 0;
+      deaths += 1;
+      StartCoroutine("revive");
+    }
+    if (halfdeath == true) {
+      if (dead == true) {
+        return;
+      } else {
+        dead = true;
+        fulldeath = true;
+      }
+    }
+  }
+
+  IEnumerator revive() {
+    gameObject.GetComponent<Collider2D>().enabled = false;
+    float startTime = Time.time;
+    //start revive animation
+    while (currentLife < maxLife) {
+      currentLife += currentLife + (maxLife * ((Time.time - startTime
+      ) / reviveTime));
+      yield return null;
+    }
+    yield return new WaitForSeconds(1f);
+    //return to normal animation
+    gameObject.GetComponent<Collider2D>().enabled = true;
+  }
+
+  public void takeTrueDamage(float damage) {
+    audioManager.PlayAudio("NormalHit");
+    checkDamageCondition(damage);
   }
   public void takeDamage(float damage) {
     if (Shield > 0) {
@@ -55,18 +113,15 @@ public class EnemyLife : MonoBehaviour, IDamageable {
       if (Armordiff > 0) {
         if (Armordiff > 9) {
           audioManager.PlayAudio("HeavyArmorHit");
-          currentLife -= damage / 50f; //2% damage only
+          checkDamageCondition(damage / 50f); //2% damage only
         } else {
           audioManager.PlayAudio("ArmorHit");
-          currentLife -= damage - damage * ((float)Armordiff / 10f); //each lvl diff takes a 10% decrease in dmg
+          checkDamageCondition(damage - damage * ((float)Armordiff / 10f)); //each lvl diff takes a 10% decrease in dmg
         }
       } else {
         audioManager.PlayAudio("NormalHit");
-        currentLife -= damage;
+        checkDamageCondition(damage);
       }
-    }
-    if (currentLife <= 0f && !dead) {
-      ShotDeath();
     }
   }
   public void AoeHit(float damage) {
@@ -78,7 +133,7 @@ public class EnemyLife : MonoBehaviour, IDamageable {
     }
   }
   public void ChainExplosion() {
-    takeDamage(BowManager.ChainExplosionDmg * BowManager.BulletDmg * BowManager.BulletMultiplier);
+    checkDamageCondition(BowManager.ChainExplosionDmg * BowManager.BulletDmg * BowManager.BulletMultiplier);
   }
   void RemoveAtDeathComponents() {
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
@@ -95,7 +150,6 @@ public class EnemyLife : MonoBehaviour, IDamageable {
     Destroy(funct);
   }
   IEnumerator deathSequence() {
-    dead = true;
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++) {

@@ -86,7 +86,7 @@ public class HelperBullet : MonoBehaviour {
       return;
     }
     if (coll.gameObject.tag == "TauntEnemy" || coll.gameObject.tag == "Enemy") {
-      EnemyLife life = coll.transform.root.gameObject.GetComponent<EnemyLife>();
+      IDamageable life = coll.transform.root.gameObject.GetComponent<IDamageable>();
       Transform enemyCenter = coll.transform.root;
       life.takeDamage(damage);
       CreateEffect(HitEffect, enemyCenter, enemyCenter.position);

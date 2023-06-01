@@ -23,7 +23,7 @@ public class ChainExplosion : MonoBehaviour {
     audioManager.PlayAudio("ChainExplosion");
     Collider2D[] Objects = Physics2D.OverlapCircleAll(transform.position, 1.5f);
     foreach (Collider2D coll in Objects) {
-      if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") {
+      if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") && coll.gameObject.GetComponent<IDamageable>() != null) {
         if (coll.gameObject == gameObject) {
           continue;
         }

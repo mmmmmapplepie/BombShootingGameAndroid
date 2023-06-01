@@ -112,7 +112,7 @@ public class Bullet : MonoBehaviour {
       if (chain && coll.transform.root.GetComponent<ChainExplosion>().Chained == false) {
         coll.transform.root.GetComponent<ChainExplosion>().Chained = true;
       }
-      EnemyLife life = coll.transform.root.gameObject.GetComponent<EnemyLife>();
+      IDamageable life = coll.transform.root.gameObject.GetComponent<IDamageable>();
       Transform enemyCenter = coll.transform.root;
       life.takeDamage(damage);
       CreateEffect(Effects.Find(x => x.name == "NormalHitEffect"), enemyCenter, enemyCenter.position);

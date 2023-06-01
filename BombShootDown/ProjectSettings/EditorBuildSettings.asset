@@ -105,6 +105,96 @@ EditorBuildSettings:
     path: Assets/Scenes/Level scenes/World1/1-25.unity
     guid: 345c76289b802744b8147f2c1b6664fc
   - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-1.unity
+    guid: 3967757ad94da88449e153a27ee4b42a
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-2.unity
+    guid: dafbaa9fdf998944db2875811372094a
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-3.unity
+    guid: 7147ab7cb3ebb5d4fa6ad22e87ad57af
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-4.unity
+    guid: c2c99256e58ba41479d76f46056ee9eb
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-5.unity
+    guid: 9faff861ff1f93748b5f310beb93c83d
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-6.unity
+    guid: 29acddc0daa916c46b66be72b8e1b3ba
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-7.unity
+    guid: a343af89a2951b64fab00ee8056acad3
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-8.unity
+    guid: b60dc467305577c40910580735f8dc27
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-9.unity
+    guid: 2cd7e2678011c8a499bebe6e65db5c17
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-10.unity
+    guid: e4a9f7d8e2b52c24eb4ac9af5b42de62
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-11.unity
+    guid: fa79b3848ab15554bbd282b73c31b668
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-12.unity
+    guid: 147ca3916e843424e8559ccc59da5e78
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-13.unity
+    guid: 668a0216311a2ea43a9cbfa3ea938627
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-14.unity
+    guid: e578c64a1093f79448a76a091e5f5d66
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-15.unity
+    guid: db497b9c76eaaab4983f5fc9d5df4f73
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-16.unity
+    guid: 7d649be543e73c04d99c657e2c176d0e
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-17.unity
+    guid: 8c74141912fd49b4e98b8532f284129f
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-18.unity
+    guid: 63e8ea57838b05549b1a61a093c523e4
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-19.unity
+    guid: 90ce9d76b5b7dd645a7da63aa08c01bb
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-20.unity
+    guid: 6cdb0d2f1e30a70478d0acc9c97f5680
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-21.unity
+    guid: c5e5088994a53574db473a7391a4d252
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-22.unity
+    guid: 895d2b0812c33e64aa09ad3678968f0f
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-23.unity
+    guid: 706800a81cbb93c49ac832ad25975793
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-24.unity
+    guid: 942eb41e501c90440b6cbf1d4a13fbe3
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-25.unity
+    guid: b2ccf9491c5dd414aa9c98d3de91fd70
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-26.unity
+    guid: 058c4a7f8f1e48347aeb865d5b1a1090
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-27.unity
+    guid: 5229eed9a7b913144b037028ff0b2010
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-28.unity
+    guid: 6c718bc9f76827041a7272ddcbb83ad4
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-29.unity
+    guid: 7d6c9af00e896f14ab9723381769d7a5
+  - enabled: 1
+    path: Assets/Scenes/Level scenes/World 2/2-30.unity
+    guid: 406c3448e517cd643bec15a190a60a9f
+  - enabled: 1
     path: Assets/Scenes/Level scenes/Sandbox.unity
     guid: 858539273ac35be458c5da11a6a091d3
   - enabled: 0

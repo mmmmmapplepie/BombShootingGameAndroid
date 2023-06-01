@@ -84,10 +84,10 @@ public class Nuke : MonoBehaviour {
     GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
     GameObject[] TauntEnemies = GameObject.FindGameObjectsWithTag("TauntEnemy");
     foreach (GameObject enemies in Enemies) {
-      enemies.transform.root.gameObject.GetComponent<EnemyLife>().takeTrueDamage(NukeDamage);
+      enemies.transform.root.gameObject.GetComponent<IDamageable>().takeTrueDamage(NukeDamage);
     }
     foreach (GameObject enemies in TauntEnemies) {
-      enemies.transform.root.gameObject.GetComponent<EnemyLife>().takeTrueDamage(NukeDamage);
+      enemies.transform.root.gameObject.GetComponent<IDamageable>().takeTrueDamage(NukeDamage);
     }
   }
 

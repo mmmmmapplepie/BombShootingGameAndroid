@@ -149,12 +149,12 @@ public class Laser : MonoBehaviour {
     GameObject[] TauntEnemies = GameObject.FindGameObjectsWithTag("TauntEnemy");
     foreach (GameObject enemies in Enemies) {
       if (enemies.transform.position.x > (x - LaserHalfWidth) && enemies.transform.position.x < (x + LaserHalfWidth)) {
-        enemies.transform.root.gameObject.GetComponent<EnemyLife>().takeTrueDamage(LaserDamage);
+        enemies.transform.root.gameObject.GetComponent<IDamageable>().takeTrueDamage(LaserDamage);
       }
     }
     foreach (GameObject enemies in TauntEnemies) {
       if (enemies.transform.position.x > (x - LaserHalfWidth) && enemies.transform.position.x < (x + LaserHalfWidth)) {
-        enemies.transform.root.gameObject.GetComponent<EnemyLife>().takeTrueDamage(LaserDamage);
+        enemies.transform.root.gameObject.GetComponent<IDamageable>().takeTrueDamage(LaserDamage);
       }
     }
   }
