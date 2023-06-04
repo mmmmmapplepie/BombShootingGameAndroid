@@ -2,20 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoupladLife : MonoBehaviour, IDamageable {
-  public static GameObject instance;
-  public static int deaths = 0;
-  static bool halfdeath = false;
-  public static bool fulldeath = false;
-
+public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
+  //couplad specific fields
+  [HideInInspector]
+  public CoupladLife_Follower LinkFollower;
+  [HideInInspector]
+  public int deaths = 0;
+  [HideInInspector]
+  public bool[] halfdeath = { false, false };//seeker is 0th term, follower is the 1st term.
+  [HideInInspector]
+  public bool fulldeath = false;
+  [HideInInspector]
+  public bool deathProcess = false;
+  public Coroutine reviveRoutine;
   [SerializeField]
   float reviveTime;
+
+  //basic enemy fields
   [SerializeField]
-  public Enemy data { get; set; }
+  Enemy _data;
+  public Enemy data {
+    get {
+      return _data;
+    }
+  }
   GameObject bombObject;
   [SerializeField]
   GameObject chainExplosionEffect;
-  RectTransform rect;
   [HideInInspector]
   public float maxLife { get; set; }
   [HideInInspector]
@@ -33,22 +46,10 @@ public class CoupladLife : MonoBehaviour, IDamageable {
   AudioManagerEnemy audioManager;
 
   void Awake() {
-    //only 1 couplad at a time
-    if (instance == null) {
-      instance = gameObject;
-    } else {
-      Destroy(gameObject);
-    }
-    if (deaths != 0) {
-      deaths = 0;
-    }
-    if (halfdeath != false) {
-      halfdeath = false;
-    }
-    if (fulldeath != false) {
-      fulldeath = false;
-    }
     CoupladStatsSettings();
+    if (LinkFollower == null) {
+      SearchFollower();
+    }
   }
   void CoupladStatsSettings() {
     bombObject = transform.Find("Enemy").gameObject;
@@ -68,11 +69,20 @@ public class CoupladLife : MonoBehaviour, IDamageable {
 
   void Update() {
     checkDeathFinal();
+    if (LinkFollower == null) {
+      SearchFollower();
+    }
+  }
+
+  void SearchFollower() {
+    LinkFollower = FindObjectOfType<CoupladLife_Follower>();
+    LinkFollower.seekerScript = this;
+    LinkFollower.coupled = true;
   }
 
   void checkDeathFinal() {
-    if (fulldeath) {
-      StopCoroutine("revive");
+    if (fulldeath && !deathProcess) {
+      StopCoroutine(reviveRoutine);
       ShotDeath();
     }
   }
@@ -81,20 +91,19 @@ public class CoupladLife : MonoBehaviour, IDamageable {
     if (currentLife - damage < 0) {
       currentLife = 0;
       deaths += 1;
-      StartCoroutine("revive");
+      halfdeath[0] = true;
+      dead = true;
+      reviveRoutine = StartCoroutine("revive");
     }
-    if (halfdeath == true) {
-      if (dead == true) {
-        return;
-      } else {
-        dead = true;
-        fulldeath = true;
-      }
+    if (halfdeath[0] == true && halfdeath[1] == true) {
+      fulldeath = true;
+      dead = true;
     }
   }
 
   IEnumerator revive() {
-    gameObject.GetComponent<Collider2D>().enabled = false;
+    transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
+    transform.Find("MovementControl").gameObject.SetActive(false);
     float startTime = Time.time;
     //start revive animation
     while (currentLife < maxLife) {
@@ -103,9 +112,13 @@ public class CoupladLife : MonoBehaviour, IDamageable {
       yield return null;
     }
     currentLife = maxLife;
+    halfdeath[0] = false;
+    dead = false;
     yield return new WaitForSeconds(1f);
     //return to normal animation
-    gameObject.GetComponent<Collider2D>().enabled = true;
+    //normal animation
+    transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;
+    transform.Find("MovementControl").gameObject.SetActive(true);
   }
 
   public void takeTrueDamage(float damage) {
@@ -121,10 +134,10 @@ public class CoupladLife : MonoBehaviour, IDamageable {
       if (Armordiff > 0) {
         if (Armordiff > 9) {
           audioManager.PlayAudio("HeavyArmorHit");
-          checkDamageCondition(damage / 50f); //2% damage only
+          checkDamageCondition(damage / 50f);
         } else {
           audioManager.PlayAudio("ArmorHit");
-          checkDamageCondition(damage - damage * ((float)Armordiff / 10f)); //each lvl diff takes a 10% decrease in dmg
+          checkDamageCondition(damage - damage * ((float)Armordiff / 10f));
         }
       } else {
         audioManager.PlayAudio("NormalHit");
@@ -177,7 +190,8 @@ public class CoupladLife : MonoBehaviour, IDamageable {
     yield return new WaitForSeconds(0.2f);
     script.Explode();
   }
-  void ShotDeath() {
+  public void ShotDeath() {
+    deathProcess = true;
     ChainExplosion script = gameObject.GetComponent<ChainExplosion>();
     if (script.Chained == true) {
       Instantiate(chainExplosionEffect, transform.position, Quaternion.identity);

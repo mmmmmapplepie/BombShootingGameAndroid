@@ -1,5 +1,5 @@
 public interface IDamageable {
-  Enemy data { get; set; }
+  Enemy data { get; }
   int Armor { get; set; }
   bool dead { get; set; }
   float currentLife { get; set; }

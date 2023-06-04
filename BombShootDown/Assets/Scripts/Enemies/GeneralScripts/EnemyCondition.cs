@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class EnemyCondition : MonoBehaviour {
   Enemy data;
-
   [SerializeField]
   GameObject lifeBar;
   [SerializeField]

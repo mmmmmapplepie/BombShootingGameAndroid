@@ -5,6 +5,7 @@ public class ChainExplosion : MonoBehaviour {
   GameObject chainedAnimation;
   [HideInInspector]
   public bool Chained = false;
+  [HideInInspector]
   public bool animationAdded = false;
   RectTransform rect;
   AudioManagerEnemy audioManager;

@@ -11,6 +11,7 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
     return level;
   }
   void Awake() {
+    UpgradesManager.loadAllData();
     spawner = gameObject.GetComponent<LevelSpawner>();
     spawner.setLevelData(level);
     audio = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();

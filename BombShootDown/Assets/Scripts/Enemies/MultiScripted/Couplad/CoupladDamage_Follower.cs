@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoupladDamage : MonoBehaviour {
+public class CoupladDamage_Follower : MonoBehaviour {
+  [HideInInspector]
+  [SerializeField]
+  CoupladLife_Seeker lifeScript;
   [SerializeField]
   float deathDamageMultiplier = 0.4f;
   [SerializeField]
@@ -11,16 +14,17 @@ public class CoupladDamage : MonoBehaviour {
   [HideInInspector]
   public float Damage;
   AudioManagerEnemy audioManager;
-  void Awake() {
+  void Start() {
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
-    data = gameObject.GetComponent<CoupladLife>().data;
+    data = lifeScript.data;
     Damage = data.Damage;
   }
   void Update() {
-    if (Time.timeScale == 0f || gameObject.GetComponent<CoupladLife>().dead) {
+    //need to make sure other one also dies if 1 dies.
+    if (Time.timeScale == 0f || lifeScript.dead) {
       return;
     }
-    if (transform.position.y < -7.25f && GetComponent<CoupladLife>().currentLife > 0f) {
+    if (transform.position.y < -7.25f && GetComponent<CoupladLife_Seeker>().currentLife > 0f) {
       if (data.Boss == 0 && LifeManager.ReviveRoutine == true) {
         DamageEffect();
         StartCoroutine("deathSequence");
@@ -32,7 +36,7 @@ public class CoupladDamage : MonoBehaviour {
     }
   }
   void DamageEffect() {
-    float dmg = ((CoupladLife.deaths * deathDamageMultiplier) + 1) * Damage * BowManager.EnemyDamage;
+    float dmg = lifeScript.deaths * deathDamageMultiplier * Damage * BowManager.EnemyDamage;
     Camera.main.gameObject.GetComponent<CameraShake>().cameraShake(dmg);
     if (dmg >= 100) {
       audioManager.PlayAudio("EnemyDamageTre");
@@ -49,9 +53,10 @@ public class CoupladDamage : MonoBehaviour {
     }
   }
   IEnumerator deathSequence() {
-    gameObject.GetComponent<CoupladLife>().dead = true;
+    lifeScript.dead = true;
+    lifeScript.fulldeath = true;
+    lifeScript.deathProcess = true;
     RemoveAtDeathComponents();
-    CoupladLife.fulldeath = true;
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++) {
       float ratio = 1f / (1f + i);
