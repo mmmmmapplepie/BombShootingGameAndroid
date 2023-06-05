@@ -413,14 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc427f0f9697ab46a83fdb24210edcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 6f4b329a482b1af4391b68e635f391b6, type: 2}
+  _data: {fileID: 11400000, guid: 6f4b329a482b1af4391b68e635f391b6, type: 2}
   chainExplosionEffect: {fileID: 7286431805141483997, guid: 4cb634591fadfb240993d72ab3de770a, type: 3}
-  maxLife: 0
-  currentLife: 0
-  Armor: 0
-  MaxShield: 0
-  Shield: 0
-  dead: 0
 --- !u!114 &3112957866081141618
 MonoBehaviour:
   m_ObjectHideFlags: 0
