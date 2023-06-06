@@ -12,11 +12,11 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
   public bool[] halfdeath = { false, false };//seeker is 0th term, follower is the 1st term.
   public Coroutine reviveRoutine;
   [SerializeField]
-  float reviveTime;
+  public float reviveTime;
 
   //basic enemy fields
   [SerializeField]
-  Enemy _data;
+  public Enemy _data;
   public Enemy data {
     get {
       return _data;
@@ -24,7 +24,7 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
   }
   GameObject bombObject;
   [SerializeField]
-  GameObject chainExplosionEffect;
+  public GameObject chainExplosionEffect;
   [HideInInspector]
   public float maxLife { get; set; }
   [HideInInspector]
@@ -39,7 +39,7 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
   bool Taunt;
   [HideInInspector]
   public bool dead { get; set; } = false;
-  AudioManagerEnemy audioManager;
+  public AudioManagerEnemy audioManager;
 
   void Awake() {
     CoupladStatsSettings();
@@ -102,7 +102,6 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
   }
 
   IEnumerator revive() {
-    print("StartReviveSeeker");
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
     transform.Find("MovementControl").gameObject.SetActive(false);
     float startTime = Time.time;

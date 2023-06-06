@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
-  m_Name: CoupladFollower
+  m_Name: MaxCoupladSeeker
   m_EditorClassIdentifier: 
-  name: Couplad Follower
+  name: MaxCouplad Seeker
   enemyDescription: 
   sprite: {fileID: 0}
   Boss: 2
-  enemyPrefab: {fileID: 3112957866081141623, guid: e8aa17aab38b3c44e885e4d9222f224e, type: 3}
-  Life: 100
-  Damage: 50
-  Speed: 10
+  enemyPrefab: {fileID: 3112957866081141623, guid: 07917160e2b014c4d87b2f96bbf48ff3, type: 3}
+  Life: 80
+  Damage: 20
+  Speed: 5
   MaxShield: 0
   Shield: 0
   Armor: 0

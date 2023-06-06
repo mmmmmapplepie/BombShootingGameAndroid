@@ -2,31 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoupladDamage_Seeker : MonoBehaviour {
-  [SerializeField] public bool Max = false;
-  [SerializeField] public float DOT = 4f;
+public class MaxCoupladDamage_Seeker : CoupladDamage_Seeker {
   [SerializeField]
-  CoupladLife_Seeker lifeScript;
-  [SerializeField]
-  public float deathDamageMultiplier = 0.2f;
-  [SerializeField]
-  public List<GameObject> damageEffects;
+  MaxCoupladLife_Seeker lifeScriptMax;
   Enemy data;
-  [HideInInspector]
-  public float Damage;
-  public AudioManagerEnemy audioManager;
   void Start() {
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
-    data = lifeScript.data;
+    data = lifeScriptMax.data;
     Damage = data.Damage;
   }
   void Update() {
     //need to make sure other one also dies if 1 dies.
-    if (Time.timeScale == 0f || lifeScript.dead) {
+    if (Time.timeScale == 0f || lifeScriptMax.dead) {
       return;
     }
     DOTdmg();
-    if (transform.position.y < -7.25f && lifeScript.currentLife > 0f && !lifeScript.dead) {
+    if (transform.position.y < -7.25f && lifeScriptMax.currentLife > 0f && !lifeScriptMax.dead) {
       if (data.Boss == 0 && LifeManager.ReviveRoutine == true) {
         DamageEffect();
         KillFollower();
@@ -40,20 +31,17 @@ public class CoupladDamage_Seeker : MonoBehaviour {
   }
   void DOTdmg() {
     if (Max) {
-      if (!lifeScript.halfdeath[0]) {
-        LifeManager.CurrentLife -= DOT * (lifeScript.deaths + 1) * deathDamageMultiplier * Time.deltaTime;
+      if (!lifeScriptMax.halfdeath[0]) {
+        LifeManager.CurrentLife -= DOT * (lifeScriptMax.deaths + 1) * deathDamageMultiplier * Time.deltaTime;
       }
     } else {
       LifeManager.CurrentLife -= DOT * Time.deltaTime;
     }
   }
-  public void deathSequenceStart() {
-    StartCoroutine("deathSequence");
-  }
 
   void KillFollower() {
-    lifeScript.LinkFollower.stopRevive();
-    lifeScript.LinkFollower.gameObject.GetComponent<CoupladDamage_Follower>().deathSequenceStart();
+    lifeScriptMax.LinkFollower.stopRevive();
+    lifeScriptMax.LinkFollower.gameObject.GetComponent<MaxCoupladDamage_Follower>().deathSequenceStart();
   }
   void DamageEffect() {
     //seeker does DOT which increases but normal dmg doesnt get increased
@@ -76,7 +64,7 @@ public class CoupladDamage_Seeker : MonoBehaviour {
     }
   }
   IEnumerator deathSequence() {
-    lifeScript.dead = true;
+    lifeScriptMax.dead = true;
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++) {

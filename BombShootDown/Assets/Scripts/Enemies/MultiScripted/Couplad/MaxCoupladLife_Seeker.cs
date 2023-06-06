@@ -1,45 +1,21 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CoupladLife_Follower : MonoBehaviour, IDamageable {
-  [HideInInspector]
-  public bool coupled = false;
-  [HideInInspector]
-  public CoupladLife_Seeker seekerScript;
-
-  [SerializeField]
-  public float reviveTime;
-  public Coroutine reviveRoutine;
+public class MaxCoupladLife_Seeker : CoupladLife_Seeker {
+  [HideInInspector] new MaxCoupladLife_Follower LinkFollower;
 
   //basic enemy fields
-  [SerializeField]
-  public Enemy _data;
-  public Enemy data {
-    get {
-      return _data;
-    }
-  }
   GameObject bombObject;
-  [SerializeField]
-  public GameObject chainExplosionEffect;
-  [HideInInspector]
-  public float maxLife { get; set; }
-  [HideInInspector]
-  public float currentLife { get; set; }
-  [HideInInspector]
-  public int Armor { get; set; }
-  [HideInInspector]
-  public int MaxShield { get; set; }
-  [HideInInspector]
-  public int Shield { get; set; }
   [HideInInspector]
   bool Taunt;
   [HideInInspector]
-  public bool dead { get; set; } = false;
-  public AudioManagerEnemy audioManager;
 
   void Awake() {
     CoupladStatsSettings();
+    if (LinkFollower == null) {
+      SearchFollower();
+    }
   }
   void CoupladStatsSettings() {
     bombObject = transform.Find("Enemy").gameObject;
@@ -57,24 +33,37 @@ public class CoupladLife_Follower : MonoBehaviour, IDamageable {
     }
   }
 
+  void Update() {
+    if (LinkFollower == null) {
+      SearchFollower();
+    }
+  }
+
+  void SearchFollower() {
+    if (FindObjectsOfType<MaxCoupladLife_Follower>().Length > 0) {
+      foreach (MaxCoupladLife_Follower follower in FindObjectsOfType<MaxCoupladLife_Follower>()) {
+        if (follower.coupled == false) {
+          LinkFollower = FindObjectOfType<MaxCoupladLife_Follower>();
+          LinkFollower.seekerScript = this;
+          LinkFollower.coupled = true;
+        }
+      }
+    }
+  }
+
   void checkDamageCondition(float damage) {
-    if (currentLife - damage <= 0 && !seekerScript.halfdeath[1]) {
+    if (currentLife - damage <= 0 && !halfdeath[0]) {
       currentLife = 0;
-      seekerScript.deaths += 1;
-      seekerScript.halfdeath[1] = true;
+      deaths += 1;
+      halfdeath[0] = true;
       reviveRoutine = StartCoroutine("revive");
     } else {
       currentLife -= damage;
     }
-    if (seekerScript.halfdeath[0] && seekerScript.halfdeath[1]) {
+    if (halfdeath[0] && halfdeath[1]) {
       ShotDeath();
-      seekerScript.ShotDeath();
+      LinkFollower.ShotDeath();
     }
-  }
-
-  public void stopRevive() {
-    if (reviveRoutine == null) return;
-    StopCoroutine(reviveRoutine);
   }
 
   IEnumerator revive() {
@@ -88,47 +77,11 @@ public class CoupladLife_Follower : MonoBehaviour, IDamageable {
       yield return null;
     }
     currentLife = maxLife;
-    seekerScript.halfdeath[1] = false;
+    halfdeath[0] = false;
     //return to normal animation
     //normal animation
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;
     transform.Find("MovementControl").gameObject.SetActive(true);
-  }
-
-  public void takeTrueDamage(float damage) {
-    audioManager.PlayAudio("NormalHit");
-    checkDamageCondition(damage);
-  }
-  public void takeDamage(float damage) {
-    if (Shield > 0) {
-      audioManager.PlayAudio("ShieldHit");
-      Shield--;
-    } else {
-      int Armordiff = Armor - BowManager.ArmorPierce;
-      if (Armordiff > 0) {
-        if (Armordiff > 9) {
-          audioManager.PlayAudio("HeavyArmorHit");
-          checkDamageCondition(damage / 50f);
-        } else {
-          audioManager.PlayAudio("ArmorHit");
-          checkDamageCondition(damage - damage * ((float)Armordiff / 10f));
-        }
-      } else {
-        audioManager.PlayAudio("NormalHit");
-        checkDamageCondition(damage);
-      }
-    }
-  }
-  public void AoeHit(float damage) {
-    Collider2D[] Objects = Physics2D.OverlapCircleAll(transform.position, 1f);
-    foreach (Collider2D coll in Objects) {
-      if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") && coll.gameObject != gameObject) {
-        coll.transform.root.gameObject.GetComponent<EnemyLife>().takeDamage(BowManager.AOEDmg * damage);
-      }
-    }
-  }
-  public void ChainExplosion() {
-    checkDamageCondition(BowManager.ChainExplosionDmg * BowManager.BulletDmg * BowManager.BulletMultiplier);
   }
   void RemoveAtDeathComponents() {
     gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
@@ -165,13 +118,5 @@ public class CoupladLife_Follower : MonoBehaviour, IDamageable {
   IEnumerator ChainExplodePreheat(ChainExplosion script) {
     yield return new WaitForSeconds(0.2f);
     script.Explode();
-  }
-  public void ShotDeath() {
-    ChainExplosion script = gameObject.GetComponent<ChainExplosion>();
-    if (script.Chained == true) {
-      Instantiate(chainExplosionEffect, transform.position, Quaternion.identity);
-      StartCoroutine("ChainExplodePreheat", script);
-    }
-    StartCoroutine("deathSequence");
   }
 }

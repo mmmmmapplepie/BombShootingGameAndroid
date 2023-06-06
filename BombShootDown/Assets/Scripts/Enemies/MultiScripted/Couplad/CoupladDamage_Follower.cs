@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoupladDamage_Follower : MonoBehaviour {
+  [SerializeField] public bool Max = false;
   [SerializeField]
   CoupladLife_Follower lifeScript;
   [SerializeField]
-  float deathDamageMultiplier = 0.4f;
+  public float deathDamageMultiplier = 0.5f;
   [SerializeField]
-  List<GameObject> damageEffects;
+  public List<GameObject> damageEffects;
   Enemy data;
   [HideInInspector]
   public float Damage;
-  AudioManagerEnemy audioManager;
+  public AudioManagerEnemy audioManager;
   void Start() {
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
     data = lifeScript.data;
@@ -44,9 +45,18 @@ public class CoupladDamage_Follower : MonoBehaviour {
     lifeScript.seekerScript.stopRevive();
     lifeScript.seekerScript.gameObject.GetComponent<CoupladDamage_Seeker>().deathSequenceStart();
   }
-  void DamageEffect() {
-    float dmg = (lifeScript.seekerScript.deaths + 1) * deathDamageMultiplier * Damage * BowManager.EnemyDamage;
+  float dealDamage() {
+    float dmg;
+    if (Max) {
+      dmg = (lifeScript.seekerScript.deaths + 1) * deathDamageMultiplier * Damage * BowManager.EnemyDamage;
+    } else {
+      dmg = Damage * BowManager.EnemyDamage;
+    }
     LifeManager.CurrentLife -= dmg;
+    return dmg;
+  }
+  void DamageEffect() {
+    float dmg = dealDamage();
     Camera.main.gameObject.GetComponent<CameraShake>().cameraShake(dmg);
     if (dmg >= 100) {
       audioManager.PlayAudio("EnemyDamageTre");

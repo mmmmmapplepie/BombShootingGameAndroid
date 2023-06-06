@@ -91,4 +91,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a3176994519c2b4094e325ca712fd8c, type: 2}
   - {fileID: 11400000, guid: 7b0aa5c3a643bbe46a149c24a18f8448, type: 2}
   - {fileID: 11400000, guid: d4493f3a044d95648b7d2975f154ec0e, type: 2}
+  - {fileID: 11400000, guid: 2884ebe60b2d1be4e8dae589e690b5dd, type: 2}
+  - {fileID: 11400000, guid: aa707f3b241f73d4c9ec1e2605158ba1, type: 2}
   stageInWorld: 0100000003000000

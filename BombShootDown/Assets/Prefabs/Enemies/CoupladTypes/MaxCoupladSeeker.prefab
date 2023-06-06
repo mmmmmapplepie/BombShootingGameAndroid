@@ -223,7 +223,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 43e3d597e98e2d44497e2b7608bb89bc, type: 3}
-  m_Color: {r: 0.3155136, g: 0.44881788, b: 1, a: 1}
+  m_Color: {r: 0.2851153, g: 0.32686427, b: 0.5, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -350,11 +350,11 @@ GameObject:
   - component: {fileID: 3112957866081141612}
   - component: {fileID: 3112957866081141617}
   - component: {fileID: 7511504544025807726}
-  - component: {fileID: 8597961788034292341}
-  - component: {fileID: 2949151687334725626}
   - component: {fileID: 5007360293035530302}
+  - component: {fileID: 2344504844705045869}
+  - component: {fileID: 6455388866223993267}
   m_Layer: 0
-  m_Name: CoupladSeeker
+  m_Name: MaxCoupladSeeker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,46 +426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e395ae4b1b096ba40a3b2023b4033a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8597961788034292341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3112957866081141623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aa229077e8d22e4faf639b291c4d7e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Max: 0
-  DOT: 4
-  lifeScript: {fileID: 2949151687334725626}
-  deathDamageMultiplier: 0.4
-  damageEffects:
-  - {fileID: 5453405922340672280, guid: d2fe6861b4f74b94b902e9732f6d1728, type: 3}
-  - {fileID: 3706022990378757885, guid: 5607e037011a91948ad14808a6c233f3, type: 3}
-  - {fileID: 30627628544923653, guid: 134aa9aa99651234182809563eeb2061, type: 3}
-  - {fileID: 6994547658066551871, guid: aa9e6b1bc99f51b47bb946ce484c7e4c, type: 3}
-  Damage: 0
---- !u!114 &2949151687334725626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3112957866081141623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1846c33f61fcb24458a893fda2d2c37f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LinkFollower: {fileID: 0}
-  deaths: 0
-  halfdeath: 0000
-  reviveTime: 1
-  _data: {fileID: 11400000, guid: d4493f3a044d95648b7d2975f154ec0e, type: 2}
-  chainExplosionEffect: {fileID: 7286431805141483997, guid: 4cb634591fadfb240993d72ab3de770a, type: 3}
 --- !u!50 &5007360293035530302
 Rigidbody2D:
   serializedVersion: 4
@@ -487,6 +447,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2344504844705045869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112957866081141623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0382e13181f9fe34db05de4cfa09a219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinkFollower: {fileID: 0}
+  deaths: 0
+  halfdeath: 0000
+  reviveTime: 0
+  _data: {fileID: 11400000, guid: aa707f3b241f73d4c9ec1e2605158ba1, type: 2}
+  chainExplosionEffect: {fileID: 7286431805141483997, guid: 4cb634591fadfb240993d72ab3de770a, type: 3}
+--- !u!114 &6455388866223993267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112957866081141623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f116244d56c2a4b8f212c32128edc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Max: 1
+  DOT: 4
+  lifeScript: {fileID: 0}
+  deathDamageMultiplier: 0.2
+  damageEffects:
+  - {fileID: 5453405922340672280, guid: d2fe6861b4f74b94b902e9732f6d1728, type: 3}
+  - {fileID: 3706022990378757885, guid: 5607e037011a91948ad14808a6c233f3, type: 3}
+  - {fileID: 30627628544923653, guid: 134aa9aa99651234182809563eeb2061, type: 3}
+  - {fileID: 6994547658066551871, guid: aa9e6b1bc99f51b47bb946ce484c7e4c, type: 3}
+  Damage: 0
+  lifeScriptMax: {fileID: 2344504844705045869}
 --- !u!1 &3112957866169349264
 GameObject:
   m_ObjectHideFlags: 0

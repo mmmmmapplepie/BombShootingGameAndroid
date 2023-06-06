@@ -14,7 +14,7 @@ public class ChainExplosion : MonoBehaviour {
     rect = GetComponent<RectTransform>();
   }
   void Update() {
-    if (Chained && !animationAdded && gameObject.GetComponent<EnemyLife>().currentLife > 0f) {
+    if (Chained && !animationAdded && gameObject.GetComponent<IDamageable>().currentLife > 0f) {
       animationAdded = true;
       Transform anchorParent = transform.Find("State").Find("Life").Find("Background");
       Instantiate(chainedAnimation, anchorParent.position, Quaternion.identity, anchorParent);
