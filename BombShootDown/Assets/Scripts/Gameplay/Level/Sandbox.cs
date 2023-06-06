@@ -29,26 +29,17 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
     }
   }
   IEnumerator wave1() {
-    // spawner.spawnEnemyInMap("Core", 0f, 5f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("Carrier", -5f, 8f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("Colossus", 5f, 8f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("Leviathan", 1.5f, 8f, LevelSpawner.addToList.All, true);
-    // spawner.spawnEnemyInMap("HyperCore", -1.5f, 8f, LevelSpawner.addToList.All, true);
     int totalEnemies = 1;
     while (totalEnemies > 0) {
       totalEnemies--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("Vessel", x, 10f, LevelSpawner.addToList.All);
-      // x = spawner.randomWithRange(-5f, 5f);
-      // spawner.spawnEnemy("MesoVessel", x, 10f, LevelSpawner.addToList.All);
-      // x = spawner.randomWithRange(-5f, 5f);
-      // spawner.spawnEnemy("MacroVessel", x, 10f, LevelSpawner.addToList.All);
-      // x = spawner.randomWithRange(-5f, 5f);
-      // spawner.spawnEnemy("HyperVessel", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.1f);
+      // float x = spawner.randomWithRange(-5f, 5f);
+      // spawner.spawnEnemy("Core", x, 10f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("CoupladFollower", -3f, 8f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("CoupladSeeker", 3f, 8f, LevelSpawner.addToList.All);
     }
     // yield return new WaitForSeconds(5f);
     spawner.AllTriggerEnemiesCleared();
+    yield return null;
   }
   IEnumerator wave2() {
     float x = spawner.randomWithRange(-5f, 5f);

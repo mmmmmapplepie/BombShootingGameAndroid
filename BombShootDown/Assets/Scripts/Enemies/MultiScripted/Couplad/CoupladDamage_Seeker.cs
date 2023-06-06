@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoupladDamage_Seeker : MonoBehaviour {
-  [HideInInspector]
   [SerializeField]
   CoupladLife_Seeker lifeScript;
   [SerializeField]
@@ -24,24 +23,34 @@ public class CoupladDamage_Seeker : MonoBehaviour {
     if (Time.timeScale == 0f || lifeScript.dead) {
       return;
     }
-    if (!lifeScript.dead) {
-      LifeManager.CurrentLife -= 2f * lifeScript.deaths * deathDamageMultiplier * Time.deltaTime;
+    if (!lifeScript.halfdeath[0]) {
+      LifeManager.CurrentLife -= 4f * (lifeScript.deaths + 1) * deathDamageMultiplier * Time.deltaTime;
     }
-    if (transform.position.y < -7.25f && GetComponent<CoupladLife_Seeker>().currentLife > 0f) {
+    if (transform.position.y < -7.25f && lifeScript.currentLife > 0f && !lifeScript.dead) {
       if (data.Boss == 0 && LifeManager.ReviveRoutine == true) {
         DamageEffect();
+        KillFollower();
         StartCoroutine("deathSequence");
         return;
       }
-      LifeManager.CurrentLife -= Damage * BowManager.EnemyDamage;
       DamageEffect();
+      KillFollower();
       StartCoroutine("deathSequence");
     }
+  }
+  public void deathSequenceStart() {
+    StartCoroutine("deathSequence");
+  }
+
+  void KillFollower() {
+    lifeScript.LinkFollower.stopRevive();
+    lifeScript.LinkFollower.gameObject.GetComponent<CoupladDamage_Follower>().deathSequenceStart();
   }
   void DamageEffect() {
     //seeker does DOT which increases but normal dmg doesnt get increased
     //need to destroy the other part when one dies.
     float dmg = Damage * BowManager.EnemyDamage;
+    LifeManager.CurrentLife -= dmg;
     Camera.main.gameObject.GetComponent<CameraShake>().cameraShake(dmg);
     if (dmg >= 100) {
       audioManager.PlayAudio("EnemyDamageTre");
@@ -59,8 +68,6 @@ public class CoupladDamage_Seeker : MonoBehaviour {
   }
   IEnumerator deathSequence() {
     lifeScript.dead = true;
-    lifeScript.fulldeath = true;
-    lifeScript.deathProcess = true;
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++) {

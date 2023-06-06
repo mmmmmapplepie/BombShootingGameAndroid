@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoupladDamage_Follower : MonoBehaviour {
-  [HideInInspector]
   [SerializeField]
-  CoupladLife_Seeker lifeScript;
+  CoupladLife_Follower lifeScript;
   [SerializeField]
   float deathDamageMultiplier = 0.4f;
   [SerializeField]
@@ -24,19 +23,30 @@ public class CoupladDamage_Follower : MonoBehaviour {
     if (Time.timeScale == 0f || lifeScript.dead) {
       return;
     }
-    if (transform.position.y < -7.25f && GetComponent<CoupladLife_Seeker>().currentLife > 0f) {
+    if (transform.position.y < -7.25f && lifeScript.currentLife > 0f && !lifeScript.dead) {
       if (data.Boss == 0 && LifeManager.ReviveRoutine == true) {
         DamageEffect();
+        KillSeeker();
         StartCoroutine("deathSequence");
         return;
       }
-      LifeManager.CurrentLife -= Damage * BowManager.EnemyDamage;
       DamageEffect();
-      StartCoroutine("deathSequence");
+      KillSeeker();
+      deathSequenceStart();
     }
   }
+
+  public void deathSequenceStart() {
+    StartCoroutine("deathSequence");
+  }
+
+  void KillSeeker() {
+    lifeScript.seekerScript.stopRevive();
+    lifeScript.seekerScript.gameObject.GetComponent<CoupladDamage_Seeker>().deathSequenceStart();
+  }
   void DamageEffect() {
-    float dmg = lifeScript.deaths * deathDamageMultiplier * Damage * BowManager.EnemyDamage;
+    float dmg = (lifeScript.seekerScript.deaths + 1) * deathDamageMultiplier * Damage * BowManager.EnemyDamage;
+    LifeManager.CurrentLife -= dmg;
     Camera.main.gameObject.GetComponent<CameraShake>().cameraShake(dmg);
     if (dmg >= 100) {
       audioManager.PlayAudio("EnemyDamageTre");
@@ -54,8 +64,6 @@ public class CoupladDamage_Follower : MonoBehaviour {
   }
   IEnumerator deathSequence() {
     lifeScript.dead = true;
-    lifeScript.fulldeath = true;
-    lifeScript.deathProcess = true;
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++) {

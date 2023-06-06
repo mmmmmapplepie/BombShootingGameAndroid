@@ -24,13 +24,13 @@ public class EnemyDamage : MonoBehaviour {
         StartCoroutine("deathSequence");
         return;
       }
-      LifeManager.CurrentLife -= Damage * BowManager.EnemyDamage;
       DamageEffect();
       StartCoroutine("deathSequence");
     }
   }
   void DamageEffect() {
     float dmg = Damage * BowManager.EnemyDamage;
+    LifeManager.CurrentLife -= dmg;
     Camera.main.gameObject.GetComponent<CameraShake>().cameraShake(dmg);
     if (dmg >= 100) {
       audioManager.PlayAudio("EnemyDamageTre");

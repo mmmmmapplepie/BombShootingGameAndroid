@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
   m_Name: CoupladFollower
   m_EditorClassIdentifier: 
-  name: 
+  name: Couplad Follower
   enemyDescription: 
   sprite: {fileID: 0}
-  Boss: 0
-  enemyPrefab: {fileID: 0}
-  Life: 0
-  Damage: 0
-  Speed: 0
+  Boss: 2
+  enemyPrefab: {fileID: 3112957866081141623, guid: e8aa17aab38b3c44e885e4d9222f224e, type: 3}
+  Life: 100
+  Damage: 20
+  Speed: 4
   MaxShield: 0
   Shield: 0
   Armor: 0

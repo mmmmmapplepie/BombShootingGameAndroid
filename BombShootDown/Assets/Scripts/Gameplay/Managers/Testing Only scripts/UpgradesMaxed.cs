@@ -61,9 +61,8 @@ public class UpgradesMaxed : MonoBehaviour {
     setDoubleGun();
   }
   void setUpgradeSlot() {
-    int lvl = UpgradesManager.returnDictionaryValue("UpgradeSlot")[1];
     UpgradesEquipped.UpgradedSlots = upgradeslot * 3;
-    if (lvl == 10) {
+    if (upgradeslot == 10) {
       UpgradesEquipped.UpgradedSlots = 35;
     }
   }
@@ -196,6 +195,7 @@ public class UpgradesMaxed : MonoBehaviour {
       //this takes roughly 3.7sec unscaled time. Use 3.5 as its a nicer number.
     }
     Time.timeScale = 1f;
+    GamePauseBehaviour.Pausable = true;
     yield return null;
   }
 }

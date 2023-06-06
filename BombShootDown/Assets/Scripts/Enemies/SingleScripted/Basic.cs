@@ -4,8 +4,8 @@ public class Basic : MonoBehaviour {
   float speed;
   float driftMag;
   float drift;
-  void Awake() {
-    data = transform.root.GetComponent<EnemyLife>().data;
+  void Start() {
+    data = transform.root.GetComponent<IDamageable>().data;
     speed = data.Speed;
     drift = Random.Range(-0.5f, 0.5f);
     driftMag = Mathf.Abs(drift);

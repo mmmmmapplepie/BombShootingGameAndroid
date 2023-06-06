@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CoupladLife_Follower : MonoBehaviour {
+public class CoupladLife_Follower : MonoBehaviour, IDamageable {
   [HideInInspector]
   public bool coupled = false;
   [HideInInspector]
@@ -58,45 +57,39 @@ public class CoupladLife_Follower : MonoBehaviour {
     }
   }
 
-  void Update() {
-    checkDeathFinal();
-  }
-
-  void checkDeathFinal() {
-    if (seekerScript.fulldeath && !seekerScript.deathProcess) {
-      StopCoroutine(reviveRoutine);
-      ShotDeath();
-    }
-  }
-
   void checkDamageCondition(float damage) {
-    if (currentLife - damage < 0) {
+    if (currentLife - damage <= 0 && !seekerScript.halfdeath[1]) {
       currentLife = 0;
       seekerScript.deaths += 1;
       seekerScript.halfdeath[1] = true;
-      dead = true;
       reviveRoutine = StartCoroutine("revive");
+    } else {
+      currentLife -= damage;
     }
-    if (seekerScript.halfdeath[0] == true && seekerScript.halfdeath[1] == true) {
-      seekerScript.fulldeath = true;
-      dead = true;
+    if (seekerScript.halfdeath[0] && seekerScript.halfdeath[1]) {
+      ShotDeath();
+      seekerScript.ShotDeath();
     }
   }
 
+  public void stopRevive() {
+    if (reviveRoutine == null) return;
+    StopCoroutine(reviveRoutine);
+  }
+
   IEnumerator revive() {
+    print("StartReviveFollower");
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
     transform.Find("MovementControl").gameObject.SetActive(false);
     float startTime = Time.time;
     //start revive animation
     while (currentLife < maxLife) {
-      currentLife += currentLife + (maxLife * ((Time.time - startTime
+      currentLife = (maxLife * ((Time.time - startTime
       ) / reviveTime));
       yield return null;
     }
     currentLife = maxLife;
     seekerScript.halfdeath[1] = false;
-    dead = false;
-    yield return new WaitForSeconds(1f);
     //return to normal animation
     //normal animation
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;
@@ -153,6 +146,8 @@ public class CoupladLife_Follower : MonoBehaviour {
     Destroy(funct);
   }
   IEnumerator deathSequence() {
+    dead = true;
+    stopRevive();
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++) {
@@ -173,7 +168,6 @@ public class CoupladLife_Follower : MonoBehaviour {
     script.Explode();
   }
   public void ShotDeath() {
-    seekerScript.deathProcess = true;
     ChainExplosion script = gameObject.GetComponent<ChainExplosion>();
     if (script.Chained == true) {
       Instantiate(chainExplosionEffect, transform.position, Quaternion.identity);
