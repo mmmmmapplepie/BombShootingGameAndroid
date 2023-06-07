@@ -12378,6 +12378,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseToggle: {fileID: 337384775}
+  tipsText: {fileID: 0}
+  loadPercent: {fileID: 0}
+  loadPanel: {fileID: 0}
+  tipsList: []
 --- !u!1 &1771383791
 GameObject:
   m_ObjectHideFlags: 0
@@ -13155,6 +13159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AdButton: {fileID: 1344717519}
+  tipsList: []
+  tipsText: {fileID: 0}
+  loadPercent: {fileID: 0}
+  loadPanel: {fileID: 0}
 --- !u!114 &1834696948
 MonoBehaviour:
   m_ObjectHideFlags: 0

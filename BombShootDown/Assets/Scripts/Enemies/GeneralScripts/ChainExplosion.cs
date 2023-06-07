@@ -29,10 +29,10 @@ public class ChainExplosion : MonoBehaviour {
           continue;
         }
         coll.transform.root.GetComponent<ChainExplosion>().Chained = true;
-        if (coll.transform.root.GetComponent<EnemyLife>().currentLife <= 0) {
+        if (coll.transform.root.GetComponent<IDamageable>().currentLife <= 0) {
           continue;
         }
-        coll.transform.root.GetComponent<EnemyLife>().ChainExplosion();
+        coll.transform.root.GetComponent<IDamageable>().ChainExplosion();
       }
     }
   }

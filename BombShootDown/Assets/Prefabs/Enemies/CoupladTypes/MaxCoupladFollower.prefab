@@ -464,7 +464,7 @@ MonoBehaviour:
   reviveTime: 5
   _data: {fileID: 11400000, guid: 2884ebe60b2d1be4e8dae589e690b5dd, type: 2}
   chainExplosionEffect: {fileID: 7286431805141483997, guid: 4cb634591fadfb240993d72ab3de770a, type: 3}
-  seekerScript: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!114 &4604814369130746043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Max: 1
-  lifeScript: {fileID: 0}
+  lifeScript: {fileID: 3949945955579470159}
   deathDamageMultiplier: 0.5
   damageEffects:
   - {fileID: 5453405922340672280, guid: d2fe6861b4f74b94b902e9732f6d1728, type: 3}
@@ -486,7 +486,7 @@ MonoBehaviour:
   - {fileID: 30627628544923653, guid: 134aa9aa99651234182809563eeb2061, type: 3}
   - {fileID: 6994547658066551871, guid: aa9e6b1bc99f51b47bb946ce484c7e4c, type: 3}
   Damage: 0
-  lifeScriptMax: {fileID: 3949945955579470159}
+  audioManager: {fileID: 0}
 --- !u!1 &3112957866169349264
 GameObject:
   m_ObjectHideFlags: 0

@@ -147,7 +147,7 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
     Collider2D[] Objects = Physics2D.OverlapCircleAll(transform.position, 1f);
     foreach (Collider2D coll in Objects) {
       if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") && coll.gameObject != gameObject) {
-        coll.transform.root.gameObject.GetComponent<EnemyLife>().takeDamage(BowManager.AOEDmg * damage);
+        coll.transform.root.gameObject.GetComponent<IDamageable>().takeDamage(BowManager.AOEDmg * damage);
       }
     }
   }

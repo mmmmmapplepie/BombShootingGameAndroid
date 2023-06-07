@@ -2,21 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxCoupladDamage_Follower : CoupladDamage_Follower {
+public class MaxCoupladDamage_Follower : MonoBehaviour {
+  [SerializeField] public bool Max = false;
   [SerializeField]
-  MaxCoupladLife_Follower lifeScriptMax;
+  MaxCoupladLife_Follower lifeScript;
+  [SerializeField]
+  public float deathDamageMultiplier = 0.5f;
+  [SerializeField]
+  public List<GameObject> damageEffects;
   Enemy data;
+  [HideInInspector]
+  public float Damage;
+  public AudioManagerEnemy audioManager;
   void Start() {
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
-    data = lifeScriptMax.data;
+    data = lifeScript.data;
     Damage = data.Damage;
   }
   void Update() {
     //need to make sure other one also dies if 1 dies.
-    if (Time.timeScale == 0f || lifeScriptMax.dead) {
+    if (Time.timeScale == 0f || lifeScript.dead) {
       return;
     }
-    if (transform.position.y < -7.25f && lifeScriptMax.currentLife > 0f && !lifeScriptMax.dead) {
+    if (transform.position.y < -7.25f && lifeScript.currentLife > 0f && !lifeScript.dead) {
       if (data.Boss == 0 && LifeManager.ReviveRoutine == true) {
         DamageEffect();
         KillSeeker();
@@ -29,14 +37,18 @@ public class MaxCoupladDamage_Follower : CoupladDamage_Follower {
     }
   }
 
+  public void deathSequenceStart() {
+    StartCoroutine("deathSequence");
+  }
+
   void KillSeeker() {
-    lifeScriptMax.seekerScript.stopRevive();
-    lifeScriptMax.seekerScript.gameObject.GetComponent<MaxCoupladDamage_Seeker>().deathSequenceStart();
+    lifeScript.seekerScript.stopRevive();
+    lifeScript.seekerScript.gameObject.GetComponent<MaxCoupladDamage_Seeker>().deathSequenceStart();
   }
   float dealDamage() {
     float dmg;
     if (Max) {
-      dmg = (lifeScriptMax.seekerScript.deaths + 1) * deathDamageMultiplier * Damage * BowManager.EnemyDamage;
+      dmg = (lifeScript.seekerScript.deaths + 1) * deathDamageMultiplier * Damage * BowManager.EnemyDamage;
     } else {
       dmg = Damage * BowManager.EnemyDamage;
     }
@@ -61,7 +73,7 @@ public class MaxCoupladDamage_Follower : CoupladDamage_Follower {
     }
   }
   IEnumerator deathSequence() {
-    lifeScriptMax.dead = true;
+    lifeScript.dead = true;
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++) {
