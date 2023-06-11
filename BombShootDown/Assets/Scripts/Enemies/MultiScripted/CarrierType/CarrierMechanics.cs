@@ -109,12 +109,12 @@ public class CarrierMechanics : MonoBehaviour {
     animator.speed = 10f;
     pos = transform.root.position;
     if (Big) {
-      GameObject spanweffect = Instantiate(bigSpawnEffect, pos, Quaternion.identity);
-      ParticleSystem.MainModule ps = spanweffect.GetComponent<ParticleSystem>().main;
+      GameObject spawnEffect = Instantiate(bigSpawnEffect, pos, Quaternion.identity);
+      ParticleSystem.MainModule ps = spawnEffect.GetComponent<ParticleSystem>().main;
       ps.simulationSpeed = BowManager.EnemySpeed;
     } else {
-      GameObject spanweffect = Instantiate(smallSpawnEffect, pos, Quaternion.identity);
-      ParticleSystem.MainModule ps = spanweffect.GetComponent<ParticleSystem>().main;
+      GameObject spawnEffect = Instantiate(smallSpawnEffect, pos, Quaternion.identity);
+      ParticleSystem.MainModule ps = spawnEffect.GetComponent<ParticleSystem>().main;
       ps.simulationSpeed = BowManager.EnemySpeed;
     }
     StartCoroutine("Spawn", prefab);
