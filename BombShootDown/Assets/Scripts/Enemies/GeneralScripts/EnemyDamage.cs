@@ -11,14 +11,14 @@ public class EnemyDamage : MonoBehaviour {
   AudioManagerEnemy audioManager;
   void Awake() {
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
-    data = gameObject.GetComponent<EnemyLife>().data;
+    data = gameObject.GetComponent<IDamageable>().data;
     Damage = data.Damage;
   }
   void Update() {
-    if (Time.timeScale == 0f || gameObject.GetComponent<EnemyLife>().dead) {
+    if (Time.timeScale == 0f || gameObject.GetComponent<IDamageable>().dead) {
       return;
     }
-    if (transform.position.y < -7.25f && GetComponent<EnemyLife>().currentLife > 0f) {
+    if (transform.position.y < -7.25f && GetComponent<IDamageable>().currentLife > 0f) {
       if (data.Boss == 0 && LifeManager.ReviveRoutine == true) {
         DamageEffect();
         StartCoroutine("deathSequence");
@@ -47,7 +47,7 @@ public class EnemyDamage : MonoBehaviour {
     }
   }
   IEnumerator deathSequence() {
-    gameObject.GetComponent<EnemyLife>().dead = true;
+    gameObject.GetComponent<IDamageable>().dead = true;
     RemoveAtDeathComponents();
     SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
     for (int i = 0; i < 20; i++) {

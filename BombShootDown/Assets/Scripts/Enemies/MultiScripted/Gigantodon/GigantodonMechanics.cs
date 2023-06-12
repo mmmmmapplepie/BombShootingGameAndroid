@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GigantodonMechanics : MonoBehaviour {
   [SerializeField] Slider TimerSlider;
   [SerializeField] IDamageable lifescript;
-  [SerializeField] float timerInterval;
+  [SerializeField] float timerInterval = 5f;
   float StartTimer;
 
   void Start() {
@@ -33,6 +33,7 @@ public class GigantodonMechanics : MonoBehaviour {
       } else {
         TimerSlider.value = (timerInterval - (Time.time - StartTimer)) / timerInterval;
       }
+      yield return null;
     }
   }
 

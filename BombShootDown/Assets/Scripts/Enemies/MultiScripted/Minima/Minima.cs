@@ -31,6 +31,7 @@ public class Minima : MonoBehaviour {
   IEnumerator goInvisible() {
     invisible = true;
     StateBar.GetComponent<Canvas>().enabled = false;
+    if (transform.Find("State").Find("Life").Find("Background").childCount > 0) transform.Find("State").Find("Life").Find("Background").GetChild(0).gameObject.SetActive(false);
     float startTime = Time.time;
     while (Time.time - startTime < 1f) {
       ChangeVisibility(EnemyImage, 1f - Time.time + startTime);
@@ -43,6 +44,7 @@ public class Minima : MonoBehaviour {
       yield return null;
     }
     StateBar.GetComponent<Canvas>().enabled = true;
+    if (transform.Find("State").Find("Life").Find("Background").childCount > 0) transform.Find("State").Find("Life").Find("Background").GetChild(0).gameObject.SetActive(true);
     ChangeVisibility(EnemyImage, 1f);
     yield return new WaitForSeconds(2f);
     invisible = false;

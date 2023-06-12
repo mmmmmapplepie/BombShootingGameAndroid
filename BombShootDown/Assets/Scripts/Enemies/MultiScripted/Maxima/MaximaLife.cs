@@ -36,6 +36,7 @@ public class MaximaLife : MonoBehaviour, IDamageable {
   [SerializeField] MaximaPhase1 phase1Script;
   [SerializeField] MaximaPhase2 phase2Script;
   [SerializeField] Slider bigDamageTimerSlider;
+  [SerializeField] float BigDamageTimer = 50f;
   float phaseChangeTime;
   bool changingPhase = false;
   void Awake() {
@@ -67,12 +68,12 @@ public class MaximaLife : MonoBehaviour, IDamageable {
     if (currentPhase != phaseChecker) {
       phaseChecker = currentPhase;
     } else {
-      if (timeElapsed > 240f) {
+      if (timeElapsed > BigDamageTimer) {
         bigDamageTimerSlider.value = 1f;
         phaseChangeTime = Time.time;
         LifeManager.CurrentLife -= 200f;
       } else {
-        bigDamageTimerSlider.value = (240f - timeElapsed) / 240f;
+        bigDamageTimerSlider.value = (BigDamageTimer - timeElapsed) / BigDamageTimer;
       }
     }
   }
@@ -94,7 +95,7 @@ public class MaximaLife : MonoBehaviour, IDamageable {
     //start revive animation
     while (currentLife < maxLife) {
       currentLife = (maxLife * ((Time.time - startTime
-      ) / 15f));
+      ) / 2f));
       yield return null;
     }
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;

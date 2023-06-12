@@ -33,7 +33,13 @@ public class Reflector : MonoBehaviour, IdestroyFunction {
   }
   void reflectDamage() {
     if (health != currLife.currentLife) {
-      float diff = health - currLife.currentLife;
+      float diff;
+      if (currLife.currentLife < 0f) {
+        diff = health;
+      } else {
+        diff = health - currLife.currentLife;
+
+      }
       if (LifeManager.ReviveRoutine == false) {
         LifeManager.CurrentLife -= diff * reflectRatio * BowManager.EnemyDamage;
       }

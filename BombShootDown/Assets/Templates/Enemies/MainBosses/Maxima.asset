@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a766b1c3ca81cf742bac0749207a4d1a, type: 3}
-  m_Name: Minima
+  m_Name: Maxima
   m_EditorClassIdentifier: 
-  name: Minima
+  name: Maxima
   enemyDescription: 
   sprite: {fileID: 0}
   Boss: 2
-  enemyPrefab: {fileID: 3112957866081141623, guid: 5cff2f5e3ca083a428e16def93fa99cc, type: 3}
-  Life: 150
+  enemyPrefab: {fileID: 3112957866081141623, guid: a3f2de2d15c022f44936534948166524, type: 3}
+  Life: 100
   Damage: 5
-  Speed: 4
+  Speed: 2
   MaxShield: 0
   Shield: 0
   Armor: 0

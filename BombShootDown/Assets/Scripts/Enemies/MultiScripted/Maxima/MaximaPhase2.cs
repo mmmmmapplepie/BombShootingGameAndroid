@@ -13,6 +13,7 @@ public class MaximaPhase2 : MonoBehaviour {
 
   void OnEnable() {
     lastSummonTime = Time.time;
+    summoningTimerSliderGObject.SetActive(true);
   }
   void Update() {
     checkToSummon();
