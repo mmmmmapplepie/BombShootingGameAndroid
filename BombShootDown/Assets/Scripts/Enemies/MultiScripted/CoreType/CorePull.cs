@@ -20,10 +20,9 @@ public class CorePull : MonoBehaviour {
     foreach (Rigidbody2D rb in bullets) {
       if (rb != null) {
         PullBullet(rb);
-      } else {
-        bullets.Remove(rb);
       }
     }
+    bullets.RemoveAll(rb => rb == null);
   }
   void PullBullet(Rigidbody2D rb) {
     float force;

@@ -573,7 +573,7 @@ MonoBehaviour:
   phase1Script: {fileID: 6651757545236553465}
   phase2Script: {fileID: 9173895621456043468}
   bigDamageTimerSlider: {fileID: 3122802887606273126}
-  BigDamageTimer: 10
+  BigDamageTimer: 100
 --- !u!114 &6651757545236553465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 042fd4d213423a945a490d5051147025, type: 2}
   - {fileID: 11400000, guid: 9505a0a9cbe4cac488c0be52cbcb0429, type: 2}
   BigSpawnEffect: {fileID: 7632971244896627631, guid: 215dfd9bb77ed8247acbaaea85c4952b, type: 3}
-  SummonTime: 2
+  SummonTime: 30
 --- !u!1 &3112957866169349264
 GameObject:
   m_ObjectHideFlags: 0

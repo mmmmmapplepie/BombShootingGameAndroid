@@ -78,17 +78,20 @@ public class MaximaLife : MonoBehaviour, IDamageable {
     }
   }
   void checkPhase() {
+    if (changingPhase) return;
     if (currentPhase == phase.phase1) {
       phase1Script.enabled = false;
+      changingPhase = true;
+      currentPhase = phase.phase2;
       StartCoroutine(revive());
+      print(1);
     } else {
       phase2Script.enabled = false;
+      print(2);
       ShotDeath();
     }
   }
   IEnumerator revive() {
-    changingPhase = true;
-    currentPhase = phase.phase2;
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
     float startTime = Time.time;
     transform.Find("MovementControl").gameObject.SetActive(false);
