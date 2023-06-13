@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxCoupladDamage_Follower : MonoBehaviour {
+public class MaxCoupladDamage_Follower : MonoBehaviour, IEnemyDealsDamage {
   [SerializeField] public bool Max = false;
   [SerializeField]
   MaxCoupladLife_Follower lifeScript;
@@ -12,7 +12,7 @@ public class MaxCoupladDamage_Follower : MonoBehaviour {
   public List<GameObject> damageEffects;
   Enemy data;
   [HideInInspector]
-  public float Damage;
+  public float Damage { get; set; }
   public AudioManagerEnemy audioManager;
   void Start() {
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();

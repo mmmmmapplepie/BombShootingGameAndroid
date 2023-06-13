@@ -2,12 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
-public class EnemyDamage : MonoBehaviour {
+public class EnemyDamage : MonoBehaviour, IEnemyDealsDamage {
   [SerializeField]
   List<GameObject> damageEffects;
   Enemy data;
   [HideInInspector]
-  public float Damage;
+  public float Damage { get; set; }
   AudioManagerEnemy audioManager;
   void Awake() {
     audioManager = transform.Find("AudioManagerEnemy").GetComponent<AudioManagerEnemy>();
