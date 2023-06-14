@@ -140,8 +140,9 @@ public class Bomb : MonoBehaviour {
   void fireBomb(float x, float y) {
     audioManager.PlayAudio("Bomb");
     Collider2D[] Objects = Physics2D.OverlapCircleAll(new Vector2(x, y), bombRadius);
+    print(Objects.Length);
     foreach (Collider2D coll in Objects) {
-      if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy") && coll.gameObject.GetComponent<IDamageable>() != null) {
+      if ((coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "TauntEnemy")) {
         coll.transform.root.gameObject.GetComponent<IDamageable>().takeTrueDamage(BombDamage);
       }
     }

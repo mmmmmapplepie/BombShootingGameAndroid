@@ -7,30 +7,38 @@ public class ErnestoMechanics : MonoBehaviour {
   [SerializeField] EnemyLife lifeScript;
   [SerializeField] GameObject enemyChosenMarker;
   [SerializeField] float damageRaisePerTime, pickInterval, pickRadius;
-  [SerializeField] Slider pickTimerSlider;
-  List<GameObject> AffectedEnemies;
+  [SerializeField] Slider pickTimerSlider, damageReflect;
+  List<GameObject> AffectedEnemies = new List<GameObject>();
 
   float lastHitTime;
   float lastEnemyPickTime;
-  public float totalDamage = 0f;
+  [HideInInspector] public float totalDamage = 0f;
   bool EnemiesPicked = false;
-  float currentHealth;
+  float latestHealth;
   void Start() {
     lastHitTime = Time.time;
     lastEnemyPickTime = Time.time;
-    //start the picking enemy units thingy coroutine
-    //start the building damage between hits
+    latestHealth = lifeScript.currentLife;
+    StartCoroutine(Skill_EnemiesChange());
+    damageReflect.value = 0f;
   }
+  void Update() {
+    StoredDamage();
+  }
+  #region ErnestSkill
   IEnumerator Skill_EnemiesChange() {
     while (true) {
-      if (EnemiesPicked) yield return null;
-      else {
+      if (EnemiesPicked) {
+        yield return null;
+        continue;
+      } else {
         if (Time.time > pickInterval + lastEnemyPickTime) {
           pickInterval = Time.time;
           PickEnemies();
           pickTimerSlider.value = 1f;
+          pickTimerSlider.gameObject.SetActive(false);
         } else {
-          pickTimerSlider.value = (pickInterval - (Time.time - pickInterval)) / pickInterval;
+          pickTimerSlider.value = (pickInterval - (Time.time - lastEnemyPickTime)) / pickInterval;
         }
         yield return null;
       }
@@ -39,12 +47,12 @@ public class ErnestoMechanics : MonoBehaviour {
   void PickEnemies() {
     EnemiesPicked = true;
     SetPickedEnemies();
-    StartCoroutine(waitForPickedEnemyResolution());
   }
   void SetPickedEnemies() {
     Collider2D[] Enemies = Physics2D.OverlapCircleAll(transform.root.position, pickRadius);
     foreach (Collider2D coll in Enemies) {
-      if (coll.tag == "Enemy" || coll.tag == "Taunt") {
+      if (coll.tag == "Enemy" || coll.tag == "TauntEnemy") {
+        if (transform.Find("Enemy").gameObject == coll.gameObject) continue;
         AffectedEnemies.Add(coll.gameObject);
         //add the particle effect
         // if (coll.transform.Find("ErnestoMark") == null) {
@@ -54,24 +62,43 @@ public class ErnestoMechanics : MonoBehaviour {
         coll.transform.root.gameObject.GetComponent<ErnestoAbility>().ernestoScript = this;
       }
     }
+    StartCoroutine(SkillFinalActivation());
   }
-  IEnumerator waitForPickedEnemyResolution() {
+  IEnumerator SkillFinalActivation() {
     while (true) {
-      foreach (GameObject enemy in AffectedEnemies) {
-        if (enemy != null) {
-          AffectedEnemies.Remove(enemy);
-          yield return null;
-        }
+      AffectedEnemies.RemoveAll(x => x == null);
+      if (AffectedEnemies.Count > 0) {
+        yield return null;
+        continue;
       }
       yield return new WaitForSeconds(1f);
       LifeManager.CurrentLife -= totalDamage;
       totalDamage = 0f;
       AffectedEnemies.Clear();
+      EnemiesPicked = false;
+      lastEnemyPickTime = Time.time;
+      pickTimerSlider.gameObject.SetActive(true);
       yield break;
     }
   }
-
-
+  #endregion
+  #region ErnestoStoredDamage
+  void StoredDamage() {
+    float currentStoredDmg = Mathf.Min(damageRaisePerTime * (Time.time - lastHitTime), 220f);
+    if (latestHealth != lifeScript.currentLife && latestHealth > lifeScript.currentLife) {
+      ReleaseStoredDamage(currentStoredDmg);
+    } else {
+      damageReflect.value = currentStoredDmg / 220f;
+    }
+  }
+  void ReleaseStoredDamage(float storedDmg) {
+    LifeManager.CurrentLife -= storedDmg;
+    damageReflect.value = 0f;
+    lastHitTime = Time.time;
+    latestHealth = lifeScript.currentLife;
+    print("got hit");
+  }
+  #endregion
 
 
 
