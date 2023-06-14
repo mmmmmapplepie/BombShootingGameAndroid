@@ -46,6 +46,10 @@ public class ErnestoMechanics : MonoBehaviour {
   }
   void PickEnemies() {
     EnemiesPicked = true;
+    if (lifeScript.dead) {
+      StopAllCoroutines();
+      return;
+    }
     SetPickedEnemies();
   }
   void SetPickedEnemies() {
@@ -77,6 +81,7 @@ public class ErnestoMechanics : MonoBehaviour {
       AffectedEnemies.Clear();
       EnemiesPicked = false;
       lastEnemyPickTime = Time.time;
+
       pickTimerSlider.gameObject.SetActive(true);
       yield break;
     }

@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MainBow
+    uniqueID: 1915978397
+    locked: 0
   - name: Effects
     uniqueID: 3813580255
     locked: 0
