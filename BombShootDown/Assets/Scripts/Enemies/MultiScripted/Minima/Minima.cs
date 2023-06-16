@@ -17,7 +17,7 @@ public class Minima : MonoBehaviour {
     checkEmergency();
   }
 
-  void Awake() {
+  void Start() {
     BoostSpeed();
   }
   void checkEmergency() {

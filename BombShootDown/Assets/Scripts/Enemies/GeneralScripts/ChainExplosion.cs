@@ -17,7 +17,10 @@ public class ChainExplosion : MonoBehaviour {
     if (Chained && !animationAdded && gameObject.GetComponent<IDamageable>().currentLife > 0f) {
       animationAdded = true;
       Transform anchorParent = transform.Find("State").Find("Life").Find("Background");
-      Instantiate(chainedAnimation, anchorParent.position, Quaternion.identity, anchorParent);
+      GameObject chainedPE = Instantiate(chainedAnimation, anchorParent.position, Quaternion.identity, anchorParent);
+      if (transform.Find("state").gameObject.GetComponent<Canvas>().enabled == false) {
+        chainedPE.SetActive(false);
+      }
     }
   }
   public void Explode() {

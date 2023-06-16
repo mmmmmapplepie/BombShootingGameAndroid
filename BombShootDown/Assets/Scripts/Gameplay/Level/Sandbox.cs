@@ -38,11 +38,7 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
       // spawner.spawnEnemy("CoupladSeeker", 3f, 8f, LevelSpawner.addToList.All);
       // spawner.spawnEnemy("MaxCoupladFollower", -3f, 8f, LevelSpawner.addToList.All);
       // spawner.spawnEnemy("MaxCoupladSeeker", 3f, 8f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("Ernesto", 1f, 8f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(1f);
-      spawner.spawnEnemy("KiloBasic", 1f, 8f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("KiloBasic", 1f, 8f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("KiloBasic", 1f, 8f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("Minima", 1f, 8f, LevelSpawner.addToList.All);
     }
     // yield return new WaitForSeconds(5f);
     spawner.AllTriggerEnemiesCleared();

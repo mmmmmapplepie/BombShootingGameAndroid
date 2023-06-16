@@ -35,7 +35,7 @@ public class BowManager {
 
 
   // Cooldowns
-  public static float CoolDownRate = 1f;
+  public static float CoolDownRate = 1f;//for debuff
   public static bool UsingCooldown = false;
 
 
