@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HiddenBoss_Teleport : MonoBehaviour {
-  [SerializeField] EnemyLife lifeScript;
-  [SerializeField] float pickRadius;
-  float recoveryLife;
-  int recoveryShields;
+  [SerializeField] HiddenBossLife lifeScript;
   void OnEnable() {
     StartCoroutine(TeleportRoutine());
   }

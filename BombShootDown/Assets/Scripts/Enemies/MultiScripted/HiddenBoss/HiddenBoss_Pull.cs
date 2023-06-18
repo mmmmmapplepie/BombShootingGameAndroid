@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HiddenBoss_Pull : MonoBehaviour {
-  [SerializeField] float bulletSlowFactor, forceMultiplier, xDamping;
+  [SerializeField] float forceMultiplier, xDamping;
   List<Rigidbody2D> bullets = new List<Rigidbody2D>();
   float transformXPos;
   Transform root;

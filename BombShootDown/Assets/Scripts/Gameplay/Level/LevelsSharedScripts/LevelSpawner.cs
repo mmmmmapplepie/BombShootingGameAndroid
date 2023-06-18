@@ -75,14 +75,14 @@ public class LevelSpawner : MonoBehaviour {
     GameObject[] tene = GameObject.FindGameObjectsWithTag("TauntEnemy");
     foreach (GameObject go in ene) {
       if (AllEnemiesListDynamic.Contains(go)) {
-        return;
+        continue;
       } else {
         AllEnemiesListDynamic.Add(go);
       }
     }
     foreach (GameObject go in tene) {
       if (AllEnemiesListDynamic.Contains(go)) {
-        return;
+        continue;
       } else {
         AllEnemiesListDynamic.Add(go);
       }

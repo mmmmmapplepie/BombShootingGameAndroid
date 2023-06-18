@@ -21,9 +21,6 @@ public class HiddenBossController : MonoBehaviour {
 
   List<string> Skills = new List<string> { "Invisible", "Debuff", "Buff", "Summon", "Vampire", "DOT", "Teleport", "Pull", "BlockPierce" };
 
-  //DoneSections: Life,
-  // Buff, Debuff, Invisible, Vampire, DOT, pull, teleport, blockpierce, summon
-
   float cycleStartTime = 0f;
   int[] SkillsPerState = { 3, 5, 7 };
 
@@ -60,15 +57,15 @@ public class HiddenBossController : MonoBehaviour {
 
 
     //disable all lights;
-    buffLight.SetActive(false);
-    debuffLight.SetActive(false);
-    invisibleLight.SetActive(false);
-    summonLight.SetActive(false);
-    vampireLight.SetActive(false);
-    dotLight.SetActive(false);
-    teleportLight.SetActive(false);
-    pullLight.SetActive(false);
-    blockPierceLight.SetActive(false);
+    // buffLight.SetActive(false);
+    // debuffLight.SetActive(false);
+    // invisibleLight.SetActive(false);
+    // summonLight.SetActive(false);
+    // vampireLight.SetActive(false);
+    // dotLight.SetActive(false);
+    // teleportLight.SetActive(false);
+    // pullLight.SetActive(false);
+    // blockPierceLight.SetActive(false);
 
     // timer slider
     timer.gameObject.SetActive(false);
@@ -90,12 +87,6 @@ public class HiddenBossController : MonoBehaviour {
   public void StartSkills() {
     StartCoroutine(SkillCycleRoutine());
   }
-
-
-
-
-
-
 
 
 

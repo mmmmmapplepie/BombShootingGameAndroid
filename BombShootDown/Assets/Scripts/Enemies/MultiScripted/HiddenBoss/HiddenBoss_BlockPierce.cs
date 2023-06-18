@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HiddenBoss_BlockPierce : MonoBehaviour {
+  void Start() {
+
+  }
   void OnTriggerEnter2D(Collider2D coll) {
     if (coll.tag == "Bullet") {
       coll.GetComponent<IBullet>().pierce = 1;

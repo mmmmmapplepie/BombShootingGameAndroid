@@ -5,7 +5,7 @@ using UnityEngine;
 public class HiddenBoss_Summon : MonoBehaviour {
   [SerializeField] GameObject BigSpawnEffect;
   [SerializeField] List<Enemy> enemies;
-  Queue<Enemy> enemiesQueue;
+  Queue<Enemy> enemiesQueue = new Queue<Enemy>();
   Vector3 spawnPosition;
 
   [SerializeField] Enemy coupladFollower, coupladMaxFollower;
@@ -20,6 +20,10 @@ public class HiddenBoss_Summon : MonoBehaviour {
       Enemy value = list[k];
       list[k] = list[n];
       list[n] = value;
+    }
+    print(1);
+    foreach (Enemy enemy in list) {
+      enemiesQueue.Enqueue(enemy);
     }
   }
   GameObject GetNextEnemyFromQueue(Queue<Enemy> queue) {

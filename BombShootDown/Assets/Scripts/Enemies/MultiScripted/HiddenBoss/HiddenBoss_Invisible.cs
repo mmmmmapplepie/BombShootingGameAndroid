@@ -21,7 +21,9 @@ public class HiddenBoss_Invisible : MonoBehaviour {
   void ChangeVisibility(GameObject imageObject, bool Invisible) {
     float opacity = 1f;
     GameObject chained;
-    try { chained = imageObject.transform.Find("State").Find("Life").Find("Background").GetChild(0).gameObject; } catch {
+    try {
+      chained = imageObject.transform.root.Find("State").Find("Life").Find("Background").GetChild(0).gameObject;
+    } catch {
       chained = null;
     }
     if (Invisible) {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HiddenBoss_Vampire : MonoBehaviour {
-  [SerializeField] EnemyLife lifeScript;
+  [SerializeField] HiddenBossLife lifeScript;
   [SerializeField] float pickRadius;
   float recoveryLife;
   int recoveryShields;

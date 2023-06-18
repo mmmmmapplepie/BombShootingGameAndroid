@@ -24,7 +24,7 @@ public class GigantodonMovement : MonoBehaviour {
     };
   }
   void Teleport() {
-    startTime = Time.time + Random.Range(1f, 2f);
+    startTime = Time.time + Random.Range(10f, 15f);
     EnemyBase.position = new Vector3(xPos, EnemyBase.position.y, EnemyBase.position.z);
     xPos = -xPos;
   }

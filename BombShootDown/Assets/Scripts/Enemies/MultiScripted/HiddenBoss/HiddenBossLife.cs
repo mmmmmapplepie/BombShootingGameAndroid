@@ -26,7 +26,7 @@ public class HiddenBossLife : MonoBehaviour, IDamageable {
   public bool dead { get; set; } = false;
   AudioManagerEnemy audioManager;
 
-  public int currentStage = 0;
+  [HideInInspector] public int currentStage = 0;
   [SerializeField] HiddenBossController skillsController;
   void Awake() {
     bombObject = transform.Find("Enemy").gameObject;
@@ -44,12 +44,13 @@ public class HiddenBossLife : MonoBehaviour, IDamageable {
   }
   void changeStage() {
     if (currentStage == 2) {
+      skillsController.StopSkills();
       ShotDeath();
     } else {
-      skillsController.StopSkills();
+      // skillsController.StopSkills();
       currentStage++;
       currentLife = maxLife;
-      skillsController.StartSkills();
+      // skillsController.StartSkills();
     }
   }
   public void takeTrueDamage(float damage) {
