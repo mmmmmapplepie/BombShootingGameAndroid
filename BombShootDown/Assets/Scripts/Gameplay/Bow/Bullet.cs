@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Bullet : MonoBehaviour {
+public class Bullet : MonoBehaviour, IBullet {
   [SerializeField]
   List<GameObject> Effects;
   [SerializeField]
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour {
   float pull = 0;
   float pulltime = 0.4f;
   bool pullStarted = false;
-  int pierce;
+  public int pierce { get; set; }
   float speed;
   bool used = false;
 

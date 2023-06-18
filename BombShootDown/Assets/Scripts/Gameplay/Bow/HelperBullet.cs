@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class HelperBullet : MonoBehaviour {
+public class HelperBullet : MonoBehaviour, IBullet {
   [SerializeField]
   GameObject HitEffect;
   AudioManagerCannon audioManager;
   int hits;
   float damage;
-  int pierce;
+  public int pierce { get; set; }
   float speed;
   bool used = false;
   void Awake() {

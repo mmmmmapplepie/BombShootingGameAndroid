@@ -16,7 +16,7 @@ public class HiddenBoss_Vampire : MonoBehaviour {
       if (coll.tag == "Enemy" || coll.tag == "TauntEnemy") {
         recoveryLife += coll.transform.root.gameObject.GetComponent<IDamageable>().currentLife;
         recoveryShields += coll.transform.root.gameObject.GetComponent<IDamageable>().Shield;
-        coll.transform.root.gameObject.GetComponent<IDamageable>().currentLife = 0f;
+        coll.transform.root.gameObject.GetComponent<IDamageable>().takeTrueDamage(recoveryLife + 1f);
       }
     }
     lifeScript.currentLife += recoveryLife;

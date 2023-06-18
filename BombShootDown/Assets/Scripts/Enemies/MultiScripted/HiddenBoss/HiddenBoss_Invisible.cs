@@ -18,14 +18,18 @@ public class HiddenBoss_Invisible : MonoBehaviour {
       }
     }
   }
-
   void ChangeVisibility(GameObject imageObject, bool Invisible) {
     float opacity = 1f;
-    GameObject chained = transform.Find("State").Find("Life").Find("Background").GetChild(0).gameObject;
+    GameObject chained;
+    try { chained = imageObject.transform.Find("State").Find("Life").Find("Background").GetChild(0).gameObject; } catch {
+      chained = null;
+    }
     if (Invisible) {
       if (chained != null) chained.SetActive(false);
+      imageObject.transform.root.Find("State").gameObject.GetComponent<Canvas>().enabled = false;
       opacity = 0f;
     } else {
+      imageObject.transform.root.Find("State").gameObject.GetComponent<Canvas>().enabled = true;
       if (chained != null) chained.SetActive(true);
     }
     Transform parent = imageObject.transform;
