@@ -8,6 +8,7 @@ public class HiddenBoss_Vampire : MonoBehaviour {
   float recoveryLife;
   int recoveryShields;
   void OnEnable() {
+    if (!this.enabled) return;
     VampireRecovery();
   }
   void VampireRecovery() {

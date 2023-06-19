@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HiddenBoss_DOT : MonoBehaviour {
   void OnEnable() {
+    if (!this.enabled) return;
     LifeManager.CurrentLife -= 100f;
   }
   void Update() {

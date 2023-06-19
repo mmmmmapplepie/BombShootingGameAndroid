@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 6041536806294022916}
   - component: {fileID: 5007360293035530302}
   - component: {fileID: 1565836041593141296}
+  - component: {fileID: 3152419734239446423}
   m_Layer: 0
   m_Name: Gigantodon
   m_TagString: Untagged
@@ -444,7 +445,6 @@ MonoBehaviour:
   - {fileID: 3706022990378757885, guid: 5607e037011a91948ad14808a6c233f3, type: 3}
   - {fileID: 30627628544923653, guid: 134aa9aa99651234182809563eeb2061, type: 3}
   - {fileID: 6994547658066551871, guid: aa9e6b1bc99f51b47bb946ce484c7e4c, type: 3}
-  Damage: 0
 --- !u!114 &6041536806294022916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,6 +494,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerSlider: {fileID: 3904100168127757314}
   timerInterval: 20
+--- !u!61 &3152419734239446423
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112957866081141623}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &3112957866169349264
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,4 +41,12 @@ public class GigantodonMechanics : MonoBehaviour {
     BowManager.AmmoRate /= 1.5f;
     StopAllCoroutines();
   }
+
+  void OnTriggerEnter2D(Collider2D coll) {
+    if (!this.enabled) return;
+    if (coll.tag == "Bullet") {
+      IBullet bullet = coll.GetComponent<IBullet>();
+      bullet.pierce = Mathf.FloorToInt(bullet.pierce / 3f);
+    }
+  }
 }

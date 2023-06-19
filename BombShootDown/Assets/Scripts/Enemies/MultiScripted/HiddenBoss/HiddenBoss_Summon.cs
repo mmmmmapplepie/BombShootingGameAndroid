@@ -21,7 +21,6 @@ public class HiddenBoss_Summon : MonoBehaviour {
       list[k] = list[n];
       list[n] = value;
     }
-    print(1);
     foreach (Enemy enemy in list) {
       enemiesQueue.Enqueue(enemy);
     }
@@ -33,12 +32,11 @@ public class HiddenBoss_Summon : MonoBehaviour {
   }
   void SpawnEnemy() {
     GameObject prefab = GetNextEnemyFromQueue(enemiesQueue);
-    Instantiate(GetNextEnemyFromQueue(enemiesQueue), spawnPosition, Quaternion.identity);
-    if (prefab.name != "CoupladSeeker" && prefab.name != "MaxCoupladSeeker") {
-      return;
-    } else if (prefab.name == "CoupladSeeker") {
+    Instantiate(prefab, spawnPosition, Quaternion.identity);
+    if (prefab.name == "CoupladSeeker") {
       Instantiate(coupladFollower.enemyPrefab, spawnPosition, Quaternion.identity);
-    } else {
+    }
+    if (prefab.name == "MaxCoupladSeeker") {
       Instantiate(coupladMaxFollower.enemyPrefab, spawnPosition, Quaternion.identity);
     }
   }

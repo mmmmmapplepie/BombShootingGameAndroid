@@ -15,7 +15,7 @@ public class GigantodonMovement : MonoBehaviour {
     move();
   }
   void move() {
-    EnemyBase.position = new Vector3(EnemyBase.position.x, EnemyBase.position.y - speed * BowManager.EnemySpeed * Time.deltaTime, EnemyBase.position.z);
+    EnemyBase.position = new Vector3(EnemyBase.position.x, EnemyBase.position.y - speed * BowManager.EnemySpeed * Time.deltaTime, 0f);
     sidewardsTeleport();
   }
   void sidewardsTeleport() {
@@ -25,7 +25,7 @@ public class GigantodonMovement : MonoBehaviour {
   }
   void Teleport() {
     startTime = Time.time + Random.Range(10f, 15f);
-    EnemyBase.position = new Vector3(xPos, EnemyBase.position.y, EnemyBase.position.z);
+    EnemyBase.position = new Vector3(xPos, EnemyBase.position.y, 0f);
     xPos = -xPos;
   }
 }

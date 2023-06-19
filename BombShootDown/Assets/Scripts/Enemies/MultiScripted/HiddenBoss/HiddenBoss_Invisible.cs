@@ -7,6 +7,7 @@ public class HiddenBoss_Invisible : MonoBehaviour {
   [SerializeField] Collider2D effectRange;
   List<GameObject> Enemies = new List<GameObject>();
   void OnEnable() {
+    if (!this.enabled) return;
     InitialAddEnemies();
   }
   void InitialAddEnemies() {
@@ -44,6 +45,7 @@ public class HiddenBoss_Invisible : MonoBehaviour {
     }
   }
   void OnTriggerEnter2D(Collider2D coll) {
+    if (!this.enabled) return;
     if (coll.tag != "Enemy" && coll.tag != "TauntEnemy") {
       return;
     }
@@ -51,6 +53,7 @@ public class HiddenBoss_Invisible : MonoBehaviour {
     ChangeVisibility(coll.gameObject, true);
   }
   void OnTriggerExit2D(Collider2D coll) {
+    if (!this.enabled) return;
     if (coll.tag != "Enemy" && coll.tag != "TauntEnemy") {
       return;
     }
