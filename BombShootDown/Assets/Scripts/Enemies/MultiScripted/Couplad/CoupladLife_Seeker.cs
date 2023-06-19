@@ -43,6 +43,10 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
 
   void Awake() {
     CoupladStatsSettings();
+    transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
+    transform.Find("MovementControl").gameObject.SetActive(false);
+  }
+  void Start() {
     if (LinkFollower == null) {
       SearchFollower();
     }
@@ -62,25 +66,27 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
       bombObject.tag = "Enemy";
     }
   }
-
   void Update() {
     if (LinkFollower == null) {
       SearchFollower();
     }
   }
-
   void SearchFollower() {
     if (FindObjectsOfType<CoupladLife_Follower>().Length > 0) {
       foreach (CoupladLife_Follower follower in FindObjectsOfType<CoupladLife_Follower>()) {
         if (follower.coupled == false) {
-          LinkFollower = FindObjectOfType<CoupladLife_Follower>();
+          LinkFollower = follower;
           LinkFollower.seekerScript = this;
           LinkFollower.coupled = true;
+          LinkFollower.transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;
+          LinkFollower.transform.Find("MovementControl").gameObject.SetActive(true);
+          transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;
+          transform.Find("MovementControl").gameObject.SetActive(true);
+          return;
         }
       }
     }
   }
-
   void checkDamageCondition(float damage) {
     if (currentLife - damage <= 0 && !halfdeath[0]) {
       currentLife = 0;
@@ -95,12 +101,10 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
       LinkFollower.ShotDeath();
     }
   }
-
   public void stopRevive() {
     if (reviveRoutine == null) return;
     StopCoroutine(reviveRoutine);
   }
-
   IEnumerator revive() {
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
     transform.Find("MovementControl").gameObject.SetActive(false);

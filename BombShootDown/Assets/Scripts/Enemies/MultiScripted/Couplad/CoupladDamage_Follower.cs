@@ -20,8 +20,9 @@ public class CoupladDamage_Follower : MonoBehaviour, IEnemyDealsDamage {
     Damage = data.Damage;
   }
   void Update() {
+    if (!lifeScript.coupled) return;
     //need to make sure other one also dies if 1 dies.
-    if (Time.timeScale == 0f || lifeScript.dead) {
+    if (Time.timeScale == 0f || lifeScript.dead || lifeScript.seekerScript.halfdeath[1]) {
       return;
     }
     if (transform.position.y < -7.25f && lifeScript.currentLife > 0f && !lifeScript.dead) {

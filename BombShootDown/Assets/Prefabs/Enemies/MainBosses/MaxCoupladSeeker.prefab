@@ -462,7 +462,7 @@ MonoBehaviour:
   LinkFollower: {fileID: 0}
   deaths: 0
   halfdeath: 0000
-  reviveTime: 0
+  reviveTime: 2
   _data: {fileID: 11400000, guid: aa707f3b241f73d4c9ec1e2605158ba1, type: 2}
   chainExplosionEffect: {fileID: 7286431805141483997, guid: 4cb634591fadfb240993d72ab3de770a, type: 3}
   audioManager: {fileID: 0}
@@ -487,7 +487,6 @@ MonoBehaviour:
   - {fileID: 3706022990378757885, guid: 5607e037011a91948ad14808a6c233f3, type: 3}
   - {fileID: 30627628544923653, guid: 134aa9aa99651234182809563eeb2061, type: 3}
   - {fileID: 6994547658066551871, guid: aa9e6b1bc99f51b47bb946ce484c7e4c, type: 3}
-  Damage: 0
   audioManager: {fileID: 0}
 --- !u!1 &3112957866169349264
 GameObject:

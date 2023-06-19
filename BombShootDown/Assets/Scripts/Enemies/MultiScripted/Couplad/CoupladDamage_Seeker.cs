@@ -22,7 +22,7 @@ public class CoupladDamage_Seeker : MonoBehaviour, IEnemyDealsDamage {
   }
   void Update() {
     //need to make sure other one also dies if 1 dies.
-    if (Time.timeScale == 0f || lifeScript.dead) {
+    if (Time.timeScale == 0f || lifeScript.dead || lifeScript.halfdeath[0]) {
       return;
     }
     DOTdmg();

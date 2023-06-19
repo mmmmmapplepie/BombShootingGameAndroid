@@ -18,6 +18,9 @@ public class CoupladMovement : MonoBehaviour {
     initialXPosition = transform.root.position.x;
     chooseNewPosition();
   }
+  void OnEnable() {
+    waiting = false;
+  }
   void Update() {
     checkArrived();
     movePosition();

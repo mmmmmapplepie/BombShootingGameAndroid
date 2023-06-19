@@ -40,6 +40,8 @@ public class CoupladLife_Follower : MonoBehaviour, IDamageable {
 
   void Awake() {
     CoupladStatsSettings();
+    transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
+    transform.Find("MovementControl").gameObject.SetActive(false);
   }
   void CoupladStatsSettings() {
     bombObject = transform.Find("Enemy").gameObject;
@@ -56,7 +58,6 @@ public class CoupladLife_Follower : MonoBehaviour, IDamageable {
       bombObject.tag = "Enemy";
     }
   }
-
   void checkDamageCondition(float damage) {
     if (currentLife - damage <= 0 && !seekerScript.halfdeath[1]) {
       currentLife = 0;
@@ -71,12 +72,10 @@ public class CoupladLife_Follower : MonoBehaviour, IDamageable {
       seekerScript.ShotDeath();
     }
   }
-
   public void stopRevive() {
     if (reviveRoutine == null) return;
     StopCoroutine(reviveRoutine);
   }
-
   IEnumerator revive() {
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
     transform.Find("MovementControl").gameObject.SetActive(false);

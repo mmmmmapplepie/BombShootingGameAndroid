@@ -43,6 +43,10 @@ public class MaxCoupladLife_Seeker : MonoBehaviour, IDamageable {
 
   void Awake() {
     CoupladStatsSettings();
+    transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
+    transform.Find("MovementControl").gameObject.SetActive(false);
+  }
+  void Start() {
     if (LinkFollower == null) {
       SearchFollower();
     }
@@ -62,20 +66,23 @@ public class MaxCoupladLife_Seeker : MonoBehaviour, IDamageable {
       bombObject.tag = "Enemy";
     }
   }
-
   void Update() {
     if (LinkFollower == null) {
       SearchFollower();
     }
   }
-
   void SearchFollower() {
     if (FindObjectsOfType<MaxCoupladLife_Follower>().Length > 0) {
       foreach (MaxCoupladLife_Follower follower in FindObjectsOfType<MaxCoupladLife_Follower>()) {
         if (follower.coupled == false) {
-          LinkFollower = FindObjectOfType<MaxCoupladLife_Follower>();
+          LinkFollower = follower;
           LinkFollower.seekerScript = this;
           LinkFollower.coupled = true;
+          LinkFollower.transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;
+          LinkFollower.transform.Find("MovementControl").gameObject.SetActive(true);
+          transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;
+          transform.Find("MovementControl").gameObject.SetActive(true);
+          return;
         }
       }
     }
@@ -196,6 +203,6 @@ public class MaxCoupladLife_Seeker : MonoBehaviour, IDamageable {
       Instantiate(chainExplosionEffect, transform.position, Quaternion.identity);
       StartCoroutine("ChainExplodePreheat", script);
     }
-    StartCoroutine("deathSequence");
+    StartCoroutine(deathSequence());
   }
 }

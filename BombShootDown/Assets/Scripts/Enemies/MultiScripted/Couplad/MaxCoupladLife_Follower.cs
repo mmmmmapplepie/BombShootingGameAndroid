@@ -41,6 +41,8 @@ public class MaxCoupladLife_Follower : MonoBehaviour, IDamageable {
 
   void Awake() {
     CoupladStatsSettings();
+    transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
+    transform.Find("MovementControl").gameObject.SetActive(false);
   }
   void CoupladStatsSettings() {
     bombObject = transform.Find("Enemy").gameObject;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5251060875880613746}
   - component: {fileID: 5251060875880613757}
   - component: {fileID: 5251060875880613756}
+  - component: {fileID: 6707431430277647129}
   m_Layer: 3
   m_Name: NormalHitEffect
   m_TagString: Untagged
@@ -4836,7 +4837,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -481387041
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: -25
   m_RenderMode: 0
   m_SortMode: 1
@@ -4863,3 +4864,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &6707431430277647129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251060875880613759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cc5ad55786fd14fb7d1fb35344cff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 1
