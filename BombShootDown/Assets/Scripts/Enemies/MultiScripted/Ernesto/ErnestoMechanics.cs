@@ -101,7 +101,6 @@ public class ErnestoMechanics : MonoBehaviour {
     damageReflect.value = 0f;
     lastHitTime = Time.time;
     latestHealth = lifeScript.currentLife;
-    print("got hit");
   }
   #endregion
 

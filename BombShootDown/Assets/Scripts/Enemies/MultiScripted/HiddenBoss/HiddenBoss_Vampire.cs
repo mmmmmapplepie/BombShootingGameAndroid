@@ -14,6 +14,7 @@ public class HiddenBoss_Vampire : MonoBehaviour {
   void VampireRecovery() {
     Collider2D[] EnemiesTemp = Physics2D.OverlapCircleAll(transform.root.position, pickRadius);
     foreach (Collider2D coll in EnemiesTemp) {
+      if (coll.transform.root.gameObject == gameObject) continue;
       if (coll.tag == "Enemy" || coll.tag == "TauntEnemy") {
         recoveryLife += coll.transform.root.gameObject.GetComponent<IDamageable>().currentLife;
         recoveryShields += coll.transform.root.gameObject.GetComponent<IDamageable>().Shield;

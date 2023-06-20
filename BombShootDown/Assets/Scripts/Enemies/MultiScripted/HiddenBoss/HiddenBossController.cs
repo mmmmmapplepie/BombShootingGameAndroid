@@ -28,18 +28,20 @@ public class HiddenBossController : MonoBehaviour {
     StartCoroutine(SkillCycleRoutine());
   }
   IEnumerator SkillCycleRoutine() {
-    timer.gameObject.SetActive(true);
     cycleStartTime = Time.time;
     disableAllSkills();
-    StartSkills();
+    chooseRandomAbilities();
+    timer.gameObject.SetActive(true);
     while (true) {
       //every 30 seconds change skills
       if (Time.time - cycleStartTime < 30f) {
         timer.value = (30f + cycleStartTime - Time.time) / 30f;
       } else {
         cycleStartTime = Time.time;
+        timer.value = 1f;
         disableAllSkills();
-        StartSkills();
+        timer.gameObject.SetActive(true);
+        chooseRandomAbilities();
       }
       yield return null;
     }
@@ -70,12 +72,20 @@ public class HiddenBossController : MonoBehaviour {
     // timer slider
     timer.gameObject.SetActive(false);
   }
+  List<string> newList() {
+    List<string> skillsCopy = new List<string>();
+    foreach (string str in Skills) {
+      skillsCopy.Add(str);
+    }
+    return skillsCopy;
+  }
   void chooseRandomAbilities() {
-    List<string> tempSkillsCopy = Skills;
+    List<string> tempSkillsCopy = newList();
     int count = 0;
     while (count < SkillsPerState[lifeScript.currentStage]) {
       string skillToAdd = tempSkillsCopy[Random.Range(0, tempSkillsCopy.Count)];
       tempSkillsCopy.Remove(skillToAdd);
+      print(Skills.Count);
       StartCoroutine(skillToAdd);
       count++;
     }
@@ -93,47 +103,47 @@ public class HiddenBossController : MonoBehaviour {
   #region skill&respectivecallingCoroutines
   IEnumerator Buff() {
     BuffSkill.enabled = true;
-    buffLight.SetActive(true);
+    // buffLight.SetActive(true);
     yield return null;
   }
   IEnumerator Debuff() {
     DebuffSkill.enabled = true;
-    debuffLight.SetActive(true);
+    // debuffLight.SetActive(true);
     yield return null;
   }
   IEnumerator Invisible() {
     InvisibleSkill.enabled = true;
-    invisibleLight.SetActive(true);
+    // invisibleLight.SetActive(true);
     yield return null;
   }
   IEnumerator Vampire() {
     VampireSkill.enabled = true;
-    vampireLight.SetActive(true);
+    // vampireLight.SetActive(true);
     yield return null;
   }
   IEnumerator Summon() {
     SummonSkill.enabled = true;
-    summonLight.SetActive(true);
+    // summonLight.SetActive(true);
     yield return null;
   }
   IEnumerator DOT() {
     DOTSkill.enabled = true;
-    dotLight.SetActive(true);
+    // dotLight.SetActive(true);
     yield return null;
   }
   IEnumerator Teleport() {
     TeleportSkill.enabled = true;
-    teleportLight.SetActive(true);
+    // teleportLight.SetActive(true);
     yield return null;
   }
   IEnumerator Pull() {
     PullSkill.enabled = true;
-    pullLight.SetActive(true);
+    // pullLight.SetActive(true);
     yield return null;
   }
   IEnumerator BlockPierce() {
     BlockPierceSkill.enabled = true;
-    blockPierceLight.SetActive(true);
+    // blockPierceLight.SetActive(true);
     yield return null;
   }
   #endregion

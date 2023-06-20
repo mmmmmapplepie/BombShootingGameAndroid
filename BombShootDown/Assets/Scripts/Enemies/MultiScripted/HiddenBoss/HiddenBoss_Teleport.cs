@@ -9,8 +9,11 @@ public class HiddenBoss_Teleport : MonoBehaviour {
   }
   IEnumerator TeleportRoutine() {
     float waitTime = 2f;
+    float starttime = Time.time;
     while (true) {
-      waitTime -= 0.0676f;
+      if (waitTime > 0.2f) {
+        waitTime -= 0.0676f;
+      }
       Teleport();
       if (waitTime < Time.deltaTime) {
         yield return null;

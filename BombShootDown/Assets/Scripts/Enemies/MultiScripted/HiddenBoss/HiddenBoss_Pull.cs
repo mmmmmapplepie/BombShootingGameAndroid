@@ -18,6 +18,7 @@ public class HiddenBoss_Pull : MonoBehaviour {
         bullets.Add(coll.gameObject.GetComponent<Rigidbody2D>());
       }
     }
+    transform.Find("Enemy").gameObject.tag = "TauntEnemy";
   }
   void Update() {
     transformXPos = root.position.x;
@@ -58,5 +59,6 @@ public class HiddenBoss_Pull : MonoBehaviour {
   }
   void OnDisable() {
     bullets.Clear();
+    transform.Find("Enemy").gameObject.tag = "Enemy";
   }
 }

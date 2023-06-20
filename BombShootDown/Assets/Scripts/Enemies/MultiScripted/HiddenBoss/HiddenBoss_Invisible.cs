@@ -62,7 +62,9 @@ public class HiddenBoss_Invisible : MonoBehaviour {
   }
   void OnDisable() {
     foreach (GameObject enemies in Enemies) {
-      ChangeVisibility(enemies, false);
+      if (enemies != null) {
+        ChangeVisibility(enemies, false);
+      }
     }
     Enemies.Clear();
   }
