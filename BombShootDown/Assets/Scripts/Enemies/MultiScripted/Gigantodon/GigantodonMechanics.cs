@@ -47,6 +47,7 @@ public class GigantodonMechanics : MonoBehaviour {
     if (coll.tag == "Bullet") {
       IBullet bullet = coll.GetComponent<IBullet>();
       bullet.pierce = Mathf.FloorToInt(bullet.pierce / 3f);
+      if (bullet.pierce == 0) Destroy(coll.gameObject);
     }
   }
 }
