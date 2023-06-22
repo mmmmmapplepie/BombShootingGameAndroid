@@ -3,19 +3,41 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
-public class GameDefeat : MonoBehaviour {
+public class EndlessGameDefeat : MonoBehaviour {
   [SerializeField]
   GameObject AdButton;
   [SerializeField] List<string> tipsList;
-  [SerializeField] Text tipsText, loadPercent;
+  [SerializeField] Text tipsText, loadPercent, RewardsAndPoints;
   [SerializeField] GameObject loadPanel;
   new AudioManagerUI audio;
+  float StartTime;
+  int Reward;
+  string EndlessType;
   void Awake() {
     audio = GameObject.FindObjectOfType<AudioManagerUI>();
+    StartTime = Time.time;
   }
   void OnEnable() {
     StartCoroutine(loseAudio());
     Time.timeScale = 0f;
+    showRewards();
+    EndlessType = SceneManager.GetActiveScene().name;
+  }
+  void showRewards() {
+    float timeElapsed = Time.time - StartTime;
+    float multiplier = getMultiplier(timeElapsed);
+    float Reward = timeElapsed * multiplier;
+    string rewardString = $"Your Current rewards are:/n{Reward} Bombs/n Score:{Reward * 1.5f}";
+    RewardsAndPoints.text = rewardString;
+  }
+  float getMultiplier(float time) {
+    float multiplier;
+    if (time < 600f) {
+      multiplier = (time * 5f) / 600f;
+    } else {
+      multiplier = 10f;
+    }
+    return multiplier;
   }
   IEnumerator loseAudio() {
     yield return new WaitForSecondsRealtime(0.2f);
@@ -67,6 +89,14 @@ public class GameDefeat : MonoBehaviour {
         loadPercent.text = "100%";
         yield return null;
       }
+    }
+  }
+  void OnDestroy() {
+    MoneyManager.addMoney(Reward);
+    if (EndlessType == "EndlessOriginal") {
+      SettingsManager.endlessOriginalHS = Reward * 1.5f;
+    } else {
+      SettingsManager.endlessUpgradedHS = Reward * 1.5f;
     }
   }
 }
