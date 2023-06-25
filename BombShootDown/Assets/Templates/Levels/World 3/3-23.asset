@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34ac5d81429c07647b438a5cf8219fb8, type: 3}
-  m_Name: 2-2
+  m_Name: 3-23
   m_EditorClassIdentifier: 
-  name: 
-  firstClearUpgradeSlotAllowance: 0
-  firstClearRewards: 0
-  clearRewards: 0
-  Enemies: []
-  stageInWorld: 
+  name: 3-23
+  upgradesPerWave: 060000000700000008000000
+  firstClearRewards: 450
+  clearRewards: 155
+  Enemies:
+  - {fileID: 11400000, guid: b4091528ecac82b4f8420f029dcd91a0, type: 2}
+  - {fileID: 11400000, guid: 0a3176994519c2b4094e325ca712fd8c, type: 2}
+  - {fileID: 11400000, guid: f4ae3db2a5be6be4592e11739526a717, type: 2}
+  stageInWorld: 020000000c000000

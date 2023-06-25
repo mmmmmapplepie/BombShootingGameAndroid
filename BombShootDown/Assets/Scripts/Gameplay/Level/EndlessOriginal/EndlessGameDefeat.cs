@@ -27,7 +27,7 @@ public class EndlessGameDefeat : MonoBehaviour {
     float timeElapsed = Time.time - StartTime;
     float multiplier = getMultiplier(timeElapsed);
     float Reward = timeElapsed * multiplier;
-    string rewardString = $"Your Current rewards are:/n{Reward} Bombs/n Score:{Reward * 1.5f}";
+    string rewardString = "Your Current rewards are:" + $"\n{Reward} Bombs" + $"\nScore:{Reward * 1.5f}";
     RewardsAndPoints.text = rewardString;
   }
   float getMultiplier(float time) {
