@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Threading;
 
 public class EndlessOriginalLevelMobControl : MonoBehaviour {
-  // public partial class EndlessOriginalLevel : MonoBehaviour {
+  // public partial class EndlessOriginalLevel {
   //mobs by tiers
   [SerializeField] GameObject prefabobject;
   Enemy[][] mobsByTier = new Enemy[5][];
@@ -18,9 +18,8 @@ public class EndlessOriginalLevelMobControl : MonoBehaviour {
 
 
   //async cancellation token stuff
-  // CancellationTokenSource cancelToken = new CancellationTokenSource();
+  CancellationTokenSource cancelToken = new CancellationTokenSource();
 
-  CancellationToken cancelToken;
 
   bool wavecycle = false;
   void Start() {
@@ -53,6 +52,11 @@ public class EndlessOriginalLevelMobControl : MonoBehaviour {
     int difficulty = getDifficulty();
     if (cancelToken.IsCancellationRequested) return;
     Instantiate(prefabobject, Vector3.zero, Quaternion.identity);
+    //make coroutine for actually instantiating stuff so that the game doesnt break due to missing cancellationtokens miss
+
+    if (cancelToken.IsCancellationRequested) return;
+    await AsyncAdditional.Delay(period, true);
+
     if (FirstSubWave) {
 
 
@@ -99,8 +103,7 @@ public class EndlessOriginalLevelMobControl : MonoBehaviour {
       difficultyRates[1, i] = difficultyRates[0, i] - difficultyRates[0, i - 1];
     }
   }
-  // void OnDestroy() {
-
-  //   cancelToken.Cancel();
-  // }
+  void OnDestroy() {
+    cancelToken.Cancel();
+  }
 }
