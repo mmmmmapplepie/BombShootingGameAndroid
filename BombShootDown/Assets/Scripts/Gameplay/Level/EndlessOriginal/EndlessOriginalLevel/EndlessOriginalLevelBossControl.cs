@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EndlessOriginalLevel : MonoBehaviour, IGetLevelDataInterface {
+public partial class EndlessOriginalLevel : MonoBehaviour, IGetLevelDataInterface {
   [SerializeField]
   Level level;
   LevelSpawner spawner;
