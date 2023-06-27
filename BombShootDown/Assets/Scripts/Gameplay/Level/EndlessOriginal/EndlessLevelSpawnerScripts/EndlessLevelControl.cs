@@ -2,10 +2,17 @@ using System.Collections;
 using UnityEngine;
 
 public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface {
+  //this is also the BossSpawnController.
+
   [SerializeField]
   Level level;
   LevelSpawner spawner;
   new AudioManagerBGM audio;
+
+  Enemy[][] bossByTier = new Enemy[5][];
+
+  [SerializeField] Enemy[] tier0Boss, tier1Boss, tier2Boss, tier3Boss, tier4Boss;
+
   public Level GetLevelData() {
     return level;
   }
@@ -62,6 +69,34 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
       yield return new WaitForSeconds(0.2f);
     }
     spawner.LastWaveEnemiesCleared();
+  }
+  IEnumerator wave4() {
+    yield return null;
+  }
+  IEnumerator wave5() {
+    yield return null;
+  }
+
+  //all upgrades enabled here
+  IEnumerator wave6() {
+    yield return null;
+  }
+  IEnumerator wave7() {
+    yield return null;
+  }
+  IEnumerator wave8() {
+    yield return null;
+  }
+  IEnumerator wave9() {
+    yield return null;
+  }
+  IEnumerator wave10() {
+    yield return null;
+  }
+
+  //this one is the final wave and goes on indefinitely.
+  IEnumerator wave11() {
+    yield return null;
   }
 }
 
