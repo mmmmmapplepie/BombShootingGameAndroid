@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public partial class EndlessOriginalLevel : MonoBehaviour, IGetLevelDataInterface {
+public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface {
   [SerializeField]
   Level level;
   LevelSpawner spawner;
@@ -13,8 +13,6 @@ public partial class EndlessOriginalLevel : MonoBehaviour, IGetLevelDataInterfac
     spawner = gameObject.GetComponent<LevelSpawner>();
     spawner.setLevelData(level);
     audio = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
-  }
-  void Start() {
     audio.ChangeBGM("World1");
   }
   void Update() {
