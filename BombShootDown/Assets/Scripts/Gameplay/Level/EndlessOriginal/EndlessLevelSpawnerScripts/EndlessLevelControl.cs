@@ -9,14 +9,16 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
   LevelSpawner spawner;
   new AudioManagerBGM audio;
 
-  Enemy[][] bossByTier = new Enemy[5][];
+  float EndlessStartTime;
 
+  Enemy[][] bossByTier = new Enemy[5][];
   [SerializeField] Enemy[] tier0Boss, tier1Boss, tier2Boss, tier3Boss, tier4Boss;
 
   public Level GetLevelData() {
     return level;
   }
   void Awake() {
+    EndlessStartTime = Time.time;
     spawner = gameObject.GetComponent<LevelSpawner>();
     spawner.setLevelData(level);
     audio = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
@@ -31,72 +33,113 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
     }
   }
   IEnumerator wave1() {
-    int i = 15;
-    while (i > 0) {
-      i--;
-      float x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("NanoBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(1.5f);
-    }
-    yield return null;
-    spawner.AllTriggerEnemiesCleared();
+    RandomBoss(0);
+    yield return new WaitForSeconds(20f);
+    spawner.waveCleared();
   }
   IEnumerator wave2() {
-    int i = 10;
-    float x;
-    while (i > 0) {
-      i--;
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.5f);
-    }
-    yield return new WaitForSeconds(10f);
-    i = 15;
-    while (i > 0) {
-      i--;
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("MicroBasic", x, 10f, LevelSpawner.addToList.None);
-      yield return new WaitForSeconds(0.2f);
-    }
-    spawner.AllTriggerEnemiesCleared();
+    yield return new WaitForSeconds(55f);
   }
   IEnumerator wave3() {
-    int i = 5;
-    float x;
-    for (int k = 0; k < i; k++) {
-      x = spawner.randomWithRange(-5f, 5f);
-      spawner.spawnEnemy("KiloBasic", x, 10f, LevelSpawner.addToList.All);
-      yield return new WaitForSeconds(0.2f);
-    }
-    spawner.LastWaveEnemiesCleared();
+    RandomBoss(1);
+    yield return new WaitForSeconds(20f);
+    spawner.waveCleared();
   }
   IEnumerator wave4() {
-    yield return null;
+    yield return new WaitForSeconds(55f);
   }
   IEnumerator wave5() {
-    yield return null;
+    RandomBoss(2);
+    yield return new WaitForSeconds(20f);
+    spawner.waveCleared();
   }
-
-  //all upgrades enabled here
   IEnumerator wave6() {
-    yield return null;
+    yield return new WaitForSeconds(55f);
   }
   IEnumerator wave7() {
-    yield return null;
+    RandomBoss(3);
+    yield return new WaitForSeconds(20f);
+    spawner.waveCleared();
   }
   IEnumerator wave8() {
-    yield return null;
-  }
-  IEnumerator wave9() {
-    yield return null;
-  }
-  IEnumerator wave10() {
-    yield return null;
+    yield return new WaitForSeconds(55f);
   }
 
+
   //this one is the final wave and goes on indefinitely.
-  IEnumerator wave11() {
-    yield return null;
+  IEnumerator wave9() {
+    //double spawn section
+    print("wave9");
+    yield return doubleSpawnRoutine(0, 0);
+    print("wave10");
+    yield return doubleSpawnRoutine(0, 1);
+    print("wave11");
+    yield return doubleSpawnRoutine(1, 2);
+    print("wave12");
+    yield return doubleSpawnRoutine(2, 3);
+
+    yield return new WaitForSeconds(10f);
+    print("wave13");
+    //triple spawn infinite part
+    while (true) {
+      float waitDecrease = waveFrequencyChange();
+      int[] tiers = pickTiersTriplet();
+      foreach (int tier in tiers) {
+        RandomBoss(tier);
+      }
+      yield return new WaitForSeconds(waitDecrease * 75f);
+    }
+  }
+
+  int[] pickTiersTriplet() {
+    int[] tiersList = new int[3];
+    //the 0th term will contain the highest tier for this wave.
+    tiersList[0] = Random.Range(0, 5);
+    for (int i = 1; i < 3; i++) {
+      if (tiersList[i - 1] > 2) {
+        tiersList[i] = Random.Range(0, tiersList[i - 1]);
+      } else {
+        tiersList[i] = Random.Range(0, tiersList[i - 1] + 1);
+        //disables triple repeat of tiers that are not all 0 tier.
+        if (tiersList[i] == tiersList[i - 1] && i > 1 && tiersList[i - 1] != 0) {
+          tiersList[i] = Random.Range(0, tiersList[i - 1]);
+        }
+      }
+    }
+    return tiersList;
+  }
+
+  IEnumerator doubleSpawnRoutine(int tier1, int tier2) {
+    RandomBoss(tier1);
+    RandomBoss(tier2);
+    yield return new WaitForSeconds(75f);
+  }
+
+
+
+  void RandomBoss(int tier) {
+    if (tier == 3) {
+      int ranNum = Random.Range(0, 1001);
+      if (ranNum == 0) {
+        string bossName = bossByTier[4][0].enemyPrefab.name;
+        SpawnBoss(bossName);
+      } else {
+        string bossName = bossByTier[3][0].enemyPrefab.name;
+        SpawnBoss(bossName);
+      }
+    } else {
+      int ranNum = Random.Range(0, bossByTier[tier].Length);
+      SpawnBoss(bossByTier[tier][ranNum].enemyPrefab.name);
+    }
+  }
+  void SpawnBoss(string bossName) {
+    spawner.spawnEnemyInMap(bossName, 0f, 9f, true, LevelSpawner.addToList.Specific, true);
+    if (bossName == "CoupladSeeker") {
+      spawner.spawnEnemyInMap("coupladFollower", 0f, 9f, true, LevelSpawner.addToList.Specific, true);
+    }
+    if (bossName == "MaxCoupladSeeker") {
+      spawner.spawnEnemyInMap("coupladMaxFollower", 0f, 9f, true, LevelSpawner.addToList.Specific, true);
+    }
   }
 }
 

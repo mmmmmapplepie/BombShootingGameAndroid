@@ -7,7 +7,6 @@ public partial class EndlessLevelControl {
   // public partial class EndlessOriginalLevel {
   //mobs by tiers
   Enemy[][] mobsByTier = new Enemy[5][];
-
   [SerializeField] Enemy[] tier0Mobs, tier1Mobs, tier2Mobs, tier3Mobs, tier4Mobs;
 
   // 1st array is the actual values comapared for the rates
@@ -47,8 +46,18 @@ public partial class EndlessLevelControl {
       wavecycle = false;
     }
   }
+  float waveFrequencyChange() {
+    //raise frequency of waves after 10 mins elapsed
+    float frequency = 1f;
+    if (Time.time - EndlessStartTime > 600f) {
+      float value = (Time.time - EndlessStartTime + 4.18f + 600f);
+      frequency = Mathf.Log(value) / Mathf.Log(4.18f);
+    }
+    return frequency;
+  }
   async Task StartRandomWave(int difficulty) {
-    float wavePeriod = Random.Range(5f, 23f);
+    float frequencyRaise = waveFrequencyChange();
+    float wavePeriod = Random.Range(5f, 23f) * frequencyRaise;
     //together with delay, this gives about 22seconds per cycle which allows for roughly 15mins before the maximum difficulty is reached - in terms of avg cycles required for max difficulty (41 cycles - apparently).
 
     //spawnperiod:singleburst/periodic; position: scattered/bunched

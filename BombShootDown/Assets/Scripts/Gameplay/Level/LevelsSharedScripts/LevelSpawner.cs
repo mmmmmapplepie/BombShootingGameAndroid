@@ -11,6 +11,7 @@ public class LevelSpawner : MonoBehaviour {
   GameObject SmallSpawnPrefab;
   [HideInInspector]
   WaveController waveControllerScript;
+  [HideInInspector]
   public bool waveRunning = false;
   [HideInInspector]
   public List<GameObject> AllWaveTriggerEnemies = new List<GameObject>();
@@ -188,4 +189,3 @@ public class LevelSpawner : MonoBehaviour {
   }
   #endregion
 }
-  
