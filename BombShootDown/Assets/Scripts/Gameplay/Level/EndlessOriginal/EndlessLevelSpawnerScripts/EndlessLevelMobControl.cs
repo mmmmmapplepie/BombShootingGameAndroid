@@ -18,10 +18,6 @@ public partial class EndlessLevelControl {
   CancellationTokenSource cancelToken;
 
   bool wavecycle = false;
-  void Start() {
-    setMobsByTier();
-    EndlessSpawner();
-  }
   void setMobsByTier() {
     mobsByTier[0] = tier0Mobs;
     mobsByTier[1] = tier1Mobs;
@@ -42,6 +38,7 @@ public partial class EndlessLevelControl {
         int difficulty = getDifficulty();
         tasks[i] = StartRandomWave(difficulty);
       }
+      if (cancelToken.IsCancellationRequested) return;
       await Task.WhenAll(tasks);
       wavecycle = false;
     }
@@ -68,7 +65,7 @@ public partial class EndlessLevelControl {
     bool repeatEnemy = Random.Range(0, 2) == 1 ? true : false;
 
     float delay = Random.Range(0f, 0.5f * wavePeriod);
-    await AsyncAdditional.Delay(delay, true);
+    await AsyncAdditional.Delay(delay);
 
     //cancel to avoid errors of starting non existent coroutine.
     if (cancelToken.IsCancellationRequested) return;
@@ -77,7 +74,8 @@ public partial class EndlessLevelControl {
     StartCoroutine(subWave(wavePeriod, spawnPeriodBurst, spawnPositionSpread, repeatEnemy, difficulty));
 
     if (cancelToken.IsCancellationRequested) return;
-    await AsyncAdditional.Delay(wavePeriod, true);
+    await AsyncAdditional.Delay(wavePeriod);
+    if (cancelToken.IsCancellationRequested) return;
   }
 
   #region difficulty getter and modulation

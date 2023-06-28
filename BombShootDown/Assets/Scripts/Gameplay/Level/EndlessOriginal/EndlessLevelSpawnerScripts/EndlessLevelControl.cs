@@ -17,12 +17,21 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
   public Level GetLevelData() {
     return level;
   }
+  void setBossByTier() {
+    bossByTier[0] = tier0Boss;
+    bossByTier[1] = tier1Boss;
+    bossByTier[2] = tier2Boss;
+    bossByTier[3] = tier3Boss;
+    bossByTier[4] = tier4Boss;
+  }
   void Awake() {
     EndlessStartTime = Time.time;
     spawner = gameObject.GetComponent<LevelSpawner>();
     spawner.setLevelData(level);
     audio = GameObject.Find("AudioManagerBGM").GetComponent<AudioManagerBGM>();
     audio.ChangeBGM("World1");
+    setMobsByTier();
+    setBossByTier();
   }
   void Update() {
     if (spawner.waveRunning == false && WaveController.startWave == true && WaveController.LevelCleared == false) {
@@ -34,11 +43,13 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
   }
   IEnumerator wave1() {
     RandomBoss(0);
+    EndlessSpawner();
     yield return new WaitForSeconds(20f);
     spawner.waveCleared();
   }
   IEnumerator wave2() {
     yield return new WaitForSeconds(55f);
+    spawner.waveCleared();
   }
   IEnumerator wave3() {
     RandomBoss(1);
@@ -47,6 +58,7 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
   }
   IEnumerator wave4() {
     yield return new WaitForSeconds(55f);
+    spawner.waveCleared();
   }
   IEnumerator wave5() {
     RandomBoss(2);
@@ -55,6 +67,7 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
   }
   IEnumerator wave6() {
     yield return new WaitForSeconds(55f);
+    spawner.waveCleared();
   }
   IEnumerator wave7() {
     RandomBoss(3);
@@ -63,6 +76,7 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
   }
   IEnumerator wave8() {
     yield return new WaitForSeconds(55f);
+    spawner.waveCleared();
   }
 
 
@@ -91,6 +105,10 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
     }
   }
 
+
+
+
+
   int[] pickTiersTriplet() {
     int[] tiersList = new int[3];
     //the 0th term will contain the highest tier for this wave.
@@ -108,15 +126,11 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
     }
     return tiersList;
   }
-
   IEnumerator doubleSpawnRoutine(int tier1, int tier2) {
     RandomBoss(tier1);
     RandomBoss(tier2);
     yield return new WaitForSeconds(75f);
   }
-
-
-
   void RandomBoss(int tier) {
     if (tier == 3) {
       int ranNum = Random.Range(0, 1001);
