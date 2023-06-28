@@ -6139,6 +6139,7 @@ GameObject:
   - component: {fileID: 966418842}
   - component: {fileID: 966418841}
   - component: {fileID: 966418840}
+  - component: {fileID: 966418843}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6239,6 +6240,19 @@ Canvas:
   m_SortingLayerID: -1870975603
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &966418843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966418838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f331cee4f4b4ba4b8b7d1419d605e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  script: {fileID: 1934753629}
 --- !u!1 &972740163
 GameObject:
   m_ObjectHideFlags: 0
@@ -6756,8 +6770,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameDefeat, Assembly-CSharp
+      - m_Target: {fileID: 1934753629}
+        m_TargetAssemblyTypeName: EndlessGameDefeat, Assembly-CSharp
         m_MethodName: ContinueAfterAd
         m_Mode: 1
         m_Arguments:
@@ -9345,8 +9359,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameDefeat, Assembly-CSharp
+      - m_Target: {fileID: 1934753629}
+        m_TargetAssemblyTypeName: EndlessGameDefeat, Assembly-CSharp
         m_MethodName: WorldMap
         m_Mode: 1
         m_Arguments:
@@ -13621,8 +13635,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameDefeat, Assembly-CSharp
+      - m_Target: {fileID: 1934753629}
+        m_TargetAssemblyTypeName: EndlessGameDefeat, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -14114,6 +14128,7 @@ MonoBehaviour:
   loadPercent: {fileID: 1405437992}
   RewardsAndPoints: {fileID: 365171719}
   loadPanel: {fileID: 1405437993}
+  StartTime: 0
 --- !u!114 &1934753630
 MonoBehaviour:
   m_ObjectHideFlags: 0

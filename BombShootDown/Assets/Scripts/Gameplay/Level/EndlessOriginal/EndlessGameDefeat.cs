@@ -10,12 +10,11 @@ public class EndlessGameDefeat : MonoBehaviour {
   [SerializeField] Text tipsText, loadPercent, RewardsAndPoints;
   [SerializeField] GameObject loadPanel;
   new AudioManagerUI audio;
-  float StartTime;
+  public float StartTime;
   int Reward;
   string EndlessType;
   void Awake() {
     audio = GameObject.FindObjectOfType<AudioManagerUI>();
-    StartTime = Time.time;
   }
   void OnEnable() {
     StartCoroutine(loseAudio());
@@ -27,7 +26,12 @@ public class EndlessGameDefeat : MonoBehaviour {
     float timeElapsed = Time.time - StartTime;
     float multiplier = getMultiplier(timeElapsed);
     float Reward = timeElapsed * multiplier;
-    string rewardString = "Your Current rewards are:" + $"\n{Reward} Bombs" + $"\nScore:{Reward * 1.5f}";
+    print(StartTime);
+    print(timeElapsed);
+    print(multiplier);
+    print(Reward);
+    string rewardString = "Your Current rewards are:" + $"\n" + "Bombs: " + Mathf.Round(Reward).ToString()
+    + $"\n" + "Score: " + Mathf.Round(Reward * 1.5f).ToString();
     RewardsAndPoints.text = rewardString;
   }
   float getMultiplier(float time) {
@@ -46,21 +50,11 @@ public class EndlessGameDefeat : MonoBehaviour {
   public void Restart() {
     audio.PlayAudio("Click");
     Time.timeScale = 1f;
-    bool levelBaseUsed = false;
-    if (SceneManager.GetSceneByName("LevelBase").isLoaded) {
-      levelBaseUsed = true;
-    }
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-    if (levelBaseUsed) {
-      SceneManager.LoadScene("LevelBase", LoadSceneMode.Additive);
-    }
   }
-  public void WorldMap() {
-    Level data = GameObject.FindObjectOfType<LevelSpawner>().level;
-    FocusLevelUpdater.currentLevel[0] = data.stageInWorld[0];
-    FocusLevelUpdater.currentLevel[1] = data.stageInWorld[1];
+  public void GameModes() {
     audio.PlayAudio("Click");
-    StartCoroutine(loadSceneAsync("Worlds"));
+    SceneManager.LoadScene("GameMode");
   }
   public void ContinueAfterAd() {
     audio.PlayAudio("Click");
@@ -69,34 +63,12 @@ public class EndlessGameDefeat : MonoBehaviour {
     Time.timeScale = 1f;
     gameObject.SetActive(false);
   }
-  IEnumerator loadSceneAsync(string sceneName) {
-    loadPanel.SetActive(true);
-    int totalTips = tipsList.Count;
-    int tipIndex = Random.Range(0, totalTips);
-    tipsText.text = tipsList[tipIndex];
-    AsyncOperation asyncScene = SceneManager.LoadSceneAsync(sceneName);
-    asyncScene.allowSceneActivation = false;
-    float loadedAmount = 0f;
-    while (!asyncScene.isDone) {
-      float percent = asyncScene.progress * 100f;
-      if (loadedAmount < 100f && percent >= 90f) {
-        loadedAmount += 10f;
-        loadPercent.text = loadedAmount.ToString() + "%";
-        yield return null;
-      }
-      if (loadedAmount >= 99f && percent >= 90f) {
-        asyncScene.allowSceneActivation = true;
-        loadPercent.text = "100%";
-        yield return null;
-      }
-    }
-  }
   void OnDestroy() {
     MoneyManager.addMoney(Reward);
     if (EndlessType == "EndlessOriginal") {
-      SettingsManager.endlessOriginalHS = Reward * 1.5f;
+      SettingsManager.endlessOriginalHS = Mathf.Round(Reward * 1.5f);
     } else {
-      SettingsManager.endlessUpgradedHS = Reward * 1.5f;
+      SettingsManager.endlessUpgradedHS = Mathf.Round(Reward * 1.5f);
     }
   }
 }

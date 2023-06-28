@@ -149,7 +149,7 @@ public partial class EndlessLevelControl {
   }
   #endregion
 
-  void OnDestroy() {
+  void OnDisable() {
     cancelToken.Cancel();
     StopAllCoroutines();
     cancelToken.Dispose();

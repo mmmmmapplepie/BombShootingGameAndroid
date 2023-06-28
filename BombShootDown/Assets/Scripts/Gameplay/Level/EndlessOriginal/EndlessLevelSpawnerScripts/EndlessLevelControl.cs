@@ -149,10 +149,10 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
   void SpawnBoss(string bossName) {
     spawner.spawnEnemyInMap(bossName, 0f, 9f, true, LevelSpawner.addToList.Specific, true);
     if (bossName == "CoupladSeeker") {
-      spawner.spawnEnemyInMap("coupladFollower", 0f, 9f, true, LevelSpawner.addToList.Specific, true);
+      spawner.spawnEnemyInMap("CoupladFollower", 0f, 9f, true, LevelSpawner.addToList.Specific, true);
     }
     if (bossName == "MaxCoupladSeeker") {
-      spawner.spawnEnemyInMap("coupladMaxFollower", 0f, 9f, true, LevelSpawner.addToList.Specific, true);
+      spawner.spawnEnemyInMap("CoupladMaxFollower", 0f, 9f, true, LevelSpawner.addToList.Specific, true);
     }
   }
 }
