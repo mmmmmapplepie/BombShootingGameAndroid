@@ -58,7 +58,7 @@ public class EndlessGameDefeat : MonoBehaviour {
     SceneManager.LoadScene("GameMode");
   }
   public void ContinueAfterAd() {
-    audio.PlayAudio("Click"); 
+    audio.PlayAudio("Click");
     AdButton.GetComponent<Button>().gameObject.SetActive(false);
     LifeManager.CurrentLife = BowManager.MaxLife;
     Time.timeScale = 1f;
@@ -72,6 +72,7 @@ public class EndlessGameDefeat : MonoBehaviour {
     } else {
       if (Mathf.Round(Reward * 1.5f) > SettingsManager.endlessUpgradedHS) SettingsManager.endlessUpgradedHS = Mathf.Round(Reward * 1.5f);
     }
+    SaveSystem.saveSettings();
   }
   void OnDestroy() {
     MoneyManager.addMoney(Reward);

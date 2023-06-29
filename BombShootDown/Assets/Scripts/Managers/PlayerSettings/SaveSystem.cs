@@ -4,8 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public static class SaveSystem
-{
+public static class SaveSystem {
   public static void saveSettings() {
     BinaryFormatter formatter = new BinaryFormatter();
     string path = Application.persistentDataPath + "/settings.kek";
@@ -23,7 +22,7 @@ public static class SaveSystem
       stream.Close();
       return data;
     } else {
-      Debug.Log("File does not exist in path: "+ path);
+      Debug.Log("File does not exist in path: " + path);
       return null;
     }
   }
