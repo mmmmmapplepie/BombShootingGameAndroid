@@ -49,24 +49,21 @@ public class EndlessGameDefeat : MonoBehaviour {
   public void Restart() {
     audio.PlayAudio("Click");
     Time.timeScale = 1f;
-    print("re");
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
   }
   public void GameModes() {
     audio.PlayAudio("Click");
-    print("GameModeScene");
     SceneManager.LoadScene("GameMode");
   }
   public void ContinueAfterAd() {
     audio.PlayAudio("Click");
-    AdButton.GetComponent<Button>().gameObject.SetActive(false);
+    // AdButton.GetComponent<Button>().gameObject.SetActive(false);
     LifeManager.CurrentLife = BowManager.MaxLife;
-    Time.timeScale = 1f;
-    print("Continue");
     gameObject.SetActive(false);
   }
   void OnDisable() {
     BowManager.GunsReady = true;
+    Time.timeScale = 1f;
     if (EndlessType == "EndlessOriginal") {
       if (Mathf.Round(Reward * 1.5f) > SettingsManager.endlessOriginalHS) SettingsManager.endlessOriginalHS = Mathf.Round(Reward * 1.5f);
     } else {
@@ -76,6 +73,5 @@ public class EndlessGameDefeat : MonoBehaviour {
   }
   void OnDestroy() {
     MoneyManager.addMoney(Reward);
-
   }
 }

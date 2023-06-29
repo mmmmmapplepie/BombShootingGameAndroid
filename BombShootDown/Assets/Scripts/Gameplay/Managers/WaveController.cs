@@ -47,11 +47,12 @@ public class WaveController : MonoBehaviour {
     waveDisplay.text = waveShadowDisplay.text = "Wave : " + waveNumStr;
     StartCoroutine("MoveWaveScreen");
   }
-  void makeGunsReady() {
-    BowManager.GunsReady = true;
-  }
+  // void makeGunsReady() {
+  //   BowManager.GunsReady = true;
+  // }
   IEnumerator MoveWaveScreen() {
-    Invoke("makeGunsReady", 0.05f);
+    BowManager.GunsReady = true;
+    // Invoke("makeGunsReady", 0.05f);
     CurrentWave++;
     inCue = false;
     Vector2 pos = new Vector2(0f, 0f);

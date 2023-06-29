@@ -193,6 +193,11 @@ public class Upgrades : MonoBehaviour {
   }
   IEnumerator speedupTime() {
     while (Time.timeScale < 1f) {
+      if (!BowManager.GunsReady) {
+        Time.timeScale = 0f;
+        yield return null;
+        continue;
+      }
       yield return new WaitForSecondsRealtime(0.01f);
       Time.timeScale += 0.003f;
       //this takes roughly 3.7sec unscaled time. Use 3.5 as its a nicer number.

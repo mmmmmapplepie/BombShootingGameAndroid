@@ -10,12 +10,11 @@ public class GameStateManager : MonoBehaviour {
   [SerializeField]
   GameObject revivePanel;
 
-  bool waiting = false;
   void Awake() {
     ResetGameplayManagerVariables();
   }
   void Update() {
-    if (waiting) return;
+    if (!BowManager.GunsReady) return;
     if (LifeManager.CurrentLife <= 0f) {
       if (BowManager.ReviveUsable == true && LifeManager.ReviveUsed == false) {
         LifeManager.ReviveUsed = true;
@@ -31,15 +30,12 @@ public class GameStateManager : MonoBehaviour {
   IEnumerator gameEnd() {
     yield return waitTillPanelClear();
     GameEndScreen.SetActive(true);
-    waiting = false;
   }
   IEnumerator gameWin() {
     yield return waitTillPanelClear();
     WinScreen.SetActive(true);
-    waiting = false;
   }
   IEnumerator waitTillPanelClear() {
-    waiting = true;
     while (!BowManager.GunsReady) {
       yield return null;
     }

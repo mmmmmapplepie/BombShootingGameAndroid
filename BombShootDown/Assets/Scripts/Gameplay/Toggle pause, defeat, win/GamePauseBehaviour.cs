@@ -9,6 +9,8 @@ public class GamePauseBehaviour : MonoBehaviour {
   [SerializeField] Text tipsText, loadPercent;
   [SerializeField] GameObject loadPanel;
   [SerializeField] List<string> tipsList;
+
+  [SerializeField] bool Endless = false;
   Button button;
   public static bool gamePaused = false;
   public static bool Pausable = true;
@@ -65,6 +67,10 @@ public class GamePauseBehaviour : MonoBehaviour {
     PauseToggle.SetActive(false);
   }
   public void WorldMap() {
+    if (Endless) {
+      SceneManager.LoadScene("GameMode");
+      return;
+    }
     Level data = GameObject.FindObjectOfType<LevelSpawner>().level;
     FocusLevelUpdater.currentLevel[0] = data.stageInWorld[0];
     FocusLevelUpdater.currentLevel[1] = data.stageInWorld[1];
@@ -93,5 +99,8 @@ public class GamePauseBehaviour : MonoBehaviour {
         yield return null;
       }
     }
+  }
+  void OnDestroy() {
+    Time.timeScale = 1f;
   }
 }

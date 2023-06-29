@@ -895,7 +895,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: World Map
+  m_Text: Game Mode
 --- !u!222 &99071779
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2564,7 +2564,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Finish
+  m_Text: 'Your Rewards:'
 --- !u!222 &365171720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11264,6 +11264,7 @@ MonoBehaviour:
   - Some enemies are better to be focused down quickly while others require a more
     patient approach.
   - Buffing and Debuffing enemies get extremely dangerous once they stack in numbers.
+  Endless: 1
 --- !u!114 &1585266339
 MonoBehaviour:
   m_ObjectHideFlags: 0
