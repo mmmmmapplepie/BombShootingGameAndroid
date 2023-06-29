@@ -9361,7 +9361,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1934753629}
         m_TargetAssemblyTypeName: EndlessGameDefeat, Assembly-CSharp
-        m_MethodName: WorldMap
+        m_MethodName: GameModes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -150,8 +150,10 @@ public partial class EndlessLevelControl {
   #endregion
 
   void OnDisable() {
-    cancelToken.Cancel();
+    if (cancelToken != null) {
+      cancelToken.Cancel();
+      cancelToken.Dispose();
+    }
     StopAllCoroutines();
-    cancelToken.Dispose();
   }
 }

@@ -43,7 +43,6 @@ public class GamePauseBehaviour : MonoBehaviour {
     Time.timeScale = 0f;
     gamePaused = true;
     PauseToggle.SetActive(true);
-    BowManager.GunsReady = false;
   }
   public void Restart() {
     audio.PlayAudio("Click");
@@ -94,8 +93,5 @@ public class GamePauseBehaviour : MonoBehaviour {
         yield return null;
       }
     }
-  }
-  void OnDisable() {
-    BowManager.GunsReady = true;
   }
 }
