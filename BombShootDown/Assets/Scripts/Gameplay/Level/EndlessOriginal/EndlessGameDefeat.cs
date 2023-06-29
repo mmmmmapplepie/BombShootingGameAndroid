@@ -10,6 +10,8 @@ public class EndlessGameDefeat : MonoBehaviour {
   [SerializeField] Text tipsText, loadPercent, RewardsAndPoints;
   [SerializeField] GameObject loadPanel;
   new AudioManagerUI audio;
+
+  [HideInInspector]
   public float StartTime;
   int Reward;
   string EndlessType;
@@ -21,15 +23,12 @@ public class EndlessGameDefeat : MonoBehaviour {
     Time.timeScale = 0f;
     showRewards();
     EndlessType = SceneManager.GetActiveScene().name;
+    BowManager.GunsReady = false;
   }
   void showRewards() {
     float timeElapsed = Time.time - StartTime;
     float multiplier = getMultiplier(timeElapsed);
     float Reward = timeElapsed * multiplier;
-    print(StartTime);
-    print(timeElapsed);
-    print(multiplier);
-    print(Reward);
     string rewardString = "Your Current rewards are:" + $"\n" + "Bombs: " + Mathf.Round(Reward).ToString()
     + $"\n" + "Score: " + Mathf.Round(Reward * 1.5f).ToString();
     RewardsAndPoints.text = rewardString;
@@ -62,6 +61,9 @@ public class EndlessGameDefeat : MonoBehaviour {
     LifeManager.CurrentLife = BowManager.MaxLife;
     Time.timeScale = 1f;
     gameObject.SetActive(false);
+  }
+  void OnDisable() {
+    BowManager.GunsReady = true;
   }
   void OnDestroy() {
     MoneyManager.addMoney(Reward);

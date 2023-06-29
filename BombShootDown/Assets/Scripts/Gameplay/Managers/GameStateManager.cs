@@ -9,20 +9,39 @@ public class GameStateManager : MonoBehaviour {
   GameObject WinScreen;
   [SerializeField]
   GameObject revivePanel;
+
+  bool waiting = false;
   void Awake() {
     ResetGameplayManagerVariables();
   }
   void Update() {
+    if (waiting) return;
     if (LifeManager.CurrentLife <= 0f) {
       if (BowManager.ReviveUsable == true && LifeManager.ReviveUsed == false) {
         LifeManager.ReviveUsed = true;
         Revive();
       } else {
-        GameEndScreen.SetActive(true);
+        StartCoroutine(gameEnd());
       }
     }
     if (WaveController.LevelCleared == true && LifeManager.CurrentLife > 0f) {
-      WinScreen.SetActive(true);
+      StartCoroutine(gameWin());
+    }
+  }
+  IEnumerator gameEnd() {
+    yield return waitTillPanelClear();
+    GameEndScreen.SetActive(true);
+    waiting = false;
+  }
+  IEnumerator gameWin() {
+    yield return waitTillPanelClear();
+    WinScreen.SetActive(true);
+    waiting = false;
+  }
+  IEnumerator waitTillPanelClear() {
+    waiting = true;
+    while (!BowManager.GunsReady) {
+      yield return null;
     }
   }
   void Revive() {

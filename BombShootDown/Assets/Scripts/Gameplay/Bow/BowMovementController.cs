@@ -18,6 +18,8 @@ public class BowMovementController : MonoBehaviour {
     if (BowManager.GunsReady == false) {
       BowManager.bowTouchID[0] = -1;
       BowManager.bowTouchID[1] = -1;
+      ReturnBow(Bow1);
+      ReturnBow(Bow2);
       return;
     }
     if (UpgradesEquipped.EquippedUpgrades.Contains("DoubleGun")) {

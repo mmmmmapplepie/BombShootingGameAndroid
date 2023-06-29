@@ -142,8 +142,6 @@ public class LevelSpawner : MonoBehaviour {
   }
   #endregion
 
-
-
   #region spawnEnemyFunctions
   public GameObject spawnEnemy(string name, float xpos, float ypos, addToList listname = addToList.All, bool setEnemy = false) {
     GameObject enemyPrefab = level.Enemies.Find(x => x.enemyPrefab.name == name).enemyPrefab;

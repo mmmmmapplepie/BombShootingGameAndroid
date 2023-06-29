@@ -29,9 +29,11 @@ public class WaveController : MonoBehaviour {
   }
   IEnumerator UpgradesDelayUnscaled(float sec) {
     yield return new WaitForSecondsRealtime(sec);
-    while (GamePauseBehaviour.gamePaused == true) {
+    if (CurrentWave == 0) BowManager.GunsReady = true;
+    while (GamePauseBehaviour.gamePaused == true || !BowManager.GunsReady) {
       yield return null;
     }
+    BowManager.GunsReady = false;
     GamePauseBehaviour.Pausable = false;
     CueUpgrades();
   }

@@ -16,6 +16,7 @@ public class GameDefeat : MonoBehaviour {
   void OnEnable() {
     StartCoroutine(loseAudio());
     Time.timeScale = 0f;
+    BowManager.GunsReady = false;
   }
   IEnumerator loseAudio() {
     yield return new WaitForSecondsRealtime(0.2f);
@@ -68,5 +69,9 @@ public class GameDefeat : MonoBehaviour {
         yield return null;
       }
     }
+  }
+
+  void OnDisable() {
+    BowManager.GunsReady = true;
   }
 }

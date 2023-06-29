@@ -43,7 +43,6 @@ public class ChosenUpg : MonoBehaviour {
   void OnEnable() {
     RenderAll();
     Time.timeScale = 0f;
-    BowManager.GunsReady = false;
     upgradeConfirmBtn.GetComponent<Button>().interactable = false;
     StartCoroutine(enableConfirmBtn());
   }

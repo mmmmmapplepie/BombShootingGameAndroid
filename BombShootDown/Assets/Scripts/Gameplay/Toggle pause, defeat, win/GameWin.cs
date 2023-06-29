@@ -37,6 +37,7 @@ public class GameWin : MonoBehaviour {
       newClearLevel();
     }
     MoneyManager.addMoney(prize);
+    BowManager.GunsReady = false;
   }
   IEnumerator winAudio() {
     yield return new WaitForSecondsRealtime(0.2f);
@@ -103,5 +104,8 @@ public class GameWin : MonoBehaviour {
         yield return null;
       }
     }
+  }
+  void OnDisable() {
+    BowManager.GunsReady = false;
   }
 }
