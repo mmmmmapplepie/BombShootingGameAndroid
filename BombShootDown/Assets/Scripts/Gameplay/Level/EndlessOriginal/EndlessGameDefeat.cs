@@ -67,9 +67,7 @@ public class EndlessGameDefeat : MonoBehaviour {
     if (EndlessType == "EndlessOriginal") {
       if (Mathf.Round(Reward * 1.5f) > SettingsManager.endlessOriginalHS) SettingsManager.endlessOriginalHS = Mathf.Round(Reward * 1.5f);
     } else {
-      print(SettingsManager.endlessUpgradedHS);
       if (Mathf.Round(Reward * 1.5f) > SettingsManager.endlessUpgradedHS) SettingsManager.endlessUpgradedHS = Mathf.Round(Reward * 1.5f);
-      print(SettingsManager.endlessUpgradedHS);
     }
     SaveSystem.saveSettings();
   }
