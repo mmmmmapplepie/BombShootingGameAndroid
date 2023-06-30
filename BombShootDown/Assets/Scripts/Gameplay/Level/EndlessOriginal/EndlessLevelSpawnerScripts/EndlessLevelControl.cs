@@ -44,7 +44,7 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
   IEnumerator wave1() {
     RandomBoss(0);
     EndlessSpawner();
-    yield return new WaitForSeconds(20f);
+    yield return new WaitForSeconds(19.99f);
     spawner.waveCleared();
   }
   IEnumerator wave2() {

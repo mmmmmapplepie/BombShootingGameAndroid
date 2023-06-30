@@ -52,6 +52,6 @@
     "Temp/": true
   },
   "editor.tokenColorCustomizations": {
-    "comments": "#f3ff17"
+    "comments": "#ff1212"
   }
 }

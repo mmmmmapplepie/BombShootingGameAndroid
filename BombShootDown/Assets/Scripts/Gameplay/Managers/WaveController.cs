@@ -24,11 +24,10 @@ public class WaveController : MonoBehaviour {
       inCue = true;
       UpgradesEquipped.LevelSlots = thisLevelData.upgradesPerWave[WavesCleared];
       startWave = false;
-      StartCoroutine("UpgradesDelayUnscaled", 1f);
+      StartCoroutine(UpgradesDelayUnscaled());
     }
   }
-  IEnumerator UpgradesDelayUnscaled(float sec) {
-    yield return new WaitForSecondsRealtime(sec);
+  IEnumerator UpgradesDelayUnscaled() {
     if (CurrentWave == 0) BowManager.GunsReady = true;
     while (GamePauseBehaviour.gamePaused == true || !BowManager.GunsReady) {
       yield return null;
@@ -47,12 +46,8 @@ public class WaveController : MonoBehaviour {
     waveDisplay.text = waveShadowDisplay.text = "Wave : " + waveNumStr;
     StartCoroutine("MoveWaveScreen");
   }
-  // void makeGunsReady() {
-  //   BowManager.GunsReady = true;
-  // }
   IEnumerator MoveWaveScreen() {
     BowManager.GunsReady = true;
-    // Invoke("makeGunsReady", 0.05f);
     CurrentWave++;
     inCue = false;
     Vector2 pos = new Vector2(0f, 0f);

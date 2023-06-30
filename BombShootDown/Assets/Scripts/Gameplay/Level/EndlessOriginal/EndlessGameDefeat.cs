@@ -13,7 +13,7 @@ public class EndlessGameDefeat : MonoBehaviour {
 
   [HideInInspector]
   public float StartTime;
-  int Reward;
+  float Reward;
   string EndlessType;
   void Awake() {
     audio = GameObject.FindObjectOfType<AudioManagerUI>();
@@ -28,7 +28,7 @@ public class EndlessGameDefeat : MonoBehaviour {
   void showRewards() {
     float timeElapsed = Time.time - StartTime;
     float multiplier = getMultiplier(timeElapsed);
-    float Reward = timeElapsed * multiplier;
+    Reward = timeElapsed * multiplier;
     string rewardString = "Your Current reward:" + $"\n" + "Bombs: " + Mathf.Round(Reward).ToString()
     + $"\n" + "Score: " + Mathf.Round(Reward * 1.5f).ToString();
     RewardsAndPoints.text = rewardString;
@@ -57,7 +57,7 @@ public class EndlessGameDefeat : MonoBehaviour {
   }
   public void ContinueAfterAd() {
     audio.PlayAudio("Click");
-    // AdButton.GetComponent<Button>().gameObject.SetActive(false);
+    AdButton.GetComponent<Button>().gameObject.SetActive(false);
     LifeManager.CurrentLife = BowManager.MaxLife;
     gameObject.SetActive(false);
   }
@@ -67,11 +67,13 @@ public class EndlessGameDefeat : MonoBehaviour {
     if (EndlessType == "EndlessOriginal") {
       if (Mathf.Round(Reward * 1.5f) > SettingsManager.endlessOriginalHS) SettingsManager.endlessOriginalHS = Mathf.Round(Reward * 1.5f);
     } else {
+      print(SettingsManager.endlessUpgradedHS);
       if (Mathf.Round(Reward * 1.5f) > SettingsManager.endlessUpgradedHS) SettingsManager.endlessUpgradedHS = Mathf.Round(Reward * 1.5f);
+      print(SettingsManager.endlessUpgradedHS);
     }
     SaveSystem.saveSettings();
   }
   void OnDestroy() {
-    MoneyManager.addMoney(Reward);
+    MoneyManager.addMoney((int)Mathf.Round(Reward));
   }
 }
