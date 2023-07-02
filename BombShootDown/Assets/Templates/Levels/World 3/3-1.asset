@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 3-1
   m_EditorClassIdentifier: 
   name: 3-1
-  upgradesPerWave: 0e00000012000000120000001200000012000000
+  upgradesPerWave: 120000001300000014000000
   firstClearRewards: 250
   clearRewards: 85
   Enemies: []
-  stageInWorld: 0200000001000000
+  stageInWorld: 0300000001000000

@@ -96,7 +96,7 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
       foreach (int tier in tiers) {
         RandomBoss(tier);
       }
-      yield return new WaitForSeconds(waitDecrease * 75f);
+      yield return new WaitForSeconds(75f / waitDecrease);
     }
   }
 

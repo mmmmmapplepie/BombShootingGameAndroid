@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 3-9
   m_EditorClassIdentifier: 
   name: 3-9
-  upgradesPerWave: 070000000a0000000b0000000d0000000f000000
+  upgradesPerWave: 0f0000001300000017000000
   firstClearRewards: 325
   clearRewards: 95
   Enemies:
   - {fileID: 11400000, guid: 018702a856079e644a80192a9cf4fb70, type: 2}
   - {fileID: 11400000, guid: 74bfd0e3caed8e943b7764785655de9a, type: 2}
   - {fileID: 11400000, guid: d3186eb9165aeec42b9e5afa58c5bb5e, type: 2}
-  stageInWorld: 0200000016000000
+  stageInWorld: 0300000009000000

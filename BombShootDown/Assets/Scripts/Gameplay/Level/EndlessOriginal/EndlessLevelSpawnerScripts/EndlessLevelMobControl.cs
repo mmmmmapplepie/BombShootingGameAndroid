@@ -57,10 +57,9 @@ public partial class EndlessLevelControl {
     return frequency;
   }
   async Task StartRandomWave(int difficulty) {
-    wavessent++;
     float frequencyRaise = waveFrequencyChange();
-    float wavePeriod = Random.Range(5f, 23f) * frequencyRaise;
-    if (UpgradedMode) wavePeriod = Random.Range(3f, 13f) * frequencyRaise;
+    float wavePeriod = Random.Range(5f, 23f) / frequencyRaise;
+    if (UpgradedMode) wavePeriod = Random.Range(4f, 8f) / frequencyRaise;
     //together with delay, this gives about 22seconds per cycle which allows for roughly 15mins before the maximum difficulty is reached - in terms of avg cycles required for max difficulty (41 cycles - apparently).
 
     //spawnperiod:singleburst/periodic; position: scattered/bunched

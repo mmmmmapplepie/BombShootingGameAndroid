@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3-20
   m_EditorClassIdentifier: 
   name: 3-20
-  upgradesPerWave: 0a000000100000001400000018000000
+  upgradesPerWave: 08000000170000001c000000
   firstClearRewards: 1300
   clearRewards: 140
   Enemies:
@@ -21,4 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b4091528ecac82b4f8420f029dcd91a0, type: 2}
   - {fileID: 11400000, guid: 01ee98b30550a2f44a545f9b1bc183c3, type: 2}
   - {fileID: 11400000, guid: b07ba5f32d013b54fa2c52b67b7487e7, type: 2}
-  stageInWorld: 020000000d000000
+  stageInWorld: 0300000014000000

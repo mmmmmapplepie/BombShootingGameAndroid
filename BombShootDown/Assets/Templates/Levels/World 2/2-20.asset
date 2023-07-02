@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2-20
   m_EditorClassIdentifier: 
   name: 2-20
-  upgradesPerWave: 0a0000000f0000001000000013000000180000001c000000
+  upgradesPerWave: 10000000180000001c000000
   firstClearRewards: 700
   clearRewards: 65
   Enemies:
