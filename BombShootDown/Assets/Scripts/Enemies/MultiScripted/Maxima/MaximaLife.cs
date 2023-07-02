@@ -84,10 +84,8 @@ public class MaximaLife : MonoBehaviour, IDamageable {
       changingPhase = true;
       currentPhase = phase.phase2;
       StartCoroutine(revive());
-      print(1);
     } else {
       phase2Script.enabled = false;
-      print(2);
       ShotDeath();
     }
   }

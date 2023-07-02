@@ -83,17 +83,12 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
   //this one is the final wave and goes on indefinitely.
   IEnumerator wave9() {
     //double spawn section
-    print("wave9");
     yield return doubleSpawnRoutine(0, 0);
-    print("wave10");
     yield return doubleSpawnRoutine(0, 1);
-    print("wave11");
     yield return doubleSpawnRoutine(1, 2);
-    print("wave12");
     yield return doubleSpawnRoutine(2, 3);
 
     yield return new WaitForSeconds(10f);
-    print("wave13");
     //triple spawn infinite part
     while (true) {
       float waitDecrease = waveFrequencyChange();
@@ -152,7 +147,7 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
       spawner.spawnEnemyInMap("CoupladFollower", 0f, 9f, true, LevelSpawner.addToList.Specific, true);
     }
     if (bossName == "MaxCoupladSeeker") {
-      spawner.spawnEnemyInMap("CoupladMaxFollower", 0f, 9f, true, LevelSpawner.addToList.Specific, true);
+      spawner.spawnEnemyInMap("MaxCoupladFollower", 0f, 9f, true, LevelSpawner.addToList.Specific, true);
     }
   }
 }

@@ -19,6 +19,10 @@ public class Bullet : MonoBehaviour, IBullet {
   float speed;
   bool used = false;
 
+
+  float selfDestroyTimerStartTime = -1f;
+
+
   void Awake() {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     gameObject.GetComponent<CircleCollider2D>().enabled = false;
@@ -29,6 +33,7 @@ public class Bullet : MonoBehaviour, IBullet {
     }
   }
   void Update() {
+    if (selfDestroyTimerStartTime != -1f && Time.time - selfDestroyTimerStartTime > 15f) Destroy(gameObject);
     if (transform.position.x > 7f || transform.position.x < -7f || transform.position.y > 13f || transform.position.y < -13f) {
       Destroy(gameObject);
     }
@@ -90,6 +95,7 @@ public class Bullet : MonoBehaviour, IBullet {
     SetBulletSettings();
     shootSound(speed * direction.magnitude * ratio);
     GetComponent<Rigidbody2D>().velocity = speed * direction * ratio;
+    selfDestroyTimerStartTime = Time.time;
   }
   void SetBulletSettings() {
     hits = BowManager.HitsPerHit;

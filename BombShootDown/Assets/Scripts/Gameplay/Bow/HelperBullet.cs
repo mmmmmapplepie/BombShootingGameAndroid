@@ -10,6 +10,8 @@ public class HelperBullet : MonoBehaviour, IBullet {
   public int pierce { get; set; }
   float speed;
   bool used = false;
+
+  float selfDestroyTimerStartTime = -1f;
   void Awake() {
     audioManager = GameObject.Find("AudioManagerCannon").GetComponent<AudioManagerCannon>();
     gameObject.GetComponent<CircleCollider2D>().enabled = false;
@@ -20,6 +22,7 @@ public class HelperBullet : MonoBehaviour, IBullet {
     }
   }
   void Update() {
+    if (selfDestroyTimerStartTime != -1f && Time.time - selfDestroyTimerStartTime > 15f) Destroy(gameObject);
     if (transform.position.x > 7f || transform.position.x < -7f || transform.position.y > 13f || transform.position.y < -13f) {
       Destroy(gameObject);
     }

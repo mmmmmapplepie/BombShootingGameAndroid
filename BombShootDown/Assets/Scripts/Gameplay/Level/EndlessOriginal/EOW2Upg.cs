@@ -9,7 +9,7 @@ public class EOW2Upg : MonoBehaviour {
   GameObject Holder;
   [SerializeField]
   GameObject IconPrefab;
-  string[] world2Upg = new string[3] { "Revive", "ArmorPierce", "Pierce"};
+  string[] world2Upg = new string[3] { "Revive", "ArmorPierce", "Pierce" };
 
   int tempupgnum = 0;
   void Update() {

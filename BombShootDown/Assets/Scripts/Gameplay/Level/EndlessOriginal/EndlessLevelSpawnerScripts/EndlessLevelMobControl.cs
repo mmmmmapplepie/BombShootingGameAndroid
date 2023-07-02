@@ -12,7 +12,11 @@ public partial class EndlessLevelControl {
   // 1st array is the actual values comapared for the rates
   // 2nd array is the current percentage (gap) of the tier
   // 3rd array is the final percentages to reach, the beginning percentages are put direclty in the beginning so don't matter
-  int[,] difficultyRates = new int[3, 5] { { 60, 80, 100, 100, 100 }, { 60, 20, 20, 0, 0 }, { 0, 10, 20, 30, 40 } };
+  int[,] difficultyRates = new int[3, 5] { { 60, 80, 100, 100, 100 }, { 60, 20, 20, 0, 0 }, { 0, 10, 20, 30, 40 } }; // takes about 82? waves to reach max lvl.
+
+  int wavessent = 0;
+
+  [SerializeField] bool UpgradedMode = false;
 
   //async cancellation token stuff
   CancellationTokenSource cancelToken;
@@ -53,8 +57,10 @@ public partial class EndlessLevelControl {
     return frequency;
   }
   async Task StartRandomWave(int difficulty) {
+    wavessent++;
     float frequencyRaise = waveFrequencyChange();
     float wavePeriod = Random.Range(5f, 23f) * frequencyRaise;
+    if (UpgradedMode) wavePeriod = Random.Range(3f, 13f) * frequencyRaise;
     //together with delay, this gives about 22seconds per cycle which allows for roughly 15mins before the maximum difficulty is reached - in terms of avg cycles required for max difficulty (41 cycles - apparently).
 
     //spawnperiod:singleburst/periodic; position: scattered/bunched

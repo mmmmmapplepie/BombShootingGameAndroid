@@ -65,6 +65,7 @@ public class CoreMechanics : MonoBehaviour {
     enemies.AddRange(new List<GameObject>(GameObject.FindGameObjectsWithTag("TauntEnemy")));
     foreach (GameObject enemy in enemies) {
       EnemyLife script = enemy.transform.root.gameObject.GetComponent<EnemyLife>();
+      if (script == null) return;
       script.Shield = (script.Shield + superMultiplier * shieldRecovered) > script.MaxShield ? script.MaxShield : script.Shield + superMultiplier * shieldRecovered;
       script.Armor += superMultiplier;
     }
