@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Minima
   enemyDescription: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: ff951bcfffe9a4c47920564095a32bdc, type: 3}
   Boss: 2
   enemyPrefab: {fileID: 3112957866081141623, guid: 5cff2f5e3ca083a428e16def93fa99cc, type: 3}
   Life: 150
