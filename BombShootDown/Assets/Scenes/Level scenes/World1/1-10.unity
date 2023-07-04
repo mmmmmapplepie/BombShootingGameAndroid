@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 362189635}
   - component: {fileID: 362189634}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackGroundScenery
   m_TagString: Untagged
   m_Icon: {fileID: 0}

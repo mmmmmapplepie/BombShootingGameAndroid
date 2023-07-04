@@ -137,8 +137,9 @@ public partial class EndlessLevelControl : MonoBehaviour, IGetLevelDataInterface
         SpawnBoss(bossName);
       }
     } else {
-      int ranNum = Random.Range(0, bossByTier[tier].Length);
-      SpawnBoss(bossByTier[tier][ranNum].enemyPrefab.name);
+      // int ranNum = Random.Range(0, bossByTier[tier].Length);
+      // SpawnBoss(bossByTier[tier][ranNum].enemyPrefab.name);
+      SpawnBoss("Minima");
     }
   }
   void SpawnBoss(string bossName) {

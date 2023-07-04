@@ -2443,7 +2443,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 0ac8a061463770045960d7edf1ec38da, type: 3}
 --- !u!20 &355899538 stripped
 Camera:
-  m_CorrespondingSourceObject: {fileID: 2763204617199916204, guid: 0ac8a061463770045960d7edf1ec38da, type: 3}
+  m_CorrespondingSourceObject: {fileID: 70140694, guid: 0ac8a061463770045960d7edf1ec38da, type: 3}
   m_PrefabInstance: {fileID: 355899537}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &362303535
@@ -7116,7 +7116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1125989060}
   - component: {fileID: 1125989059}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackGroundScenery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
