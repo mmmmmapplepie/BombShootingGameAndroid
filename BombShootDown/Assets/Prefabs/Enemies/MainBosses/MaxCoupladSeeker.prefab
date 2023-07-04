@@ -160,7 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3112957865846596067}
   - component: {fileID: 3112957865846596066}
-  - component: {fileID: 3112957865846597148}
+  - component: {fileID: 1767634699}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -176,8 +176,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3112957865846596065}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2738, y: 0.3665, z: 0}
-  m_LocalScale: {x: 1.05232, y: 2.33232, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 0}
   m_Children: []
   m_Father: {fileID: 3112957866081141616}
   m_RootOrder: 0
@@ -222,8 +222,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 43e3d597e98e2d44497e2b7608bb89bc, type: 3}
-  m_Color: {r: 0.2851153, g: 0.32686427, b: 0.5, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 42cd3250ffa596144afff92045772deb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -233,8 +233,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3112957865846597148
-BoxCollider2D:
+--- !u!58 &1767634699
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -243,22 +243,12 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.008259624}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.000821}
-    newSize: {x: 1.0008197, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.6305471, y: 0.8534947}
-  m_EdgeRadius: 0
+  m_Radius: 0.4394242
 --- !u!1 &3112957865910395871
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,8 +670,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.939}
-  m_SizeDelta: {x: 0.9483, y: 0.4}
+  m_AnchoredPosition: {x: 0, y: -1.7}
+  m_SizeDelta: {x: 2.664, y: 0.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3112957867088891318
 Canvas:
@@ -1087,8 +1077,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 2.2, y: 2.2}
+  m_AnchoredPosition: {x: 0, y: 1.7}
+  m_SizeDelta: {x: 3.2, y: 3.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7918866183973502534
 CanvasRenderer:

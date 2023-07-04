@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MaxCouplad Seeker
   enemyDescription: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 42cd3250ffa596144afff92045772deb, type: 3}
   Boss: 2
   enemyPrefab: {fileID: 3112957866081141623, guid: 07917160e2b014c4d87b2f96bbf48ff3, type: 3}
   Life: 80
