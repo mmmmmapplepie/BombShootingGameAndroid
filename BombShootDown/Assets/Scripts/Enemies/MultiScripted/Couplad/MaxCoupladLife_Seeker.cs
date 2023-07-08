@@ -14,6 +14,11 @@ public class MaxCoupladLife_Seeker : MonoBehaviour, IDamageable {
   [SerializeField]
   public float reviveTime;
 
+  [SerializeField] Transform center, gear, outer;
+  bool inAnimation;
+  Coroutine activeAnimation;
+
+
   //basic enemy fields
   [SerializeField]
   public Enemy _data;
@@ -50,6 +55,7 @@ public class MaxCoupladLife_Seeker : MonoBehaviour, IDamageable {
     if (LinkFollower == null) {
       SearchFollower();
     }
+    activeAnimation = StartCoroutine(normalAnimation(2f));
   }
   void CoupladStatsSettings() {
     bombObject = transform.Find("Enemy").gameObject;
@@ -112,7 +118,8 @@ public class MaxCoupladLife_Seeker : MonoBehaviour, IDamageable {
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
     transform.Find("MovementControl").gameObject.SetActive(false);
     float startTime = Time.time;
-    //start revive animation
+    StopCoroutine(activeAnimation);
+    activeAnimation = StartCoroutine(normalAnimation(0.1f));
     while (currentLife < maxLife) {
       currentLife = (maxLife * ((Time.time - startTime
       ) / reviveTime));
@@ -120,8 +127,8 @@ public class MaxCoupladLife_Seeker : MonoBehaviour, IDamageable {
     }
     currentLife = maxLife;
     halfdeath[0] = false;
-    //return to normal animation
-    //normal animation
+    StopCoroutine(activeAnimation);
+    activeAnimation = StartCoroutine(normalAnimation(2f));
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;
     transform.Find("MovementControl").gameObject.SetActive(true);
   }
@@ -204,5 +211,48 @@ public class MaxCoupladLife_Seeker : MonoBehaviour, IDamageable {
       StartCoroutine("ChainExplodePreheat", script);
     }
     StartCoroutine(deathSequence());
+  }
+
+
+
+
+
+
+
+  IEnumerator normalAnimation(float scaleDirection) {
+    while (true) {
+
+      //gear expands
+      float start = Time.time;
+      float period = 0.1f;
+      while (Time.time < start + period) {
+        float value = 1f + 0.13f * (Time.time - start) / period;
+        gear.localScale = new Vector3(value, value, 1f);
+        yield return null;
+      }
+      gear.localScale = new Vector3(1.13f, 1.13f, 1f);
+      yield return new WaitForSeconds(0.4f);
+
+      //gear turn
+      start = Time.time;
+      period = 0.25f;
+      while (Time.time < start + period) {
+        gear.Rotate(0f, 0f, 120f * Time.deltaTime * scaleDirection);
+        outer.Rotate(0f, 0f, 120f * Time.deltaTime * scaleDirection);
+        yield return null;
+      }
+      yield return new WaitForSeconds(0.25f);
+      //gear shrink. center turn
+      start = Time.time;
+      period = 0.1f;
+      while (Time.time < start + period) {
+        float gearvalue = 1f + 0.13f * (1 - (Time.time - start) / period);
+        gear.localScale = new Vector3(gearvalue, gearvalue, 1f);
+        center.Rotate(0f, 0f, -120f * Time.deltaTime * scaleDirection);
+        yield return null;
+      }
+      gear.localScale = new Vector3(1f, 1f, 1f);
+      yield return new WaitForSeconds(0.4f);
+    }
   }
 }

@@ -14,8 +14,6 @@ public partial class EndlessLevelControl {
   // 3rd array is the final percentages to reach, the beginning percentages are put direclty in the beginning so don't matter
   int[,] difficultyRates = new int[3, 5] { { 60, 80, 100, 100, 100 }, { 60, 20, 20, 0, 0 }, { 0, 10, 20, 30, 40 } }; // takes about 82? waves to reach max lvl.
 
-  int wavessent = 0;
-
   [SerializeField] bool UpgradedMode = false;
 
   //async cancellation token stuff
