@@ -16,5 +16,11 @@ MonoBehaviour:
   upgradesPerWave: 0e00000012000000
   firstClearRewards: 120
   clearRewards: 25
-  Enemies: []
+  Enemies:
+  - {fileID: 11400000, guid: cc37852737f44d7488eb396fd315d5d6, type: 2}
+  - {fileID: 11400000, guid: 74bfd0e3caed8e943b7764785655de9a, type: 2}
+  - {fileID: 11400000, guid: 370b64889c095c4499662faaa36d4922, type: 2}
+  - {fileID: 11400000, guid: 09288aa94f7c7224d9ab120a14d7b911, type: 2}
+  - {fileID: 11400000, guid: d5663c2779044844ba0c781b8a5745c5, type: 2}
+  - {fileID: 11400000, guid: 113c57e1be8e98a419f5311ad8afa035, type: 2}
   stageInWorld: 0200000001000000

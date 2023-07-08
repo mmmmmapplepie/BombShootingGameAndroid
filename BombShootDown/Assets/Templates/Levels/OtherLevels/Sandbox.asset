@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sandbox
   upgradesPerWave: 6400000064000000
-  firstClearRewards: 120
-  clearRewards: 50
+  firstClearRewards: 20
+  clearRewards: 20
   Enemies:
   - {fileID: 11400000, guid: f77ca04292d662744ad6e0fbb79c9f4f, type: 2}
   - {fileID: 11400000, guid: 7fa0543cb98cbb441964a1e8bcc72cb7, type: 2}

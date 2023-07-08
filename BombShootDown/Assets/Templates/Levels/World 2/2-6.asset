@@ -17,7 +17,8 @@ MonoBehaviour:
   firstClearRewards: 120
   clearRewards: 45
   Enemies:
-  - {fileID: 11400000, guid: c87ddd41b56fe474cbf8fd5fad5ce3a8, type: 2}
-  - {fileID: 11400000, guid: 01ee98b30550a2f44a545f9b1bc183c3, type: 2}
-  - {fileID: 11400000, guid: b07ba5f32d013b54fa2c52b67b7487e7, type: 2}
+  - {fileID: 11400000, guid: ee36fa517c03f744ab71c210ced38798, type: 2}
+  - {fileID: 11400000, guid: 70494175fe69e914980b4f3a5e100e0d, type: 2}
+  - {fileID: 11400000, guid: 91b982f8191001a4f83f8eb37815f2bf, type: 2}
+  - {fileID: 11400000, guid: c703e637a66ca444295cb3dc7d517330, type: 2}
   stageInWorld: 0200000006000000
