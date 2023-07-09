@@ -14,6 +14,8 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
   [SerializeField]
   public float reviveTime;
 
+  [SerializeField] Animator animator;
+
   //basic enemy fields
   [SerializeField]
   public Enemy _data;
@@ -109,7 +111,7 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = false;
     transform.Find("MovementControl").gameObject.SetActive(false);
     float startTime = Time.time;
-    //start revive animation
+    animator.speed = 0.05f;
     while (currentLife < maxLife) {
       currentLife = (maxLife * ((Time.time - startTime
       ) / reviveTime));
@@ -117,8 +119,7 @@ public class CoupladLife_Seeker : MonoBehaviour, IDamageable {
     }
     currentLife = maxLife;
     halfdeath[0] = false;
-    //return to normal animation
-    //normal animation
+    animator.speed = 1f;
     transform.Find("Enemy").gameObject.GetComponent<Collider2D>().enabled = true;
     transform.Find("MovementControl").gameObject.SetActive(true);
   }

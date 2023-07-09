@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 8597961788034292341}
   - component: {fileID: 2949151687334725626}
   - component: {fileID: 5007360293035530302}
+  - component: {fileID: 2102740896369879456}
   m_Layer: 0
   m_Name: CoupladSeeker
   m_TagString: Untagged
@@ -464,6 +465,7 @@ MonoBehaviour:
   deaths: 0
   halfdeath: 0000
   reviveTime: 1
+  animator: {fileID: 2102740896369879456}
   _data: {fileID: 11400000, guid: d4493f3a044d95648b7d2975f154ec0e, type: 2}
   chainExplosionEffect: {fileID: 7286431805141483997, guid: 4cb634591fadfb240993d72ab3de770a, type: 3}
   audioManager: {fileID: 0}
@@ -488,6 +490,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &2102740896369879456
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112957866081141623}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1ef9ebd6e99bbfb4ca5b1d1c83f6a919, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3112957866169349264
 GameObject:
   m_ObjectHideFlags: 0
