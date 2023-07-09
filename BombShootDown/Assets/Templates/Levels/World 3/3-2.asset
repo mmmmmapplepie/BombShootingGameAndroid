@@ -17,17 +17,20 @@ MonoBehaviour:
   firstClearRewards: 250
   clearRewards: 85
   Enemies:
-  - {fileID: 11400000, guid: e967d9df2dce2a1439949b8b95efb0b3, type: 2}
-  - {fileID: 11400000, guid: c87ddd41b56fe474cbf8fd5fad5ce3a8, type: 2}
-  - {fileID: 11400000, guid: 01ee98b30550a2f44a545f9b1bc183c3, type: 2}
-  - {fileID: 11400000, guid: b07ba5f32d013b54fa2c52b67b7487e7, type: 2}
-  - {fileID: 11400000, guid: d5663c2779044844ba0c781b8a5745c5, type: 2}
-  - {fileID: 11400000, guid: 09288aa94f7c7224d9ab120a14d7b911, type: 2}
-  - {fileID: 11400000, guid: 74bfd0e3caed8e943b7764785655de9a, type: 2}
-  - {fileID: 11400000, guid: 75170788c55421b4f8ed87caaa417b0a, type: 2}
-  - {fileID: 11400000, guid: c18fe447778d4174889b5c4089722592, type: 2}
-  - {fileID: 11400000, guid: 018702a856079e644a80192a9cf4fb70, type: 2}
-  - {fileID: 11400000, guid: 78b6652f6652db0409126ba63cd26400, type: 2}
+  - {fileID: 11400000, guid: 177d0b9d5be865a4f8b2556c5d67a949, type: 2}
+  - {fileID: 11400000, guid: e76ab5b6cd3474b44ac48a7dd98e85e2, type: 2}
+  - {fileID: 11400000, guid: 54c887e25703f5e41956f0420e9bc4e2, type: 2}
   - {fileID: 11400000, guid: 696d544845bf1ea4daf5ef85969bc46e, type: 2}
-  - {fileID: 11400000, guid: e8391d675c5e9d246a081b7edf2645a8, type: 2}
+  - {fileID: 11400000, guid: 73d35bc6992a9ec48b9a9a270b5cce93, type: 2}
+  - {fileID: 11400000, guid: 018702a856079e644a80192a9cf4fb70, type: 2}
+  - {fileID: 11400000, guid: 3e8af90cd82664f45a47444c35e5b5af, type: 2}
+  - {fileID: 11400000, guid: c18fe447778d4174889b5c4089722592, type: 2}
+  - {fileID: 11400000, guid: 75170788c55421b4f8ed87caaa417b0a, type: 2}
+  - {fileID: 11400000, guid: fad9dfe0b0f46fb4aa9d8c00afa8068f, type: 2}
+  - {fileID: 11400000, guid: cc37852737f44d7488eb396fd315d5d6, type: 2}
+  - {fileID: 11400000, guid: 74bfd0e3caed8e943b7764785655de9a, type: 2}
+  - {fileID: 11400000, guid: 370b64889c095c4499662faaa36d4922, type: 2}
+  - {fileID: 11400000, guid: 09288aa94f7c7224d9ab120a14d7b911, type: 2}
+  - {fileID: 11400000, guid: d5663c2779044844ba0c781b8a5745c5, type: 2}
+  - {fileID: 11400000, guid: 113c57e1be8e98a419f5311ad8afa035, type: 2}
   stageInWorld: 0300000001000000

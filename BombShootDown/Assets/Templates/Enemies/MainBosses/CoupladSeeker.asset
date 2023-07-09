@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Couplad Seeker
   enemyDescription: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 42cd3250ffa596144afff92045772deb, type: 3}
   Boss: 2
   enemyPrefab: {fileID: 3112957866081141623, guid: ac3d5e6456d64384ea6f46a1fa6e5e58, type: 3}
-  Life: 80
-  Damage: 20
+  Life: 1000
+  Damage: 80
   Speed: 5
-  MaxShield: 0
+  MaxShield: 50
   Shield: 0
-  Armor: 0
+  Armor: 2
   Taunt: 0

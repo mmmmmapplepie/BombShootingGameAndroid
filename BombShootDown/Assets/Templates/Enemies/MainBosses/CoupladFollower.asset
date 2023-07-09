@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Couplad Follower
   enemyDescription: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 6408f548a1fca4b4ea8ad9f61ba757e9, type: 3}
   Boss: 2
   enemyPrefab: {fileID: 3112957866081141623, guid: e8aa17aab38b3c44e885e4d9222f224e, type: 3}
-  Life: 100
-  Damage: 50
+  Life: 1000
+  Damage: 130
   Speed: 10
-  MaxShield: 0
+  MaxShield: 50
   Shield: 0
-  Armor: 0
+  Armor: 2
   Taunt: 0

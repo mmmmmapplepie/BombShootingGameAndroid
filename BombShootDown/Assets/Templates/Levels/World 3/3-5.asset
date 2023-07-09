@@ -17,17 +17,16 @@ MonoBehaviour:
   firstClearRewards: 275
   clearRewards: 90
   Enemies:
-  - {fileID: 11400000, guid: e967d9df2dce2a1439949b8b95efb0b3, type: 2}
-  - {fileID: 11400000, guid: c87ddd41b56fe474cbf8fd5fad5ce3a8, type: 2}
-  - {fileID: 11400000, guid: 01ee98b30550a2f44a545f9b1bc183c3, type: 2}
+  - {fileID: 11400000, guid: df3efa50e3b9fb743877b6f8da048d6d, type: 2}
+  - {fileID: 11400000, guid: 69431ed7a33b5f840ae5edb8213eef1a, type: 2}
+  - {fileID: 11400000, guid: cbd5e36d7fcc0594f940c701d03e3b23, type: 2}
+  - {fileID: 11400000, guid: 75f80f7eab7e44549bc80faffd290b26, type: 2}
+  - {fileID: 11400000, guid: 8a6215b9f2820e743b67feed9bce650a, type: 2}
+  - {fileID: 11400000, guid: 0a3176994519c2b4094e325ca712fd8c, type: 2}
+  - {fileID: 11400000, guid: d23f433298f41ea479e34bb5efd6182e, type: 2}
   - {fileID: 11400000, guid: b07ba5f32d013b54fa2c52b67b7487e7, type: 2}
-  - {fileID: 11400000, guid: d5663c2779044844ba0c781b8a5745c5, type: 2}
-  - {fileID: 11400000, guid: 09288aa94f7c7224d9ab120a14d7b911, type: 2}
-  - {fileID: 11400000, guid: 74bfd0e3caed8e943b7764785655de9a, type: 2}
-  - {fileID: 11400000, guid: 75170788c55421b4f8ed87caaa417b0a, type: 2}
-  - {fileID: 11400000, guid: c18fe447778d4174889b5c4089722592, type: 2}
-  - {fileID: 11400000, guid: 018702a856079e644a80192a9cf4fb70, type: 2}
-  - {fileID: 11400000, guid: 78b6652f6652db0409126ba63cd26400, type: 2}
-  - {fileID: 11400000, guid: 696d544845bf1ea4daf5ef85969bc46e, type: 2}
-  - {fileID: 11400000, guid: e8391d675c5e9d246a081b7edf2645a8, type: 2}
+  - {fileID: 11400000, guid: 71655ea78a49d564d9ec39a87c1200c7, type: 2}
+  - {fileID: 11400000, guid: 01ee98b30550a2f44a545f9b1bc183c3, type: 2}
+  - {fileID: 11400000, guid: c87ddd41b56fe474cbf8fd5fad5ce3a8, type: 2}
+  - {fileID: 11400000, guid: ee36fa517c03f744ab71c210ced38798, type: 2}
   stageInWorld: 0300000005000000
