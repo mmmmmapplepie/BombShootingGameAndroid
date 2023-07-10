@@ -46,19 +46,24 @@ public class EnemyDamage : MonoBehaviour, IEnemyDealsDamage {
       CreateEffect(damageEffects.Find(x => x.name == "EnemyDealDamageSmall"), null, gameObject.transform.position);
     }
   }
+  void DepthColorChange(Transform tra, float AlphaRatio) {
+    SpriteRenderer renderer = tra.gameObject.GetComponent<SpriteRenderer>();
+    if (renderer != null) {
+      renderer.color = new Color(renderer.color.r / AlphaRatio, renderer.color.g / AlphaRatio, renderer.color.b / AlphaRatio, AlphaRatio); ;
+    }
+    if (tra.childCount > 0) {
+      foreach (Transform t in tra) {
+        DepthColorChange(t, AlphaRatio);
+      }
+    }
+  }
   IEnumerator deathSequence() {
     gameObject.GetComponent<IDamageable>().dead = true;
     RemoveAtDeathComponents();
-    SpriteRenderer sprite = transform.Find("Enemy").gameObject.GetComponent<SpriteRenderer>();
+    Transform enemySpriteBase = transform.Find("Enemy");
     for (int i = 0; i < 20; i++) {
       float ratio = 1f / (1f + i);
-      sprite.color = new Color(sprite.color.r / ratio, sprite.color.g / ratio, sprite.color.b / ratio, ratio);
-      foreach (Transform tra in transform.Find("Enemy")) {
-        if (tra.GetComponent<SpriteRenderer>() != null) {
-          SpriteRenderer spra = tra.gameObject.GetComponent<SpriteRenderer>();
-          spra.color = new Color(spra.color.r / ratio, spra.color.g / ratio, spra.color.b / ratio, ratio);
-        }
-      }
+      DepthColorChange(enemySpriteBase, ratio);
       yield return new WaitForSeconds(0.05f);
     }
     Destroy(gameObject);

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ErnestoMovement : MonoBehaviour {
-  Transform root;
+  Transform rootTra;
   float XPos;
   float YPos;
   void Start() {
-    root = transform.root;
+    rootTra = transform.root;
     pickNewPosition();
-    root.position = new Vector3(XPos, root.position.y, 0f);
+    rootTra.position = new Vector3(XPos, rootTra.position.y, 0f);
     StartCoroutine(movePosition());
   }
   void Update() {
@@ -17,7 +17,7 @@ public class ErnestoMovement : MonoBehaviour {
   }
   void pickNewPosition() {
     XPos = Random.Range(3f, 4f);
-    YPos = root.position.y;
+    YPos = rootTra.position.y;
     int side = Random.Range(-1, 2);
     while (side == 0) {
       side = Random.Range(-1, 2);
@@ -25,13 +25,13 @@ public class ErnestoMovement : MonoBehaviour {
     XPos = (float)side * XPos;
   }
   void BobMovement() {
-    root.position = new Vector3(root.position.x, YPos + 0.5f * Mathf.Sin(0.5f * Time.time), 0f);
+    rootTra.position = new Vector3(rootTra.position.x, YPos + 0.5f * Mathf.Sin(0.5f * Time.time), 0f);
   }
   IEnumerator movePosition() {
     while (true) {
       yield return new WaitForSeconds(Random.Range(20f, 25f));
-      root.position = new Vector3(XPos, root.position.y - 1f, 0f);
-      YPos = root.position.y;
+      rootTra.position = new Vector3(XPos, rootTra.position.y - 1f, 0f);
+      YPos = rootTra.position.y;
       pickNewPosition();
     }
   }

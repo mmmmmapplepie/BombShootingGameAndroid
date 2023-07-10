@@ -10,6 +10,8 @@ public class ErnestoMechanics : MonoBehaviour {
   [SerializeField] Slider pickTimerSlider, damageReflect;
   List<GameObject> AffectedEnemies = new List<GameObject>();
 
+  [SerializeField] Rigidbody2D coreBall;
+
   float lastHitTime;
   float lastEnemyPickTime;
   [HideInInspector] public float totalDamage = 0f;
@@ -92,6 +94,7 @@ public class ErnestoMechanics : MonoBehaviour {
     float currentStoredDmg = Mathf.Min(damageRaisePerTime * (Time.time - lastHitTime), 220f);
     if (latestHealth != lifeScript.currentLife && latestHealth > lifeScript.currentLife) {
       ReleaseStoredDamage(currentStoredDmg);
+      coreBall.AddForce(100f * coreBall.mass * currentStoredDmg * new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)));
     } else {
       damageReflect.value = currentStoredDmg / 220f;
     }

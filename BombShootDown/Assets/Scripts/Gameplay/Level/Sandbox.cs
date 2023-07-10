@@ -36,10 +36,10 @@ public class Sandbox : MonoBehaviour, IGetLevelDataInterface {
       // spawner.spawnEnemy("Core", x, 10f, LevelSpawner.addToList.All);
       // spawner.spawnEnemy("CoupladFollower", -3f, 8f, LevelSpawner.addToList.All);
       // spawner.spawnEnemy("CoupladSeeker", 3f, 8f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("MaxCoupladFollower", -3f, 8f, LevelSpawner.addToList.All);
-      spawner.spawnEnemy("MaxCoupladSeeker", 3f, 8f, LevelSpawner.addToList.All);
+      // spawner.spawnEnemy("MaxCoupladFollower", -3f, 8f, LevelSpawner.addToList.All);
+      // spawner.spawnEnemy("MaxCoupladSeeker", 3f, 8f, LevelSpawner.addToList.All);
       // yield return new WaitForSeconds(5f);
-      // spawner.spawnEnemy("Minima", 0f, 0f, LevelSpawner.addToList.All);
+      spawner.spawnEnemy("Ernesto", 0f, 0f, LevelSpawner.addToList.All);
     }
     // yield return new WaitForSeconds(5f);
     spawner.AllEnemiesCleared();
