@@ -94,10 +94,25 @@ public class ErnestoMechanics : MonoBehaviour {
     float currentStoredDmg = Mathf.Min(damageRaisePerTime * (Time.time - lastHitTime), 220f);
     if (latestHealth != lifeScript.currentLife && latestHealth > lifeScript.currentLife) {
       ReleaseStoredDamage(currentStoredDmg);
-      coreBall.AddForce(100f * coreBall.mass * currentStoredDmg * new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)));
+      forceToCore(currentStoredDmg);
     } else {
       damageReflect.value = currentStoredDmg / 220f;
     }
+  }
+  Vector2 ranVector2() {
+    float xval = Random.Range(-1f, 1f);
+    float yval = Random.Range(-1f, 1f);
+    return new Vector2(xval, yval);
+  }
+  void forceToCore(float currentStoredDmg) {
+    Vector2 newVector;
+    while (true) {
+      newVector = ranVector2();
+      if (newVector.sqrMagnitude == 0) continue;
+      newVector.Normalize();
+      break;
+    }
+    coreBall.AddForce(100f * coreBall.mass * currentStoredDmg * newVector);
   }
   void ReleaseStoredDamage(float storedDmg) {
     LifeManager.CurrentLife -= storedDmg;

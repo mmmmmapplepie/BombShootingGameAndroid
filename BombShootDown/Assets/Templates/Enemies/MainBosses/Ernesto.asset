@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Ernesto
   enemyDescription: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f9de27a528aa46d48bdad2a146b5381b, type: 3}
   Boss: 2
   enemyPrefab: {fileID: 3112957866081141623, guid: f9e200a01443794498bc4d5490f8784e, type: 3}
   Life: 20000
